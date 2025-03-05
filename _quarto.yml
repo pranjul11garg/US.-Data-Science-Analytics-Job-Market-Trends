@@ -7,15 +7,10 @@ website:
     left:
       - href: index.qmd
         text: "Home"
-      - href: data_analysis.ipynb
+      - href: analysis.qmd
         text: "Data Analysis"
-<<<<<<< Updated upstream
       - href: about.qmd
         text: "About"
-=======
-      - about.qmd
-      -analysis.qmd
->>>>>>> Stashed changes
 
 format:
   html:
