@@ -2,12 +2,12 @@ project:
   type: website
 
 website:
-  title: "Business_Analytics_Trends"
+  title: "Business Analytics Trends"
   navbar:
     left:
       - href: index.qmd
         text: "Home"
-      - href: analysis.qmd
+      - href: data_analysis.ipynb
         text: "Data Analysis"
       - href: about.qmd
         text: "About"
