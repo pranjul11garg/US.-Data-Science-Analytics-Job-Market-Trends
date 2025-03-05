@@ -6,11 +6,11 @@ website:
   navbar:
     left:
       - href: index.qmd
-        text: Home
+        text: "Home"
       - href: data_analysis.ipynb
-        text: Data Analysis
+        text: "Data Analysis"
       - href: about.qmd
-        text: about
+        text: "About"
 
 format:
   html:
@@ -19,6 +19,4 @@ format:
       - brand
     css: styles.css
     toc: true
-
-
 
