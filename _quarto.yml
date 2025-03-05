@@ -21,7 +21,10 @@ format:
     theme:
       - cosmo
       - brand
-    css: styles.css
+    css: |
+      .sidebar {
+        order: 1;
+      }
     toc: true
 bibliography: references.bib
 csl: csl/econometrica.csl
