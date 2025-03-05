@@ -19,7 +19,6 @@ format:
       - brand
     css: styles.css
     toc: true
-
-    bibliography: references.bib
-    csl: csl/econometrica.csl
+bibliography: references.bib
+csl: csl/econometrica.csl
    
