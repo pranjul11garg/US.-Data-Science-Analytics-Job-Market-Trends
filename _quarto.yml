@@ -12,6 +12,7 @@ website:
       - href: data_analysis.qmd
         text: "Data Analysis"
       - href: career_plan.qmd
+        text: "Career Strategy"
 
 format:
   html:
