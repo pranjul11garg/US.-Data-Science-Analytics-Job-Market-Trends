@@ -9,8 +9,13 @@ website:
         text: "Home"
       - href: data_analysis.ipynb
         text: "Data Analysis"
+<<<<<<< Updated upstream
       - href: about.qmd
         text: "About"
+=======
+      - about.qmd
+      -analysis.qmd
+>>>>>>> Stashed changes
 
 format:
   html:
