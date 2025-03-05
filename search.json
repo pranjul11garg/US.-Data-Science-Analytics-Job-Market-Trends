@@ -4,7 +4,7 @@
     "href": "data_analysis.html",
     "title": "Business_Analytics_Trends",
     "section": "",
-    "text": "---\ntitle: \"Data Analysis\"\nsubtitle: \"Comprehensive Data Cleaning & Exploratory Analysis of Job Market Trends\"\nauthor:\n  - name: Binderiya Dugersuren\n    affiliations:\n      - id: U83856370\n        name: Boston University\n        city: Boston\n        state: MA\n  - name: John Hamm\n    affiliations:\n      - ref: bu\nbibliography: references.bib\ncsl: csl/econometrica.csl\nformat: \n  html:\n    toc: true\n    number-sections: true\n    df-print: paged\n---"
+    "text": "---\ntitle: \"Data Analysis\"\nsubtitle: \"Comprehensive Data Cleaning & Exploratory Analysis of Job Market Trends\"\nauthor:\n  - name: Binderiya Dugersuren\n    affiliations:\n      - id: U83856370\n        name: Boston University\n        city: Boston\n        state: MA\n  - name: Pranjul Garg\n    affiliations:\n      - id: U39153801\n        name: Boston University\n        city: Boston\n        state: MA\nbibliography: references.bib\ncsl: csl/econometrica.csl\nformat: \n  html:\n    toc: true\n    number-sections: true\n    df-print: paged\n---"
   },
   {
     "objectID": "index.html",
