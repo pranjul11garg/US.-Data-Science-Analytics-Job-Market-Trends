@@ -22,4 +22,4 @@ format:
 
     bibliography: references.bib
     csl: csl/econometrica.csl
-    toc: true
+   
