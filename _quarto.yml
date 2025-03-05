@@ -1,30 +1,34 @@
-project:
-  type: website
-
 website:
-  title: "Business Analytics Trends"
   sidebar:
-    style: docked
-    search: true
+    style: "docked"  # Sidebar is always visible
+    search: true  # Enables search functionality
     contents:
-      - href: index.qmd
-        text: "Home"
-      - href: research_introduction.qmd
-        text: "Research"
-      - href: data_analysis.qmd
-        text: "Data Analysis"
-      - href: career_plan.qmd
-        text: "Career Strategy"
-
+      - text: "Home"
+        href: index.qmd
+      - section: "Research"
+        href: research_introduction.qmd
+        contents:
+          - research_introduction.qmd
+          - trends.qmd
+          - literature_review.qmd
+      - section: "Data Analysis"
+        contents:
+          - data_analysis.qmd
+          - trends_insights.qmd
+      - section: "Career Strategy"
+        href: career_plan.qmd
+        contents:
+          - career_plan.qmd
+          - job_market.qmd
+      - href: references.qmd
+        text: "References"
+        
 format:
   html:
     theme:
       - cosmo
       - brand
-    css: |
-      .sidebar {
-        order: 1;
-      }
-    toc: true
+    css: styles.css
+    toc: true  # Enable right-side Table of Contents for individual pages
 bibliography: references.bib
 csl: csl/econometrica.csl
