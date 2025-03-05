@@ -3,8 +3,10 @@ project:
 
 website:
   title: "Business Analytics Trends"
-  navbar:
-    left:
+  sidebar:
+    style: docked
+    search: true
+    contents:
       - href: index.qmd
         text: "Home"
       - href: research_introduction.qmd
