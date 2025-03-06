@@ -1,0 +1,56 @@
+---
+title : "Data cleaning process"
+author : "Panyang Xiang"
+data : "05/03/2025"
+format : html
+execute :
+reeze: auto
+  python: "/Users/tonyxiang/anaconda3/bin/python" 
+   echo : True
+---
+
+# Introduction
+This document outlines the data cleaning process, including:
+- Handling missing values
+- Dropping unnecessary columns
+- Deduplicating records
+
+
+
+```{python}
+
+import pandas as pd
+df = pd.read_csv("lightcast_job_postings.csv")
+
+columns_to_drop = [
+    "ID", "URL", "ACTIVE_URLS", "DUPLICATES", "LAST_UPDATED_TIMESTAMP",
+    "NAICS2", "NAICS3", "NAICS4", "NAICS5", "NAICS6",
+    "SOC_2", "SOC_3", "SOC_5"
+]
+
+df.drop(columns=columns_to_drop, inplace=True)
+print("Dropped unnecessary columns.")
+print(df.columns)
+
+print("Missing values before cleaning:")
+print(df.isnull().sum())
+
+import missingno as msno
+import matplotlib.pyplot as mp
+# Visualize missing data
+msno.heatmap(df)
+plt.title("Missing Values Heatmap")
+plt.show()
+
+# Drop columns with >50% missing values
+df.dropna(thresh=len(df) * 0.5, axis=1, inplace=True)
+
+# Fill missing values
+df["Salary"].fillna(df["Salary"].median(), inplace=True)
+df["Industry"].fillna("Unknown", inplace=True)
+
+df = df.drop_duplicates(subset=["TITLE", "COMPANY", "LOCATION", "POSTED"])
+print("Duplicates removed.")
+
+```
+
