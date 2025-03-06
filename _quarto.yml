@@ -1,6 +1,4 @@
-project:
-  type: website   # Ensure it says "website"  
-website:
+ website:
   sidebar:
     style: "docked"  # Sidebar is always visible
     search: true  # Enables search functionality
@@ -25,6 +23,13 @@ website:
       - href: references.qmd
         text: "References"
         
+---
+execute: 
+  echo: true
+  eval: true
+  code-fold : true
+---
+
 format:
   html:
     theme:
