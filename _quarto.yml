@@ -1,3 +1,6 @@
+project:
+  type: website  
+
 website:
   sidebar:
     style: "docked"  # Sidebar is always visible
@@ -30,5 +33,4 @@ website:
 
 execute:
   echo: true
-  eval: true
-  code-fold: true
+  eval
