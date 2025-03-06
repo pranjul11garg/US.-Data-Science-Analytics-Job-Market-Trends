@@ -3,32 +3,16 @@ project:
 
 website:
   sidebar:
-    style: "docked"  # Sidebar is always visible
-    search: true  # Enables search functionality
-    contents:
+    style: "docked"  
+    search: true 
+
       - text: "Home"
-        href: index.qmd
-      - section: "Research"
-        contents:
-          - href: research_introduction.qmd
-            text: "Introduction"
-          - href: trends.qmd
-            text: "Trends"
-          - href: literature_review.qmd
-            text: "Literature Review"
-      - section: "Data Analysis"
-        contents:
-          - href: data_analysis.qmd
-            text: "General Analysis"
-          - href: trends_insights.qmd
-            text: "Trends & Insights"
-      - section: "Career Strategy"
-        contents:
-          - href: career_plan.qmd
-            text: "Career Plan"
-          - href: job_market.qmd
-            text: "Job Market"
-      - href: references.qmd
+        href: index.qmd 
+      - href: data_analysis.qmd
+        text: "General Analysis"
+      - href: career_plan.qmd
+        text: "Career Plan"
+      - href: references.bib
         text: "References"
 
 execute:
