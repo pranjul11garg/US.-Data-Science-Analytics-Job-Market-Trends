@@ -33,4 +33,5 @@ website:
 
 execute:
   echo: true
-  eval
+  eval: true
+  code-fold: true
