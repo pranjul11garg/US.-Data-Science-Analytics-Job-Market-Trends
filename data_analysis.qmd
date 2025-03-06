@@ -48,7 +48,35 @@ This document outlines the data cleaning process, including:
 ```{python}
 # columns drop
 import pandas as pd
-df = pd.read_csv("lightcast_job_postings.csv")
+import gdown
+import matplotlib.pyplot as plt
+import plotly.express as px
+import gdown
+import zipfile
+import os
+
+# Define file details
+file_id = "1VNBTxArDMN2o9fJBDImaON6YUAyJGOU6"  # Your Google Drive File ID
+zip_file = "lightcast_job_postings.zip"  # Name of the downloaded ZIP file
+csv_file = "./data/lightcast_job_postings.csv"  # Path to the CSV file
+
+# Step 1: Download the Dataset
+print("Downloading the dataset...")
+gdown.download(f"https://drive.google.com/uc?id={file_id}", zip_file, quiet=False)
+
+# Step 2: Unzip the File
+print("Extracting files...")
+with zipfile.ZipFile(zip_file, "r") as zip_ref:
+    zip_ref.extractall("./data")  # Extracts to 'data' directory
+
+# Step 3: Read the CSV File
+print("Reading the CSV file...")
+df = pd.read_csv(csv_file)
+
+# Display dataset info
+print("Dataset Loaded Successfully!")
+print(df.info())
+
 print("Available columns in dataset:", df.columns.tolist())
 
 
