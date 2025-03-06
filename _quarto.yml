@@ -27,3 +27,8 @@ website:
             text: "Job Market"
       - href: references.qmd
         text: "References"
+
+execute:
+  echo: true
+  eval: true
+  code-fold: true
