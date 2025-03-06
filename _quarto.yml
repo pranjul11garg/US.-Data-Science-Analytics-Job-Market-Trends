@@ -3,17 +3,17 @@ project:
 
 website:
   sidebar:
-    style: "docked"  
-    search: true 
-
+    style: docked  # No need for quotes around "docked"
+    search: true
+    contents:  # Added "contents" to define the list properly
       - text: "Home"
         href: index.qmd 
-      - href: data_analysis.qmd
-        text: "General Analysis"
-      - href: career_plan.qmd
-        text: "Career Plan"
-      - href: references.bib
-        text: "References"
+      - text: "General Analysis"
+        href: data_analysis.qmd
+      - text: "Career Plan"
+        href: career_plan.qmd
+      - text: "References"
+        href: references.bib
 
 execute:
   echo: true
