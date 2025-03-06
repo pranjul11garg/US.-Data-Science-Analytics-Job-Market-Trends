@@ -9,7 +9,7 @@ website:
       - text: "Home"
         href: index.qmd 
       - text: "General Analysis"
-        href: data_analysis.qmd
+        href: data_cleaning.qmd
       - text: "Career Plan"
         href: career_plan.qmd
       - text: "References"
