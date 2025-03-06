@@ -36,3 +36,41 @@ format:
 jupyter: python3
 ---
 
+
+# Introduction
+This document outlines the data cleaning process, including:
+- Handling missing values
+- Dropping unnecessary columns
+- Deduplicating records
+
+
+
+```{python}
+# columns drop
+import pandas as pd
+df = pd.read_csv("lightcast_job_postings.csv")
+
+columns_to_drop = [
+    "ID", "URL", "ACTIVE_URLS", "DUPLICATES", "LAST_UPDATED_TIMESTAMP",
+    "NAICS2", "NAICS3", "NAICS4", "NAICS5", "NAICS6",
+    "SOC_2", "SOC_3", "SOC_5"
+]
+
+df.drop(columns=columns_to_drop, inplace=True)
+print("Dropped unnecessary columns.")
+print(df.columns)
+```
+```{python}
+# handle missing value
+print("Missing values before cleaning:")
+print(df.isnull().sum())
+```
+```{python}
+# delete duplicates
+df = df.drop_duplicates(subset=["TITLE", "COMPANY", "LOCATION", "POSTED"])
+print("Duplicates removed.")
+duplicates = df.duplicated(subset=["TITLE", "COMPANY", "LOCATION", "POSTED"]).sum()
+print(f"🔍 Remaining duplicate rows: {duplicates}")
+
+```
+
