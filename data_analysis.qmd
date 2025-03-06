@@ -49,6 +49,8 @@ This document outlines the data cleaning process, including:
 # columns drop
 import pandas as pd
 df = pd.read_csv("lightcast_job_postings.csv")
+print("Available columns in dataset:", df.columns.tolist())
+
 
 columns_to_drop = [
     "ID", "URL", "ACTIVE_URLS", "DUPLICATES", "LAST_UPDATED_TIMESTAMP",
@@ -59,18 +61,44 @@ columns_to_drop = [
 df.drop(columns=columns_to_drop, inplace=True)
 print("Dropped unnecessary columns.")
 print(df.columns)
-```
-```{python}
+
 # handle missing value
 print("Missing values before cleaning:")
 print(df.isnull().sum())
-```
-```{python}
+
+import missingno as msno
+import matplotlib.pyplot as plt
+
+# Check column names
+df.columns = df.columns.str.upper().str.strip()  # Normalize column names
+print(df.columns)  # Debugging step
+
+# Visualize missing data
+msno.heatmap(df)
+plt.title("Missing Values Heatmap")
+plt.show()
+
+# Drop columns with >50% missing values
+df.dropna(thresh=len(df) * 0.5, axis=1, inplace=True)
+
+# Check if "SALARY" exists before filling missing values
+if "SALARY" in df.columns:
+    df["SALARY"].fillna(df["SALARY"].median(), inplace=True)
+else:
+    print("⚠️ Warning: 'SALARY' column not found in dataframe!")
+
+# Check if "INDUSTRY" exists before filling missing values
+if "INDUSTRY" in df.columns:
+    df["INDUSTRY"].fillna("Unknown", inplace=True)
+else:
+    print("⚠️ Warning: 'INDUSTRY' column not found in dataframe!")
+
+print("✅ Missing value handling complete.")
+
+
 # delete duplicates
 df = df.drop_duplicates(subset=["TITLE", "COMPANY", "LOCATION", "POSTED"])
 print("Duplicates removed.")
-duplicates = df.duplicated(subset=["TITLE", "COMPANY", "LOCATION", "POSTED"]).sum()
-print(f"🔍 Remaining duplicate rows: {duplicates}")
 
 ```
 
