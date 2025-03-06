@@ -1,4 +1,4 @@
- website:
+website:
   sidebar:
     style: "docked"  # Sidebar is always visible
     search: true  # Enables search functionality
@@ -6,36 +6,24 @@
       - text: "Home"
         href: index.qmd
       - section: "Research"
-        href: research_introduction.qmd
         contents:
-          - research_introduction.qmd
-          - trends.qmd
-          - literature_review.qmd
+          - href: research_introduction.qmd
+            text: "Introduction"
+          - href: trends.qmd
+            text: "Trends"
+          - href: literature_review.qmd
+            text: "Literature Review"
       - section: "Data Analysis"
         contents:
-          - data_analysis.qmd
-          - trends_insights.qmd
+          - href: data_analysis.qmd
+            text: "General Analysis"
+          - href: trends_insights.qmd
+            text: "Trends & Insights"
       - section: "Career Strategy"
-        href: career_plan.qmd
         contents:
-          - career_plan.qmd
-          - job_market.qmd
+          - href: career_plan.qmd
+            text: "Career Plan"
+          - href: job_market.qmd
+            text: "Job Market"
       - href: references.qmd
         text: "References"
-        
----
-execute: 
-  echo: true
-  eval: true
-  code-fold : true
----
-
-format:
-  html:
-    theme:
-      - cosmo
-      - brand
-    css: styles.css
-    toc: true  # Enable right-side Table of Contents for individual pages
-bibliography: references.bib
-csl: csl/econometrica.csl
