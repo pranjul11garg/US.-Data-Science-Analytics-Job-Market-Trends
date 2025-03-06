@@ -1,3 +1,5 @@
+project:
+  type: website   # Ensure it says "website"  
 website:
   sidebar:
     style: "docked"  # Sidebar is always visible
