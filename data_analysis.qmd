@@ -86,7 +86,6 @@ df = df.drop_duplicates(subset=["TITLE", "COMPANY", "LOCATION", "POSTED"])
 print("Duplicates removed.")
 print("✅ Missing value handling complete.")
 ```
-<iframe src="figures/ploto_heatmap.html" width="100%" height="700px" style="border:none;"></iframe>
 
 
 ## Exploratory Data Analysis
