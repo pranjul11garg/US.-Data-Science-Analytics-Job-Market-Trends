@@ -210,7 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This document outlines the data cleaning process, including: - Handling missing values - Dropping unnecessary columns - Deduplicating records</p>
 <section id="extracting-the-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="extracting-the-dataset">Extracting the Dataset</h2>
-<div id="359e693d" class="cell" data-execution_count="1">
+<div id="668bd3a7" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># columns drop</span></span>
@@ -228,7 +228,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>csv_file <span class="op">=</span> <span class="st">"./data/lightcast_job_postings.csv"</span>  <span class="co"># Path to the CSV file</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Download the Dataset</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Downloading the dataset..."</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>gdown.download(<span class="ss">f"https://drive.google.com/uc?id=</span><span class="sc">{</span>file_id<span class="sc">}</span><span class="ss">"</span>, zip_file, quiet<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Unzip the File</span></span>
@@ -236,26 +236,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> zipfile.ZipFile(zip_file, <span class="st">"r"</span>) <span class="im">as</span> zip_ref:</span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    zip_ref.extractall(<span class="st">"./data"</span>)  <span class="co"># Extracts to 'data' directory</span></span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Read the CSV File</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Reading the CSV file..."</span>)</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(csv_file)</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Display dataset info</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Dataset Loaded Successfully!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(csv_file)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Display dataset info</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Dataset Loaded Successfully!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Downloading the dataset...</code></pre>
-</div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Downloading...
 From (original): https://drive.google.com/uc?id=1VNBTxArDMN2o9fJBDImaON6YUAyJGOU6
-From (redirected): https://drive.google.com/uc?id=1VNBTxArDMN2o9fJBDImaON6YUAyJGOU6&amp;confirm=t&amp;uuid=6cdd60d3-92c2-416d-a08b-3a451401f5ce
+From (redirected): https://drive.google.com/uc?id=1VNBTxArDMN2o9fJBDImaON6YUAyJGOU6&amp;confirm=t&amp;uuid=9b8ffcc9-2547-4f62-830c-1ddc5c18111d
 To: /home/runner/work/ad688-employability-sp25A1-group11/ad688-employability-sp25A1-group11/lightcast_job_postings.zip
-  0%|          | 0.00/190M [00:00&lt;?, ?B/s]  2%|▏         | 4.72M/190M [00:00&lt;00:10, 17.4MB/s]  7%|▋         | 13.1M/190M [00:00&lt;00:05, 31.6MB/s] 14%|█▎        | 25.7M/190M [00:00&lt;00:03, 52.8MB/s] 18%|█▊        | 34.1M/190M [00:00&lt;00:02, 52.7MB/s] 27%|██▋       | 50.9M/190M [00:00&lt;00:01, 78.1MB/s] 32%|███▏      | 60.3M/190M [00:01&lt;00:01, 66.8MB/s] 39%|███▉      | 73.9M/190M [00:01&lt;00:01, 82.2MB/s] 44%|████▍     | 83.9M/190M [00:01&lt;00:01, 71.3MB/s] 51%|█████     | 97.0M/190M [00:01&lt;00:01, 82.6MB/s] 56%|█████▌    | 106M/190M [00:01&lt;00:01, 77.3MB/s]  61%|██████    | 115M/190M [00:01&lt;00:00, 79.1MB/s] 66%|██████▋   | 126M/190M [00:01&lt;00:00, 82.6MB/s] 71%|███████   | 135M/190M [00:01&lt;00:00, 74.9MB/s] 79%|███████▊  | 149M/190M [00:02&lt;00:00, 87.9MB/s] 84%|████████▎ | 159M/190M [00:02&lt;00:00, 75.5MB/s] 92%|█████████▏| 174M/190M [00:02&lt;00:00, 89.0MB/s] 97%|█████████▋| 184M/190M [00:02&lt;00:00, 76.7MB/s]100%|██████████| 190M/190M [00:02&lt;00:00, 73.4MB/s]</code></pre>
+  0%|          | 0.00/190M [00:00&lt;?, ?B/s]  2%|▏         | 4.72M/190M [00:00&lt;00:04, 43.4MB/s]  7%|▋         | 13.1M/190M [00:00&lt;00:04, 42.1MB/s] 11%|█▏        | 21.5M/190M [00:00&lt;00:03, 46.5MB/s] 15%|█▌        | 28.8M/190M [00:00&lt;00:02, 54.0MB/s] 18%|█▊        | 34.6M/190M [00:00&lt;00:03, 50.4MB/s] 21%|██        | 40.4M/190M [00:00&lt;00:02, 51.5MB/s] 25%|██▍       | 46.7M/190M [00:00&lt;00:02, 52.5MB/s] 29%|██▉       | 55.1M/190M [00:01&lt;00:02, 58.9MB/s] 32%|███▏      | 61.3M/190M [00:01&lt;00:02, 56.3MB/s] 37%|███▋      | 69.7M/190M [00:01&lt;00:01, 62.3MB/s] 41%|████      | 77.1M/190M [00:01&lt;00:01, 65.3MB/s] 45%|████▍     | 85.5M/190M [00:01&lt;00:01, 70.2MB/s] 49%|████▉     | 92.8M/190M [00:01&lt;00:01, 70.3MB/s] 54%|█████▍    | 102M/190M [00:01&lt;00:01, 77.0MB/s]  59%|█████▊    | 112M/190M [00:01&lt;00:01, 76.3MB/s] 65%|██████▍   | 123M/190M [00:01&lt;00:00, 84.0MB/s] 69%|██████▉   | 132M/190M [00:02&lt;00:00, 78.7MB/s] 75%|███████▌  | 143M/190M [00:02&lt;00:00, 82.1MB/s] 82%|████████▏ | 156M/190M [00:02&lt;00:00, 93.3MB/s] 87%|████████▋ | 166M/190M [00:02&lt;00:00, 86.9MB/s] 93%|█████████▎| 177M/190M [00:02&lt;00:00, 94.3MB/s] 98%|█████████▊| 187M/190M [00:02&lt;00:00, 93.4MB/s]100%|██████████| 190M/190M [00:02&lt;00:00, 72.3MB/s]</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Extracting files...
-Reading the CSV file...
 Dataset Loaded Successfully!</code></pre>
 </div>
 </div>
@@ -263,58 +257,46 @@ Dataset Loaded Successfully!</code></pre>
 </section>
 <section id="dropping-the-missing-value-columns" class="level1">
 <h1>Dropping the Missing Value Columns</h1>
-<div id="aa154afc" class="cell" data-execution_count="2">
+<div id="a2061323" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>columns_to_drop <span class="op">=</span> [</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ID"</span>, <span class="st">"URL"</span>, <span class="st">"ACTIVE_URLS"</span>, <span class="st">"DUPLICATES"</span>, <span class="st">"LAST_UPDATED_TIMESTAMP"</span>,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"NAICS2"</span>, <span class="st">"NAICS3"</span>, <span class="st">"NAICS4"</span>, <span class="st">"NAICS5"</span>, <span class="st">"NAICS6"</span>,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SOC_2"</span>, <span class="st">"SOC_3"</span>, <span class="st">"SOC_5"</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>df.drop(columns<span class="op">=</span>columns_to_drop, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Dropped unnecessary columns."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>columns_to_drop <span class="op">=</span> [</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ID"</span>, <span class="st">"URL"</span>, <span class="st">"ACTIVE_URLS"</span>, <span class="st">"DUPLICATES"</span>, <span class="st">"LAST_UPDATED_TIMESTAMP"</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"NAICS2"</span>, <span class="st">"NAICS3"</span>, <span class="st">"NAICS4"</span>, <span class="st">"NAICS5"</span>, <span class="st">"NAICS6"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SOC_2"</span>, <span class="st">"SOC_3"</span>, <span class="st">"SOC_5"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>df.drop(columns<span class="op">=</span>columns_to_drop, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Dropped unnecessary columns."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Dropped unnecessary columns.</code></pre>
 </div>
 </div>
-<div id="198a0544" class="cell" data-execution_count="3">
+<div id="4f6a2e56" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> missingno <span class="im">as</span> msno</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check column names</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>df.columns <span class="op">=</span> df.columns.<span class="bu">str</span>.upper().<span class="bu">str</span>.strip()  <span class="co"># Normalize column names</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.columns)  <span class="co"># Debugging step</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize missing data</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>msno.heatmap(df)</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Missing Values Heatmap"</span>)</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop columns with &gt;50% missing values</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>df.dropna(thresh<span class="op">=</span><span class="bu">len</span>(df) <span class="op">*</span> <span class="fl">0.5</span>, axis<span class="op">=</span><span class="dv">1</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"✅ Missing value handling complete."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> missingno <span class="im">as</span> msno</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check column names</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>df.columns <span class="op">=</span> df.columns.<span class="bu">str</span>.upper().<span class="bu">str</span>.strip()  <span class="co"># Normalize column names</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize missing data</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>msno.heatmap(df)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Missing Values Heatmap"</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop columns with &gt;50% missing values</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>df.dropna(thresh<span class="op">=</span><span class="bu">len</span>(df) <span class="op">*</span> <span class="fl">0.5</span>, axis<span class="op">=</span><span class="dv">1</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"✅ Missing value handling complete."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Index(['LAST_UPDATED_DATE', 'POSTED', 'EXPIRED', 'DURATION', 'SOURCE_TYPES',
-       'SOURCES', 'ACTIVE_SOURCES_INFO', 'TITLE_RAW', 'BODY',
-       'MODELED_EXPIRED',
-       ...
-       'NAICS_2022_2', 'NAICS_2022_2_NAME', 'NAICS_2022_3',
-       'NAICS_2022_3_NAME', 'NAICS_2022_4', 'NAICS_2022_4_NAME',
-       'NAICS_2022_5', 'NAICS_2022_5_NAME', 'NAICS_2022_6',
-       'NAICS_2022_6_NAME'],
-      dtype='object', length=118)</code></pre>
-</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="data_analysis_files/figure-html/cell-4-output-2.png" width="1690" height="1164" class="figure-img"></p>
+<p><img src="data_analysis_files/figure-html/cell-4-output-1.png" width="1690" height="1164" class="figure-img"></p>
 </figure>
 </div>
 </div>
