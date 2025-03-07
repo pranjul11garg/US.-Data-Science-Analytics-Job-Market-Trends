@@ -1,0 +1,327 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: Data Analysis\n",
+        "subtitle: Comprehensive Data Cleaning & Exploratory Analysis of Job Market Trends\n",
+        "author:\n",
+        "  - name: Group 11\n",
+        "    affiliations:\n",
+        "      - name: Boston University\n",
+        "        city: Boston\n",
+        "        state: MA\n",
+        "        \n",
+        "format: \n",
+        "  html:\n",
+        "    bibliography: references.bib\n",
+        "    csl: csl/econometrica.csl\n",
+        "    toc: true\n",
+        "    css: styles.css\n",
+        "    html-math-method: katex\n",
+        "    embed-resources: false\n",
+        "    code-fold: true\n",
+        "jupyter: python3\n",
+        "execute:\n",
+        "   eval: true\n",
+        "\n",
+        "---\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "# Introduction\n",
+        "This document outlines the data cleaning process, including:\n",
+        "- Handling missing values\n",
+        "- Dropping unnecessary columns\n",
+        "- Deduplicating records\n",
+        "\n",
+        "## Extracting the Dataset\n",
+        "The Lightcast Dataset has been extracted from the google drive using the gdown.\n"
+      ],
+      "id": "2e216e84"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "import gdown\n",
+        "import matplotlib.pyplot as plt\n",
+        "import plotly.express as px\n",
+        "import gdown\n",
+        "import zipfile\n",
+        "import os\n",
+        "\n",
+        "\n",
+        "file_id = \"1VNBTxArDMN2o9fJBDImaON6YUAyJGOU6\" \n",
+        "zip_file = \"lightcast_job_postings.zip\"  # Name of the downloaded ZIP file\n",
+        "csv_file = \"./data/lightcast_job_postings.csv\"  # Path to the CSV file\n",
+        "\n",
+        "gdown.download(f\"https://drive.google.com/uc?id={file_id}\", zip_file, quiet=True)\n",
+        "\n",
+        "with zipfile.ZipFile(zip_file, \"r\") as zip_ref:\n",
+        "    zip_ref.extractall(\"./data\") \n",
+        "df = pd.read_csv(csv_file)"
+      ],
+      "id": "f2313fb7",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Dropping the Unnecessary columns Columns\n",
+        "There are 102 columns in the dataset and there are various columns which are unnecessary, so we are dropping those to clean the data and do better analysis\n"
+      ],
+      "id": "fd0023a5"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "columns_to_drop = [\n",
+        "    \"ID\", \"URL\", \"ACTIVE_URLS\", \"DUPLICATES\", \"LAST_UPDATED_TIMESTAMP\",\n",
+        "    \"NAICS2\", \"NAICS3\", \"NAICS4\", \"NAICS5\", \"NAICS6\",\n",
+        "    \"SOC_2\", \"SOC_3\", \"SOC_5\"\n",
+        "]\n",
+        "\n",
+        "df.drop(columns=columns_to_drop, inplace=True)\n",
+        "print(\"Dropped unnecessary columns.\")"
+      ],
+      "id": "b7746648",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Removed the Duplicates and Handled the Missing Values\n"
+      ],
+      "id": "ef7014dd"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import missingno as msno\n",
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "\n",
+        "df.columns = df.columns.str.upper().str.strip()  # Normalize column names\n",
+        "\n",
+        "msno.heatmap(df)\n",
+        "plt.title(\"Missing Values Heatmap\")\n",
+        "plt.show()\n",
+        "\n",
+        "# Drop columns with >50% missing values\n",
+        "df.dropna(thresh=len(df) * 0.5, axis=1, inplace=True)\n",
+        "\n",
+        "df = df.drop_duplicates(subset=[\"TITLE\", \"COMPANY\", \"LOCATION\", \"POSTED\"])\n",
+        "print(\"Duplicates removed.\")\n",
+        "print(\"✅ Missing value handling complete.\")"
+      ],
+      "id": "e1a049d4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Exploratory Data Analysis\n",
+        "\n",
+        "### Data Analytics & Business Analytics Job Trend\n"
+      ],
+      "id": "9619cedc"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# identifying data analyst jobs by keyword searching\n",
+        "keywords = ['Data Analyst', 'Business Analyst', 'Data Engineering', 'Deep Learning',\n",
+        "            'Data Science', 'Data Analysis','Data Analytics',  'Market Research Analyst' \n",
+        "            'LLM', 'Language Model', 'NLP', 'Natural Language Processing',\n",
+        "            'Computer Vision', 'Business Intelligence Analyst', 'Quantitative Analyst', 'Operations Analyst']\n",
+        "\n",
+        "match = lambda col: df[col].str.contains('|'.join(keywords), case=False, na=False)\n",
+        "\n",
+        "df['DATA_ANALYST_JOB'] = match('TITLE_NAME') \\\n",
+        "             | match('SKILLS_NAME') \\\n",
+        "             | match('SPECIALIZED_SKILLS_NAME') \n",
+        "df['DATA_ANALYST_JOB'].value_counts()"
+      ],
+      "id": "d194d582",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import plotly.express as px\n",
+        "\n",
+        "df_grouped = df.groupby(['DATA_ANALYST_JOB', 'NAICS2_NAME']).size().reset_index(name='Job_Count')\n",
+        "# Define custom colors for 'True' and 'False' categories\n",
+        "color_map = {\n",
+        "    False: \"#d62728\" ,   # Red\n",
+        "    True: \"#3BB143 \"   # Green\n",
+        "}\n",
+        "\n",
+        "\n",
+        "fig = px.bar(df_grouped, \n",
+        "             x='NAICS2_NAME', \n",
+        "             y='Job_Count',\n",
+        "             color='DATA_ANALYST_JOB',\n",
+        "             title=\"Data Analytics & Business Analytics Job Trends\",\n",
+        "              labels={'NAICS2_NAME': 'Industry', 'Job_Count': 'Number of Jobs'},\n",
+        "             barmode='group',\n",
+        "             color_discrete_map=color_map  # Custom colors\n",
+        "            )\n",
+        "\n",
+        "fig.update_layout(\n",
+        "    yaxis=dict(\n",
+        "        title=\"Number of Jobs\", \n",
+        "        range=[0, df_grouped['Job_Count'].max() * 1.2]  # Increase y-axis height\n",
+        "    ),\n",
+        "    height=700,  # Make the figure taller\n",
+        "    xaxis=dict(\n",
+        "        tickangle=-45  # Rotate x-axis labels for better readability\n",
+        "    )\n",
+        ")"
+      ],
+      "id": "b19a4e27",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "<iframe src=\"figures/plot1_jobtrends.html\" width=\"100%\" height=\"600px\" style=\"border:none; display:block; margin:auto;\"></iframe>\n"
+      ],
+      "id": "009f39af"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# No output to avoid blank spaces"
+      ],
+      "id": "6ab39d04",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Top 10 Industries Hiring the Data Analysts\n"
+      ],
+      "id": "11ec4f79"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import plotly.express as px\n",
+        "\n",
+        "# Identify the top 2 industries with the most data analyst jobs\n",
+        "top_industries = df_grouped.groupby(\"NAICS2_NAME\")[\"Job_Count\"].sum().nlargest(10).index\n",
+        "\n",
+        "# Filter the original grouped DataFrame, not the raw df\n",
+        "df_top_industries = df_grouped[df_grouped[\"NAICS2_NAME\"].isin(top_industries)]\n",
+        "\n",
+        "# Create the bar chart to analyze job counts within these industries\n",
+        "fig = px.bar(df_top_industries, \n",
+        "             x=\"DATA_ANALYST_JOB\", \n",
+        "             y=\"Job_Count\", \n",
+        "             color=\"NAICS2_NAME\",\n",
+        "             title=\"Top 10 Industries Hiring Data Analysts\",\n",
+        "             labels={'DATA_ANALYST_JOB': 'Job Title', 'Job_Count': 'Number of Jobs'},\n",
+        "             barmode='group')"
+      ],
+      "id": "7a7e1402",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Data Analytics & Business Analytics Job Trends\n",
+        "<iframe src=\"figures/plot2industies.html\" width=\"100%\" height=\"600px\" style=\"border:none; display:block; margin:auto;\"></iframe>\n"
+      ],
+      "id": "92febb74"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# No output to avoid blank spaces"
+      ],
+      "id": "0b3a6a89",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Remote Vs On-site Data Analyst Jobs in Finance & Healthcare Sector\n"
+      ],
+      "id": "d9124e9a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import plotly.express as px\n",
+        "\n",
+        "# Define target industries\n",
+        "target_industries = [\"Finance and Insurance\", \"Health Care and Social Assistance\"]\n",
+        "\n",
+        "# Filter the original DataFrame (df) instead of df_grouped\n",
+        "df_remote = df[df[\"NAICS2_NAME\"].isin(target_industries)]\n",
+        "\n",
+        "# Count occurrences of each remote type in these industries\n",
+        "df_remote_grouped = df_remote.groupby(\"REMOTE_TYPE_NAME\").size().reset_index(name=\"Count\")\n",
+        "\n",
+        "# Create a pie chart\n",
+        "fig = px.pie(df_remote_grouped, \n",
+        "             names=\"REMOTE_TYPE_NAME\", \n",
+        "             values=\"Count\", \n",
+        "             title=\"Remote vs. On-Site Data Analyst Jobs in Finance & Healthcare\",\n",
+        "             color=\"REMOTE_TYPE_NAME\", \n",
+        "             color_discrete_map={\"Remote\": \"#1f77b4\", \"On-Site\": \"#d62728\", \"Hybrid\": \"#2ca02c\"})"
+      ],
+      "id": "6cd32870",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "<iframe src=\"figures/plot3pie.html\" width=\"100%\" height=\"600px\" frameborder=\"0\"></iframe>"
+      ],
+      "id": "f3d864de"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Users/prawnz/Documents/Web_analytics/ad688-employability-sp25A1-group11/.venv/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
