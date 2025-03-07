@@ -4855,8 +4855,7 @@ color: white !important;
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="co"># delete duplicates</span></span>
 <span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop_duplicates(subset<span class="op">=</span>[<span class="st">&quot;TITLE&quot;</span>, <span class="st">&quot;COMPANY&quot;</span>, <span class="st">&quot;LOCATION&quot;</span>, <span class="st">&quot;POSTED&quot;</span>])</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Duplicates removed.&quot;</span>)</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>fig.write_html(<span class="st">&quot;ploto_heatmap.html&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Duplicates removed.&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Available columns in dataset: [&#39;ID&#39;, &#39;LAST_UPDATED_DATE&#39;, &#39;LAST_UPDATED_TIMESTAMP&#39;, &#39;DUPLICATES&#39;, &#39;POSTED&#39;, &#39;EXPIRED&#39;, &#39;DURATION&#39;, &#39;SOURCE_TYPES&#39;, &#39;SOURCES&#39;, &#39;URL&#39;, &#39;ACTIVE_URLS&#39;, &#39;ACTIVE_SOURCES_INFO&#39;, &#39;TITLE_RAW&#39;, &#39;BODY&#39;, &#39;MODELED_EXPIRED&#39;, &#39;MODELED_DURATION&#39;, &#39;COMPANY&#39;, &#39;COMPANY_NAME&#39;, &#39;COMPANY_RAW&#39;, &#39;COMPANY_IS_STAFFING&#39;, &#39;EDUCATION_LEVELS&#39;, &#39;EDUCATION_LEVELS_NAME&#39;, &#39;MIN_EDULEVELS&#39;, &#39;MIN_EDULEVELS_NAME&#39;, &#39;MAX_EDULEVELS&#39;, &#39;MAX_EDULEVELS_NAME&#39;, &#39;EMPLOYMENT_TYPE&#39;, &#39;EMPLOYMENT_TYPE_NAME&#39;, &#39;MIN_YEARS_EXPERIENCE&#39;, &#39;MAX_YEARS_EXPERIENCE&#39;, &#39;IS_INTERNSHIP&#39;, &#39;SALARY&#39;, &#39;REMOTE_TYPE&#39;, &#39;REMOTE_TYPE_NAME&#39;, &#39;ORIGINAL_PAY_PERIOD&#39;, &#39;SALARY_TO&#39;, &#39;SALARY_FROM&#39;, &#39;LOCATION&#39;, &#39;CITY&#39;, &#39;CITY_NAME&#39;, &#39;COUNTY&#39;, &#39;COUNTY_NAME&#39;, &#39;MSA&#39;, &#39;MSA_NAME&#39;, &#39;STATE&#39;, &#39;STATE_NAME&#39;, &#39;COUNTY_OUTGOING&#39;, &#39;COUNTY_NAME_OUTGOING&#39;, &#39;COUNTY_INCOMING&#39;, &#39;COUNTY_NAME_INCOMING&#39;, &#39;MSA_OUTGOING&#39;, &#39;MSA_NAME_OUTGOING&#39;, &#39;MSA_INCOMING&#39;, &#39;MSA_NAME_INCOMING&#39;, &#39;NAICS2&#39;, &#39;NAICS2_NAME&#39;, &#39;NAICS3&#39;, &#39;NAICS3_NAME&#39;, &#39;NAICS4&#39;, &#39;NAICS4_NAME&#39;, &#39;NAICS5&#39;, &#39;NAICS5_NAME&#39;, &#39;NAICS6&#39;, &#39;NAICS6_NAME&#39;, &#39;TITLE&#39;, &#39;TITLE_NAME&#39;, &#39;TITLE_CLEAN&#39;, &#39;SKILLS&#39;, &#39;SKILLS_NAME&#39;, &#39;SPECIALIZED_SKILLS&#39;, &#39;SPECIALIZED_SKILLS_NAME&#39;, &#39;CERTIFICATIONS&#39;, &#39;CERTIFICATIONS_NAME&#39;, &#39;COMMON_SKILLS&#39;, &#39;COMMON_SKILLS_NAME&#39;, &#39;SOFTWARE_SKILLS&#39;, &#39;SOFTWARE_SKILLS_NAME&#39;, &#39;ONET&#39;, &#39;ONET_NAME&#39;, &#39;ONET_2019&#39;, &#39;ONET_2019_NAME&#39;, &#39;CIP6&#39;, &#39;CIP6_NAME&#39;, &#39;CIP4&#39;, &#39;CIP4_NAME&#39;, &#39;CIP2&#39;, &#39;CIP2_NAME&#39;, &#39;SOC_2021_2&#39;, &#39;SOC_2021_2_NAME&#39;, &#39;SOC_2021_3&#39;, &#39;SOC_2021_3_NAME&#39;, &#39;SOC_2021_4&#39;, &#39;SOC_2021_4_NAME&#39;, &#39;SOC_2021_5&#39;, &#39;SOC_2021_5_NAME&#39;, &#39;LOT_CAREER_AREA&#39;, &#39;LOT_CAREER_AREA_NAME&#39;, &#39;LOT_OCCUPATION&#39;, &#39;LOT_OCCUPATION_NAME&#39;, &#39;LOT_SPECIALIZED_OCCUPATION&#39;, &#39;LOT_SPECIALIZED_OCCUPATION_NAME&#39;, &#39;LOT_OCCUPATION_GROUP&#39;, &#39;LOT_OCCUPATION_GROUP_NAME&#39;, &#39;LOT_V6_SPECIALIZED_OCCUPATION&#39;, &#39;LOT_V6_SPECIALIZED_OCCUPATION_NAME&#39;, &#39;LOT_V6_OCCUPATION&#39;, &#39;LOT_V6_OCCUPATION_NAME&#39;, &#39;LOT_V6_OCCUPATION_GROUP&#39;, &#39;LOT_V6_OCCUPATION_GROUP_NAME&#39;, &#39;LOT_V6_CAREER_AREA&#39;, &#39;LOT_V6_CAREER_AREA_NAME&#39;, &#39;SOC_2&#39;, &#39;SOC_2_NAME&#39;, &#39;SOC_3&#39;, &#39;SOC_3_NAME&#39;, &#39;SOC_4&#39;, &#39;SOC_4_NAME&#39;, &#39;SOC_5&#39;, &#39;SOC_5_NAME&#39;, &#39;LIGHTCAST_SECTORS&#39;, &#39;LIGHTCAST_SECTORS_NAME&#39;, &#39;NAICS_2022_2&#39;, &#39;NAICS_2022_2_NAME&#39;, &#39;NAICS_2022_3&#39;, &#39;NAICS_2022_3_NAME&#39;, &#39;NAICS_2022_4&#39;, &#39;NAICS_2022_4_NAME&#39;, &#39;NAICS_2022_5&#39;, &#39;NAICS_2022_5_NAME&#39;, &#39;NAICS_2022_6&#39;, &#39;NAICS_2022_6_NAME&#39;]
 Dropped unnecessary columns.
@@ -4905,20 +4904,8 @@ Index([&#39;LAST_UPDATED_DATE&#39;, &#39;POSTED&#39;, &#39;EXPIRED&#39;, &#39;DU
 ✅ Missing value handling complete.
 Duplicates removed.</code></pre>
 </div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[1], line 55</span>
-<span class="ansi-green-fg ansi-bold">     53</span> df <span style="color:rgb(98,98,98)">=</span> df<span style="color:rgb(98,98,98)">.</span>drop_duplicates(subset<span style="color:rgb(98,98,98)">=</span>[<span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">TITLE</span><span style="color:rgb(175,0,0)">&quot;</span>, <span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">COMPANY</span><span style="color:rgb(175,0,0)">&quot;</span>, <span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">LOCATION</span><span style="color:rgb(175,0,0)">&quot;</span>, <span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">POSTED</span><span style="color:rgb(175,0,0)">&quot;</span>])
-<span class="ansi-green-fg ansi-bold">     54</span> <span style="color:rgb(0,135,0)">print</span>(<span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">Duplicates removed.</span><span style="color:rgb(175,0,0)">&quot;</span>)
-<span class="ansi-green-fg">---&gt; 55</span> <span class="ansi-yellow-bg">fig</span><span style="color:rgb(98,98,98)">.</span>write_html(<span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">ploto_heatmap.html</span><span style="color:rgb(175,0,0)">&quot;</span>)
-
-<span class="ansi-red-fg">NameError</span>: name &#39;fig&#39; is not defined</pre>
 </div>
-</div>
-</div>
-<div id="cell-2" class="cell" data-execution_count="3">
+<div id="cell-2" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;SALARY&quot;</span> <span class="kw">in</span> df.columns:</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">&quot;SALARY&quot;</span>].fillna(df[<span class="st">&quot;SALARY&quot;</span>].median(), inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
@@ -4927,7 +4914,7 @@ Cell <span class="ansi-green-fg">In[1], line 55</span>
 <pre><code>⚠️ Warning: &#39;SALARY&#39; column not found in dataframe!</code></pre>
 </div>
 </div>
-<div id="cell-3" class="cell" data-execution_count="2">
+<div id="cell-3" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># identifying data analyst jobs by keyword searching</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>keywords <span class="op">=</span> [<span class="st">&#39;Data Analyst&#39;</span>, <span class="st">&#39;Business Analyst&#39;</span>, <span class="st">&#39;Data Engineering&#39;</span>, <span class="st">&#39;Deep Learning&#39;</span>,</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;Data Science&#39;</span>, <span class="st">&#39;Data Analysis&#39;</span>,<span class="st">&#39;Data Analytics&#39;</span>,  <span class="st">&#39;Market Research Analyst&#39;</span> </span>
@@ -4941,16 +4928,16 @@ Cell <span class="ansi-green-fg">In[1], line 55</span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>             <span class="op">|</span> match(<span class="st">&#39;SPECIALIZED_SKILLS_NAME&#39;</span>) </span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;DATA_ANALYST_JOB&#39;</span>].value_counts()</span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>DATA_ANALYST_JOB
 False    37052
 True     32148
 Name: count, dtype: int64</code></pre>
 </div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="5">
+<div id="cell-4" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;DATA_ANALYST_JOB&#39;</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>0        False
 1        False
 2         True
@@ -4965,7 +4952,7 @@ Name: count, dtype: int64</code></pre>
 Name: DATA_ANALYST_JOB, Length: 69200, dtype: bool</code></pre>
 </div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="3">
+<div id="cell-5" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Group data</span></span>
@@ -5017,7 +5004,7 @@ Name: DATA_ANALYST_JOB, Length: 69200, dtype: bool</code></pre>
 <pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
 </div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="10">
+<div id="cell-6" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify the top 2 industries with the most data analyst jobs</span></span>
