@@ -1,6 +1,6 @@
 /* Make the navbar background red */
 .navbar, .navbar-expand-lg {
-    background-color: #CC0000 !important;  /* Red background */
+    background-color: hsl(0, 100%, 40%) !important;  /* Red background */
     border-bottom: 3px solid white !important; /* Optional: White bottom border */
 }
 
