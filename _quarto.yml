@@ -9,6 +9,8 @@ website:
         href: index.qmd 
       - text: "Data Analysis"
         href: data_analysis.qmd
+      - text: "Data Cleaning"
+        href: analysis.ipynb
   repo-url: "https://github.com/pranjul11garg/ad688-employability-sp25A1-group11"
 
 format:
