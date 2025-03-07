@@ -2,16 +2,13 @@ project:
   type: website  
 
 website:
-  sidebar:
-    style: docked  # No need for quotes around "docked"
-    search: true
-    contents:  # Added "contents" to define the list properly
+  title: "My Quarto Website"  
+  navbar:
+    left:  
       - text: "Home"
         href: index.qmd 
       - text: "General Analysis"
         href: data_analysis.qmd
-      - text: "Career Plan"
-        href: career_plan.qmd
       - text: "References"
         href: references.bib
 

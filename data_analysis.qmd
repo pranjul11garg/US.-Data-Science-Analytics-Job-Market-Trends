@@ -115,4 +115,4 @@ df = df.drop_duplicates(subset=["TITLE", "COMPANY", "LOCATION", "POSTED"])
 print("Duplicates removed.")
 ```
 
-## Resarch
+## Research
