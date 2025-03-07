@@ -48,7 +48,7 @@ zip_file = "lightcast_job_postings.zip"  # Name of the downloaded ZIP file
 csv_file = "./data/lightcast_job_postings.csv"  # Path to the CSV file
 
 # Step 1: Download the Dataset
-print("Downloading the dataset...")
+
 gdown.download(f"https://drive.google.com/uc?id={file_id}", zip_file, quiet=False)
 
 # Step 2: Unzip the File
@@ -56,8 +56,6 @@ print("Extracting files...")
 with zipfile.ZipFile(zip_file, "r") as zip_ref:
     zip_ref.extractall("./data")  # Extracts to 'data' directory
 
-# Step 3: Read the CSV File
-print("Reading the CSV file...")
 df = pd.read_csv(csv_file)
 
 # Display dataset info
@@ -85,7 +83,6 @@ import matplotlib.pyplot as plt
 
 # Check column names
 df.columns = df.columns.str.upper().str.strip()  # Normalize column names
-print(df.columns)  # Debugging step
 
 # Visualize missing data
 msno.heatmap(df)
