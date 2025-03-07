@@ -62,9 +62,7 @@ df = pd.read_csv(csv_file)
 
 # Display dataset info
 print("Dataset Loaded Successfully!")
-print(df.info())
 
-print("Available columns in dataset:", df.columns.tolist())
 ```
 
 # Dropping the Missing Value Columns
@@ -77,11 +75,7 @@ columns_to_drop = [
 
 df.drop(columns=columns_to_drop, inplace=True)
 print("Dropped unnecessary columns.")
-print(df.columns)
 
-# handle missing value
-print("Missing values before cleaning:")
-print(df.isnull().sum())
 ```
 
 
@@ -101,17 +95,6 @@ plt.show()
 # Drop columns with >50% missing values
 df.dropna(thresh=len(df) * 0.5, axis=1, inplace=True)
 
-# Check if "SALARY" exists before filling missing values
-if "SALARY" in df.columns:
-    df["SALARY"].fillna(df["SALARY"].median(), inplace=True)
-else:
-    print("⚠️ Warning: 'SALARY' column not found in dataframe!")
-
-# Check if "INDUSTRY" exists before filling missing values
-if "INDUSTRY" in df.columns:
-    df["INDUSTRY"].fillna("Unknown", inplace=True)
-else:
-    print("⚠️ Warning: 'INDUSTRY' column not found in dataframe!")
 
 print("✅ Missing value handling complete.")
 ```
