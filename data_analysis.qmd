@@ -63,6 +63,7 @@ print(df.info())
 print("Available columns in dataset:", df.columns.tolist())
 ```
 
+::: {.callout-note collapse="true"}
 ```{python}
 columns_to_drop = [
     "ID", "URL", "ACTIVE_URLS", "DUPLICATES", "LAST_UPDATED_TIMESTAMP",
@@ -79,6 +80,7 @@ print("Missing values before cleaning:")
 print(df.isnull().sum())
 ```
 
+:::
 ```{python}
 import missingno as msno
 import matplotlib.pyplot as plt
@@ -109,7 +111,7 @@ else:
 
 print("✅ Missing value handling complete.")
 ```
-
+::: 
 ```{pythonb}
 # delete duplicates
 df = df.drop_duplicates(subset=["TITLE", "COMPANY", "LOCATION", "POSTED"])
