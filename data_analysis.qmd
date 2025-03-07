@@ -25,6 +25,7 @@ This document outlines the data cleaning process, including:
 - Dropping unnecessary columns
 - Deduplicating records
 
+## Extracting the Dataset
 ```{python}
 # columns drop
 import pandas as pd
@@ -60,7 +61,7 @@ print(df.info())
 print("Available columns in dataset:", df.columns.tolist())
 ```
 
-
+# Dropping the Missing Value Columns
 ```{python}
 columns_to_drop = [
     "ID", "URL", "ACTIVE_URLS", "DUPLICATES", "LAST_UPDATED_TIMESTAMP",

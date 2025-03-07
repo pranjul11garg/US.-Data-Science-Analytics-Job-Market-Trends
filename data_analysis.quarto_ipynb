@@ -26,20 +26,13 @@
         "\n",
         "\n",
         "\n",
-        "\n",
-        "\n",
-        "\n",
         "# Introduction\n",
         "This document outlines the data cleaning process, including:\n",
         "- Handling missing values\n",
         "- Dropping unnecessary columns\n",
-        "- Deduplicating records\n",
-        "\n",
-        "\n",
-        "::: {.callout-note collapse=\"true\"}\n",
-        "#### **Code:Extracting the Dataset**\n"
+        "- Deduplicating records\n"
       ],
-      "id": "0e0a135f"
+      "id": "a88ebbbb"
     },
     {
       "cell_type": "code",
@@ -78,9 +71,17 @@
         "\n",
         "print(\"Available columns in dataset:\", df.columns.tolist())"
       ],
-      "id": "7fc9a480",
+      "id": "e8f8a7eb",
       "execution_count": null,
       "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Dropping the Missing Value Columns"
+      ],
+      "id": "e0dbee56"
     },
     {
       "cell_type": "code",
@@ -100,7 +101,7 @@
         "print(\"Missing values before cleaning:\")\n",
         "print(df.isnull().sum())"
       ],
-      "id": "5ecaddc9",
+      "id": "525bf7da",
       "execution_count": null,
       "outputs": []
     },
@@ -137,7 +138,7 @@
         "\n",
         "print(\"✅ Missing value handling complete.\")"
       ],
-      "id": "bd792f71",
+      "id": "1104fc1d",
       "execution_count": null,
       "outputs": []
     },
@@ -153,11 +154,9 @@
         "\n",
         "\n",
         "\n",
-        "\n",
-        "\n",
         "## Research"
       ],
-      "id": "6f1e88dd"
+      "id": "aba92809"
     }
   ],
   "metadata": {
