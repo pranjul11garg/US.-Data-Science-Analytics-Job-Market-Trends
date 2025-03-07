@@ -141,11 +141,8 @@ fig.update_layout(
     )
 )
 ```
-<iframe src="figures/plot1_jobtrends.html" width="100%" height="600px" style="border:none; display:block; margin:auto;"></iframe>
-```{python, echo=false}
-# No output to avoid blank spaces
-```
-
+## Data Analytics & Business Analytics Job Trends
+<iframe src="figures/plot1_jobtrends.html" width="100%" height="600px" style="border:none; display:block; margin:auto; min-height: 600px;"></iframe>
 
 ### Top 10 Industries Hiring the Data Analysts
 
@@ -168,7 +165,7 @@ fig = px.bar(df_top_industries,
              barmode='group')
 ```
 ## Data Analytics & Business Analytics Job Trends
-<iframe src="figures/plot2industies.html" width="100%" height="600px" style="border:none; display:block; margin:auto;"></iframe>
+<iframe src="figures/plot2industries.html" width="100%" height="600px" style="border:none; display:block; margin:auto;"></iframe>
 
 ```{python, echo=false}
 # No output to avoid blank spaces
