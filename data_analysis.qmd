@@ -108,7 +108,7 @@ df['DATA_ANALYST_JOB'].value_counts()
 ```
 
 
-```{python}
+```{python, echo=FALSE, results='hide'}
 
 import plotly.express as px
 
