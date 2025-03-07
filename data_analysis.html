@@ -210,7 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This document outlines the data cleaning process, including: - Handling missing values - Dropping unnecessary columns - Deduplicating records</p>
 <section id="extracting-the-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="extracting-the-dataset">Extracting the Dataset</h2>
-<div id="c6ddc757" class="cell" data-execution_count="1">
+<div id="359e693d" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># columns drop</span></span>
@@ -241,10 +241,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(csv_file)</span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Display dataset info</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Dataset Loaded Successfully!"</span>)</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.info())</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Available columns in dataset:"</span>, df.columns.tolist())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Dataset Loaded Successfully!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Downloading the dataset...</code></pre>
@@ -252,28 +249,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stderr">
 <pre><code>Downloading...
 From (original): https://drive.google.com/uc?id=1VNBTxArDMN2o9fJBDImaON6YUAyJGOU6
-From (redirected): https://drive.google.com/uc?id=1VNBTxArDMN2o9fJBDImaON6YUAyJGOU6&amp;confirm=t&amp;uuid=ea751cae-9d80-4bfc-bf55-a3618a34fd40
+From (redirected): https://drive.google.com/uc?id=1VNBTxArDMN2o9fJBDImaON6YUAyJGOU6&amp;confirm=t&amp;uuid=6cdd60d3-92c2-416d-a08b-3a451401f5ce
 To: /home/runner/work/ad688-employability-sp25A1-group11/ad688-employability-sp25A1-group11/lightcast_job_postings.zip
-  0%|          | 0.00/190M [00:00&lt;?, ?B/s]  4%|▎         | 6.82M/190M [00:00&lt;00:02, 66.5MB/s]  8%|▊         | 15.2M/190M [00:00&lt;00:03, 45.7MB/s] 11%|█         | 20.4M/190M [00:00&lt;00:05, 32.4MB/s] 15%|█▍        | 27.8M/190M [00:00&lt;00:06, 25.0MB/s] 18%|█▊        | 34.6M/190M [00:01&lt;00:04, 32.3MB/s] 21%|██        | 39.3M/190M [00:01&lt;00:05, 29.6MB/s] 25%|██▍       | 46.7M/190M [00:01&lt;00:03, 36.4MB/s] 27%|██▋       | 51.4M/190M [00:01&lt;00:04, 30.8MB/s] 29%|██▉       | 55.6M/190M [00:01&lt;00:04, 32.4MB/s] 32%|███▏      | 61.3M/190M [00:01&lt;00:04, 31.8MB/s] 34%|███▍      | 65.5M/190M [00:02&lt;00:04, 30.7MB/s] 39%|███▉      | 73.9M/190M [00:02&lt;00:03, 33.9MB/s] 41%|████      | 78.1M/190M [00:02&lt;00:03, 34.1MB/s] 47%|████▋     | 88.6M/190M [00:02&lt;00:02, 41.7MB/s] 49%|████▉     | 92.8M/190M [00:02&lt;00:02, 37.9MB/s] 52%|█████▏    | 99.1M/190M [00:02&lt;00:02, 36.6MB/s] 56%|█████▌    | 106M/190M [00:02&lt;00:01, 42.2MB/s]  60%|█████▉    | 114M/190M [00:03&lt;00:02, 29.7MB/s] 69%|██████▊   | 131M/190M [00:04&lt;00:02, 28.6MB/s] 77%|███████▋  | 147M/190M [00:04&lt;00:01, 35.0MB/s] 81%|████████  | 154M/190M [00:04&lt;00:00, 37.7MB/s] 86%|████████▌ | 164M/190M [00:04&lt;00:00, 38.8MB/s] 90%|█████████ | 172M/190M [00:04&lt;00:00, 38.3MB/s] 95%|█████████▍| 180M/190M [00:05&lt;00:00, 41.0MB/s]100%|██████████| 190M/190M [00:05&lt;00:00, 36.9MB/s]</code></pre>
+  0%|          | 0.00/190M [00:00&lt;?, ?B/s]  2%|▏         | 4.72M/190M [00:00&lt;00:10, 17.4MB/s]  7%|▋         | 13.1M/190M [00:00&lt;00:05, 31.6MB/s] 14%|█▎        | 25.7M/190M [00:00&lt;00:03, 52.8MB/s] 18%|█▊        | 34.1M/190M [00:00&lt;00:02, 52.7MB/s] 27%|██▋       | 50.9M/190M [00:00&lt;00:01, 78.1MB/s] 32%|███▏      | 60.3M/190M [00:01&lt;00:01, 66.8MB/s] 39%|███▉      | 73.9M/190M [00:01&lt;00:01, 82.2MB/s] 44%|████▍     | 83.9M/190M [00:01&lt;00:01, 71.3MB/s] 51%|█████     | 97.0M/190M [00:01&lt;00:01, 82.6MB/s] 56%|█████▌    | 106M/190M [00:01&lt;00:01, 77.3MB/s]  61%|██████    | 115M/190M [00:01&lt;00:00, 79.1MB/s] 66%|██████▋   | 126M/190M [00:01&lt;00:00, 82.6MB/s] 71%|███████   | 135M/190M [00:01&lt;00:00, 74.9MB/s] 79%|███████▊  | 149M/190M [00:02&lt;00:00, 87.9MB/s] 84%|████████▎ | 159M/190M [00:02&lt;00:00, 75.5MB/s] 92%|█████████▏| 174M/190M [00:02&lt;00:00, 89.0MB/s] 97%|█████████▋| 184M/190M [00:02&lt;00:00, 76.7MB/s]100%|██████████| 190M/190M [00:02&lt;00:00, 73.4MB/s]</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Extracting files...
 Reading the CSV file...
-Dataset Loaded Successfully!
-&lt;class 'pandas.core.frame.DataFrame'&gt;
-RangeIndex: 72476 entries, 0 to 72475
-Columns: 131 entries, ID to NAICS_2022_6_NAME
-dtypes: bool(2), float64(11), int64(27), object(91)
-memory usage: 71.5+ MB
-None
-Available columns in dataset: ['ID', 'LAST_UPDATED_DATE', 'LAST_UPDATED_TIMESTAMP', 'DUPLICATES', 'POSTED', 'EXPIRED', 'DURATION', 'SOURCE_TYPES', 'SOURCES', 'URL', 'ACTIVE_URLS', 'ACTIVE_SOURCES_INFO', 'TITLE_RAW', 'BODY', 'MODELED_EXPIRED', 'MODELED_DURATION', 'COMPANY', 'COMPANY_NAME', 'COMPANY_RAW', 'COMPANY_IS_STAFFING', 'EDUCATION_LEVELS', 'EDUCATION_LEVELS_NAME', 'MIN_EDULEVELS', 'MIN_EDULEVELS_NAME', 'MAX_EDULEVELS', 'MAX_EDULEVELS_NAME', 'EMPLOYMENT_TYPE', 'EMPLOYMENT_TYPE_NAME', 'MIN_YEARS_EXPERIENCE', 'MAX_YEARS_EXPERIENCE', 'IS_INTERNSHIP', 'SALARY', 'REMOTE_TYPE', 'REMOTE_TYPE_NAME', 'ORIGINAL_PAY_PERIOD', 'SALARY_TO', 'SALARY_FROM', 'LOCATION', 'CITY', 'CITY_NAME', 'COUNTY', 'COUNTY_NAME', 'MSA', 'MSA_NAME', 'STATE', 'STATE_NAME', 'COUNTY_OUTGOING', 'COUNTY_NAME_OUTGOING', 'COUNTY_INCOMING', 'COUNTY_NAME_INCOMING', 'MSA_OUTGOING', 'MSA_NAME_OUTGOING', 'MSA_INCOMING', 'MSA_NAME_INCOMING', 'NAICS2', 'NAICS2_NAME', 'NAICS3', 'NAICS3_NAME', 'NAICS4', 'NAICS4_NAME', 'NAICS5', 'NAICS5_NAME', 'NAICS6', 'NAICS6_NAME', 'TITLE', 'TITLE_NAME', 'TITLE_CLEAN', 'SKILLS', 'SKILLS_NAME', 'SPECIALIZED_SKILLS', 'SPECIALIZED_SKILLS_NAME', 'CERTIFICATIONS', 'CERTIFICATIONS_NAME', 'COMMON_SKILLS', 'COMMON_SKILLS_NAME', 'SOFTWARE_SKILLS', 'SOFTWARE_SKILLS_NAME', 'ONET', 'ONET_NAME', 'ONET_2019', 'ONET_2019_NAME', 'CIP6', 'CIP6_NAME', 'CIP4', 'CIP4_NAME', 'CIP2', 'CIP2_NAME', 'SOC_2021_2', 'SOC_2021_2_NAME', 'SOC_2021_3', 'SOC_2021_3_NAME', 'SOC_2021_4', 'SOC_2021_4_NAME', 'SOC_2021_5', 'SOC_2021_5_NAME', 'LOT_CAREER_AREA', 'LOT_CAREER_AREA_NAME', 'LOT_OCCUPATION', 'LOT_OCCUPATION_NAME', 'LOT_SPECIALIZED_OCCUPATION', 'LOT_SPECIALIZED_OCCUPATION_NAME', 'LOT_OCCUPATION_GROUP', 'LOT_OCCUPATION_GROUP_NAME', 'LOT_V6_SPECIALIZED_OCCUPATION', 'LOT_V6_SPECIALIZED_OCCUPATION_NAME', 'LOT_V6_OCCUPATION', 'LOT_V6_OCCUPATION_NAME', 'LOT_V6_OCCUPATION_GROUP', 'LOT_V6_OCCUPATION_GROUP_NAME', 'LOT_V6_CAREER_AREA', 'LOT_V6_CAREER_AREA_NAME', 'SOC_2', 'SOC_2_NAME', 'SOC_3', 'SOC_3_NAME', 'SOC_4', 'SOC_4_NAME', 'SOC_5', 'SOC_5_NAME', 'LIGHTCAST_SECTORS', 'LIGHTCAST_SECTORS_NAME', 'NAICS_2022_2', 'NAICS_2022_2_NAME', 'NAICS_2022_3', 'NAICS_2022_3_NAME', 'NAICS_2022_4', 'NAICS_2022_4_NAME', 'NAICS_2022_5', 'NAICS_2022_5_NAME', 'NAICS_2022_6', 'NAICS_2022_6_NAME']</code></pre>
+Dataset Loaded Successfully!</code></pre>
 </div>
 </div>
 </section>
 </section>
 <section id="dropping-the-missing-value-columns" class="level1">
 <h1>Dropping the Missing Value Columns</h1>
-<div id="7523c821" class="cell" data-execution_count="2">
+<div id="aa154afc" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>columns_to_drop <span class="op">=</span> [</span>
@@ -283,40 +273,13 @@ Available columns in dataset: ['ID', 'LAST_UPDATED_DATE', 'LAST_UPDATED_TIMESTAM
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>]</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>df.drop(columns<span class="op">=</span>columns_to_drop, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Dropped unnecessary columns."</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.columns)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># handle missing value</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Missing values before cleaning:"</span>)</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.isnull().<span class="bu">sum</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Dropped unnecessary columns."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Dropped unnecessary columns.
-Index(['LAST_UPDATED_DATE', 'POSTED', 'EXPIRED', 'DURATION', 'SOURCE_TYPES',
-       'SOURCES', 'ACTIVE_SOURCES_INFO', 'TITLE_RAW', 'BODY',
-       'MODELED_EXPIRED',
-       ...
-       'NAICS_2022_2', 'NAICS_2022_2_NAME', 'NAICS_2022_3',
-       'NAICS_2022_3_NAME', 'NAICS_2022_4', 'NAICS_2022_4_NAME',
-       'NAICS_2022_5', 'NAICS_2022_5_NAME', 'NAICS_2022_6',
-       'NAICS_2022_6_NAME'],
-      dtype='object', length=118)
-Missing values before cleaning:
-LAST_UPDATED_DATE        0
-POSTED                   0
-EXPIRED               7822
-DURATION             27294
-SOURCE_TYPES             0
-                     ...  
-NAICS_2022_4_NAME        0
-NAICS_2022_5             0
-NAICS_2022_5_NAME        0
-NAICS_2022_6             0
-NAICS_2022_6_NAME        0
-Length: 118, dtype: int64</code></pre>
+<pre><code>Dropped unnecessary columns.</code></pre>
 </div>
 </div>
-<div id="dab98eea" class="cell" data-execution_count="3">
+<div id="198a0544" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> missingno <span class="im">as</span> msno</span>
@@ -334,19 +297,8 @@ Length: 118, dtype: int64</code></pre>
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop columns with &gt;50% missing values</span></span>
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>df.dropna(thresh<span class="op">=</span><span class="bu">len</span>(df) <span class="op">*</span> <span class="fl">0.5</span>, axis<span class="op">=</span><span class="dv">1</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if "SALARY" exists before filling missing values</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">"SALARY"</span> <span class="kw">in</span> df.columns:</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">"SALARY"</span>].fillna(df[<span class="st">"SALARY"</span>].median(), inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"⚠️ Warning: 'SALARY' column not found in dataframe!"</span>)</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if "INDUSTRY" exists before filling missing values</span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">"INDUSTRY"</span> <span class="kw">in</span> df.columns:</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">"INDUSTRY"</span>].fillna(<span class="st">"Unknown"</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"⚠️ Warning: 'INDUSTRY' column not found in dataframe!"</span>)</span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"✅ Missing value handling complete."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"✅ Missing value handling complete."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Index(['LAST_UPDATED_DATE', 'POSTED', 'EXPIRED', 'DURATION', 'SOURCE_TYPES',
@@ -367,9 +319,7 @@ Length: 118, dtype: int64</code></pre>
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>⚠️ Warning: 'SALARY' column not found in dataframe!
-⚠️ Warning: 'INDUSTRY' column not found in dataframe!
-✅ Missing value handling complete.</code></pre>
+<pre><code>✅ Missing value handling complete.</code></pre>
 </div>
 </div>
 <pre class="{pythonb}"><code># delete duplicates
