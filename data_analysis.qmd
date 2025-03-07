@@ -7,15 +7,21 @@ author:
       - name: Boston University
         city: Boston
         state: MA
-  
-bibliography: references.bib
-csl: csl/econometrica.csl
-format:
+        
+date: today 
+format: 
   html:
+    bibliography: references.bib
+    csl: csl/econometrica.csl
     toc: true
-    number-sections: true
-    df-print: paged
+    css: styles.css
+    html-math-method: katex
+    embed-resources: false
+    code-fold: true
 jupyter: python3
+execute:
+   eval: true
+
 ---
 
 
