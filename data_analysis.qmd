@@ -140,6 +140,7 @@ fig.update_layout(
         tickangle=-45  # Rotate x-axis labels for better readability
     )
 )
+fig.write_html("figures/plot1_jobtrends.html")
 ```
 ## Data Analytics & Business Analytics Job Trends
 <iframe src="figures/plot1_jobtrends.html" width="100%" height="600px" style="border:none; display:block; margin:auto; min-height: 600px;"></iframe>
