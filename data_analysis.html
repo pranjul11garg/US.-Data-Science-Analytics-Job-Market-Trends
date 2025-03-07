@@ -210,7 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This document outlines the data cleaning process, including: - Handling missing values - Dropping unnecessary columns - Deduplicating records</p>
 <section id="extracting-the-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="extracting-the-dataset">Extracting the Dataset</h2>
-<div id="969a7588" class="cell" data-execution_count="1">
+<div id="c6ddc757" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># columns drop</span></span>
@@ -252,9 +252,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stderr">
 <pre><code>Downloading...
 From (original): https://drive.google.com/uc?id=1VNBTxArDMN2o9fJBDImaON6YUAyJGOU6
-From (redirected): https://drive.google.com/uc?id=1VNBTxArDMN2o9fJBDImaON6YUAyJGOU6&amp;confirm=t&amp;uuid=1bc2e897-134d-498e-a265-ea9381b49125
+From (redirected): https://drive.google.com/uc?id=1VNBTxArDMN2o9fJBDImaON6YUAyJGOU6&amp;confirm=t&amp;uuid=ea751cae-9d80-4bfc-bf55-a3618a34fd40
 To: /home/runner/work/ad688-employability-sp25A1-group11/ad688-employability-sp25A1-group11/lightcast_job_postings.zip
-  0%|          | 0.00/190M [00:00&lt;?, ?B/s]  2%|▏         | 4.72M/190M [00:00&lt;00:06, 29.6MB/s]  5%|▍         | 8.91M/190M [00:00&lt;00:06, 28.4MB/s]  6%|▋         | 12.1M/190M [00:00&lt;00:09, 18.7MB/s]  7%|▋         | 14.2M/190M [00:00&lt;00:11, 15.2MB/s] 10%|█         | 19.4M/190M [00:01&lt;00:14, 11.6MB/s] 14%|█▎        | 25.7M/190M [00:01&lt;00:10, 15.1MB/s] 15%|█▍        | 27.8M/190M [00:01&lt;00:11, 14.7MB/s] 17%|█▋        | 32.0M/190M [00:01&lt;00:09, 17.3MB/s] 19%|█▉        | 36.2M/190M [00:02&lt;00:10, 15.3MB/s] 23%|██▎       | 44.6M/190M [00:02&lt;00:06, 21.8MB/s] 25%|██▍       | 47.2M/190M [00:02&lt;00:07, 18.9MB/s] 28%|██▊       | 53.0M/190M [00:03&lt;00:08, 16.6MB/s] 32%|███▏      | 61.3M/190M [00:03&lt;00:06, 20.8MB/s] 37%|███▋      | 69.7M/190M [00:03&lt;00:04, 25.3MB/s] 39%|███▉      | 73.9M/190M [00:03&lt;00:04, 24.4MB/s] 42%|████▏     | 80.2M/190M [00:03&lt;00:03, 29.5MB/s] 44%|████▍     | 84.4M/190M [00:04&lt;00:03, 29.5MB/s] 46%|████▋     | 88.1M/190M [00:04&lt;00:03, 26.9MB/s] 50%|█████     | 95.4M/190M [00:04&lt;00:02, 35.6MB/s] 53%|█████▎    | 100M/190M [00:04&lt;00:03, 27.7MB/s]  55%|█████▍    | 104M/190M [00:05&lt;00:04, 18.5MB/s] 59%|█████▊    | 112M/190M [00:05&lt;00:03, 23.8MB/s] 60%|██████    | 115M/190M [00:05&lt;00:03, 23.7MB/s] 62%|██████▏   | 118M/190M [00:05&lt;00:02, 25.8MB/s] 64%|██████▍   | 122M/190M [00:05&lt;00:02, 23.3MB/s] 69%|██████▊   | 131M/190M [00:05&lt;00:01, 30.3MB/s] 71%|███████   | 135M/190M [00:05&lt;00:01, 32.4MB/s] 74%|███████▍  | 142M/190M [00:06&lt;00:01, 39.9MB/s] 79%|███████▊  | 149M/190M [00:06&lt;00:01, 35.7MB/s] 82%|████████▏ | 156M/190M [00:06&lt;00:01, 20.2MB/s] 90%|█████████ | 172M/190M [00:07&lt;00:00, 31.0MB/s] 93%|█████████▎| 178M/190M [00:07&lt;00:00, 34.0MB/s] 98%|█████████▊| 186M/190M [00:07&lt;00:00, 41.2MB/s]100%|██████████| 190M/190M [00:07&lt;00:00, 25.2MB/s]</code></pre>
+  0%|          | 0.00/190M [00:00&lt;?, ?B/s]  4%|▎         | 6.82M/190M [00:00&lt;00:02, 66.5MB/s]  8%|▊         | 15.2M/190M [00:00&lt;00:03, 45.7MB/s] 11%|█         | 20.4M/190M [00:00&lt;00:05, 32.4MB/s] 15%|█▍        | 27.8M/190M [00:00&lt;00:06, 25.0MB/s] 18%|█▊        | 34.6M/190M [00:01&lt;00:04, 32.3MB/s] 21%|██        | 39.3M/190M [00:01&lt;00:05, 29.6MB/s] 25%|██▍       | 46.7M/190M [00:01&lt;00:03, 36.4MB/s] 27%|██▋       | 51.4M/190M [00:01&lt;00:04, 30.8MB/s] 29%|██▉       | 55.6M/190M [00:01&lt;00:04, 32.4MB/s] 32%|███▏      | 61.3M/190M [00:01&lt;00:04, 31.8MB/s] 34%|███▍      | 65.5M/190M [00:02&lt;00:04, 30.7MB/s] 39%|███▉      | 73.9M/190M [00:02&lt;00:03, 33.9MB/s] 41%|████      | 78.1M/190M [00:02&lt;00:03, 34.1MB/s] 47%|████▋     | 88.6M/190M [00:02&lt;00:02, 41.7MB/s] 49%|████▉     | 92.8M/190M [00:02&lt;00:02, 37.9MB/s] 52%|█████▏    | 99.1M/190M [00:02&lt;00:02, 36.6MB/s] 56%|█████▌    | 106M/190M [00:02&lt;00:01, 42.2MB/s]  60%|█████▉    | 114M/190M [00:03&lt;00:02, 29.7MB/s] 69%|██████▊   | 131M/190M [00:04&lt;00:02, 28.6MB/s] 77%|███████▋  | 147M/190M [00:04&lt;00:01, 35.0MB/s] 81%|████████  | 154M/190M [00:04&lt;00:00, 37.7MB/s] 86%|████████▌ | 164M/190M [00:04&lt;00:00, 38.8MB/s] 90%|█████████ | 172M/190M [00:04&lt;00:00, 38.3MB/s] 95%|█████████▍| 180M/190M [00:05&lt;00:00, 41.0MB/s]100%|██████████| 190M/190M [00:05&lt;00:00, 36.9MB/s]</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Extracting files...
@@ -273,7 +273,7 @@ Available columns in dataset: ['ID', 'LAST_UPDATED_DATE', 'LAST_UPDATED_TIMESTAM
 </section>
 <section id="dropping-the-missing-value-columns" class="level1">
 <h1>Dropping the Missing Value Columns</h1>
-<div id="80acb8b3" class="cell" data-execution_count="2">
+<div id="7523c821" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>columns_to_drop <span class="op">=</span> [</span>
@@ -316,7 +316,7 @@ NAICS_2022_6_NAME        0
 Length: 118, dtype: int64</code></pre>
 </div>
 </div>
-<div id="0b3a9a12" class="cell" data-execution_count="3">
+<div id="dab98eea" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> missingno <span class="im">as</span> msno</span>
