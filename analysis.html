@@ -4801,7 +4801,7 @@ color: white !important;
 
 
 
-<div id="cell-0" class="cell" data-execution_count="12">
+<div id="cell-0" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
@@ -4905,6 +4905,18 @@ Index([&#39;LAST_UPDATED_DATE&#39;, &#39;POSTED&#39;, &#39;EXPIRED&#39;, &#39;DU
 ✅ Missing value handling complete.
 Duplicates removed.</code></pre>
 </div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[1], line 55</span>
+<span class="ansi-green-fg ansi-bold">     53</span> df <span style="color:rgb(98,98,98)">=</span> df<span style="color:rgb(98,98,98)">.</span>drop_duplicates(subset<span style="color:rgb(98,98,98)">=</span>[<span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">TITLE</span><span style="color:rgb(175,0,0)">&quot;</span>, <span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">COMPANY</span><span style="color:rgb(175,0,0)">&quot;</span>, <span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">LOCATION</span><span style="color:rgb(175,0,0)">&quot;</span>, <span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">POSTED</span><span style="color:rgb(175,0,0)">&quot;</span>])
+<span class="ansi-green-fg ansi-bold">     54</span> <span style="color:rgb(0,135,0)">print</span>(<span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">Duplicates removed.</span><span style="color:rgb(175,0,0)">&quot;</span>)
+<span class="ansi-green-fg">---&gt; 55</span> <span class="ansi-yellow-bg">fig</span><span style="color:rgb(98,98,98)">.</span>write_html(<span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">ploto_heatmap.html</span><span style="color:rgb(175,0,0)">&quot;</span>)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;fig&#39; is not defined</pre>
+</div>
+</div>
 </div>
 <div id="cell-2" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;SALARY&quot;</span> <span class="kw">in</span> df.columns:</span>
@@ -4915,7 +4927,7 @@ Duplicates removed.</code></pre>
 <pre><code>⚠️ Warning: &#39;SALARY&#39; column not found in dataframe!</code></pre>
 </div>
 </div>
-<div id="cell-3" class="cell" data-execution_count="4">
+<div id="cell-3" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># identifying data analyst jobs by keyword searching</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>keywords <span class="op">=</span> [<span class="st">&#39;Data Analyst&#39;</span>, <span class="st">&#39;Business Analyst&#39;</span>, <span class="st">&#39;Data Engineering&#39;</span>, <span class="st">&#39;Deep Learning&#39;</span>,</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;Data Science&#39;</span>, <span class="st">&#39;Data Analysis&#39;</span>,<span class="st">&#39;Data Analytics&#39;</span>,  <span class="st">&#39;Market Research Analyst&#39;</span> </span>
@@ -4929,7 +4941,7 @@ Duplicates removed.</code></pre>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>             <span class="op">|</span> match(<span class="st">&#39;SPECIALIZED_SKILLS_NAME&#39;</span>) </span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;DATA_ANALYST_JOB&#39;</span>].value_counts()</span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>DATA_ANALYST_JOB
 False    37052
 True     32148
@@ -4953,40 +4965,54 @@ Name: count, dtype: int64</code></pre>
 Name: DATA_ANALYST_JOB, Length: 69200, dtype: bool</code></pre>
 </div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="6">
+<div id="cell-5" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>df_grouped <span class="op">=</span> df.groupby([<span class="st">&#39;DATA_ANALYST_JOB&#39;</span>, <span class="st">&#39;NAICS2_NAME&#39;</span>]).size().reset_index(name<span class="op">=</span><span class="st">&#39;Job_Count&#39;</span>)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define custom colors for &#39;True&#39; and &#39;False&#39; categories</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>color_map <span class="op">=</span> {</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">False</span>: <span class="st">&quot;#d62728&quot;</span> ,   <span class="co"># Red</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">True</span>: <span class="st">&quot;#3BB143 &quot;</span>   <span class="co"># Green</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.bar(df_grouped, </span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>             x<span class="op">=</span><span class="st">&#39;NAICS2_NAME&#39;</span>, </span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>             y<span class="op">=</span><span class="st">&#39;Job_Count&#39;</span>,</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>             color<span class="op">=</span><span class="st">&#39;DATA_ANALYST_JOB&#39;</span>,</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>             title<span class="op">=</span><span class="st">&quot;Data Analytics &amp; Business Analytics Job Trends&quot;</span>,</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>              labels<span class="op">=</span>{<span class="st">&#39;NAICS2_NAME&#39;</span>: <span class="st">&#39;Industry&#39;</span>, <span class="st">&#39;Job_Count&#39;</span>: <span class="st">&#39;Number of Jobs&#39;</span>},</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>             barmode<span class="op">=</span><span class="st">&#39;group&#39;</span>,</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>             color_discrete_map<span class="op">=</span>color_map  <span class="co"># Custom colors</span></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>            )</span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    yaxis<span class="op">=</span><span class="bu">dict</span>(</span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">&quot;Number of Jobs&quot;</span>, </span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>        <span class="bu">range</span><span class="op">=</span>[<span class="dv">0</span>, df_grouped[<span class="st">&#39;Job_Count&#39;</span>].<span class="bu">max</span>() <span class="op">*</span> <span class="fl">1.2</span>]  <span class="co"># Increase y-axis height</span></span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">700</span>,  <span class="co"># Make the figure taller</span></span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    xaxis<span class="op">=</span><span class="bu">dict</span>(</span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>        tickangle<span class="op">=-</span><span class="dv">45</span>  <span class="co"># Rotate x-axis labels for better readability</span></span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>fig.write_html(<span class="st">&quot;plot1_jobtrends.html&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Group data</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>df_grouped <span class="op">=</span> df.groupby([<span class="st">&#39;DATA_ANALYST_JOB&#39;</span>, <span class="st">&#39;NAICS2_NAME&#39;</span>]).size().reset_index(name<span class="op">=</span><span class="st">&#39;Job_Count&#39;</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Define custom colors for &#39;True&#39; and &#39;False&#39; categories</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>color_map <span class="op">=</span> {</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="va">False</span>: <span class="st">&quot;#d62728&quot;</span>,   <span class="co"># Red</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="va">True</span>: <span class="st">&quot;#3BB143&quot;</span>     <span class="co"># Green (Fixed extra space issue)</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the figure</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.bar(df_grouped, </span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>             x<span class="op">=</span><span class="st">&#39;NAICS2_NAME&#39;</span>, </span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>             y<span class="op">=</span><span class="st">&#39;Job_Count&#39;</span>,</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>             color<span class="op">=</span><span class="st">&#39;DATA_ANALYST_JOB&#39;</span>,</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>             title<span class="op">=</span><span class="st">&quot;Data Analytics &amp; Business Analytics Job Trends&quot;</span>,</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>             labels<span class="op">=</span>{<span class="st">&#39;NAICS2_NAME&#39;</span>: <span class="st">&#39;Industry&#39;</span>, <span class="st">&#39;Job_Count&#39;</span>: <span class="st">&#39;Number of Jobs&#39;</span>},</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>             barmode<span class="op">=</span><span class="st">&#39;group&#39;</span>,</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>             color_discrete_map<span class="op">=</span>color_map  <span class="co"># Custom colors</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="co"># **Fix sizing issues**</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    autosize<span class="op">=</span><span class="va">True</span>,  <span class="co"># Let it adapt dynamically</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">1200</span>,     <span class="co"># Set wider width</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">700</span>,     <span class="co"># Set taller height</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>    margin<span class="op">=</span><span class="bu">dict</span>(l<span class="op">=</span><span class="dv">60</span>, r<span class="op">=</span><span class="dv">60</span>, t<span class="op">=</span><span class="dv">50</span>, b<span class="op">=</span><span class="dv">100</span>),  <span class="co"># Avoid excessive padding</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>    font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">14</span>),  <span class="co"># Increase text size</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    xaxis<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>        tickangle<span class="op">=-</span><span class="dv">45</span>,  <span class="co"># Rotate x-axis labels</span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>        title_font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">16</span>),  <span class="co"># Bigger title</span></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>        tickfont<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">14</span>)  <span class="co"># Bigger tick labels</span></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>    yaxis<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">&quot;Number of Jobs&quot;</span>, </span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>        <span class="bu">range</span><span class="op">=</span>[<span class="dv">0</span>, df_grouped[<span class="st">&#39;Job_Count&#39;</span>].<span class="bu">max</span>() <span class="op">*</span> <span class="fl">1.2</span>],  <span class="co"># Extend Y-axis range</span></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>        title_font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">16</span>),  <span class="co"># Bigger title</span></span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>        tickfont<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">14</span>)  <span class="co"># Bigger tick labels</span></span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Save as an HTML file for Quarto embedding</span></span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>fig.write_html(<span class="st">&quot;figures/plot1_jobtrends.html&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
 </div>
