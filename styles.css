@@ -19,3 +19,10 @@ iframe {
     padding: 0;
     display: block;
 }
+
+img {
+    max-width: 100%;  /* Ensures the image fits within the page */
+    height: auto;  /* Maintains aspect ratio */
+    display: block;
+    margin: auto;
+}
