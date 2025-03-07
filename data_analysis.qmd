@@ -55,8 +55,8 @@ import gdown
 import zipfile
 import os
 
-# Define file details
-file_id = "1VNBTxArDMN2o9fJBDImaON6YUAyJGOU6"  # Your Google Drive File ID
+
+file_id = "1VNBTxArDMN2o9fJBDImaON6YUAyJGOU6" 
 zip_file = "lightcast_job_postings.zip"  # Name of the downloaded ZIP file
 csv_file = "./data/lightcast_job_postings.csv"  # Path to the CSV file
 
@@ -78,8 +78,9 @@ print("Dataset Loaded Successfully!")
 print(df.info())
 
 print("Available columns in dataset:", df.columns.tolist())
+```
 
-
+```{python}
 columns_to_drop = [
     "ID", "URL", "ACTIVE_URLS", "DUPLICATES", "LAST_UPDATED_TIMESTAMP",
     "NAICS2", "NAICS3", "NAICS4", "NAICS5", "NAICS6",
@@ -93,7 +94,9 @@ print(df.columns)
 # handle missing value
 print("Missing values before cleaning:")
 print(df.isnull().sum())
+```
 
+```{python}
 import missingno as msno
 import matplotlib.pyplot as plt
 
@@ -122,11 +125,11 @@ else:
     print("⚠️ Warning: 'INDUSTRY' column not found in dataframe!")
 
 print("✅ Missing value handling complete.")
+```
 
-
+```{pythonb}
 # delete duplicates
 df = df.drop_duplicates(subset=["TITLE", "COMPANY", "LOCATION", "POSTED"])
 print("Duplicates removed.")
-
 ```
 
