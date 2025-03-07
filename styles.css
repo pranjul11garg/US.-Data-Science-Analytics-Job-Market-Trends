@@ -1,15 +1,19 @@
 /* css styles */
+/* Custom Navbar Styling */
 .navbar {
-    background-color: #CC0000 !important;  /* Change to your desired color */
-    border-bottom: 3px solid white;  /* Optional: Adds a bottom border */
+    background-color: #CC0000 !important;  /* Red navbar */
+    border-bottom: 3px solid white !important;  /* White bottom border */
 }
 
-.navbar a {
-    color: white !important;  /* Ensures navbar links are white */
+.navbar a, .navbar-brand {
+    color: white !important;  /* Ensures navbar links and title are white */
 }
 
 .navbar a:hover {
-    color: white !important;  /* Changes link color on hover */
+    color: white !important;  /* Ensures hover effect stays white */
 }
 
-
+/* Ensure the navbar text stays white */
+.navbar-nav .nav-link {
+    color: white !important;
+}
