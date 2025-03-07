@@ -31,6 +31,7 @@ This document outlines the data cleaning process, including:
 - Deduplicating records
 
 ## Extracting the Dataset
+The Lightcast Dataset has been extracted from the google drive using the gdown.
 ```{python}
 import pandas as pd
 import gdown
@@ -50,12 +51,10 @@ gdown.download(f"https://drive.google.com/uc?id={file_id}", zip_file, quiet=True
 with zipfile.ZipFile(zip_file, "r") as zip_ref:
     zip_ref.extractall("./data") 
 df = pd.read_csv(csv_file)
-
-print("Dataset Loaded Successfully!")
-
 ```
 
 ## Dropping the Unnecessary columns Columns
+There are 102 columns in the dataset and there are various columns which are unnecessary, so we are dropping those to clean the data and do better analysis
 ```{python}
 columns_to_drop = [
     "ID", "URL", "ACTIVE_URLS", "DUPLICATES", "LAST_UPDATED_TIMESTAMP",
