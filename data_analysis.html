@@ -6,10 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Binderiya Dugersuren">
-<meta name="author" content="Pranjul Garg">
-<meta name="author" content="Pratham Kabra">
-<meta name="author" content="Panyang Xiang">
+<meta name="author" content="Group 11">
 
 <title>Data Analysis</title>
 <style>
@@ -151,7 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./career_plan.html" class="sidebar-item-text sidebar-link">
+  <a href="./career_plan.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Career Plan</span></a>
   </div>
 </li>
@@ -171,7 +168,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a>
+  <ul class="collapse">
+  <li><a href="#resarch" id="toc-resarch" class="nav-link" data-scroll-target="#resarch"><span class="header-section-number">1.1</span> Resarch</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -186,35 +186,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Authors</div>
+  <div class="quarto-title-meta-heading">Author</div>
   <div class="quarto-title-meta-heading">Affiliation</div>
   
     <div class="quarto-title-meta-contents">
-    <p class="author">Binderiya Dugersuren </p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            Boston University
-          </p>
-      </div>
-    <div class="quarto-title-meta-contents">
-    <p class="author">Pranjul Garg </p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            Boston University
-          </p>
-      </div>
-    <div class="quarto-title-meta-contents">
-    <p class="author">Pratham Kabra </p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            Boston University
-          </p>
-      </div>
-    <div class="quarto-title-meta-contents">
-    <p class="author">Panyang Xiang </p>
+    <p class="author">Group 11 </p>
   </div>
   <div class="quarto-title-meta-contents">
         <p class="affiliation">
@@ -238,7 +214,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="introduction" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
 <p>This document outlines the data cleaning process, including: - Handling missing values - Dropping unnecessary columns - Deduplicating records</p>
-<div id="4696a188" class="cell" data-execution_count="1">
+<div id="1e0cbaa7" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># columns drop</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gdown</span>
@@ -277,9 +253,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stderr">
 <pre><code>Downloading...
 From (original): https://drive.google.com/uc?id=1VNBTxArDMN2o9fJBDImaON6YUAyJGOU6
-From (redirected): https://drive.google.com/uc?id=1VNBTxArDMN2o9fJBDImaON6YUAyJGOU6&amp;confirm=t&amp;uuid=3e2e4028-c6df-4baa-be9e-b307d148e6fe
+From (redirected): https://drive.google.com/uc?id=1VNBTxArDMN2o9fJBDImaON6YUAyJGOU6&amp;confirm=t&amp;uuid=4fbd8771-87e7-4848-863c-ba2767ca747e
 To: /home/runner/work/ad688-employability-sp25A1-group11/ad688-employability-sp25A1-group11/lightcast_job_postings.zip
-  0%|          | 0.00/190M [00:00&lt;?, ?B/s]  1%|          | 1.05M/190M [00:00&lt;00:20, 9.34MB/s]  4%|▍         | 7.34M/190M [00:00&lt;00:04, 39.0MB/s]  6%|▌         | 11.5M/190M [00:00&lt;00:05, 31.7MB/s]  9%|▉         | 17.3M/190M [00:00&lt;00:06, 28.5MB/s] 12%|█▏        | 23.6M/190M [00:00&lt;00:05, 32.2MB/s] 17%|█▋        | 32.0M/190M [00:00&lt;00:04, 34.6MB/s] 20%|██        | 38.3M/190M [00:01&lt;00:03, 39.4MB/s] 22%|██▏       | 42.5M/190M [00:01&lt;00:03, 38.3MB/s] 26%|██▌       | 48.8M/190M [00:01&lt;00:03, 40.0MB/s] 30%|███       | 57.1M/190M [00:01&lt;00:02, 44.6MB/s] 33%|███▎      | 61.9M/190M [00:01&lt;00:02, 44.5MB/s] 37%|███▋      | 69.7M/190M [00:01&lt;00:02, 47.1MB/s] 41%|████      | 78.1M/190M [00:01&lt;00:02, 50.8MB/s] 45%|████▍     | 84.9M/190M [00:02&lt;00:01, 54.8MB/s] 49%|████▉     | 92.8M/190M [00:02&lt;00:01, 55.5MB/s] 54%|█████▍    | 103M/190M [00:02&lt;00:01, 61.2MB/s]  58%|█████▊    | 110M/190M [00:02&lt;00:01, 60.1MB/s] 61%|██████    | 116M/190M [00:02&lt;00:01, 60.4MB/s] 65%|██████▌   | 124M/190M [00:02&lt;00:01, 63.1MB/s] 69%|██████▉   | 131M/190M [00:02&lt;00:00, 61.0MB/s] 72%|███████▏  | 137M/190M [00:02&lt;00:00, 60.6MB/s] 77%|███████▋  | 147M/190M [00:02&lt;00:00, 68.0MB/s] 83%|████████▎ | 157M/190M [00:03&lt;00:00, 68.5MB/s] 87%|████████▋ | 166M/190M [00:03&lt;00:00, 73.2MB/s] 92%|█████████▏| 174M/190M [00:03&lt;00:00, 72.8MB/s] 96%|█████████▌| 182M/190M [00:03&lt;00:00, 74.3MB/s]100%|██████████| 190M/190M [00:03&lt;00:00, 54.5MB/s]</code></pre>
+  0%|          | 0.00/190M [00:00&lt;?, ?B/s]  4%|▎         | 6.82M/190M [00:00&lt;00:03, 58.1MB/s] 12%|█▏        | 23.6M/190M [00:00&lt;00:01, 109MB/s]  20%|██        | 38.3M/190M [00:00&lt;00:01, 116MB/s] 28%|██▊       | 53.0M/190M [00:00&lt;00:01, 126MB/s] 36%|███▌      | 68.2M/190M [00:00&lt;00:00, 133MB/s] 44%|████▍     | 83.9M/190M [00:00&lt;00:00, 136MB/s] 53%|█████▎    | 101M/190M [00:00&lt;00:00, 144MB/s]  62%|██████▏   | 117M/190M [00:00&lt;00:00, 150MB/s] 71%|███████   | 135M/190M [00:00&lt;00:00, 156MB/s] 79%|███████▉  | 150M/190M [00:01&lt;00:00, 149MB/s] 87%|████████▋ | 166M/190M [00:01&lt;00:00, 139MB/s] 95%|█████████▌| 181M/190M [00:01&lt;00:00, 142MB/s]100%|██████████| 190M/190M [00:01&lt;00:00, 138MB/s]</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Extracting files...
@@ -294,7 +270,7 @@ None
 Available columns in dataset: ['ID', 'LAST_UPDATED_DATE', 'LAST_UPDATED_TIMESTAMP', 'DUPLICATES', 'POSTED', 'EXPIRED', 'DURATION', 'SOURCE_TYPES', 'SOURCES', 'URL', 'ACTIVE_URLS', 'ACTIVE_SOURCES_INFO', 'TITLE_RAW', 'BODY', 'MODELED_EXPIRED', 'MODELED_DURATION', 'COMPANY', 'COMPANY_NAME', 'COMPANY_RAW', 'COMPANY_IS_STAFFING', 'EDUCATION_LEVELS', 'EDUCATION_LEVELS_NAME', 'MIN_EDULEVELS', 'MIN_EDULEVELS_NAME', 'MAX_EDULEVELS', 'MAX_EDULEVELS_NAME', 'EMPLOYMENT_TYPE', 'EMPLOYMENT_TYPE_NAME', 'MIN_YEARS_EXPERIENCE', 'MAX_YEARS_EXPERIENCE', 'IS_INTERNSHIP', 'SALARY', 'REMOTE_TYPE', 'REMOTE_TYPE_NAME', 'ORIGINAL_PAY_PERIOD', 'SALARY_TO', 'SALARY_FROM', 'LOCATION', 'CITY', 'CITY_NAME', 'COUNTY', 'COUNTY_NAME', 'MSA', 'MSA_NAME', 'STATE', 'STATE_NAME', 'COUNTY_OUTGOING', 'COUNTY_NAME_OUTGOING', 'COUNTY_INCOMING', 'COUNTY_NAME_INCOMING', 'MSA_OUTGOING', 'MSA_NAME_OUTGOING', 'MSA_INCOMING', 'MSA_NAME_INCOMING', 'NAICS2', 'NAICS2_NAME', 'NAICS3', 'NAICS3_NAME', 'NAICS4', 'NAICS4_NAME', 'NAICS5', 'NAICS5_NAME', 'NAICS6', 'NAICS6_NAME', 'TITLE', 'TITLE_NAME', 'TITLE_CLEAN', 'SKILLS', 'SKILLS_NAME', 'SPECIALIZED_SKILLS', 'SPECIALIZED_SKILLS_NAME', 'CERTIFICATIONS', 'CERTIFICATIONS_NAME', 'COMMON_SKILLS', 'COMMON_SKILLS_NAME', 'SOFTWARE_SKILLS', 'SOFTWARE_SKILLS_NAME', 'ONET', 'ONET_NAME', 'ONET_2019', 'ONET_2019_NAME', 'CIP6', 'CIP6_NAME', 'CIP4', 'CIP4_NAME', 'CIP2', 'CIP2_NAME', 'SOC_2021_2', 'SOC_2021_2_NAME', 'SOC_2021_3', 'SOC_2021_3_NAME', 'SOC_2021_4', 'SOC_2021_4_NAME', 'SOC_2021_5', 'SOC_2021_5_NAME', 'LOT_CAREER_AREA', 'LOT_CAREER_AREA_NAME', 'LOT_OCCUPATION', 'LOT_OCCUPATION_NAME', 'LOT_SPECIALIZED_OCCUPATION', 'LOT_SPECIALIZED_OCCUPATION_NAME', 'LOT_OCCUPATION_GROUP', 'LOT_OCCUPATION_GROUP_NAME', 'LOT_V6_SPECIALIZED_OCCUPATION', 'LOT_V6_SPECIALIZED_OCCUPATION_NAME', 'LOT_V6_OCCUPATION', 'LOT_V6_OCCUPATION_NAME', 'LOT_V6_OCCUPATION_GROUP', 'LOT_V6_OCCUPATION_GROUP_NAME', 'LOT_V6_CAREER_AREA', 'LOT_V6_CAREER_AREA_NAME', 'SOC_2', 'SOC_2_NAME', 'SOC_3', 'SOC_3_NAME', 'SOC_4', 'SOC_4_NAME', 'SOC_5', 'SOC_5_NAME', 'LIGHTCAST_SECTORS', 'LIGHTCAST_SECTORS_NAME', 'NAICS_2022_2', 'NAICS_2022_2_NAME', 'NAICS_2022_3', 'NAICS_2022_3_NAME', 'NAICS_2022_4', 'NAICS_2022_4_NAME', 'NAICS_2022_5', 'NAICS_2022_5_NAME', 'NAICS_2022_6', 'NAICS_2022_6_NAME']</code></pre>
 </div>
 </div>
-<div id="c003deca" class="cell" data-execution_count="2">
+<div id="0c1b1da2" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>columns_to_drop <span class="op">=</span> [</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ID"</span>, <span class="st">"URL"</span>, <span class="st">"ACTIVE_URLS"</span>, <span class="st">"DUPLICATES"</span>, <span class="st">"LAST_UPDATED_TIMESTAMP"</span>,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"NAICS2"</span>, <span class="st">"NAICS3"</span>, <span class="st">"NAICS4"</span>, <span class="st">"NAICS5"</span>, <span class="st">"NAICS6"</span>,</span>
@@ -334,7 +310,7 @@ NAICS_2022_6_NAME        0
 Length: 118, dtype: int64</code></pre>
 </div>
 </div>
-<div id="24ec1b54" class="cell" data-execution_count="3">
+<div id="a5223970" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> missingno <span class="im">as</span> msno</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -390,8 +366,11 @@ Length: 118, dtype: int64</code></pre>
 <pre class="{pythonb}"><code># delete duplicates
 df = df.drop_duplicates(subset=["TITLE", "COMPANY", "LOCATION", "POSTED"])
 print("Duplicates removed.")</code></pre>
+<section id="resarch" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="resarch"><span class="header-section-number">1.1</span> Resarch</h2>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
