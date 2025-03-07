@@ -4806,7 +4806,11 @@ color: #FFD700 !important;
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a>
   <ul class="collapse">
-  <li><a href="#research" id="toc-research" class="nav-link" data-scroll-target="#research"><span class="header-section-number">1.1</span> Research</a></li>
+  <li><a href="#extracting-the-dataset" id="toc-extracting-the-dataset" class="nav-link" data-scroll-target="#extracting-the-dataset"><span class="header-section-number">1.1</span> Extracting the Dataset</a></li>
+  </ul></li>
+  <li><a href="#dropping-the-missing-value-columns" id="toc-dropping-the-missing-value-columns" class="nav-link" data-scroll-target="#dropping-the-missing-value-columns"><span class="header-section-number">2</span> Dropping the Missing Value Columns</a>
+  <ul class="collapse">
+  <li><a href="#research" id="toc-research" class="nav-link" data-scroll-target="#research"><span class="header-section-number">2.1</span> Research</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -4850,7 +4854,9 @@ color: #FFD700 !important;
 <section id="introduction" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
 <p>This document outlines the data cleaning process, including: - Handling missing values - Dropping unnecessary columns - Deduplicating records</p>
-<div id="ceff54d9" class="cell" data-execution_count="1">
+<section id="extracting-the-dataset" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="extracting-the-dataset"><span class="header-section-number">1.1</span> Extracting the Dataset</h2>
+<div id="2d3d563e" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># columns drop</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gdown</span>
@@ -4889,9 +4895,9 @@ color: #FFD700 !important;
 <div class="cell-output cell-output-stderr">
 <pre><code>Downloading...
 From (original): https://drive.google.com/uc?id=1VNBTxArDMN2o9fJBDImaON6YUAyJGOU6
-From (redirected): https://drive.google.com/uc?id=1VNBTxArDMN2o9fJBDImaON6YUAyJGOU6&amp;confirm=t&amp;uuid=c9891893-46b7-4bd5-ac16-2d2467b98e62
+From (redirected): https://drive.google.com/uc?id=1VNBTxArDMN2o9fJBDImaON6YUAyJGOU6&amp;confirm=t&amp;uuid=294884b4-08fe-4cef-82d3-0b9ca24ac069
 To: /home/runner/work/ad688-employability-sp25A1-group11/ad688-employability-sp25A1-group11/lightcast_job_postings.zip
-  0%|          | 0.00/190M [00:00&lt;?, ?B/s]  9%|▉         | 17.8M/190M [00:00&lt;00:01, 169MB/s] 20%|█▉        | 37.2M/190M [00:00&lt;00:00, 181MB/s] 29%|██▉       | 55.6M/190M [00:00&lt;00:01, 81.6MB/s] 38%|███▊      | 71.8M/190M [00:00&lt;00:01, 99.4MB/s] 46%|████▌     | 87.0M/190M [00:00&lt;00:00, 111MB/s]  56%|█████▌    | 106M/190M [00:00&lt;00:00, 129MB/s]  64%|██████▍   | 122M/190M [00:01&lt;00:00, 85.5MB/s] 75%|███████▌  | 143M/190M [00:01&lt;00:00, 110MB/s]  83%|████████▎ | 158M/190M [00:01&lt;00:00, 60.6MB/s] 93%|█████████▎| 177M/190M [00:01&lt;00:00, 77.1MB/s]100%|██████████| 190M/190M [00:02&lt;00:00, 62.3MB/s]100%|██████████| 190M/190M [00:02&lt;00:00, 82.3MB/s]</code></pre>
+  0%|          | 0.00/190M [00:00&lt;?, ?B/s]  2%|▏         | 4.72M/190M [00:00&lt;00:09, 20.4MB/s]  5%|▍         | 8.91M/190M [00:00&lt;00:09, 19.4MB/s]  9%|▉         | 17.3M/190M [00:00&lt;00:05, 29.5MB/s] 11%|█         | 20.4M/190M [00:00&lt;00:07, 22.5MB/s] 16%|█▌        | 29.9M/190M [00:00&lt;00:04, 36.9MB/s] 18%|█▊        | 35.1M/190M [00:01&lt;00:06, 25.3MB/s] 23%|██▎       | 44.6M/190M [00:01&lt;00:04, 33.5MB/s] 26%|██▌       | 49.3M/190M [00:01&lt;00:04, 32.2MB/s] 28%|██▊       | 53.5M/190M [00:02&lt;00:05, 23.0MB/s] 36%|███▌      | 67.6M/190M [00:02&lt;00:03, 30.7MB/s] 40%|████      | 76.5M/190M [00:02&lt;00:02, 38.9MB/s] 43%|████▎     | 82.3M/190M [00:02&lt;00:03, 34.9MB/s] 46%|████▌     | 87.0M/190M [00:02&lt;00:03, 33.6MB/s] 52%|█████▏    | 99.1M/190M [00:03&lt;00:02, 31.9MB/s] 54%|█████▍    | 103M/190M [00:03&lt;00:02, 31.1MB/s]  61%|██████    | 116M/190M [00:03&lt;00:01, 40.1MB/s] 63%|██████▎   | 121M/190M [00:04&lt;00:02, 27.0MB/s] 71%|███████   | 134M/190M [00:04&lt;00:01, 41.3MB/s] 74%|███████▍  | 141M/190M [00:04&lt;00:01, 34.7MB/s] 80%|███████▉  | 152M/190M [00:04&lt;00:00, 40.5MB/s] 83%|████████▎ | 157M/190M [00:04&lt;00:01, 30.3MB/s] 92%|█████████▏| 174M/190M [00:05&lt;00:00, 39.8MB/s] 94%|█████████▍| 179M/190M [00:05&lt;00:00, 36.1MB/s] 97%|█████████▋| 184M/190M [00:05&lt;00:00, 32.7MB/s]100%|██████████| 190M/190M [00:05&lt;00:00, 33.6MB/s]</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Extracting files...
@@ -4906,7 +4912,11 @@ None
 Available columns in dataset: [&#39;ID&#39;, &#39;LAST_UPDATED_DATE&#39;, &#39;LAST_UPDATED_TIMESTAMP&#39;, &#39;DUPLICATES&#39;, &#39;POSTED&#39;, &#39;EXPIRED&#39;, &#39;DURATION&#39;, &#39;SOURCE_TYPES&#39;, &#39;SOURCES&#39;, &#39;URL&#39;, &#39;ACTIVE_URLS&#39;, &#39;ACTIVE_SOURCES_INFO&#39;, &#39;TITLE_RAW&#39;, &#39;BODY&#39;, &#39;MODELED_EXPIRED&#39;, &#39;MODELED_DURATION&#39;, &#39;COMPANY&#39;, &#39;COMPANY_NAME&#39;, &#39;COMPANY_RAW&#39;, &#39;COMPANY_IS_STAFFING&#39;, &#39;EDUCATION_LEVELS&#39;, &#39;EDUCATION_LEVELS_NAME&#39;, &#39;MIN_EDULEVELS&#39;, &#39;MIN_EDULEVELS_NAME&#39;, &#39;MAX_EDULEVELS&#39;, &#39;MAX_EDULEVELS_NAME&#39;, &#39;EMPLOYMENT_TYPE&#39;, &#39;EMPLOYMENT_TYPE_NAME&#39;, &#39;MIN_YEARS_EXPERIENCE&#39;, &#39;MAX_YEARS_EXPERIENCE&#39;, &#39;IS_INTERNSHIP&#39;, &#39;SALARY&#39;, &#39;REMOTE_TYPE&#39;, &#39;REMOTE_TYPE_NAME&#39;, &#39;ORIGINAL_PAY_PERIOD&#39;, &#39;SALARY_TO&#39;, &#39;SALARY_FROM&#39;, &#39;LOCATION&#39;, &#39;CITY&#39;, &#39;CITY_NAME&#39;, &#39;COUNTY&#39;, &#39;COUNTY_NAME&#39;, &#39;MSA&#39;, &#39;MSA_NAME&#39;, &#39;STATE&#39;, &#39;STATE_NAME&#39;, &#39;COUNTY_OUTGOING&#39;, &#39;COUNTY_NAME_OUTGOING&#39;, &#39;COUNTY_INCOMING&#39;, &#39;COUNTY_NAME_INCOMING&#39;, &#39;MSA_OUTGOING&#39;, &#39;MSA_NAME_OUTGOING&#39;, &#39;MSA_INCOMING&#39;, &#39;MSA_NAME_INCOMING&#39;, &#39;NAICS2&#39;, &#39;NAICS2_NAME&#39;, &#39;NAICS3&#39;, &#39;NAICS3_NAME&#39;, &#39;NAICS4&#39;, &#39;NAICS4_NAME&#39;, &#39;NAICS5&#39;, &#39;NAICS5_NAME&#39;, &#39;NAICS6&#39;, &#39;NAICS6_NAME&#39;, &#39;TITLE&#39;, &#39;TITLE_NAME&#39;, &#39;TITLE_CLEAN&#39;, &#39;SKILLS&#39;, &#39;SKILLS_NAME&#39;, &#39;SPECIALIZED_SKILLS&#39;, &#39;SPECIALIZED_SKILLS_NAME&#39;, &#39;CERTIFICATIONS&#39;, &#39;CERTIFICATIONS_NAME&#39;, &#39;COMMON_SKILLS&#39;, &#39;COMMON_SKILLS_NAME&#39;, &#39;SOFTWARE_SKILLS&#39;, &#39;SOFTWARE_SKILLS_NAME&#39;, &#39;ONET&#39;, &#39;ONET_NAME&#39;, &#39;ONET_2019&#39;, &#39;ONET_2019_NAME&#39;, &#39;CIP6&#39;, &#39;CIP6_NAME&#39;, &#39;CIP4&#39;, &#39;CIP4_NAME&#39;, &#39;CIP2&#39;, &#39;CIP2_NAME&#39;, &#39;SOC_2021_2&#39;, &#39;SOC_2021_2_NAME&#39;, &#39;SOC_2021_3&#39;, &#39;SOC_2021_3_NAME&#39;, &#39;SOC_2021_4&#39;, &#39;SOC_2021_4_NAME&#39;, &#39;SOC_2021_5&#39;, &#39;SOC_2021_5_NAME&#39;, &#39;LOT_CAREER_AREA&#39;, &#39;LOT_CAREER_AREA_NAME&#39;, &#39;LOT_OCCUPATION&#39;, &#39;LOT_OCCUPATION_NAME&#39;, &#39;LOT_SPECIALIZED_OCCUPATION&#39;, &#39;LOT_SPECIALIZED_OCCUPATION_NAME&#39;, &#39;LOT_OCCUPATION_GROUP&#39;, &#39;LOT_OCCUPATION_GROUP_NAME&#39;, &#39;LOT_V6_SPECIALIZED_OCCUPATION&#39;, &#39;LOT_V6_SPECIALIZED_OCCUPATION_NAME&#39;, &#39;LOT_V6_OCCUPATION&#39;, &#39;LOT_V6_OCCUPATION_NAME&#39;, &#39;LOT_V6_OCCUPATION_GROUP&#39;, &#39;LOT_V6_OCCUPATION_GROUP_NAME&#39;, &#39;LOT_V6_CAREER_AREA&#39;, &#39;LOT_V6_CAREER_AREA_NAME&#39;, &#39;SOC_2&#39;, &#39;SOC_2_NAME&#39;, &#39;SOC_3&#39;, &#39;SOC_3_NAME&#39;, &#39;SOC_4&#39;, &#39;SOC_4_NAME&#39;, &#39;SOC_5&#39;, &#39;SOC_5_NAME&#39;, &#39;LIGHTCAST_SECTORS&#39;, &#39;LIGHTCAST_SECTORS_NAME&#39;, &#39;NAICS_2022_2&#39;, &#39;NAICS_2022_2_NAME&#39;, &#39;NAICS_2022_3&#39;, &#39;NAICS_2022_3_NAME&#39;, &#39;NAICS_2022_4&#39;, &#39;NAICS_2022_4_NAME&#39;, &#39;NAICS_2022_5&#39;, &#39;NAICS_2022_5_NAME&#39;, &#39;NAICS_2022_6&#39;, &#39;NAICS_2022_6_NAME&#39;]</code></pre>
 </div>
 </div>
-<div id="8f9ced4b" class="cell" data-execution_count="2">
+</section>
+</section>
+<section id="dropping-the-missing-value-columns" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Dropping the Missing Value Columns</h1>
+<div id="aeee346f" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>columns_to_drop <span class="op">=</span> [</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;ID&quot;</span>, <span class="st">&quot;URL&quot;</span>, <span class="st">&quot;ACTIVE_URLS&quot;</span>, <span class="st">&quot;DUPLICATES&quot;</span>, <span class="st">&quot;LAST_UPDATED_TIMESTAMP&quot;</span>,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;NAICS2&quot;</span>, <span class="st">&quot;NAICS3&quot;</span>, <span class="st">&quot;NAICS4&quot;</span>, <span class="st">&quot;NAICS5&quot;</span>, <span class="st">&quot;NAICS6&quot;</span>,</span>
@@ -4946,7 +4956,7 @@ NAICS_2022_6_NAME        0
 Length: 118, dtype: int64</code></pre>
 </div>
 </div>
-<div id="9947b557" class="cell" data-execution_count="3">
+<div id="d7a586a7" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> missingno <span class="im">as</span> msno</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -5002,8 +5012,8 @@ Length: 118, dtype: int64</code></pre>
 <pre class="{pythonb}"><code># delete duplicates
 df = df.drop_duplicates(subset=[&quot;TITLE&quot;, &quot;COMPANY&quot;, &quot;LOCATION&quot;, &quot;POSTED&quot;])
 print(&quot;Duplicates removed.&quot;)</code></pre>
-<section id="research" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="research"><span class="header-section-number">1.1</span> Research</h2>
+<section id="research" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="research"><span class="header-section-number">2.1</span> Research</h2>
 
 
 </section>
