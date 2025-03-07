@@ -9,11 +9,16 @@ website:
         href: index.qmd 
       - text: "General Analysis"
         href: data_analysis.qmd
+  repo-url: "https://github.com/pranjul11garg/ad688-employability-sp25A1-group11"
 
 format:
   html:
-    theme: cosmo 
+    theme: default 
     css: styles.css 
+    embed-resources: true
+
+bibliography: references.bib
+csl: "./csl/econometrica.csl"
 
 execute:
   echo: true
