@@ -2,9 +2,10 @@ project:
   type: website  
 
 website:
-  title: "Group 11: Trends in Data Science & Business Analytics"
+  title: "Group 11: Trends in Data Science & Business Analytics" 
   navbar:
-    left:"
+    left:
+      - text: "Home"
         href: index.qmd 
       - text: "General Analysis"
         href: data_analysis.qmd
@@ -13,10 +14,11 @@ website:
 
 format:
   html:
-    theme: cosmo 
+    theme: cosmo  
     css: styles.css  
 
 execute:
   echo: true
   eval: true
   code-fold: true
+
