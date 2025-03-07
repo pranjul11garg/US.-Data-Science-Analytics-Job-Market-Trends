@@ -141,10 +141,8 @@ fig.update_layout(
         tickangle=-45  # Rotate x-axis labels for better readability
     )
 )
-
-fig.show()
-
 ```
+<iframe src="figures/plot1_jobtrends.html" width="100%" height="600px" frameborder="0"></iframe>
 
 
 ### Top 10 Industries Hiring the Data Analysts
@@ -166,11 +164,8 @@ fig = px.bar(df_top_industries,
              title="Top 10 Industries Hiring Data Analysts",
              labels={'DATA_ANALYST_JOB': 'Job Title', 'Job_Count': 'Number of Jobs'},
              barmode='group')
-
-fig.show()
-fig.write_html("plot.html")
-
 ```
+<iframe src="figures/plot2industries.html" width="100%" height="600px" frameborder="0"></iframe>
 
 
 ### Remote Vs On-site Data Analyst Jobs in Finance & Healthcare Sector
@@ -195,9 +190,5 @@ fig = px.pie(df_remote_grouped,
              title="Remote vs. On-Site Data Analyst Jobs in Finance & Healthcare",
              color="REMOTE_TYPE_NAME", 
              color_discrete_map={"Remote": "#1f77b4", "On-Site": "#d62728", "Hybrid": "#2ca02c"})
-
-fig.show()
-fig.write_html("plot.html")
-
-
 ```
+<iframe src="figures/plot3pie.html" width="100%" height="600px" frameborder="0"></iframe>
