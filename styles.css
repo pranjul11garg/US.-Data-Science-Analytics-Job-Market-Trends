@@ -1,15 +1,1 @@
 /* css styles */
-.navbar {
-    background-color: #CC0000 !important;  /* Change to your desired color */
-    border-bottom: 3px solid #000000;  /* Optional: Adds a bottom border */
-}
-
-.navbar a {
-    color: white !important;  /* Ensures navbar links are white */
-}
-
-.navbar a:hover {
-    color: #ffffff !important;  /* Changes link color on hover */
-}
-
-
