@@ -26,7 +26,8 @@ This document outlines the data cleaning process, including:
 - Deduplicating records
 
 
-
+::: {.callout-note collapse="true"}
+#### **Code:Extracting the Dataset**
 ```{python}
 # columns drop
 import pandas as pd

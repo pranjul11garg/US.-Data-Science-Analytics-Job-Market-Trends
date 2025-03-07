@@ -33,9 +33,13 @@
         "This document outlines the data cleaning process, including:\n",
         "- Handling missing values\n",
         "- Dropping unnecessary columns\n",
-        "- Deduplicating records\n"
+        "- Deduplicating records\n",
+        "\n",
+        "\n",
+        "::: {.callout-note collapse=\"true\"}\n",
+        "#### **Code:Extracting the Dataset**\n"
       ],
-      "id": "33db3abb"
+      "id": "0e0a135f"
     },
     {
       "cell_type": "code",
@@ -74,7 +78,7 @@
         "\n",
         "print(\"Available columns in dataset:\", df.columns.tolist())"
       ],
-      "id": "d893e928",
+      "id": "7fc9a480",
       "execution_count": null,
       "outputs": []
     },
@@ -96,7 +100,7 @@
         "print(\"Missing values before cleaning:\")\n",
         "print(df.isnull().sum())"
       ],
-      "id": "4f0a1d52",
+      "id": "5ecaddc9",
       "execution_count": null,
       "outputs": []
     },
@@ -133,7 +137,7 @@
         "\n",
         "print(\"✅ Missing value handling complete.\")"
       ],
-      "id": "3b990c38",
+      "id": "bd792f71",
       "execution_count": null,
       "outputs": []
     },
@@ -153,7 +157,7 @@
         "\n",
         "## Research"
       ],
-      "id": "e29fa233"
+      "id": "6f1e88dd"
     }
   ],
   "metadata": {
