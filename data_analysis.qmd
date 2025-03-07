@@ -2,30 +2,12 @@
 title: Data Analysis
 subtitle: Comprehensive Data Cleaning & Exploratory Analysis of Job Market Trends
 author:
-  - name: Binderiya Dugersuren
+  - name: Group 11
     affiliations:
-      - id: U83856370
-        name: Boston University
+      - name: Boston University
         city: Boston
         state: MA
-  - name: Pranjul Garg
-    affiliations:
-      - id: U39153801
-        name: Boston University
-        city: Boston
-        state: MA
-  - name: Pratham Kabra
-    affiliations:
-      - id: U64612957
-        name: Boston University
-        city: Boston
-        state: MA
-  - name: Panyang Xiang
-    affiliations:
-      - id: U64612957
-        name: Boston University
-        city: Boston
-        state: MA
+  
 bibliography: references.bib
 csl: csl/econometrica.csl
 format:
@@ -133,3 +115,4 @@ df = df.drop_duplicates(subset=["TITLE", "COMPANY", "LOCATION", "POSTED"])
 print("Duplicates removed.")
 ```
 
+## Resarch
