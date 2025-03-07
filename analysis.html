@@ -4909,7 +4909,7 @@ Index([&#39;LAST_UPDATED_DATE&#39;, &#39;POSTED&#39;, &#39;EXPIRED&#39;, &#39;DU
 Duplicates removed.</code></pre>
 </div>
 </div>
-<div id="cell-1" class="cell" data-execution_count="2">
+<div id="cell-2" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;SALARY&quot;</span> <span class="kw">in</span> df.columns:</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">&quot;SALARY&quot;</span>].fillna(df[<span class="st">&quot;SALARY&quot;</span>].median(), inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
@@ -4918,7 +4918,7 @@ Duplicates removed.</code></pre>
 <pre><code>⚠️ Warning: &#39;SALARY&#39; column not found in dataframe!</code></pre>
 </div>
 </div>
-<div id="cell-2" class="cell" data-execution_count="3">
+<div id="cell-3" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># identifying data analyst jobs by keyword searching</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>keywords <span class="op">=</span> [<span class="st">&#39;Data Analyst&#39;</span>, <span class="st">&#39;Business Analyst&#39;</span>, <span class="st">&#39;Data Engineering&#39;</span>, <span class="st">&#39;Deep Learning&#39;</span>,</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;Data Science&#39;</span>, <span class="st">&#39;Data Analysis&#39;</span>,<span class="st">&#39;Data Analytics&#39;</span>,  <span class="st">&#39;Market Research Analyst&#39;</span> </span>
@@ -4939,7 +4939,7 @@ True     32148
 Name: count, dtype: int64</code></pre>
 </div>
 </div>
-<div id="cell-3" class="cell" data-execution_count="4">
+<div id="cell-4" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;DATA_ANALYST_JOB&#39;</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>0        False
@@ -4956,7 +4956,7 @@ Name: count, dtype: int64</code></pre>
 Name: DATA_ANALYST_JOB, Length: 69200, dtype: bool</code></pre>
 </div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="5">
+<div id="cell-5" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>df_grouped <span class="op">=</span> df.groupby([<span class="st">&#39;DATA_ANALYST_JOB&#39;</span>, <span class="st">&#39;NAICS2_NAME&#39;</span>]).size().reset_index(name<span class="op">=</span><span class="st">&#39;Job_Count&#39;</span>)</span>
@@ -4993,7 +4993,7 @@ Name: DATA_ANALYST_JOB, Length: 69200, dtype: bool</code></pre>
 <pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
 </div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="7">
+<div id="cell-6" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify the top 2 industries with the most data analyst jobs</span></span>
@@ -5017,14 +5017,14 @@ Name: DATA_ANALYST_JOB, Length: 69200, dtype: bool</code></pre>
 <pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
 </div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="7">
+<div id="cell-7" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define target industries</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>target_industries <span class="op">=</span> [<span class="st">&quot;Finance and Insurance&quot;</span>, <span class="st">&quot;Health Care and Social Assistance&quot;</span>]</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the DataFrame</span></span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>df_skills <span class="op">=</span> df[df[<span class="st">&quot;NAICS2_NAME&quot;</span>].isin(target_industries)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="8">
+<div id="cell-8" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define target industries</span></span>
