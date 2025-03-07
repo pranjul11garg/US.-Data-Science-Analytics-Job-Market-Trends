@@ -1,7 +1,7 @@
 /* css styles */
 .navbar {
     background-color: #CC0000 !important;  /* Change to your desired color */
-    border-bottom: 3px solid #000000;  /* Optional: Adds a bottom border */
+    border-bottom: 3px solid white;  /* Optional: Adds a bottom border */
 }
 
 .navbar a {
@@ -9,7 +9,7 @@
 }
 
 .navbar a:hover {
-    color: #ffffff !important;  /* Changes link color on hover */
+    color: white !important;  /* Changes link color on hover */
 }
 
 
