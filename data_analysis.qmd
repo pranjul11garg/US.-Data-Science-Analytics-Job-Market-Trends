@@ -1,13 +1,27 @@
 ---
 title: Data Analysis
 subtitle: Comprehensive Data Cleaning & Exploratory Analysis of Job Market Trends
-author:
-  - name: Group 11
+authors:
+  - name: Pranjul Garg
     affiliations:
       - name: Boston University
         city: Boston
         state: MA
-        
+  - name: Binderiya Dugersuren
+    affiliations:
+      - name: Boston University
+        city: Boston
+        state: MA    
+  - name: Pratham Kabra
+    affiliations:
+      - name: Boston University
+        city: Boston 
+        state: MA    
+  - name: Tony
+    affiliations:
+      - name: Boston University
+        city: Boston
+        state: MA
 format: 
   html:
     bibliography: references.bib
@@ -21,6 +35,7 @@ jupyter: python3
 execute:
    eval: true
 ---
+
 
 
 # Introduction
