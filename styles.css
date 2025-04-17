@@ -66,3 +66,4 @@ img:hover {
     transform: scale(1.05);  /* Slight zoom effect on hover */
     transition: transform 0.3s ease-in-out;  /* Smooth zoom transition */
 }
+/* this comment will ensure that I am doing it again */
