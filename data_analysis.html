@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.6.43">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -70,7 +70,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-831a6e13d34e89ab8943621a9b1bffba.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -129,7 +129,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./data_analysis.html" aria-current="page"> 
-<span class="menu-text">Data Analysis</span></a>
+<span class="menu-text">Data Cleaning &amp; Exploration</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./skill_gap_analysis.html"> 
+<span class="menu-text">Exploratory Data Analysis</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./ml_methods.ipynb"> 
+<span class="menu-text">ML Methods</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./nlp_methods.ipynb"> 
+<span class="menu-text">NLP Methods</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -210,7 +222,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="extracting-the-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="extracting-the-dataset">Extracting the Dataset</h2>
 <p>The Lightcast Dataset has been extracted from the google drive using the gdown.</p>
-<div id="7cced5d0" class="cell" data-execution_count="1">
+<div id="f273c3ba" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -237,7 +249,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="dropping-the-unnecessary-columns-columns" class="level2">
 <h2 class="anchored" data-anchor-id="dropping-the-unnecessary-columns-columns">Dropping the Unnecessary columns Columns</h2>
 <p>There are 102 columns in the dataset and there are various columns which are unnecessary, so we are dropping those to clean the data and do better analysis</p>
-<div id="d2a8e0e2" class="cell" data-execution_count="2">
+<div id="f2835265" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>columns_to_drop <span class="op">=</span> [</span>
@@ -256,7 +268,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="removed-the-duplicates-and-handled-the-missing-values" class="level2">
 <h2 class="anchored" data-anchor-id="removed-the-duplicates-and-handled-the-missing-values">Removed the Duplicates and Handled the Missing Values</h2>
-<div id="42c786d8" class="cell" data-execution_count="3">
+<div id="af85b7bb" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> missingno <span class="im">as</span> msno</span>
@@ -293,7 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="exploratory-data-analysis">Exploratory Data Analysis</h2>
 <section id="data-analytics-business-analytics-job-trend" class="level3">
 <h3 class="anchored" data-anchor-id="data-analytics-business-analytics-job-trend">Data Analytics &amp; Business Analytics Job Trend</h3>
-<div id="aada17d2" class="cell" data-execution_count="4">
+<div id="e099a410" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># identifying data analyst jobs by keyword searching</span></span>
@@ -316,7 +328,7 @@ True     32148
 Name: count, dtype: int64</code></pre>
 </div>
 </div>
-<div id="5b624b7e" class="cell" data-execution_count="5">
+<div id="57b90cb9" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
@@ -360,7 +372,7 @@ Name: count, dtype: int64</code></pre>
 </iframe>
 <section id="top-10-industries-hiring-the-data-analysts" class="level3">
 <h3 class="anchored" data-anchor-id="top-10-industries-hiring-the-data-analysts">Top 10 Industries Hiring the Data Analysts</h3>
-<div id="609802b9" class="cell" data-execution_count="6">
+<div id="ba060a1b" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
@@ -389,7 +401,7 @@ Name: count, dtype: int64</code></pre>
 </iframe>
 <section id="remote-vs-on-site-data-analyst-jobs-in-finance-healthcare-sector" class="level3">
 <h3 class="anchored" data-anchor-id="remote-vs-on-site-data-analyst-jobs-in-finance-healthcare-sector">Remote Vs On-site Data Analyst Jobs in Finance &amp; Healthcare Sector</h3>
-<div id="b5eb637c" class="cell" data-execution_count="7">
+<div id="1507191d" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
