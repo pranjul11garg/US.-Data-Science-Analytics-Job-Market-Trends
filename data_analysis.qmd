@@ -109,7 +109,6 @@ df['DATA_ANALYST_JOB'].value_counts()
 
 
 ```{python, echo=FALSE, results='hide'}
-
 import plotly.express as px
 
 df_grouped = df.groupby(['DATA_ANALYST_JOB', 'NAICS2_NAME']).size().reset_index(name='Job_Count')
@@ -170,7 +169,6 @@ fig = px.bar(df_top_industries,
 ### Remote Vs On-site Data Analyst Jobs in Finance & Healthcare Sector
 
 ```{python}
-
 import plotly.express as px
 
 # Define target industries
