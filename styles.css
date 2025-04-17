@@ -2,27 +2,67 @@
 .navbar, .navbar-expand-lg {
     background-color: hsl(0, 100%, 40%) !important;  /* Red background */
     border-bottom: 3px solid white !important; /* Optional: White bottom border */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a soft shadow to navbar */
+    transition: background-color 0.3s ease;  /* Smooth transition for background color */
 }
 
 /* Ensure text remains white */
 .navbar a, .navbar-brand, .navbar-nav .nav-link {
     color: white !important; 
+    font-weight: bold;  /* Make text bold for better visibility */
+    transition: color 0.3s ease;  /* Smooth transition for text color */
 }
 
 /* Keep hover text white */
 .navbar a:hover, .navbar-nav .nav-link:hover {
     color: white !important;
+    text-decoration: underline;  /* Adds underline on hover for better user feedback */
 }
 
+/* Improve the layout of the navbar links */
+.navbar-nav .nav-item {
+    margin-right: 20px;  /* Space between navbar items */
+}
+
+/* Style the navbar brand */
+.navbar-brand {
+    font-size: 1.5em;  /* Larger font for brand */
+    font-weight: bold;
+}
+
+/* Make the navbar more compact on smaller screens */
+@media (max-width: 992px) {
+    .navbar {
+        padding: 10px 0;
+    }
+    .navbar-nav .nav-item {
+        margin-right: 15px;
+    }
+}
+
+/* Style for iframe to maintain responsiveness */
 iframe {
     margin: 0;
     padding: 0;
     display: block;
+    width: 100%; /* Ensure iframe takes full width */
+    height: 400px; /* Set a fixed height for better layout */
+    border: none;
+    border-radius: 8px; /* Add slight border-radius for rounded corners */
 }
 
+/* Ensure images are responsive and centered */
 img {
     max-width: 100%;  /* Ensures the image fits within the page */
     height: auto;  /* Maintains aspect ratio */
     display: block;
-    margin: auto;
+    margin: 20px auto; /* Centers the image and adds margin for spacing */
+    border-radius: 8px; /* Add rounded corners to images */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a soft shadow around images */
+}
+
+/* Add smooth transition effects for images */
+img:hover {
+    transform: scale(1.05);  /* Slight zoom effect on hover */
+    transition: transform 0.3s ease-in-out;  /* Smooth zoom transition */
 }
