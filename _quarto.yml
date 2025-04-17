@@ -6,10 +6,10 @@ website:
   navbar:
     left:
       - text: "Home"
-        href: index.qmd 
+        href: index.qmd
       - text: "Data Cleaning & Exploration"
         menu:
-          - text: Data Cleaning
+          - text: "Data Cleaning"
             href: data_analysis.qmd
           - text: "Exploratory Data Analysis"
             href: skill_gap_analysis.ipynb
