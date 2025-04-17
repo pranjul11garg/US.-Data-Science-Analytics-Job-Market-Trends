@@ -8,11 +8,13 @@ website:
       - text: "Home"
         href: index.qmd 
       - text: "Data Cleaning & Exploration"
-        href: data_analysis.qmd
-      - text: "Exploratory Data Analysis"
-        href: skill_gap_analysis.ipynb
+        menu:
+          - text: Data Cleaning
+            href: data_analysis.qmd
+          - text: "Exploratory Data Analysis"
+            href: skill_gap_analysis.ipynb
       - text: "ML Methods"
-        href: ml_methods.ipynb
+        href: ml_analysis.ipynb
       - text: "NLP Methods"
         href: nlp_methods.ipynb
         
