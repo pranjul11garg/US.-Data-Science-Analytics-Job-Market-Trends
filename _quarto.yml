@@ -5,8 +5,8 @@ website:
   title: "Group 11: Trends in Data Science & Business Analytics" 
   navbar:
     left:
-      - text: "Home"
-        href: index.qmd
+      - href: index.qmd
+        text: "Home"
       - text: "Data Cleaning & Exploration"
         menu:
           - text: "Data Cleaning"

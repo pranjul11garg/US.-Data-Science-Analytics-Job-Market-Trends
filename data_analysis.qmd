@@ -20,7 +20,6 @@ format:
 jupyter: python3
 execute:
    eval: true
-
 ---
 
 
@@ -64,7 +63,6 @@ columns_to_drop = [
 
 df.drop(columns=columns_to_drop, inplace=True)
 print("Dropped unnecessary columns.")
-
 ```
 
 ## Removed the Duplicates and Handled the Missing Values
@@ -92,7 +90,6 @@ print("✅ Missing value handling complete.")
 
 ### Data Analytics & Business Analytics Job Trend
 ```{python}
-
 # identifying data analyst jobs by keyword searching
 keywords = ['Data Analyst', 'Business Analyst', 'Data Engineering', 'Deep Learning',
             'Data Science', 'Data Analysis','Data Analytics',  'Market Research Analyst' 
