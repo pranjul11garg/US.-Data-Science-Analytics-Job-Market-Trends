@@ -2,7 +2,7 @@ project:
   type: website  
 
 website:
-  title: "Group 11: Trends in Data Science & Business Analytics" 
+  title: "Group 11: Trends in Data Science & Business Analytics"
   navbar:
     left:
       - href: index.qmd
@@ -10,9 +10,9 @@ website:
       - text: "Data Cleaning & Exploration"
         menu:
           - text: "Data Cleaning"
-            href: data_analysis.qmd
+            href: data_cleaning.ipynb
           - text: "Exploratory Data Analysis"
-            href: skill_gap_analysis.ipynb
+            href: eda.ipynb
       - text: "ML Methods"
         href: ml_analysis.ipynb
       - text: "NLP Methods"
@@ -28,7 +28,7 @@ format:
     toc: true
 
 bibliography: references.bib
-csl: "./csl/econometrica.csl"
+csl: csl/econometrica.csl
 
 execute:
   echo: true
