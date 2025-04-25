@@ -23,7 +23,7 @@ website:
           - text: "Exploratory Data Analysis"
             href: eda.ipynb
           - text:  "Skill Gap Analysis"
-            href: skill_gap_analysis.ipynb
+            href: skill_gap_analysis.qmd
       - text: "ML Methods"
         menu:
           - text: "Supervise Machine Learning"
