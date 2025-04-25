@@ -39,6 +39,9 @@ format:
     toc: true
   ipynb: default  # Added to support .ipynb output
 
+resources:
+  - figures
+
 bibliography: references.bib
 csl: csl/econometrica.csl
 
