@@ -4762,9 +4762,15 @@ vertical-align: -.125em;
 --text: #333333;
 --muted: #666666;
 
---font-sans: 'Inter', sans-serif;
+--font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 --font-heading: 'Poppins', sans-serif;
 --transition: 0.3s ease;
+
+--gradient: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+--glass-bg: rgba(255, 255, 255, 0.1);
+--glass-border: rgba(255, 255, 255, 0.2);
+--shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+--glow: 0 0 10px rgba(255, 0, 0, 0.5);
 }
 
 *,
@@ -4776,59 +4782,128 @@ padding: 0;
 }
 html {
 scroll-behavior: smooth;
+overflow-x: hidden;
 }
 body {
-background-color: var(--bg);
+background: linear-gradient(180deg, var(--bg) 0%, #e8ecef 100%);
 color: var(--text);
 font-family: var(--font-sans);
 line-height: 1.6;
 -webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+position: relative;
+overflow-x: hidden;
 }
 
 .container {
 width: 90%;
-max-width: 1200px;
+max-width: 1400px; 
 margin: 0 auto;
-padding: 2rem 0;
+padding: 3rem 0;
+position: relative;
+z-index: 1;
+}
+
+@media (prefers-color-scheme: dark) {
+:root {
+--bg: #1a1a1a;
+--surface: #2a2a2a;
+--text: #e0e0e0;
+--muted: #a0a0a0;
+--black: #ffffff;
+}
+body {
+background: linear-gradient(180deg, #1a1a1a 0%, #2a2a2a 100%);
+}
 }
 
 h1, h2, h3, h4, h5, h6 {
 font-family: var(--font-heading);
 color: var(--black);
-margin-bottom: 1rem;
-line-height: 1.2;
-}
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.75rem; }
-p {
 margin-bottom: 1.25rem;
+line-height: 1.2;
+text-transform: capitalize;
+letter-spacing: -0.02em;
+position: relative;
+}
+h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(2rem, 4vw, 2.75rem); }
+h3 { font-size: clamp(1.75rem, 3vw, 2.25rem); }
+h1::after, h2::after, h3::after {
+content: '';
+position: absolute;
+bottom: -0.25rem;
+left: 0;
+width: 50px;
+height: 4px;
+background: var(--gradient);
+border-radius: 2px;
+}
+p {
+margin-bottom: 1.5rem;
 color: var(--muted);
+font-size: clamp(1rem, 2vw, 1.125rem);
 }
 
 a {
 color: var(--primary);
 text-decoration: none;
+position: relative;
 transition: color var(--transition);
+}
+a::after {
+content: '';
+position: absolute;
+width: 0;
+height: 2px;
+bottom: -2px;
+left: 0;
+background: var(--accent);
+transition: width var(--transition);
+}
+a:hover::after {
+width: 100%;
 }
 a:hover {
 color: var(--accent);
-text-decoration: underline;
 }
 button {
 display: inline-block;
-padding: 0.75em 1.5em;
-background: var(--primary);
+padding: 0.875em 2em;
+background: var(--gradient);
 color: var(--white);
 border: none;
-border-radius: 0.375rem;
+border-radius: 50px;
 cursor: pointer;
 font-weight: 600;
-transition: background var(--transition), transform 0.2s ease;
+font-size: 1rem;
+text-transform: uppercase;
+letter-spacing: 0.05em;
+transition: transform 0.2s ease, box-shadow var(--transition);
+position: relative;
+overflow: hidden;
+}
+button::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(
+90deg,
+transparent,
+rgba(255, 255, 255, 0.3),
+transparent
+);
+transition: left 0.5s ease;
+}
+button:hover::before {
+left: 100%;
 }
 button:hover {
-background: var(--primary-dark);
-transform: translateY(-2px);
+transform: translateY(-3px);
+box-shadow: var(--glow);
 }
 
 img, iframe {
@@ -4836,56 +4911,134 @@ display: block;
 width: 100%;
 max-width: 100%;
 height: auto;
-border-radius: 0.5rem;
-box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-transition: transform var(--transition);
+border-radius: 1rem;
+box-shadow: var(--shadow);
+transition: transform var(--transition), box-shadow var(--transition);
+object-fit: cover;
 }
 img:hover, iframe:hover {
-transform: scale(1.02);
+transform: scale(1.05);
+box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
 .navbar, .navbar-expand-lg {
-background-color: var(--primary) !important;
-border-bottom: 3px solid var(--white) !important;
-box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-transition: background-color var(--transition);
-padding: 1rem 0;
+background: var(--glass-bg) !important;
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+border-bottom: 1px solid var(--glass-border) !important;
+box-shadow: var(--shadow);
+padding: 1.25rem 0;
+position: sticky;
+top: 0;
+z-index: 1000;
+transition: background var(--transition), transform 0.5s ease;
+}
+.navbar.scrolled {
+background: var(--primary) !important;
 }
 .navbar-brand {
 font-family: var(--font-heading);
-font-size: 1.75rem;
+font-size: clamp(1.75rem, 3vw, 2rem);
 color: var(--white) !important;
+display: flex;
+align-items: center;
+gap: 0.5rem;
+}
+.navbar-brand::before {
+content: '🌟';
+font-size: 1.5rem;
 }
 .navbar-nav .nav-link {
 color: var(--white) !important;
-margin-right: 1.25rem;
+margin-right: 1.5rem;
 font-weight: 600;
+font-size: 1.1rem;
+position: relative;
 transition: color var(--transition);
+}
+.navbar-nav .nav-link::after {
+content: '';
+position: absolute;
+width: 0;
+height: 2px;
+bottom: -4px;
+left: 0;
+background: var(--accent);
+transition: width var(--transition);
+}
+.navbar-nav .nav-link:hover::after {
+width: 100%;
 }
 .navbar-nav .nav-link:hover {
 color: var(--accent) !important;
-text-decoration: underline;
 }
 
 @media (max-width: 992px) {
 .navbar-nav .nav-link {
-margin-right: 0.75rem;
+margin-right: 0;
+padding: 0.75rem;
+}
+.navbar-collapse {
+background: var(--primary);
+border-radius: 0.5rem;
+padding: 1rem;
 }
 }
 
 .section {
-padding: 4rem 0;
+padding: 6rem 0;
+position: relative;
+overflow: hidden;
+}
+.section::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: url(data:text/html; charset=UTF-8;charset=utf-8,%3C%21DOCTYPE%20html%3E%0A%3Chtml%3E%0A%3Chead%3E%0A%20%20%3Cmeta%20charset%3D%22UTF%2D8%22%20%2F%3E%0A%20%20%3Cmeta%20name%3D%22viewport%22%20content%3D%22width%3Ddevice%2Dwidth%2Cinitial%2Dscale%3D1%22%3E%0A%20%20%3Ctitle%3E404%20%7C%20Unsplash%20Source%3C%2Ftitle%3E%0A%20%20%3Cstyle%3E%0A%20%20%20%20html%2C%0A%20%20%20%20body%20%7B%0A%20%20%20%20%20%20height%3A%20100%25%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20body%20%7B%0A%20%20%20%20%20%20height%3A%20100%25%3B%0A%20%20%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20%20%20background%2Dcolor%3A%20%23111111%3B%0A%20%20%20%20%20%20font%2Dfamily%3A%20%2Dapple%2Dsystem%2C%20BlinkMacSystemFont%2C%20%22San%20Francisco%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Ubuntu%2C%20Roboto%2C%20Noto%2C%20%22Segoe%20UI%22%2C%20Arial%2C%20sans%2Dserif%3B%0A%20%20%20%20%20%20color%3A%20%23ffffff%3B%0A%20%20%20%20%20%20text%2Dalign%3A%20center%3B%0A%20%20%20%20%20%20margin%3A%200%3B%0A%20%20%20%20%20%20background%2Dsize%3A%20cover%3B%0A%20%20%20%20%20%20background%2Dposition%3A%20center%20center%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20%2Ebackground%2Doverlay%20%7B%0A%20%20%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20%20%20height%3A%20100%25%3B%0A%0A%20%20%20%20%20%20position%3A%20fixed%3B%0A%20%20%20%20%20%20z%2Dindex%3A%208%3B%0A%20%20%20%20%20%20background%3A%20transparent%3B%0A%20%20%20%20%20%20background%3A%20%2Dwebkit%2Dlinear%2Dgradient%28top%2C%20rgba%280%2C0%2C0%2C0%2E80%29%200%25%2C%20rgba%280%2C0%2C0%2C0%2E50%29%2040%25%2C%20rgba%280%2C0%2C0%2C0%2E50%29%2070%25%2C%20rgba%280%2C0%2C0%2C0%2E80%29%20100%25%29%3B%0A%20%20%20%20%20%20background%3A%20linear%2Dgradient%28to%20bottom%2C%20rgba%280%2C0%2C0%2C0%2E80%29%200%25%2C%20rgba%280%2C0%2C0%2C0%2E50%29%2040%25%2C%20rgba%280%2C0%2C0%2C0%2E50%29%2070%25%2C%20rgba%280%2C0%2C0%2C0%2E80%29%20100%25%29%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20%2Econtent%20%7B%0A%20%20%20%20%20%20position%3A%20relative%3B%0A%20%20%20%20%20%20z%2Dindex%3A%2010%3B%0A%20%20%20%20%20%20height%3A%20100%25%3B%0A%20%20%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20%2Eheader%20%7B%0A%20%20%20%20%20%20position%3A%20absolute%3B%0A%20%20%20%20%20%20top%3A%2030px%3B%0A%20%20%20%20%20%20z%2Dindex%3A%2012%3B%0A%20%20%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20%2Eheader%20svg%20%7B%0A%20%20%20%20%20%20margin%2Dtop%3A%20%2D13px%3B%0A%20%20%20%20%20%20width%3A%2032px%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20h1%20%7B%0A%20%20%20%20%20%20font%2Dsize%3A%2080px%3B%0A%20%20%20%20%20%20margin%3A%200%3B%0A%20%20%20%20%20%20font%2Dweight%3A%20800%3B%0A%20%20%20%20%20%20line%2Dheight%3A%201%3B%0A%20%20%20%20%20%20letter%2Dspacing%3A%200%2E04em%3B%0A%20%20%20%20%20%20text%2Dshadow%3A%200%201px%202px%20rgba%280%2C0%2C0%2C0%2E1%29%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20a%2C%0A%20%20%20%20a%3Ahover%2C%0A%20%20%20%20a%3Avisited%20%7B%0A%20%20%20%20%20%20color%3A%20%23ffffff%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20a%20%7B%0A%20%20%20%20%20%20opacity%3A%200%2E6%3B%0A%20%20%20%20%20%20%2Dwebkit%2Dtransition%3A%20all%200%2E3s%20ease%2Din%2Dout%3B%0A%20%20%20%20%20%20transition%3A%20all%200%2E3s%20ease%2Din%2Dout%3B%0A%20%20%20%20%7D%0A%20%20%20%20a%3Ahover%2C%0A%20%20%20%20a%3Afocus%2C%0A%20%20%20%20a%3Aactive%20%7B%0A%20%20%20%20%20%20opacity%3A%201%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20%2Eerror%2Dmessage%20%7B%0A%20%20%20%20%20%20margin%2Dtop%3A%2012px%3B%0A%20%20%20%20%20%20margin%2Dbottom%3A%2036px%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20%2Eerror%2Dmessage%5F%5Fmain%20%7B%0A%20%20%20%20%20%20font%2Dsize%3A%2018px%3B%0A%20%20%20%20%20%20margin%3A%2012px%20auto%3B%0A%20%20%20%20%20%20line%2Dheight%3A%201%2E5em%3B%0A%20%20%20%20%20%20text%2Dshadow%3A%200%201px%202px%20rgba%280%2C0%2C0%2C0%2E1%29%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20%2Eerror%2Dmessage%5F%5Fsub%20%7B%0A%20%20%20%20%20%20font%2Dsize%3A%2015px%3B%0A%20%20%20%20%20%20margin%3A%2012px%20auto%3B%0A%20%20%20%20%20%20line%2Dheight%3A%201%2E5em%3B%0A%20%20%20%20%20%20text%2Dshadow%3A%200%201px%202px%20rgba%280%2C0%2C0%2C0%2E1%29%3B%0A%20%20%20%20%20%20opacity%3A%200%2E8%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20%2Etable%2Dwrapper%20%7B%0A%20%20%20%20%20%20display%3A%20table%3B%0A%20%20%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20%20%20height%3A%20100%25%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20%2Econtainer%20%7B%0A%20%20%20%20%20%20margin%3A%20auto%3B%0A%20%20%20%20%20%20max%2Dwidth%3A%20520px%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20%2Ecell%2Dwrapper%20%7B%0A%20%20%20%20%20%20display%3A%20table%2Dcell%3B%0A%20%20%20%20%20%20vertical%2Dalign%3A%20middle%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20%2Ebtn%20%7B%0A%20%20%20%20%20%20font%2Dfamily%3A%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0A%20%20%20%20%20%20display%3A%20inline%2Dblock%3B%0A%20%20%20%20%20%20color%3A%20%23ffffff%3B%0A%20%20%20%20%20%20padding%3A%200%2010px%3B%0A%20%20%20%20%20%20line%2Dheight%3A%2032px%3B%0A%20%20%20%20%20%20font%2Dsize%3A%2011px%3B%0A%20%20%20%20%20%20font%2Dweight%3A%20600%3B%0A%20%20%20%20%20%20border%2Dradius%3A%206px%3B%0A%20%20%20%20%20%20border%3A%201px%20solid%20%23ffffff%3B%0A%20%20%20%20%20%20text%2Dtransform%3A%20uppercase%3B%0A%20%20%20%20%20%20text%2Ddecoration%3A%20none%3B%0A%20%20%20%20%20%20letter%2Dspacing%3A%200%2E06em%3B%0A%20%20%20%20%20%20background%2Dcolor%3A%20transparent%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20%2Ebtn%3Ahover%20%7B%0A%20%20%20%20%20%20text%2Ddecoration%3A%20none%3B%0A%20%20%20%20%20%20color%3A%20%23ffffff%3B%0A%20%20%20%20%20%20border%2Dcolor%3A%20%23ffffff%3B%0A%20%20%20%20%7D%0A%20%20%3C%2Fstyle%3E%0A%3C%2Fhead%3E%0A%3Cbody%3E%0A%20%20%3Cdiv%20class%3D%22background%2Doverlay%22%3E%3C%2Fdiv%3E%0A%20%20%3Cdiv%20class%3D%22header%22%3E%0A%20%20%20%20%3Cdiv%20class%3D%22container%22%3E%0A%20%20%20%20%20%20%3Ca%20href%3D%22%2F%22%20title%3D%22Back%20to%20Unsplash%22%3E%0A%20%20%20%20%20%20%20%20%3Csvg%20width%3D%2232%22%20height%3D%2232%22%20xmlns%3D%22http%3A%2F%2Fwww%2Ew3%2Eorg%2F2000%2Fsvg%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M10%209V0h12v9H10zm12%205h10v18H0V14h10v9h12v%2D9z%22%20fill%3D%22%23ffffff%22%20fill%2Drule%3D%22nonzero%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2Fsvg%3E%0A%20%20%20%20%20%20%3C%2Fa%3E%0A%20%20%20%20%3C%2Fdiv%3E%20%3C%21%2D%2D%20close%20%2Econtainer%20%2D%2D%3E%0A%20%20%3C%2Fdiv%3E%20%3C%21%2D%2D%20close%20%2Eheader%20%2D%2D%3E%0A%0A%20%20%3Cdiv%20class%3D%22content%22%3E%0A%20%20%20%20%3Cdiv%20class%3D%22table%2Dwrapper%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22cell%2Dwrapper%22%3E%0A%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22container%22%3E%0A%0A%20%20%20%20%20%20%20%20%20%20%3Ch1%3E404%3C%2Fh1%3E%0A%0A%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22error%2Dmessage%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22error%2Dmessage%5F%5Fmain%22%3EThe%20photo%20you%20were%20looking%20for%20doesn%27t%20match%20Unsplash%20Source%27s%20URL%20structure%2E%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%20%3C%21%2D%2D%20close%20%2Eerror%2Dmessage%20%2D%2D%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%20%3C%21%2D%2D%20close%20%2Econtainer%20%2D%2D%3E%0A%0A%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%2F%22%20class%3D%22btn%22%3E%0A%20%20%20%20%20%20%20%20%20%20Back%20to%20Source%0A%20%20%20%20%20%20%20%20%3C%2Fa%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%20%3C%21%2D%2D%20close%20%2Ecell%2Dwrapper%20%2D%2D%3E%0A%20%20%20%20%3C%2Fdiv%3E%20%3C%21%2D%2D%20close%20%2Etable%2Dwrapper%20%2D%2D%3E%0A%20%20%3C%2Fdiv%3E%20%3C%21%2D%2D%20close%20%2Econtent%20%2D%2D%3E%0A%0A%20%20%3Cscript%3E%0A%20%20%20%20%28function%20%28window%2C%20undefined%29%20%7B%0A%0A%20%20%20%20%20%20var%20c%2C%0A%20%20%20%20%20%20%20%20cache%2C%0A%20%20%20%20%20%20%20%20state%2C%0A%20%20%20%20%20%20%20%20view%2C%0A%20%20%20%20%20%20%20%20dispatch%2C%0A%20%20%20%20%20%20%20%20defaults%3B%0A%0A%20%20%20%20%20%20c%20%3D%20cache%20%3D%20%7B%7D%3B%0A%20%20%20%20%20%20state%20%3D%20%7B%7D%3B%0A%20%20%20%20%20%20view%20%3D%20%7B%7D%3B%0A%20%20%20%20%20%20dispatch%20%3D%20%7B%7D%3B%0A%20%20%20%20%20%20defaults%20%3D%20%7B%0A%20%20%20%20%20%20%20%20gifs%3A%20%7B%0A%20%20%20%20%20%20%20%20%20%20fail%3A%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Ffail%2Ffail%2D1%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Ffail%2Ffail%2D2%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Ffail%2Ffail%2D3%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Ffail%2Ffail%2D5%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Ffail%2Ffail%2D6%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Ffail%2Ffail%2D7%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Ffail%2Ffail%2D8%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Ffail%2Ffail%2D9%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Ffail%2Ffail%2D11%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Ffail%2Ffail%2D12%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Ffail%2Ffail%2D13%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Ffail%2Ffail%2D14%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Ffail%2Ffail%2D15%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Ffail%2Ffail%2D16%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Ffail%2Ffail%2D17%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Ffail%2Ffail%2D18%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Ffail%2Ffail%2D20%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Ffail%2Ffail%2D21%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Ffail%2Ffail%2D22%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%5D%2C%0A%20%20%20%20%20%20%20%20%20%20weird%3A%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Fweird%2Fweird%2D1%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Fweird%2Fweird%2D3%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Fweird%2Fweird%2D4%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Fweird%2Fweird%2D6%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Fweird%2Fweird%2D8%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Fweird%2Fweird%2D9%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Fweird%2Fweird%2D10%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Fweird%2Fweird%2D11%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Fweird%2Fweird%2D12%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Fweird%2Fweird%2D13%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Fweird%2Fweird%2D14%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Fweird%2Fweird%2D15%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%27https%3A%2F%2Fimages%2Eunsplash%2Ecom%2Fgifs%2Fweird%2Fweird%2D16%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%3B%0A%0A%20%20%20%20%20%20cache%2Einit%20%3D%20function%20%28%29%20%7B%0A%20%20%20%20%20%20%20%20this%2Ebody%20%3D%20document%2Ebody%3B%0A%20%20%20%20%20%20%7D%3B%0A%0A%20%20%20%20%20%20state%2Einit%20%3D%20function%20%28%29%20%7B%0A%20%20%20%20%20%20%20%20this%2Egifs%20%3D%20defaults%2Egifs%2Efail%3B%0A%20%20%20%20%20%20%7D%3B%0A%0A%20%20%20%20%20%20state%2EgetRandomGif%20%3D%20function%20%28%29%20%7B%0A%20%20%20%20%20%20%20%20return%20this%2Egifs%5BMath%2Efloor%28Math%2Erandom%28%29%20%2A%20this%2Egifs%2Elength%29%5D%3B%0A%20%20%20%20%20%20%7D%3B%0A%0A%20%20%20%20%20%20view%2Einit%20%3D%20function%20%28%29%20%7B%0A%20%20%20%20%20%20%20%20c%2Ebody%2Estyle%2EbackgroundImage%20%3D%20%27url%28%27%20%2B%20state%2EgetRandomGif%28%29%20%2B%20%27%29%27%3B%0A%20%20%20%20%20%20%7D%3B%0A%0A%20%20%20%20%20%20cache%2Einit%28%29%3B%0A%20%20%20%20%20%20state%2Einit%28%29%3B%0A%20%20%20%20%20%20view%2Einit%28%29%3B%0A%0A%20%20%20%20%7D%29%28window%29%3B%0A%20%20%3C%2Fscript%3E%0A%0A%20%20%3Cscript%3E%0A%20%20%20%20%28function%28i%2Cs%2Co%2Cg%2Cr%2Ca%2Cm%29%7Bi%5B%27GoogleAnalyticsObject%27%5D%3Dr%3Bi%5Br%5D%3Di%5Br%5D%7C%7Cfunction%28%29%7B%0A%20%20%20%20%28i%5Br%5D%2Eq%3Di%5Br%5D%2Eq%7C%7C%5B%5D%29%2Epush%28arguments%29%7D%2Ci%5Br%5D%2El%3D1%2Anew%20Date%28%29%3Ba%3Ds%2EcreateElement%28o%29%2C%0A%20%20%20%20m%3Ds%2EgetElementsByTagName%28o%29%5B0%5D%3Ba%2Easync%3D1%3Ba%2Esrc%3Dg%3Bm%2EparentNode%2EinsertBefore%28a%2Cm%29%0A%20%20%20%20%7D%29%28window%2Cdocument%2C%27script%27%2C%27%2F%2Fwww%2Egoogle%2Danalytics%2Ecom%2Fanalytics%2Ejs%27%2C%27ga%27%29%3B%0A%0A%20%20%20%20ga%28%27create%27%2C%20%27UA%2D36049670%2D4%27%2C%20%27auto%27%29%3B%0A%20%20%20%20ga%28%27send%27%2C%20%27pageview%27%29%3B%0A%20%20%20%20ga%28%27send%27%2C%20%27event%27%2C%20%27action%27%2C%20%27404%27%29%3B%0A%20%20%3C%2Fscript%3E%0A%0A%3C%2Fbody%3E%0A%3C%2Fhtml%3E%0A) no-repeat center;
+background-size: cover;
+opacity: 0.05;
+z-index: -1;
 }
 .card {
-background: var(--surface);
-border-radius: 0.5rem;
-box-shadow: 0 6px 12px rgba(0,0,0,0.05);
-padding: 2rem;
-margin-bottom: 2rem;
-transition: box-shadow var(--transition);
+background: var(--glass-bg);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+border: 1px solid var(--glass-border);
+border-radius: 1rem;
+box-shadow: var(--shadow);
+padding: 2.5rem;
+margin-bottom: 2.5rem;
+transition: transform var(--transition), box-shadow var(--transition);
+position: relative;
+overflow: hidden;
+}
+.card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: var(--gradient);
+opacity: 0;
+transition: opacity var(--transition);
+z-index: -1;
+}
+.card:hover::before {
+opacity: 0.1;
 }
 .card:hover {
-box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+transform: translateY(-10px);
+box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 2rem;
 }
 
 input[type="text"],
@@ -4894,11 +5047,15 @@ input[type="password"],
 textarea,
 select {
 width: 100%;
-padding: 0.75rem 1rem;
-margin-bottom: 1rem;
-border: 1px solid #ccc;
-border-radius: 0.375rem;
+padding: 1rem;
+margin-bottom: 1.25rem;
+border: 1px solid var(--glass-border);
+border-radius: 0.5rem;
+background: var(--glass-bg);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
 font-family: var(--font-sans);
+color: var(--text);
 transition: border-color var(--transition), box-shadow var(--transition);
 }
 input:focus,
@@ -4906,38 +5063,132 @@ textarea:focus,
 select:focus {
 outline: none;
 border-color: var(--primary);
-box-shadow: 0 0 0 3px rgba(255,0,0,0.1);
+box-shadow: var(--glow);
+}
+textarea {
+resize: vertical;
+}
+
+.form-group {
+position: relative;
+}
+.form-group label {
+position: absolute;
+top: 0.75rem;
+left: 1rem;
+color: var(--muted);
+font-size: 0.9rem;
+transition: all var(--transition);
+pointer-events: none;
+}
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label {
+top: -0.75rem;
+left: 0.75rem;
+font-size: 0.75rem;
+color: var(--primary);
+background: var(--surface);
+padding: 0 0.25rem;
 }
 
 table {
 width: 100%;
-border-collapse: collapse;
-margin-bottom: 2rem;
+border-collapse: separate;
+border-spacing: 0;
+margin-bottom: 2.5rem;
+background: var(--surface);
+border-radius: 1rem;
+overflow: hidden;
+box-shadow: var(--shadow);
 }
 th, td {
-padding: 0.75rem 1rem;
+padding: 1rem 1.5rem;
 text-align: left;
-border-bottom: 1px solid #eee;
+border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 th {
-background: var(--primary);
+background: var(--gradient);
 color: var(--white);
+font-weight: 600;
+text-transform: uppercase;
+}
+tr:hover {
+background: rgba(0, 0, 0, 0.02);
 }
 
 ::-webkit-scrollbar {
-width: 8px;
+width: 10px;
 }
 ::-webkit-scrollbar-track {
 background: var(--bg);
+border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb {
-background: var(--muted);
-border-radius: 4px;
+background: var(--gradient);
+border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb:hover {
-background: var(--text);
+background: var(--primary-dark);
 }
-</style>
+
+* {
+scrollbar-width: thin;
+scrollbar-color: var(--primary) var(--bg);
+}
+
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.section, .card, .navbar {
+animation: fadeIn 0.8s ease-out forwards;
+}
+
+button:active {
+transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+.container {
+padding: 2rem 1rem;
+}
+.section {
+padding: 3rem 0;
+}
+.card {
+padding: 1.5rem;
+}
+h1 { font-size: 2rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.5rem; }
+}
+
+@media (min-width: 1920px) {
+.container {
+max-width: 1600px;
+}
+}
+
+:focus {
+outline: 3px solid var(--accent);
+outline-offset: 2px;
+}
+.sr-only {
+position: absolute;
+width: 1px;
+height: 1px;
+padding: 0;
+margin: -1px;
+overflow: hidden;
+clip: rect(0, 0, 0, 0);
+border: 0;
+}
+
+.text-center { text-align: center; }
+.mb-0 { margin-bottom: 0; }
+.mt-2 { margin-top: 2rem; }
+.p-3 { padding: 3rem; }
+.rounded-full { border-radius: 9999px; }</style>
 </head>
 
 <body class="nav-fixed">
