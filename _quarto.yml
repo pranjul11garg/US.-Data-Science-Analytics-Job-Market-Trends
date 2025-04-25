@@ -5,7 +5,7 @@ project:
   render:
     - index.qmd
     - data_cleaning.ipynb
-    - skill_gap_analysis.ipynb
+    - skill_gap_analysis.qmd
     - rm_model.ipynb
     - analytics_model.ipynb
     - eda.ipynb
