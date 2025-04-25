@@ -5,7 +5,7 @@ project:
     - data_cleaning.ipynb
     - skill_gap_analysis.ipynb
     - rm_model.ipynb
-    - analytic_model.ipynb
+    - analytics_model.ipynb
     - eda.ipynb
 
 website:
