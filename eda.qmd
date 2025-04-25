@@ -1,8 +1,14 @@
 ---
 title: "EDA"
 format: html
+execute:
+  working-directory: project
 ---
-
+```{python}
+import pandas as pd
+#eda = pd.read_csv(/data/eda_data.csv')
+eda = pd.read_csv("data/eda_data.csv")
+eda.head()
 ```{python}
 import os
 print("Current working directory:", os.getcwd())
