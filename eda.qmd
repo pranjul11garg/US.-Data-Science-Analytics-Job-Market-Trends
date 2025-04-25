@@ -3,11 +3,6 @@ title: "EDA"
 format: html
 ---
 
-```{python}
-import os
-print("Current working directory:", os.getcwd())
-print("Files in data/:", os.listdir("./data"))
-```
 
 ```{python}
 import pandas as pd
