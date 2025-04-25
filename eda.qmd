@@ -183,8 +183,7 @@ fig.add_annotation(
     borderpad=4
 )
 
-# Save as an HTML file for Quarto embedding
-fig.write_html("figures/plot1_jobtrends_super_pretty.html")
+
 ```
 
 
@@ -374,7 +373,6 @@ fig.add_annotation(
     xshift=2
 )
 
-fig.write_html("figures/plot2industries_super_beautiful.html")
 ```
 
 ```{python}
@@ -523,11 +521,7 @@ fig.add_annotation(
     xshift=2
 )
 
-# Show the plot
-fig.show()
 
-# Save as an HTML file
-fig.write_html("figures/plot3pie_enhanced.html")
 ```
 
 
@@ -554,6 +548,95 @@ for bar in bars.patches:
     plt.text(bar.get_x() + bar.get_width() / 2, bar.get_height(), f'{int(bar.get_height())}', 
              ha='center', va='bottom')
 
-plt.tight_layout()
-plt.savefig('./figuresavg_salary_by_remote_type.png')
+```
+
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Trim outliers
+low, high = eda['SALARY'].quantile([0.01, 0.99])
+eda_trim = eda[(eda['SALARY'] >= low) & (eda['SALARY'] <= high)]
+
+# Plot histogram
+plt.figure(figsize=(8, 6))
+plt.hist(eda_trim['SALARY'], bins=30, color='#4C72B0', edgecolor='black')
+plt.title('Salary Distribution (1–99th pct)')
+plt.xlabel('Annual Salary')
+plt.ylabel('Frequency')
+
+```
+
+
+```{python}
+import plotly.express as px
+import pandas as pd
+
+# Define target industries (same as before)
+target_industries = ["Finance and Insurance", "Health Care and Social Assistance"]
+
+# Filter the original DataFrame for these industries
+# Assuming 'df' has a 'SALARY' column (from our regression analysis context)
+df_target = eda[eda["NAICS2_NAME"].isin(target_industries)].copy()
+
+# Map DATA_ANALYST_JOB to meaningful labels
+df_target['Job_Category'] = df_target['DATA_ANALYST_JOB'].map({True: 'Data Analyst', False: 'Business Analyst'})
+
+# Group by Job_Category and REMOTE_TYPE_NAME, calculate average salary
+df_salary_grouped = df_target.groupby(['Job_Category', 'REMOTE_TYPE_NAME'])['SALARY'].mean().reset_index(name='Avg_Salary')
+
+# Create a grouped bar chart
+fig = px.bar(df_salary_grouped,
+             x='Job_Category',
+             y='Avg_Salary',
+             color='REMOTE_TYPE_NAME',
+             title="Average Salary by Remote Type and Job Category (Finance & Healthcare)",
+             labels={'Job_Category': 'Job Category', 'Avg_Salary': 'Average Salary ($)', 'REMOTE_TYPE_NAME': 'Remote Type'},
+             barmode='group',
+             color_discrete_map={"Remote": "#6AB1E9", "On-Site": "#EF767A", "Hybrid": "#49C6B7"})
+
+# Beautify the layout
+fig.update_layout(
+    width=900,
+    height=600,
+    plot_bgcolor='rgba(240, 240, 245, 1)',
+    paper_bgcolor='rgba(255, 255, 255, 1)',
+    font=dict(family="Poppins, sans-serif", size=14, color="#2D3436"),
+    title=dict(
+        text="Average Salary by Remote Type and Job Category (Finance & Healthcare)",
+        font=dict(size=24, color="#2D3436"),
+        x=0.5,
+        xanchor="center"
+    ),
+    xaxis=dict(
+        title="Job Category",
+        title_font=dict(size=18),
+        tickfont=dict(size=14)
+    ),
+    yaxis=dict(
+        title="Average Salary ($)",
+        title_font=dict(size=18),
+        tickfont=dict(size=14),
+        gridcolor="rgba(200, 200, 200, 0.3)"
+    ),
+    legend=dict(
+        title="Remote Type",
+        font=dict(size=13),
+        x=1.05,
+        y=0.5,
+        xanchor="left",
+        yanchor="middle"
+    ),
+    bargap=0.2
+)
+
+# Add value labels on top of bars
+fig.update_traces(
+    text=df_salary_grouped['Avg_Salary'].round(2),
+    textposition='outside',
+    textfont=dict(size=12, color="#2D3436")
+)
+
+
 ```

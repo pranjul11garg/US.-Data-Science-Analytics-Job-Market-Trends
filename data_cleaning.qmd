@@ -70,3 +70,4 @@ eda_data.to_csv("data/eda_data.csv", index=False)
 
 print(eda_data.isnull().sum())
 ```
+

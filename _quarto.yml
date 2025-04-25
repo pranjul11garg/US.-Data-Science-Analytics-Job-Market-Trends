@@ -13,6 +13,8 @@ website:
             href: data_cleaning.qmd
           - text: "Exploratory Data Analysis"
             href: eda.qmd
+          - text:  "skill gap"
+            href: skill_gap_analysis.ipynb
   repo-url: "https://github.com/pranjul11garg/ad688-employability-sp25A1-group11"
 
 format:
