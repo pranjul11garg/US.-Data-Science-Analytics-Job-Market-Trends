@@ -1,5 +1,10 @@
 project:
   type: website
+  render:
+    - index.qmd
+    - data_cleaning.qmd
+    - eda.qmd
+    - skill_gap_analysis.ipynb
 
 website:
   title: "Group 11: Trends in Data Science & Business Analytics"
@@ -29,6 +34,7 @@ bibliography: references.bib
 csl: csl/econometrica.csl
 
 execute:
+  working-directory: project
   echo: true
   eval: true
   code-fold: true
