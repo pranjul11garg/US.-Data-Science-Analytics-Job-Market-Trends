@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import missingno as msno
 
-df = pd.read_csv("data/lightcast_job_postings.csv")
+df = pd.read_csv("./data/lightcast_job_postings.csv")
 
 columns_to_keep = [
     'COMPANY', 'LOCATION', 'POSTED', 'MIN_EDULEVELS_NAME', 'MAX_EDULEVELS_NAME',
@@ -58,17 +58,16 @@ for col in cat_cols:
     if eda_data[col].isnull().sum() > 0:
         eda_data[col].fillna(eda_data[col].mode()[0], inplace=True)
 
-print("✅ Remaining missing values filled based on column type.")
+print("Remaining missing values filled based on column type.")
 
 
 eda_data.dropna(thresh=len(eda_data) * 0.5, axis=1, inplace=True)
 
 
-print("✅ Missing value handling complete.")
+print("Missing value handling complete.")
 
 # delete duplicates
 eda_data = eda_data.drop_duplicates(subset=["TITLE", "COMPANY", "LOCATION", "POSTED"])
-eda_data.to_csv("./data/eda_data.csv", index=False)
 
 print(eda_data.isnull().sum())
 ```
