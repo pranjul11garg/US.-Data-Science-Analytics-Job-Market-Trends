@@ -3,7 +3,7 @@ project:
   render:
     - index.qmd
     - data_cleaning.qmd
-    - eda.ipynb
+    - eda.qmd
     - skill_gap_analysis.ipynb
     - rm_model.ipynb
     - analytics_model.qmd
@@ -20,7 +20,7 @@ website:
           - text: "Data Cleaning"
             href: data_cleaning.qmd
           - text: "Exploratory Data Analysis"
-            href: eda.ipynb
+            href: eda.qmd
           - text:  "Skill Gap Analysis"
             href: skill_gap_analysis.ipynb
       - text: "ML Methods"
