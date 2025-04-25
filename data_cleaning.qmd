@@ -1,0 +1,72 @@
+---
+title: "Data Cleaning"
+format: html
+---
+
+This page presents our data cleaning and prepping part.
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import missingno as msno
+
+df = pd.read_csv("data/lightcast_job_postings.csv")
+
+columns_to_keep = [
+    'COMPANY', 'LOCATION', 'POSTED', 'MIN_EDULEVELS_NAME', 'MAX_EDULEVELS_NAME',
+    'MIN_YEARS_EXPERIENCE', 'MAX_YEARS_EXPERIENCE', 'TITLE', 'SKILLS',
+    'SPECIALIZED_SKILLS', 'CERTIFICATIONS', 'COMMON_SKILLS', 'SOFTWARE_SKILLS',
+    'SOC_2021_4_NAME', 'NAICS_2022_6', 'NAICS2_NAME', 'REMOTE_TYPE_NAME',
+    'SALARY', 'TITLE_NAME', 'SKILLS_NAME', 'SPECIALIZED_SKILLS_NAME'
+]
+
+eda_data = df[columns_to_keep]
+
+```
+
+```{python}
+msno.heatmap(eda_data)
+plt.title("Missing Values Heatmap")
+plt.savefig("figures/missingno_heatmap.svg", format='svg', bbox_inches='tight')
+plt.show()
+
+```
+
+```{python}
+if "SALARY" in eda_data.columns:
+    eda_data["SALARY"].fillna(eda_data["SALARY"].median(), inplace=True)
+else:
+    print("⚠️ Warning: 'SALARY' column not found in dataframe!")
+
+if "COMPANY" in eda_data.columns:
+    eda_data["COMPANY"].fillna("Unknown", inplace=True)
+else:
+    print("⚠️ Warning: 'COMPANY' column not found in dataframe!")
+
+    # Fill numeric columns with mean
+num_cols = eda_data.select_dtypes(include='number').columns
+for col in num_cols:
+    if eda_data[col].isnull().sum() > 0:
+        eda_data[col].fillna(eda_data[col].mean(), inplace=True)
+
+# Fill categorical columns with mode
+cat_cols = eda_data.select_dtypes(include='object').columns
+for col in cat_cols:
+    if eda_data[col].isnull().sum() > 0:
+        eda_data[col].fillna(eda_data[col].mode()[0], inplace=True)
+
+print("✅ Remaining missing values filled based on column type.")
+
+
+eda_data.dropna(thresh=len(eda_data) * 0.5, axis=1, inplace=True)
+
+
+print("✅ Missing value handling complete.")
+
+# delete duplicates
+eda_data = eda_data.drop_duplicates(subset=["TITLE", "COMPANY", "LOCATION", "POSTED"])
+eda_data.to_csv("data/eda_data.csv", index=False)
+
+print(eda_data.isnull().sum())
+```
