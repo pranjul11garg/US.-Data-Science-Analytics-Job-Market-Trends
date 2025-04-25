@@ -4,9 +4,15 @@ format: html
 ---
 
 ```{python}
+import os
+print("Current working directory:", os.getcwd())
+print("Files in data/:", os.listdir("./data"))
+```
+
+```{python}
 import pandas as pd
 #eda = pd.read_csv('./data/eda_data.csv')
-eda = pd.read_csv("eda_new.csv")
+eda = pd.read_csv("./data/lightcast_job_postings.csv")
 eda.head()
 ```
 
