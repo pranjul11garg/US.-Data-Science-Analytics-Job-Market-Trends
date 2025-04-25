@@ -8,12 +8,16 @@ website:
       - href: index.qmd
         text: "Home"
       - text: "Data Cleaning & Exploration"
-        href: eda.ipynb
-      - text: "ML Methods"
-        href: ml_analysis.ipynb
-      - text: "NLP Methods"
-        href: nlp_methods.ipynb
-        
+        menu:
+          - text: "Data Cleaning"
+            href: data_cleaning.ipynb
+          - text: "Exploratory Data Analysis"
+            href: eda.ipynb
+      - href: ml_analysis.ipynb
+        text: "ML Methods"
+      - href: nlp_methods.ipynb
+        text: "NLP Methods"
+
   repo-url: "https://github.com/pranjul11garg/ad688-employability-sp25A1-group11"
 
 format:
