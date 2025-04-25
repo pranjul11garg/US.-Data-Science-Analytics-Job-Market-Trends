@@ -1,0 +1,126 @@
+```{python}
+
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.preprocessing import LabelEncoder
+from sklearn.metrics import adjusted_rand_score
+
+
+eda = pd.read_csv("data/eda_data.csv")
+eda
+```
+
+
+```{python}
+
+features = eda[['SALARY', 'MAX_YEARS_EXPERIENCE', 'MIN_YEARS_EXPERIENCE']].copy()
+
+for col in ['MAX_YEARS_EXPERIENCE', 'MIN_YEARS_EXPERIENCE', 'SALARY']:
+    features[col] = pd.to_numeric(features[col], errors='coerce')
+
+features = features.dropna()
+
+scaler = StandardScaler()
+X = scaler.fit_transform(features)
+
+kmeans = KMeans(n_clusters=4, random_state=688)
+eda.loc[features.index, 'Cluster'] = kmeans.fit_predict(X)
+
+true_labels = eda.loc[features.index, 'SOC_2021_4_NAME']
+true_labels_encoded = LabelEncoder().fit_transform(true_labels)
+
+ari = adjusted_rand_score(true_labels_encoded, eda.loc[features.index, 'Cluster'])
+print("Adjusted Rand Index (using SOC):", ari)
+
+```
+
+
+```{python}
+
+plt.figure(figsize=(10, 6))
+
+# Scatter plot of salary vs. max experience, colored by cluster
+sns.scatterplot(
+    x=features['SALARY'],
+    y=features['MAX_YEARS_EXPERIENCE'],
+    hue=eda.loc[features.index, 'Cluster'],
+    palette='Set2',
+    s=40,
+    edgecolor='white',
+    linewidth=0.5
+)
+
+# Plot centroids
+centroids = kmeans.cluster_centers_
+plt.scatter(
+    centroids[:, 0] * X.std(axis=0)[0] + X.mean(axis=0)[0],
+    centroids[:, 1] * X.std(axis=0)[1] + X.mean(axis=0)[1],
+    marker='X',
+    s=200,
+    c='black',
+    label='Centroids'
+)
+
+# Titles and labels
+plt.title("KMeans Clustering by Salary and Max Years Experience", fontsize=16)
+plt.xlabel("Salary", fontsize=12)
+plt.ylabel("Max Years Experience", fontsize=12)
+plt.legend(title='Cluster', loc='upper right')
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+```
+
+
+```{python}
+
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error, r2_score
+
+features1 = eda[['MIN_YEARS_EXPERIENCE', 'MAX_YEARS_EXPERIENCE']].copy()
+
+for col in features.columns:
+    features[col] = pd.to_numeric(features[col], errors='coerce')
+
+features = features.dropna()
+
+X = features
+y = eda.loc[X.index, 'SALARY']
+
+X = X.dropna()
+y = y.loc[X.index]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state=688)
+
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+mse = mean_squared_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+
+print("Model Coefficients:", model.coef_)
+print("Model Intercept:", model.intercept_)
+print("Mean Squared Error:", mse)
+print("R-squared:", r2)
+
+
+```
+
+
+```{python}
+
+plt.figure(figsize =(10,6))
+plt.scatter(y_test, y_pred, alpha = 0.6, color = 'skyblue')
+plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], color='red', linestyle='--', lw=2)
+plt.xlabel("Actual Salary")
+plt.ylabel("Predicted Salary")
+plt.title("Actual vs Predicted Salary (Multiple Regression)")
+plt.grid(True)
+plt.tight_layout()
+plt.show()

@@ -13,6 +13,8 @@ eda = pd.read_csv("data/eda_data.csv")
 #eda = pd.read_csv('./data/eda_data.csv')
 eda = pd.read_csv("columns.csv")
 eda.head()
+```
+
 ```{python}
 import os
 print("Current working directory:", os.getcwd())
