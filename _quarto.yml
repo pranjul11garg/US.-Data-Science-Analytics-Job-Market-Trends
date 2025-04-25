@@ -8,11 +8,7 @@ website:
       - href: index.qmd
         text: "Home"
       - text: "Data Cleaning & Exploration"
-        menu:
-          - text: "Data Cleaning"
-            href: data_cleaning.ipynb
-          - text: "Exploratory Data Analysis"
-            href: eda.ipynb
+        href: eda.ipynb
       - text: "ML Methods"
         href: ml_analysis.ipynb
       - text: "NLP Methods"
