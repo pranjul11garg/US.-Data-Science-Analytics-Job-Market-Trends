@@ -54,9 +54,9 @@ body {
 
 /* Utility container for consistent horizontal padding */
 .container {
-  width: 90%;
-  max-width: 1400px;
-  margin: 0 auto;
+  width: 75%;                              /* Adjusted to cover at least 75% of the page */
+  max-width: 1600px;                       /* Increased for wider content */
+  margin: 0 auto;                          /* Ensures centering */
   padding: 3rem 0;
   position: relative;
   z-index: 1;
@@ -201,13 +201,13 @@ img:hover, iframe:hover {
 }
 
 /*──────────────────────────────────────────────────────────────────────
- 🌐 Navbar (Revamped for Better Visibility)
+ 🌐 Navbar (Revamped for Better Visibility and Size Adjustment)
 ──────────────────────────────────────────────────────────────────────*/
 .navbar, .navbar-expand-lg {
   background: rgba(200, 0, 0, 0.95) !important; /* Solid red with slight transparency */
   border-bottom: 1px solid var(--white) !important;
   box-shadow: var(--shadow);
-  padding: 1.25rem 0;
+  padding: 1rem 0;                         /* Reduced padding for better fit */
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -220,7 +220,7 @@ img:hover, iframe:hover {
 
 .navbar-brand {
   font-family: var(--font-heading);
-  font-size: clamp(1.75rem, 3vw, 2rem);
+  font-size: clamp(1.25rem, 2vw, 1.5rem); /* Reduced font size */
   color: var(--white) !important;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); /* Shadow for readability */
   display: flex;
@@ -228,9 +228,14 @@ img:hover, iframe:hover {
   gap: 0.5rem;
 }
 
+/* Removed the star */
 .navbar-brand::before {
-  content: '🌟';
-  font-size: 1.5rem;
+  content: none;                           /* Star removed */
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
 }
 
 .navbar-nav .nav-link {
@@ -238,7 +243,7 @@ img:hover, iframe:hover {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); /* Shadow for readability */
   margin-right: 1.5rem;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 0.9rem;                       /* Reduced font size from 1.1rem */
   position: relative;
   transition: color var(--transition);
 }
@@ -262,16 +267,42 @@ img:hover, iframe:hover {
   color: var(--accent) !important;
 }
 
+/* Search button styling */
+.navbar .search-btn {
+  background: var(--primary);              /* Red background */
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.navbar .search-btn:hover {
+  background: var(--primary-dark);
+}
+
 /* Compact on mobile */
 @media (max-width: 992px) {
   .navbar-nav .nav-link {
       margin-right: 0;
-      padding: 0.75rem;
+      padding: 0.5rem;                     /* Adjusted padding for mobile */
+      font-size: 0.85rem;                  /* Slightly smaller for mobile */
   }
   .navbar-collapse {
       background: var(--primary);
       border-radius: 0.5rem;
       padding: 1rem;
+  }
+  .navbar .search-btn {
+      width: 35px;
+      height: 35px;
+      font-size: 0.9rem;
   }
 }
 
@@ -474,6 +505,7 @@ button:active {
 ──────────────────────────────────────────────────────────────────────*/
 @media (max-width: 768px) {
   .container {
+      width: 90%;                          /* Adjust for smaller screens */
       padding: 2rem 1rem;
   }
   .section {
@@ -490,7 +522,7 @@ button:active {
 /* Ultra-wide screens */
 @media (min-width: 1920px) {
   .container {
-      max-width: 1600px;
+      max-width: 1800px;                   /* Increased for ultra-wide screens */
   }
 }
 
