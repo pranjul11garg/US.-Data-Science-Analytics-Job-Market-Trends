@@ -6,7 +6,7 @@ format: html
 ```{python}
 import pandas as pd
 #eda = pd.read_csv('./data/eda_data.csv')
-eda = pd.read_csv("/Users/prawnz/Documents/Semester2/Web_analytics/eda_data.csv")
+eda = pd.read_csv("eda_new.csv")
 eda.head()
 ```
 
