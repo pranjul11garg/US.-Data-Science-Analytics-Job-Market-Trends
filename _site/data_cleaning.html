@@ -4966,7 +4966,7 @@ background: var(--text);
  <span class="dropdown-text">Data Cleaning</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./eda.html">
+    <a class="dropdown-item" href="./eda.ipynb">
  <span class="dropdown-text">Exploratory Data Analysis</span></a>
   </li>  
         <li>
@@ -4986,7 +4986,7 @@ background: var(--text);
   </li>  
         <li>
     <a class="dropdown-item" href="./analytic_model.qmd">
- <span class="dropdown-text">Unsupervise Machine Learning</span></a>
+ <span class="dropdown-text">Unsupervised Machine Learning</span></a>
   </li>  
     </ul>
   </li>
@@ -5027,7 +5027,7 @@ background: var(--text);
 
 
 <p>This page presents our data cleaning and prepping part.</p>
-<div id="429bb4ea" class="cell" data-execution_count="1">
+<div id="e48ff182" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -5044,13 +5044,13 @@ background: var(--text);
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>]</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>eda_data <span class="op">=</span> df[columns_to_keep]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/5_/7850fm454vb567dm0m8jx2d80000gn/T/ipykernel_92713/1990915256.py:6: DtypeWarning:
+<pre><code>/var/folders/5_/7850fm454vb567dm0m8jx2d80000gn/T/ipykernel_95277/1990915256.py:6: DtypeWarning:
 
 Columns (19,30) have mixed types. Specify dtype option on import or set low_memory=False.
 </code></pre>
 </div>
 </div>
-<div id="1b4de13d" class="cell" data-execution_count="2">
+<div id="bf090931" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>msno.heatmap(eda_data)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&quot;Missing Values Heatmap&quot;</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">&quot;figures/missingno_heatmap.svg&quot;</span>, <span class="bu">format</span><span class="op">=</span><span class="st">&#39;svg&#39;</span>, bbox_inches<span class="op">=</span><span class="st">&#39;tight&#39;</span>)</span>
@@ -5063,7 +5063,7 @@ Columns (19,30) have mixed types. Specify dtype option on import or set low_memo
 </div>
 </div>
 </div>
-<div id="b185943a" class="cell" data-execution_count="3">
+<div id="f94e0d35" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;SALARY&quot;</span> <span class="kw">in</span> eda_data.columns:</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    eda_data[<span class="st">&quot;SALARY&quot;</span>].fillna(eda_data[<span class="st">&quot;SALARY&quot;</span>].median(), inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
@@ -5100,7 +5100,7 @@ Columns (19,30) have mixed types. Specify dtype option on import or set low_memo
 <span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(eda_data.isnull().<span class="bu">sum</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/5_/7850fm454vb567dm0m8jx2d80000gn/T/ipykernel_92713/1295971972.py:2: FutureWarning:
+<pre><code>/var/folders/5_/7850fm454vb567dm0m8jx2d80000gn/T/ipykernel_95277/1295971972.py:2: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -5109,14 +5109,14 @@ For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using
 
 
 
-/var/folders/5_/7850fm454vb567dm0m8jx2d80000gn/T/ipykernel_92713/1295971972.py:2: SettingWithCopyWarning:
+/var/folders/5_/7850fm454vb567dm0m8jx2d80000gn/T/ipykernel_95277/1295971972.py:2: SettingWithCopyWarning:
 
 
 A value is trying to be set on a copy of a slice from a DataFrame
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
 
-/var/folders/5_/7850fm454vb567dm0m8jx2d80000gn/T/ipykernel_92713/1295971972.py:7: FutureWarning:
+/var/folders/5_/7850fm454vb567dm0m8jx2d80000gn/T/ipykernel_95277/1295971972.py:7: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -5125,18 +5125,18 @@ For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using
 
 
 
-/var/folders/5_/7850fm454vb567dm0m8jx2d80000gn/T/ipykernel_92713/1295971972.py:7: FutureWarning:
+/var/folders/5_/7850fm454vb567dm0m8jx2d80000gn/T/ipykernel_95277/1295971972.py:7: FutureWarning:
 
 Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value &#39;Unknown&#39; has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
 
-/var/folders/5_/7850fm454vb567dm0m8jx2d80000gn/T/ipykernel_92713/1295971972.py:7: SettingWithCopyWarning:
+/var/folders/5_/7850fm454vb567dm0m8jx2d80000gn/T/ipykernel_95277/1295971972.py:7: SettingWithCopyWarning:
 
 
 A value is trying to be set on a copy of a slice from a DataFrame
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
 
-/var/folders/5_/7850fm454vb567dm0m8jx2d80000gn/T/ipykernel_92713/1295971972.py:15: FutureWarning:
+/var/folders/5_/7850fm454vb567dm0m8jx2d80000gn/T/ipykernel_95277/1295971972.py:15: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -5145,14 +5145,14 @@ For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using
 
 
 
-/var/folders/5_/7850fm454vb567dm0m8jx2d80000gn/T/ipykernel_92713/1295971972.py:15: SettingWithCopyWarning:
+/var/folders/5_/7850fm454vb567dm0m8jx2d80000gn/T/ipykernel_95277/1295971972.py:15: SettingWithCopyWarning:
 
 
 A value is trying to be set on a copy of a slice from a DataFrame
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
 
-/var/folders/5_/7850fm454vb567dm0m8jx2d80000gn/T/ipykernel_92713/1295971972.py:21: FutureWarning:
+/var/folders/5_/7850fm454vb567dm0m8jx2d80000gn/T/ipykernel_95277/1295971972.py:21: FutureWarning:
 
 A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
@@ -5161,7 +5161,7 @@ For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using
 
 
 
-/var/folders/5_/7850fm454vb567dm0m8jx2d80000gn/T/ipykernel_92713/1295971972.py:21: SettingWithCopyWarning:
+/var/folders/5_/7850fm454vb567dm0m8jx2d80000gn/T/ipykernel_95277/1295971972.py:21: SettingWithCopyWarning:
 
 
 A value is trying to be set on a copy of a slice from a DataFrame
@@ -5174,7 +5174,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 ✅ Missing value handling complete.</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/5_/7850fm454vb567dm0m8jx2d80000gn/T/ipykernel_92713/1295971972.py:26: SettingWithCopyWarning:
+<pre><code>/var/folders/5_/7850fm454vb567dm0m8jx2d80000gn/T/ipykernel_95277/1295971972.py:26: SettingWithCopyWarning:
 
 
 A value is trying to be set on a copy of a slice from a DataFrame

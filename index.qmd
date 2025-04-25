@@ -1,6 +1,12 @@
 ---
 title: "Trends in Data Science & Business Analytics!"
 format: html
+jupyter: python3
+execute:
+  echo: true
+  warning: false
+  error: true
+toc: true
 ---
 
 Welcome to our deep dive into the evolving landscape of Data Science and Business Analytics in the United States. As industries across the nation increasingly rely on data-driven insights, the role of data science and analytics has become paramount in shaping business strategies, optimizing operations, and driving innovation.

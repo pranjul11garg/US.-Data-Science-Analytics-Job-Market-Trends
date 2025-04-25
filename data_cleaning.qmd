@@ -1,8 +1,13 @@
 ---
 title: "Data Cleaning"
 format: html
+jupyter: python3
+execute:
+  echo: true
+  warning: false
+  error: true
+toc: true
 ---
-
 This page presents our data cleaning and prepping part.
 
 ```{python}
