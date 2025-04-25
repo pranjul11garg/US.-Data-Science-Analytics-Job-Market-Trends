@@ -6,18 +6,18 @@ format:
     number-sections: true
 ---
 
-# Introduction
+# 1. Introduction
 
 {{<include "index.qmd">}}
 
-# Data Cleaning
+# 2. Data Cleaning
 
-{{<include "data_cleaning.qmd">}}
+{{<include "data_cleaning.ipynb">}}
 
-# EDA
+# 3.  EDA
 
-{{<include "eda.qmd">}}
+{{<include "eda.ipynb">}}
 
-# Skill Gap Analysis
+# 4. Skill Gap Analysis
 
 {{<include "skill_gap_analysis.ipynb">}}

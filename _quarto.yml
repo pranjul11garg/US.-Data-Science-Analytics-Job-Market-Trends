@@ -5,7 +5,7 @@ project:
   render:
     - index.qmd
     - data_cleaning.ipynb
-    - skill_gap_analysis.ipynb
+    - skill_gap.ipynb
     - rm_model.ipynb
     - analytics_model.ipynb
     - eda.ipynb
@@ -23,7 +23,7 @@ website:
           - text: "Exploratory Data Analysis"
             href: eda.ipynb
           - text: "Skill Gap Analysis"
-            href: skill_gap_analysis.ipynb
+            href: skill_gap.ipynb
       - text: "ML Methods"
         menu:
           - text: "Supervise Machine Learning"
@@ -49,3 +49,6 @@ execute:
   echo: true
   eval: true
   code-fold: true
+
+
+
