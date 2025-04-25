@@ -11,7 +11,7 @@ import pandas as pd
 #eda = pd.read_csv(/data/eda_data.csv')
 eda = pd.read_csv("data/eda_data.csv")
 #eda = pd.read_csv('./data/eda_data.csv')
-eda = pd.read_csv("columns.csv")
+eda = pd.read_csv("/data/eda_data.csv")
 eda.head()
 ```
 

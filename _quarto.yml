@@ -3,9 +3,10 @@ project:
   render:
     - index.qmd
     - data_cleaning.qmd
-    - eda.qmd
     - skill_gap_analysis.ipynb
-    - ml_methods.ipynb
+    - rm_model.ipynb
+    - analytics_model.qmd
+    - eda.ipynb
 
 website:
   title: "Group 11: Trends in Data Science & Business Analytics"
@@ -18,11 +19,16 @@ website:
           - text: "Data Cleaning"
             href: data_cleaning.qmd
           - text: "Exploratory Data Analysis"
-            href: eda.qmd
+            href: eda.ipynb
           - text:  "skill gap"
             href: skill_gap_analysis.ipynb
-      -  href: ml_methods.ipynb
-         text: "ML Methods"
+      - text: "ML Methods"
+        menu:
+          - text: "Supervise Machine Learning"
+            href: rm_model.ipynb
+          - text: "Unsupervise Machine Learning"
+            href: analytic_model.qmd
+
   repo-url: "https://github.com/pranjul11garg/ad688-employability-sp25A1-group11"
 
 format:
