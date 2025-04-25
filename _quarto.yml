@@ -3,10 +3,11 @@ project:
   render:
     - index.qmd
     - data_cleaning.qmd
+    - eda.ipynb
     - skill_gap_analysis.ipynb
     - rm_model.ipynb
     - analytics_model.qmd
-    - eda.ipynb
+    
 
 website:
   title: "Group 11: Trends in Data Science & Business Analytics"
@@ -20,7 +21,7 @@ website:
             href: data_cleaning.qmd
           - text: "Exploratory Data Analysis"
             href: eda.ipynb
-          - text:  "skill gap"
+          - text:  "Skill Gap Analysis"
             href: skill_gap_analysis.ipynb
       - text: "ML Methods"
         menu:
