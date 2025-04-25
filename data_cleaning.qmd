@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import missingno as msno
 
-df = pd.read_csv("data/lightcast_job_postings.csv")
+df = pd.read_csv("./data/lightcast_job_postings.csv")
 
 columns_to_keep = [
     'COMPANY', 'LOCATION', 'POSTED', 'MIN_EDULEVELS_NAME', 'MAX_EDULEVELS_NAME',

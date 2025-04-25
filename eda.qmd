@@ -1,15 +1,7 @@
 ---
-title: "Exploratory Data Analysis"
-author: "Your Name"
-date: "2025-04-25"
-format:
-  html:
-    toc: true
-    theme: cosmo
-    code-fold: true
-  ipynb: default
+title: "EDA"
+format: html
 ---
-
 
 ```{python}
 import pandas as pd
