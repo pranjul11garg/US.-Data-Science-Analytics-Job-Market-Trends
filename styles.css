@@ -54,7 +54,7 @@ body {
 
 /* Utility container for consistent horizontal padding */
 .container {
-  width: 75%;                              /* Adjusted to cover at least 75% of the page */
+  width: 80%;                              /* Adjusted to cover 80% of the page */
   max-width: 1600px;                       /* Increased for wider content */
   margin: 0 auto;                          /* Ensures centering */
   padding: 3rem 0;
@@ -87,6 +87,7 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: capitalize;
   letter-spacing: -0.02em;
   position: relative;
+  text-align: justify;                     /* Justify headings */
 }
 
 h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); }
@@ -108,6 +109,7 @@ p {
   margin-bottom: 1.5rem;
   color: var(--muted);
   font-size: clamp(1rem, 2vw, 1.125rem);
+  text-align: justify;                     /* Justify paragraphs */
 }
 
 /*──────────────────────────────────────────────────────────────────────
@@ -192,7 +194,7 @@ img, iframe {
   border-radius: 1rem;
   box-shadow: var(--shadow);
   transition: transform var(--transition), box-shadow var(--transition);
-  object-fit: cover;
+  object-fit: cover;                       /* Ensure images fill their containers */
 }
 
 img:hover, iframe:hover {
@@ -200,18 +202,27 @@ img:hover, iframe:hover {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
+/* Ensure images within sections fill their containers */
+.section img, .container img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
 /*──────────────────────────────────────────────────────────────────────
- 🌐 Navbar (Revamped for Better Visibility and Size Adjustment)
+ 🌐 Navbar (Revamped for Right-Aligned Links and Search Button Color)
 ──────────────────────────────────────────────────────────────────────*/
 .navbar, .navbar-expand-lg {
   background: rgba(200, 0, 0, 0.95) !important; /* Solid red with slight transparency */
   border-bottom: 1px solid var(--white) !important;
   box-shadow: var(--shadow);
-  padding: 1rem 0;                         /* Reduced padding for better fit */
+  padding: 1rem 0;
   position: sticky;
   top: 0;
   z-index: 1000;
   transition: background var(--transition), transform 0.5s ease;
+  display: flex;
+  align-items: center;
 }
 
 .navbar.scrolled {
@@ -220,9 +231,9 @@ img:hover, iframe:hover {
 
 .navbar-brand {
   font-family: var(--font-heading);
-  font-size: clamp(1.25rem, 2vw, 1.5rem); /* Reduced font size */
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
   color: var(--white) !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); /* Shadow for readability */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -230,20 +241,21 @@ img:hover, iframe:hover {
 
 /* Removed the star */
 .navbar-brand::before {
-  content: none;                           /* Star removed */
+  content: none;
 }
 
 .navbar-nav {
   display: flex;
   align-items: center;
+  margin-left: auto;                       /* Shift links to the right */
 }
 
 .navbar-nav .nav-link {
   color: var(--white) !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); /* Shadow for readability */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   margin-right: 1.5rem;
   font-weight: 600;
-  font-size: 0.9rem;                       /* Reduced font size from 1.1rem */
+  font-size: 0.9rem;
   position: relative;
   transition: color var(--transition);
 }
@@ -269,8 +281,8 @@ img:hover, iframe:hover {
 
 /* Search button styling */
 .navbar .search-btn {
-  background: var(--primary);              /* Red background */
-  color: var(--white);
+  background: var(--white);                /* White background */
+  color: var(--primary);                   /* Red icon/text */
   border: none;
   border-radius: 50%;
   width: 40px;
@@ -284,15 +296,18 @@ img:hover, iframe:hover {
 }
 
 .navbar .search-btn:hover {
-  background: var(--primary-dark);
+  background: #f0f0f0;                     /* Slight gray on hover */
 }
 
 /* Compact on mobile */
 @media (max-width: 992px) {
+  .navbar-nav {
+      margin-left: 0;                      /* Reset for mobile */
+  }
   .navbar-nav .nav-link {
       margin-right: 0;
-      padding: 0.5rem;                     /* Adjusted padding for mobile */
-      font-size: 0.85rem;                  /* Slightly smaller for mobile */
+      padding: 0.5rem;
+      font-size: 0.85rem;
   }
   .navbar-collapse {
       background: var(--primary);
