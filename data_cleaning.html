@@ -5353,7 +5353,8 @@ border: 0;
 </div>
 </div>
 </div>
-<div id="cell-4" class="cell">
+<p>This heatmap shows how much data is missing in each column. Most columns have very little missing data (less than 10%), which is good. A few like MAX_YEARS_EXPERIENCE or MIN_EDULEVELS_NAME have a bit more, but still manageable. Since the missing values aren’t strongly related to each other, we can clean each column separately — maybe by filling in with the median or most common value.</p>
+<div id="cell-5" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;SALARY&quot;</span> <span class="kw">in</span> eda_data.columns:</span>
