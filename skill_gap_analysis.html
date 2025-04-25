@@ -4753,11 +4753,11 @@ vertical-align: -.125em;
 
 --primary: hsl(0, 100%, 40%); 
 --primary-dark: hsl(0, 100%, 30%);
---accent: hsl(345, 75%, 60%); 
+--accent: hsl(345, 75%, 70%); 
 --white: #ffffff;
---black: #222222;
+--black: #333333; 
 
---bg: #f9f9f9;
+--bg: #ffffff; 
 --surface: #ffffff;
 --text: #333333;
 --muted: #666666;
@@ -4785,7 +4785,7 @@ scroll-behavior: smooth;
 overflow-x: hidden;
 }
 body {
-background: linear-gradient(180deg, var(--bg) 0%, #e8ecef 100%);
+background: var(--bg); 
 color: var(--text);
 font-family: var(--font-sans);
 line-height: 1.6;
@@ -4797,7 +4797,7 @@ overflow-x: hidden;
 
 .container {
 width: 90%;
-max-width: 1400px; 
+max-width: 1400px;
 margin: 0 auto;
 padding: 3rem 0;
 position: relative;
@@ -4813,7 +4813,7 @@ z-index: 1;
 --black: #ffffff;
 }
 body {
-background: linear-gradient(180deg, #1a1a1a 0%, #2a2a2a 100%);
+background: var(--bg);
 }
 }
 
@@ -4836,7 +4836,7 @@ bottom: -0.25rem;
 left: 0;
 width: 50px;
 height: 4px;
-background: var(--gradient);
+background: var(--primary); 
 border-radius: 2px;
 }
 p {
@@ -4870,7 +4870,7 @@ color: var(--accent);
 button {
 display: inline-block;
 padding: 0.875em 2em;
-background: var(--gradient);
+background: var(--primary);
 color: var(--white);
 border: none;
 border-radius: 50px;
@@ -4922,10 +4922,8 @@ box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
 .navbar, .navbar-expand-lg {
-background: var(--glass-bg) !important;
-backdrop-filter: blur(10px);
--webkit-backdrop-filter: blur(10px);
-border-bottom: 1px solid var(--glass-border) !important;
+background: rgba(200, 0, 0, 0.95) !important; 
+border-bottom: 1px solid var(--white) !important;
 box-shadow: var(--shadow);
 padding: 1.25rem 0;
 position: sticky;
@@ -4934,12 +4932,13 @@ z-index: 1000;
 transition: background var(--transition), transform 0.5s ease;
 }
 .navbar.scrolled {
-background: var(--primary) !important;
+background: var(--primary-dark) !important; 
 }
 .navbar-brand {
 font-family: var(--font-heading);
 font-size: clamp(1.75rem, 3vw, 2rem);
 color: var(--white) !important;
+text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); 
 display: flex;
 align-items: center;
 gap: 0.5rem;
@@ -4950,6 +4949,7 @@ font-size: 1.5rem;
 }
 .navbar-nav .nav-link {
 color: var(--white) !important;
+text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); 
 margin-right: 1.5rem;
 font-weight: 600;
 font-size: 1.1rem;
@@ -5003,10 +5003,8 @@ opacity: 0.05;
 z-index: -1;
 }
 .card {
-background: var(--glass-bg);
-backdrop-filter: blur(12px);
--webkit-backdrop-filter: blur(12px);
-border: 1px solid var(--glass-border);
+background: var(--surface);
+border: 1px solid rgba(0, 0, 0, 0.1);
 border-radius: 1rem;
 box-shadow: var(--shadow);
 padding: 2.5rem;
@@ -5022,7 +5020,7 @@ top: 0;
 left: 0;
 width: 100%;
 height: 100%;
-background: var(--gradient);
+background: var(--primary);
 opacity: 0;
 transition: opacity var(--transition);
 z-index: -1;
@@ -5049,11 +5047,9 @@ select {
 width: 100%;
 padding: 1rem;
 margin-bottom: 1.25rem;
-border: 1px solid var(--glass-border);
+border: 1px solid rgba(0, 0, 0, 0.1);
 border-radius: 0.5rem;
-background: var(--glass-bg);
-backdrop-filter: blur(5px);
--webkit-backdrop-filter: blur(5px);
+background: var(--surface);
 font-family: var(--font-sans);
 color: var(--text);
 transition: border-color var(--transition), box-shadow var(--transition);
@@ -5107,7 +5103,7 @@ text-align: left;
 border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 th {
-background: var(--gradient);
+background: var(--primary);
 color: var(--white);
 font-weight: 600;
 text-transform: uppercase;
@@ -5124,7 +5120,7 @@ background: var(--bg);
 border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb {
-background: var(--gradient);
+background: var(--primary);
 border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -5615,7 +5611,7 @@ border: 0;
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">&#39;Team Skills Radar Chart&#39;</span></span>
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>fig.write_html(<span class="st">&quot;figures/skills_radar_chart.html&quot;</span>)</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>fig.write_html(<span class="st">&quot;figures/skill_radar_chart.html&quot;</span>) </span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">&quot;figures/skills_radar_chart.svg&quot;</span>, <span class="bu">format</span><span class="op">=</span><span class="st">&#39;svg&#39;</span>, bbox_inches<span class="op">=</span><span class="st">&#39;tight&#39;</span>)</span>
 <span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
@@ -5857,7 +5853,7 @@ dtype: int64</code></pre>
 <span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>    plot_bgcolor<span class="op">=</span><span class="st">&#39;white&#39;</span>,</span>
 <span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>fig.write_html(<span class="st">&quot;figures/skill_gap_chart.html&quot;</span>)</span>
-<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>fig.write_html(<span class="st">&quot;figures/skill_gap_chart.html&quot;</span>) </span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">&quot;figures/skill_gap_chart.svg&quot;</span>, <span class="bu">format</span><span class="op">=</span><span class="st">&#39;svg&#39;</span>, bbox_inches<span class="op">=</span><span class="st">&#39;tight&#39;</span>)</span>
 <span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
 <span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
