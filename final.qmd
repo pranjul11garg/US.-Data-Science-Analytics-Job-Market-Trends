@@ -1,0 +1,23 @@
+---
+title: "All Analyses"
+format:
+  docx:
+    toc: true
+    number-sections: true
+---
+
+# Introduction
+
+{{<include "index.qmd">}}
+
+# Data Cleaning
+
+{{<include "data_cleaning.qmd">}}
+
+# EDA
+
+{{<include "eda.qmd">}}
+
+# Skill Gap Analysis
+
+{{<include "skill_gap_analysis.ipynb">}}
