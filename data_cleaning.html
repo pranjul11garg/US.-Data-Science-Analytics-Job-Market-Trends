@@ -4791,9 +4791,9 @@ overflow-x: hidden;
 }
 
 .container {
-width: 90%;
-max-width: 1400px;
-margin: 0 auto;
+width: 75%; 
+max-width: 1600px; 
+margin: 0 auto; 
 padding: 3rem 0;
 position: relative;
 z-index: 1;
@@ -4920,7 +4920,7 @@ box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 background: rgba(200, 0, 0, 0.95) !important; 
 border-bottom: 1px solid var(--white) !important;
 box-shadow: var(--shadow);
-padding: 1.25rem 0;
+padding: 1rem 0; 
 position: sticky;
 top: 0;
 z-index: 1000;
@@ -4931,23 +4931,27 @@ background: var(--primary-dark) !important;
 }
 .navbar-brand {
 font-family: var(--font-heading);
-font-size: clamp(1.75rem, 3vw, 2rem);
+font-size: clamp(1.25rem, 2vw, 1.5rem); 
 color: var(--white) !important;
 text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); 
 display: flex;
 align-items: center;
 gap: 0.5rem;
 }
+
 .navbar-brand::before {
-content: '🌟';
-font-size: 1.5rem;
+content: none; 
+}
+.navbar-nav {
+display: flex;
+align-items: center;
 }
 .navbar-nav .nav-link {
 color: var(--white) !important;
 text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); 
 margin-right: 1.5rem;
 font-weight: 600;
-font-size: 1.1rem;
+font-size: 0.9rem; 
 position: relative;
 transition: color var(--transition);
 }
@@ -4968,15 +4972,39 @@ width: 100%;
 color: var(--accent) !important;
 }
 
+.navbar .search-btn {
+background: var(--primary); 
+color: var(--white);
+border: none;
+border-radius: 50%;
+width: 40px;
+height: 40px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1rem;
+cursor: pointer;
+transition: background var(--transition);
+}
+.navbar .search-btn:hover {
+background: var(--primary-dark);
+}
+
 @media (max-width: 992px) {
 .navbar-nav .nav-link {
 margin-right: 0;
-padding: 0.75rem;
+padding: 0.5rem; 
+font-size: 0.85rem; 
 }
 .navbar-collapse {
 background: var(--primary);
 border-radius: 0.5rem;
 padding: 1rem;
+}
+.navbar .search-btn {
+width: 35px;
+height: 35px;
+font-size: 0.9rem;
 }
 }
 
@@ -5141,6 +5169,7 @@ transform: scale(0.95);
 
 @media (max-width: 768px) {
 .container {
+width: 90%; 
 padding: 2rem 1rem;
 }
 .section {
@@ -5156,7 +5185,7 @@ h3 { font-size: 1.5rem; }
 
 @media (min-width: 1920px) {
 .container {
-max-width: 1600px;
+max-width: 1800px; 
 }
 }
 
@@ -5274,7 +5303,7 @@ border: 0;
 
 
 <p>This page presents our data cleaning and prepping part.</p>
-<div id="00852390" class="cell" data-execution_count="1">
+<div id="44695af7" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -5365,7 +5394,7 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.11.12/x64/lib/pyt
 </div>
 </div>
 </div>
-<div id="dea14cdf" class="cell" data-execution_count="2">
+<div id="dfe6c104" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>msno.heatmap(eda_data)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&quot;Missing Values Heatmap&quot;</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">&quot;figures/missingno_heatmap.svg&quot;</span>, <span class="bu">format</span><span class="op">=</span><span class="st">&#39;svg&#39;</span>, bbox_inches<span class="op">=</span><span class="st">&#39;tight&#39;</span>)</span>
@@ -5383,7 +5412,7 @@ Cell <span class="ansi-green-fg">In[2], line 1</span>
 </div>
 </div>
 </div>
-<div id="98804281" class="cell" data-execution_count="3">
+<div id="6860eea3" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;SALARY&quot;</span> <span class="kw">in</span> eda_data.columns:</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    eda_data[<span class="st">&quot;SALARY&quot;</span>].fillna(eda_data[<span class="st">&quot;SALARY&quot;</span>].median(), inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>

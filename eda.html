@@ -4791,9 +4791,9 @@ overflow-x: hidden;
 }
 
 .container {
-width: 90%;
-max-width: 1400px;
-margin: 0 auto;
+width: 75%; 
+max-width: 1600px; 
+margin: 0 auto; 
 padding: 3rem 0;
 position: relative;
 z-index: 1;
@@ -4920,7 +4920,7 @@ box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 background: rgba(200, 0, 0, 0.95) !important; 
 border-bottom: 1px solid var(--white) !important;
 box-shadow: var(--shadow);
-padding: 1.25rem 0;
+padding: 1rem 0; 
 position: sticky;
 top: 0;
 z-index: 1000;
@@ -4931,23 +4931,27 @@ background: var(--primary-dark) !important;
 }
 .navbar-brand {
 font-family: var(--font-heading);
-font-size: clamp(1.75rem, 3vw, 2rem);
+font-size: clamp(1.25rem, 2vw, 1.5rem); 
 color: var(--white) !important;
 text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); 
 display: flex;
 align-items: center;
 gap: 0.5rem;
 }
+
 .navbar-brand::before {
-content: '🌟';
-font-size: 1.5rem;
+content: none; 
+}
+.navbar-nav {
+display: flex;
+align-items: center;
 }
 .navbar-nav .nav-link {
 color: var(--white) !important;
 text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); 
 margin-right: 1.5rem;
 font-weight: 600;
-font-size: 1.1rem;
+font-size: 0.9rem; 
 position: relative;
 transition: color var(--transition);
 }
@@ -4968,15 +4972,39 @@ width: 100%;
 color: var(--accent) !important;
 }
 
+.navbar .search-btn {
+background: var(--primary); 
+color: var(--white);
+border: none;
+border-radius: 50%;
+width: 40px;
+height: 40px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1rem;
+cursor: pointer;
+transition: background var(--transition);
+}
+.navbar .search-btn:hover {
+background: var(--primary-dark);
+}
+
 @media (max-width: 992px) {
 .navbar-nav .nav-link {
 margin-right: 0;
-padding: 0.75rem;
+padding: 0.5rem; 
+font-size: 0.85rem; 
 }
 .navbar-collapse {
 background: var(--primary);
 border-radius: 0.5rem;
 padding: 1rem;
+}
+.navbar .search-btn {
+width: 35px;
+height: 35px;
+font-size: 0.9rem;
 }
 }
 
@@ -5141,6 +5169,7 @@ transform: scale(0.95);
 
 @media (max-width: 768px) {
 .container {
+width: 90%; 
 padding: 2rem 1rem;
 }
 .section {
@@ -5156,7 +5185,7 @@ h3 { font-size: 1.5rem; }
 
 @media (min-width: 1920px) {
 .container {
-max-width: 1600px;
+max-width: 1800px; 
 }
 }
 
@@ -5273,7 +5302,7 @@ border: 0;
 </header>
 
 
-<div id="9de9a8f9" class="cell" data-execution_count="1">
+<div id="6592acc4" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#eda = pd.read_csv(/data/eda_data.csv&#39;)</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>eda <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/eda_data.csv&quot;</span>)</span>
@@ -5350,7 +5379,7 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.11.12/x64/lib/pyt
 </div>
 </div>
 </div>
-<div id="2bab4214" class="cell" data-execution_count="2">
+<div id="8328ae1b" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Current working directory:&quot;</span>, os.getcwd())</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Files in data/:&quot;</span>, os.listdir(<span class="st">&quot;./data&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -5370,7 +5399,7 @@ Cell <span class="ansi-green-fg">In[2], line 3</span>
 </div>
 </div>
 </div>
-<div id="868f6126" class="cell" data-execution_count="3">
+<div id="e1db6fc2" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>eda <span class="op">=</span> pd.read_csv(<span class="st">&#39;./data/eda_data.csv&#39;</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#eda = pd.read_csv(&quot;./data/lightcast_job_postings.csv&quot;)</span></span>
@@ -5444,7 +5473,7 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.11.12/x64/lib/pyt
 </div>
 </div>
 </div>
-<div id="6211791b" class="cell" data-execution_count="4">
+<div id="9caedd5d" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># identifying data analyst jobs by keyword searching</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>keywords <span class="op">=</span> [<span class="st">&#39;Data Analyst&#39;</span>, <span class="st">&#39;Business Analyst&#39;</span>, <span class="st">&#39;Data Engineering&#39;</span>, <span class="st">&#39;Deep Learning&#39;</span>,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;Data Science&#39;</span>, <span class="st">&#39;Data Analysis&#39;</span>,<span class="st">&#39;Data Analytics&#39;</span>,  <span class="st">&#39;Market Research Analyst&#39;</span> </span>
@@ -5488,7 +5517,7 @@ Cell <span class="ansi-green-fg">In[4], line 7</span>, in <span class="ansi-cyan
 </div>
 </div>
 </div>
-<div id="dbccc9fc" class="cell" data-execution_count="5">
+<div id="ebcdadff" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -5879,7 +5908,7 @@ Cell <span class="ansi-green-fg">In[5], line 7</span>
 </div>
 </div>
 </div>
-<div id="beaeb078" class="cell" data-execution_count="6">
+<div id="786fc19f" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -6080,7 +6109,7 @@ Cell <span class="ansi-green-fg">In[6], line 5</span>
 </div>
 </div>
 </div>
-<div id="9b179fbe" class="cell" data-execution_count="7">
+<div id="167a1d92" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -6240,7 +6269,7 @@ Cell <span class="ansi-green-fg">In[7], line 8</span>
 </div>
 </div>
 </div>
-<div id="9a2ab366" class="cell" data-execution_count="8">
+<div id="b5048362" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -6277,7 +6306,7 @@ Cell <span class="ansi-green-fg">In[8], line 5</span>
 </div>
 </div>
 </div>
-<div id="4d25068a" class="cell" data-execution_count="9">
+<div id="daafb569" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -6306,7 +6335,7 @@ Cell <span class="ansi-green-fg">In[9], line 5</span>
 </div>
 </div>
 </div>
-<div id="94e79efe" class="cell" data-execution_count="10">
+<div id="0ad40827" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
