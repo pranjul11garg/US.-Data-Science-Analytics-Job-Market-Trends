@@ -5,6 +5,7 @@ project:
     - data_cleaning.qmd
     - eda.qmd
     - skill_gap_analysis.ipynb
+    - ml_methods.ipynb
 
 website:
   title: "Group 11: Trends in Data Science & Business Analytics"
@@ -20,6 +21,8 @@ website:
             href: eda.qmd
           - text:  "skill gap"
             href: skill_gap_analysis.ipynb
+      -  href: ml_methods.ipynb
+         text: "ML Methods"
   repo-url: "https://github.com/pranjul11garg/ad688-employability-sp25A1-group11"
 
 format:
