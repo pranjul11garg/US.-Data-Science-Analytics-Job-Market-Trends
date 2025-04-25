@@ -1,5 +1,7 @@
 project:
   type: website
+  resources:
+  - figures/
   render:
     - index.qmd
     - data_cleaning.ipynb
@@ -38,9 +40,6 @@ format:
     embed-resources: true
     toc: true
   ipynb: default  # Added to support .ipynb output
-
-resources:
-  - figures
 
 bibliography: references.bib
 csl: csl/econometrica.csl
