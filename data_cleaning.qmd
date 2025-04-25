@@ -20,9 +20,7 @@ columns_to_keep = [
     'SOC_2021_4_NAME', 'NAICS_2022_6', 'NAICS2_NAME', 'REMOTE_TYPE_NAME',
     'SALARY', 'TITLE_NAME', 'SKILLS_NAME', 'SPECIALIZED_SKILLS_NAME'
 ]
-
 eda_data = df[columns_to_keep]
-
 ```
 
 ```{python}
@@ -30,7 +28,6 @@ msno.heatmap(eda_data)
 plt.title("Missing Values Heatmap")
 plt.savefig("figures/missingno_heatmap.svg", format='svg', bbox_inches='tight')
 plt.show()
-
 ```
 
 ```{python}
