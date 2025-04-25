@@ -11,11 +11,10 @@ print("Files in data/:", os.listdir("./data"))
 
 ```{python}
 import pandas as pd
-#eda = pd.read_csv('./data/eda_data.csv')
-eda = pd.read_csv("./data/lightcast_job_postings.csv")
-eda.head()
+eda = pd.read_csv('./data/eda_data.csv')
+#eda = pd.read_csv("./data/lightcast_job_postings.csv")
+#eda.head(10)
 ```
-
 
 ```{python}
 # identifying data analyst jobs by keyword searching
@@ -36,13 +35,13 @@ eda['DATA_ANALYST_JOB'].value_counts()
 ```{python}
 import plotly.express as px
 import plotly.graph_objects as go
+import pandas as pd
+from plotly.subplots import make_subplots
 
-# Group data (same as before)
+# Group data
 df_grouped = eda.groupby(['DATA_ANALYST_JOB', 'NAICS2_NAME']).size().reset_index(name='Job_Count')
 
-# Shorten the industry names (NAICS2_NAME) for better readability
-# Assuming NAICS2_NAME has long names, we'll map them to shorter versions
-# Example: Replace long names with abbreviations or shorter terms
+# Shorten the industry names
 industry_short_names = {
     'Professional, Scientific, and Technical Services': 'Prof. Services',
     'Administrative and Support and Waste Management and Remediation Services': 'Admin & Waste Mgmt',
@@ -54,47 +53,119 @@ industry_short_names = {
     'Retail Trade': 'Retail',
     'Accommodation and Food Services': 'Hospitality',
     'Other Services (except Public Administration)': 'Other Services',
-    # Add more mappings as needed based on your dataset
 }
-
-# Apply the shortened names to the dataframe
 df_grouped['NAICS2_NAME_SHORT'] = df_grouped['NAICS2_NAME'].map(industry_short_names).fillna(df_grouped['NAICS2_NAME'])
 
-# Define a vibrant and modern color palette
-color_map = {
-    False: "#FF6B6B",  # Coral red for False
-    True: "#4ECDC4"    # Teal for True
+# Map DATA_ANALYST_JOB to True/False for the legend
+df_grouped['Job_Type'] = df_grouped['DATA_ANALYST_JOB'].map({True: 'True', False: 'False'})
+
+# Define gradient color palettes for True/False
+color_gradients = {
+    'True': ['#4ECDC4', '#6BE6DE'],  # Teal gradient
+    'False': ['#FF6B6B', '#FF8787']  # Coral red gradient
 }
 
-# Create the bar plot with Plotly Express
-fig = px.bar(df_grouped, 
-             x='NAICS2_NAME_SHORT',  # Use shortened names
-             y='Job_Count',
-             color='DATA_ANALYST_JOB',
-             title="Data & Business Analytics Job Trends",
-             labels={'NAICS2_NAME_SHORT': 'Industry', 'Job_Count': 'Number of Jobs'},
-             barmode='group',
-             color_discrete_map=color_map
-            )
+# Create a subplot with a chart and a table
+fig = make_subplots(
+    rows=2, cols=1,
+    row_heights=[0.8, 0.2],
+    specs=[[{"type": "bar"}], [{"type": "table"}]],
+    vertical_spacing=0.05
+)
 
-# Beautify the layout with a modern, clean design
+# Create the initial bar chart traces
+for job_type in df_grouped['Job_Type'].unique():
+    df_subset = df_grouped[df_grouped['Job_Type'] == job_type]
+    fig.add_trace(
+        go.Bar(
+            x=df_subset['NAICS2_NAME_SHORT'],
+            y=df_subset['Job_Count'],
+            name=job_type,
+            marker=dict(
+                colorscale=[[0, color_gradients[job_type][0]], [1, color_gradients[job_type][1]]],
+                line=dict(width=1.2, color="#2D3748")
+            ),
+            opacity=0.85,
+            text=df_subset['Job_Count'],
+            textposition='outside',
+            textfont=dict(size=12, color="#2D3748", family="Helvetica, sans-serif"),
+        ),
+        row=1, col=1
+    )
+
+# Add a table below the chart
+fig.add_trace(
+    go.Table(
+        header=dict(
+            values=['Industry', 'Job Type', 'Number of Jobs'],
+            font=dict(size=14, color="#2D3748", family="Helvetica, sans-serif"),
+            fill_color='rgba(240, 240, 245, 1)',
+            line_color="#2D3748"
+        ),
+        cells=dict(
+            values=[
+                df_grouped['NAICS2_NAME_SHORT'],
+                df_grouped['Job_Type'],
+                df_grouped['Job_Count']
+            ],
+            font=dict(size=12, color="#2D3748", family="Helvetica, sans-serif"),
+            fill_color='rgba(255, 255, 255, 1)',
+            line_color="#2D3748"
+        )
+    ),
+    row=2, col=1
+)
+
+# Define themes
+light_theme = {
+    'plot_bgcolor': 'rgba(240, 240, 245, 1)',
+    'paper_bgcolor': 'rgba(255, 255, 255, 1)',
+    'font_color': '#2D3748',
+    'grid_color': 'rgba(200, 200, 200, 0.2)',
+    'line_color': '#2D3748',
+    'bg_gradient': 'linear-gradient(135deg, #E6E9FF 0%, #F5F5FA 100%)'
+}
+
+dark_theme = {
+    'plot_bgcolor': 'rgba(30, 30, 40, 1)',
+    'paper_bgcolor': 'rgba(20, 20, 30, 1)',
+    'font_color': '#E2E8F0',
+    'grid_color': 'rgba(255, 255, 255, 0.1)',
+    'line_color': '#E2E8F0',
+    'bg_gradient': 'linear-gradient(135deg, #2D3748 0%, #1A202C 100%)'
+}
+
+# Initial theme
+current_theme = light_theme
+
+# Beautify the layout with advanced interactivity
 fig.update_layout(
     # Sizing and margins
     autosize=True,
-    width=1100,  # Slightly narrower for better focus
-    height=650,  # Adjusted height
-    margin=dict(l=50, r=50, t=90, b=120),  # Adjusted margins for cleaner look
+    width=1200,
+    height=900,
+    margin=dict(l=50, r=50, t=120, b=50),
 
-    # Background and plot styling
-    plot_bgcolor='rgba(240, 240, 245, 1)',  # Softer gray background
-    paper_bgcolor='rgba(255, 255, 255, 1)',  # White paper background
-    font=dict(family="Helvetica, sans-serif", size=14, color="#2D3748"),  # Modern font
+    # Background with animated gradient
+    shapes=[
+        dict(
+            type="rect",
+            x0=0, y0=0, x1=1, y1=1,
+            xref="paper", yref="paper",
+            fillcolor=current_theme['bg_gradient'],
+            line=dict(width=0),
+            layer="below"
+        )
+    ],
+    plot_bgcolor=current_theme['plot_bgcolor'],
+    paper_bgcolor=current_theme['paper_bgcolor'],
+    font=dict(family="Helvetica, sans-serif", size=14, color=current_theme['font_color']),
 
     # Title styling
     title=dict(
         text="Data & Business Analytics Job Trends",
-        font=dict(size=26, color="#2D3748", family="Helvetica, sans-serif"),
-        x=0.5,  # Center the title
+        font=dict(size=30, color=current_theme['font_color'], family="Helvetica, sans-serif"),
+        x=0.5,
         xanchor="center",
         y=0.95,
         yanchor="top"
@@ -103,11 +174,11 @@ fig.update_layout(
     # X-axis styling
     xaxis=dict(
         title="Industry",
-        title_font=dict(size=18, color="#2D3748"),
-        tickfont=dict(size=13, color="#4A5568"),
-        tickangle=-30,  # Slightly less aggressive rotation
-        gridcolor="rgba(200, 200, 200, 0.2)",  # Very light gridlines
-        linecolor="#2D3748",
+        title_font=dict(size=18, color=current_theme['font_color']),
+        tickfont=dict(size=13, color=current_theme['font_color']),
+        tickangle=-30,
+        gridcolor=current_theme['grid_color'],
+        linecolor=current_theme['line_color'],
         linewidth=2,
         showline=True
     ),
@@ -115,11 +186,11 @@ fig.update_layout(
     # Y-axis styling
     yaxis=dict(
         title="Number of Jobs",
-        title_font=dict(size=18, color="#2D3748"),
-        tickfont=dict(size=13, color="#4A5568"),
-        range=[0, df_grouped['Job_Count'].max() * 1.15],  # Slightly tighter range
-        gridcolor="rgba(200, 200, 200, 0.2)",
-        linecolor="#2D3748",
+        title_font=dict(size=18, color=current_theme['font_color']),
+        tickfont=dict(size=13, color=current_theme['font_color']),
+        range=[0, df_grouped['Job_Count'].max() * 1.15],
+        gridcolor=current_theme['grid_color'],
+        linecolor=current_theme['line_color'],
         linewidth=2,
         showline=True
     ),
@@ -127,11 +198,11 @@ fig.update_layout(
     # Legend styling
     legend=dict(
         title="Job Type",
-        font=dict(size=13, color="#2D3748"),
-        bgcolor="rgba(255, 255, 255, 0.95)",
-        bordercolor="#2D3748",
+        font=dict(size=13, color=current_theme['font_color']),
+        bgcolor="rgba(255, 255, 255, 0.95)" if current_theme == light_theme else "rgba(30, 30, 40, 0.95)",
+        bordercolor=current_theme['line_color'],
         borderwidth=1,
-        x=1.02,  # Position outside
+        x=1.02,
         y=0.5,
         xanchor="left",
         yanchor="middle"
@@ -140,32 +211,155 @@ fig.update_layout(
     # Hover and interactivity
     hovermode="closest",
     hoverlabel=dict(
-        bgcolor="rgba(255, 255, 255, 0.9)",
+        bgcolor="rgba(255, 255, 255, 0.9)" if current_theme == light_theme else "rgba(30, 30, 40, 0.9)",
         font_size=13,
         font_family="Helvetica, sans-serif",
-        font_color="#2D3748",
-        bordercolor="#2D3748"
+        font_color=current_theme['font_color'],
+        bordercolor=current_theme['line_color']
     ),
 
-    # Add a subtle shadow effect for depth
-    bargap=0.2,  # Add space between bars for clarity
+    # Bar spacing
+    bargap=0.2,
+
+    # Add interactive controls
+    updatemenus=[
+        # 2D/3D Toggle
+        dict(
+            buttons=[
+                dict(
+                    label="2D View",
+                    method="update",
+                    args=[{"type": "bar"}, {"scene": None}]
+                ),
+                dict(
+                    label="3D View",
+                    method="update",
+                    args=[{"type": "bar", "z": [df_grouped['Job_Count']]}, {"scene": dict(
+                        xaxis=dict(title="Industry"),
+                        yaxis=dict(title="Job Type"),
+                        zaxis=dict(title="Number of Jobs")
+                    )}]
+                )
+            ],
+            direction="down",
+            showactive=True,
+            x=0.1,
+            xanchor="left",
+            y=1.15,
+            yanchor="top"
+        ),
+        # Theme Toggle
+        dict(
+            buttons=[
+                dict(
+                    label="Light Theme",
+                    method="relayout",
+                    args=[{
+                        "plot_bgcolor": light_theme['plot_bgcolor'],
+                        "paper_bgcolor": light_theme['paper_bgcolor'],
+                        "font.color": light_theme['font_color'],
+                        "xaxis.gridcolor": light_theme['grid_color'],
+                        "yaxis.gridcolor": light_theme['grid_color'],
+                        "xaxis.linecolor": light_theme['line_color'],
+                        "yaxis.linecolor": light_theme['line_color'],
+                        "legend.bgcolor": "rgba(255, 255, 255, 0.95)",
+                        "legend.bordercolor": light_theme['line_color'],
+                        "hoverlabel.bgcolor": "rgba(255, 255, 255, 0.9)",
+                        "hoverlabel.bordercolor": light_theme['line_color'],
+                        "hoverlabel.font.color": light_theme['font_color'],
+                        "shapes[0].fillcolor": light_theme['bg_gradient']
+                    }]
+                ),
+                dict(
+                    label="Dark Theme",
+                    method="relayout",
+                    args=[{
+                        "plot_bgcolor": dark_theme['plot_bgcolor'],
+                        "paper_bgcolor": dark_theme['paper_bgcolor'],
+                        "font.color": dark_theme['font_color'],
+                        "xaxis.gridcolor": dark_theme['grid_color'],
+                        "yaxis.gridcolor": dark_theme['grid_color'],
+                        "xaxis.linecolor": dark_theme['line_color'],
+                        "yaxis.linecolor": dark_theme['line_color'],
+                        "legend.bgcolor": "rgba(30, 30, 40, 0.95)",
+                        "legend.bordercolor": dark_theme['line_color'],
+                        "hoverlabel.bgcolor": "rgba(30, 30, 40, 0.9)",
+                        "hoverlabel.bordercolor": dark_theme['line_color'],
+                        "hoverlabel.font.color": dark_theme['font_color'],
+                        "shapes[0].fillcolor": dark_theme['bg_gradient']
+                    }]
+                )
+            ],
+            direction="down",
+            showactive=True,
+            x=0.3,
+            xanchor="left",
+            y=1.15,
+            yanchor="top"
+        ),
+        # Voice Narration (Browser-dependent)
+        dict(
+            buttons=[
+                dict(
+                    label="Narrate Insights",
+                    method="animate",
+                    args=[None, {
+                        "frame": {"duration": 0},
+                        "fromcurrent": True,
+                        "transition": {"duration": 0},
+                        "mode": "immediate"
+                    }],
+                    execute=True,
+                    labeljs="() => { const msg = new SpeechSynthesisUtterance('The top industry is ' + '" +
+                           df_grouped.loc[df_grouped['Job_Count'].idxmax()]['NAICS2_NAME_SHORT'] +
+                           " with " + df_grouped['Job_Count'].max() + " jobs.'); window.speechSynthesis.speak(msg); }"
+                )
+            ],
+            direction="down",
+            showactive=False,
+            x=0.5,
+            xanchor="left",
+            y=1.15,
+            yanchor="top"
+        )
+    ],
+
+    # Add a slider for filtering job counts
+    sliders=[
+        dict(
+            active=0,
+            currentvalue={"prefix": "Min Job Count: "},
+            pad={"t": 50},
+            steps=[
+                dict(
+                    label=str(i),
+                    method="update",
+                    args=[
+                        {"visible": [True if df_grouped['Job_Count'][j] >= i else False for j in range(len(df_grouped))]},
+                        {"title": f"Industries with At Least {i} Jobs"}
+                    ]
+                ) for i in range(0, int(df_grouped['Job_Count'].max()) + 500, 500)
+            ]
+        )
+    ]
 )
 
-# Customize the bars
+# Customize the bars with animations and hover effects
 fig.update_traces(
     marker=dict(
-        line=dict(width=1.2, color="#2D3748"),  # Thinner border for elegance
-        # Add a gradient effect to the bars
-        coloraxis=None,
+        line=dict(width=1.2, color="#2D3748")
     ),
-    opacity=0.85,  # Slight transparency for softness
-    text=df_grouped['Job_Count'],  # Add labels on bars
-    textposition='outside',  # Place labels outside for clarity
-    textfont=dict(size=12, color="#2D3748", family="Helvetica, sans-serif"),
-    texttemplate='%{text}',  # Show just the number
+    opacity=0.85,
+    hovertemplate="<b>%{x}</b><br>Type: %{fullData.name}<br>Jobs: %{y}<extra></extra>",
+    transition=dict(duration=600, easing="cubic-in-out"),
+    animation=dict(
+        frame=dict(duration=600, redraw=True),
+        fromcurrent=True,
+        transition=dict(duration=600, easing="cubic-in-out")
+    )
 )
 
-# Add a subtle annotation for the highest job count
+# Add annotation for the highest job count
 max_job = df_grouped.loc[df_grouped['Job_Count'].idxmax()]
 fig.add_annotation(
     x=max_job['NAICS2_NAME_SHORT'],
@@ -182,19 +376,60 @@ fig.add_annotation(
     borderpad=4
 )
 
+# Add a download button for the table
+fig.update_layout(
+    annotations=[
+        dict(
+            text="Download Table as CSV",
+            x=1.0,
+            y=-0.2,
+            xref="paper",
+            yref="paper",
+            showarrow=False,
+            font=dict(size=12, color="#2D3748"),
+            bgcolor="rgba(255, 255, 255, 0.85)",
+            bordercolor="#2D3748",
+            borderwidth=1,
+            borderpad=4,
+            clicktoshow="onoff",
+            clickevent="download",
+            download=dict(
+                filename="job_trends_data.csv",
+                content=df_grouped[['NAICS2_NAME_SHORT', 'Job_Type', 'Job_Count']].to_csv(index=False)
+            )
+        )
+    ]
+)
+
+# Show the plot
+fig.show()
 
 ```
-
 
 ```{python}
 import plotly.express as px
 import plotly.graph_objects as go
 
+# Debug: Check df_grouped (optional, to ensure it has the right columns)
+# print("Columns in df_grouped:", df_grouped.columns)
+# print("First few rows of df_grouped:\n", df_grouped.head())
+
 # Identify the top 10 industries with the most data analyst jobs
-top_industries = df_grouped.groupby("NAICS2_NAME")["Job_Count"].sum().nlargest(10).index
+top_industries = (
+    df_grouped
+    .groupby("NAICS2_NAME")["Job_Count"]
+    .sum()
+    .nlargest(10)
+    .index
+)
 
 # Filter the dataset for top industries
-df_top_industries = df_grouped[df_grouped["NAICS2_NAME"].isin(top_industries)].copy()
+df_top_industries = df_grouped[
+    df_grouped["NAICS2_NAME"].isin(top_industries)
+].copy()
+
+# Reset the index to start from 0
+df_top_industries = df_top_industries.reset_index(drop=True)
 
 # Shorten industry names for better readability
 industry_short_names = {
@@ -209,155 +444,152 @@ industry_short_names = {
     'Accommodation and Food Services': 'Hospitality',
     'Other Services (except Public Administration)': 'Other Services',
 }
-df_top_industries['NAICS2_NAME_SHORT'] = df_top_industries['NAICS2_NAME'].map(industry_short_names).fillna(df_top_industries['NAICS2_NAME'])
+df_top_industries['NAICS2_NAME_SHORT'] = (
+    df_top_industries['NAICS2_NAME']
+    .map(industry_short_names)
+    .fillna(df_top_industries['NAICS2_NAME'])
+)
 
-# Update DATA_ANALYST_JOB labels for clarity
-df_top_industries['Job_Category'] = df_top_industries['DATA_ANALYST_JOB'].map({True: 'Data Analyst', False: 'Business Analyst'})
+# Map DATA_ANALYST_JOB to True/False for the legend
+df_top_industries['Job_Type'] = df_top_industries['DATA_ANALYST_JOB'].map(
+    {True: 'True', False: 'False'}
+)
 
-# Define a modern, vibrant color palette for industries (10 colors for top 10 industries)
-color_palette = [
-    '#FF6B6B',  # Coral Red
-    '#4ECDC4',  # Teal
-    '#45B7D1',  # Sky Blue
-    '#96CEB4',  # Sage Green
-    '#FFEEAD',  # Soft Yellow
-    '#D4A5A5',  # Dusty Rose
-    '#9B59B6',  # Purple
-    '#3498DB',  # Bright Blue
-    '#E67E22',  # Orange
-    '#1ABC9C',  # Turquoise
-]
-color_map = {industry: color for industry, color in zip(df_top_industries['NAICS2_NAME_SHORT'].unique(), color_palette)}
+# Define a gradient color palette for True/False
+color_palette = {
+    'True': ['#4ECDC4', '#6BE6DE'],   # Teal gradient
+    'False': ['#FF6B6B', '#FF8787']   # Coral Red gradient
+}
 
 # Create the bar chart
-fig = px.bar(df_top_industries, 
-             x="Job_Category",  # Use the updated labels
-             y="Job_Count", 
-             color="NAICS2_NAME_SHORT",
-             title="Top 10 Industries Hiring Data & Business Analysts",
-             labels={'Job_Category': 'Job Category', 'Job_Count': 'Number of Jobs', 'NAICS2_NAME_SHORT': 'Industry'},
-             barmode='group')
+fig = px.bar(
+    df_top_industries,
+    x="NAICS2_NAME_SHORT",
+    y="Job_Count",
+    color="Job_Type",
+    title="Top 10 Industries Hiring Data & Business Analysts",
+    labels={
+        'NAICS2_NAME_SHORT': 'Industry',
+        'Job_Count': 'Number of Jobs',
+        'Job_Type': 'Job Type'
+    },
+    barmode='group'
+)
 
-# Beautify the layout
+# Beautify the layout with advanced styling
 fig.update_layout(
-    # Sizing and margins
     autosize=True,
-    width=1150,  # Slightly wider for balance
-    height=650,  # Adjusted height
-    margin=dict(l=60, r=150, t=100, b=80),  # Adjusted for legend and title
+    width=1200,
+    height=700,
+    margin=dict(l=60, r=150, t=120, b=100),
 
-    # Background and plot styling
-    plot_bgcolor='rgba(245, 245, 250, 1)',  # Very light lavender-gray
-    paper_bgcolor='rgba(255, 255, 255, 1)',  # White paper background
-    font=dict(family="Poppins, sans-serif", size=14, color="#2D3436"),  # Modern, elegant font
+    # solid, subtle background
+    plot_bgcolor='rgba(245,245,250,1)',
+    paper_bgcolor='rgba(255,255,255,1)',
 
-    # Title styling
+    # font styling
+    font=dict(family="Inter, sans-serif", size=14, color="#1A202C"),
+
+    # title styling
     title=dict(
         text="Top 10 Industries Hiring Data & Business Analysts",
-        font=dict(size=28, color="#2D3436", family="Poppins, sans-serif"),
+        font=dict(size=30, color="#1A202C", family="Inter, sans-serif"),
         x=0.5,
         xanchor="center",
         y=0.95,
         yanchor="top"
     ),
 
-    # X-axis styling
+    # x-axis styling
     xaxis=dict(
-        title="Job Category",
-        title_font=dict(size=18, color="#2D3436"),
-        tickfont=dict(size=14, color="#636E72"),
-        gridcolor="rgba(200, 200, 200, 0.1)",  # Very subtle gridlines
-        linecolor="#2D3436",
-        linewidth=2,
-        showline=True,
-        tickvals=['Data Analyst', 'Business Analyst'],  # Ensure clarity
-    ),
-
-    # Y-axis styling
-    yaxis=dict(
-        title="Number of Jobs",
-        title_font=dict(size=18, color="#2D3436"),
-        tickfont=dict(size=14, color="#636E72"),
-        range=[0, df_top_industries['Job_Count'].max() * 1.2],  # Extended range
-        gridcolor="rgba(200, 200, 200, 0.3)",
-        linecolor="#2D3436",
+        title="Industry",
+        title_font=dict(size=18, color="#1A202C"),
+        tickfont=dict(size=14, color="#4A5568"),
+        tickangle=45,
+        gridcolor="rgba(200,200,200,0.2)",
+        linecolor="#1A202C",
         linewidth=2,
         showline=True
     ),
 
-    # Legend styling
+    # y-axis styling
+    yaxis=dict(
+        title="Number of Jobs",
+        title_font=dict(size=18, color="#1A202C"),
+        tickfont=dict(size=14, color="#4A5568"),
+        range=[0, df_top_industries['Job_Count'].max() * 1.2],
+        gridcolor="rgba(200,200,200,0.3)",
+        linecolor="#1A202C",
+        linewidth=2,
+        showline=True,
+        zeroline=False
+    ),
+
+    # legend styling
     legend=dict(
-        title="Industry",
-        font=dict(size=13, color="#2D3436"),
-        bgcolor="rgba(255, 255, 255, 0.95)",
-        bordercolor="#2D3436",
+        title="Job Type",
+        font=dict(size=13, color="#1A202C"),
+        bgcolor="rgba(255,255,255,0.95)",
+        bordercolor="#1A202C",
         borderwidth=1,
-        x=1.02,  # Position outside
+        x=1.02,
         y=0.5,
         xanchor="left",
-        yanchor="middle",
-        traceorder="normal",  # Ensure consistent ordering
+        yanchor="middle"
     ),
 
-    # Hover and interactivity
+    # interactivity settings
     hovermode="closest",
-    hoverlabel=dict(
-        bgcolor="rgba(255, 255, 255, 0.9)",
-        font_size=13,
-        font_family="Poppins, sans-serif",
-        font_color="#2D3436",
-        bordercolor="#2D3436",
-        align="left"
-    ),
-
-    # Bar spacing
-    bargap=0.25,  # Add space between bars
-    barnorm=None,
+    bargap=0.25,
+    transition=dict(duration=800, easing="cubic-in-out")
 )
 
-# Customize the bars
+# Customize the bars with gradients and hover effects
+for trace in fig.data:
+    trace.marker = dict(
+        color=color_palette[trace.name][0],
+        colorscale=[
+            [0, color_palette[trace.name][0]],
+            [1, color_palette[trace.name][1]]
+        ],
+        line=dict(width=1, color="#1A202C"),
+        opacity=0.85
+    )
+    trace.hovertemplate = (
+        "<b>%{x}</b><br>"
+        "Type: %{fullData.name}<br>"
+        "Jobs: %{y}<br>"
+        "<extra></extra>"
+    )
+
+# Add bar labels
 fig.update_traces(
-    marker=dict(
-        line=dict(width=1, color="#2D3436"),  # Subtle border
-        # Add a slight gradient effect using opacity
-        opacity=0.9,
-    ),
-    text=df_top_industries['Job_Count'],  # Add labels on bars
-    textposition='outside',  # Place labels outside
-    textfont=dict(size=12, color="#2D3436", family="Poppins, sans-serif"),
-    texttemplate='%{text}',  # Show just the number
-    # Custom hover template
-    hovertemplate="<b>%{fullData.name}</b><br>Category: %{x}<br>Jobs: %{y}<extra></extra>",
+    texttemplate='%{y}',
+    textposition='outside',
+    textfont=dict(size=12, color="#1A202C", family="Inter, sans-serif")
 )
 
-# Add a subtle gradient background effect (using shapes)
-fig.add_shape(
-    type="rect",
-    x0=0, y0=0, x1=1, y1=1,
-    xref="paper", yref="paper",
-    fillcolor="rgba(220, 221, 255, 0.2)",  # Very light gradient overlay
-    line=dict(width=0),
-    layer="below"
-)
-
-# Add an annotation for the highest job count
-max_job = df_top_industries.loc[df_top_industries['Job_Count'].idxmax()]
+# Add annotation for the highest job count
+max_job = df_top_industries['NAICS2_NAME_SHORT'].iloc[
+    df_top_industries['Job_Count'].idxmax()
+]
+max_count = df_top_industries['Job_Count'].max()
 fig.add_annotation(
-    x=max_job['Job_Category'],
-    y=max_job['Job_Count'] * 1.15,
-    text=f"Top: {max_job['NAICS2_NAME_SHORT']}<br>{max_job['Job_Count']} Jobs",
+    x=max_job,
+    y=max_count * 1.15,
+    text=f"Top: {max_job}<br>{max_count} Jobs",
     showarrow=True,
     arrowhead=1,
     ax=20,
     ay=-40,
-    font=dict(size=13, color="#2D3436", family="Poppins, sans-serif"),
-    bgcolor="rgba(255, 255, 255, 0.9)",
-    bordercolor="#2D3436",
+    font=dict(size=13, color="#1A202C", family="Inter, sans-serif"),
+    bgcolor="rgba(255,255,255,0.95)",
+    bordercolor="#1A202C",
     borderwidth=1,
     borderpad=4
 )
 
-# Add a subtle shadow effect to the title (simulated with a duplicate text)
+# Add shadow effect to the title
 fig.add_annotation(
     x=0.5,
     y=0.95,
@@ -365,12 +597,15 @@ fig.add_annotation(
     yref="paper",
     text="Top 10 Industries Hiring Data & Business Analysts",
     showarrow=False,
-    font=dict(size=28, color="rgba(0, 0, 0, 0.05)", family="Poppins, sans-serif"),
+    font=dict(size=30, color="rgba(0,0,0,0.05)", family="Inter, sans-serif"),
     xanchor="center",
     yanchor="top",
     yshift=-2,
     xshift=2
 )
+
+# Show the plot
+fig.show()
 
 ```
 
