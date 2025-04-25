@@ -5213,7 +5213,7 @@ border: 0;
  <span class="dropdown-text">Data Cleaning</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./eda.ipynb">
+    <a class="dropdown-item" href="./eda.html">
  <span class="dropdown-text">Exploratory Data Analysis</span></a>
   </li>  
         <li>
@@ -5274,7 +5274,7 @@ border: 0;
 
 
 <p>This page presents our data cleaning and prepping part.</p>
-<div id="3449e25c" class="cell" data-execution_count="1">
+<div id="00852390" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -5365,7 +5365,7 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.11.12/x64/lib/pyt
 </div>
 </div>
 </div>
-<div id="9914cb85" class="cell" data-execution_count="2">
+<div id="dea14cdf" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>msno.heatmap(eda_data)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&quot;Missing Values Heatmap&quot;</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">&quot;figures/missingno_heatmap.svg&quot;</span>, <span class="bu">format</span><span class="op">=</span><span class="st">&#39;svg&#39;</span>, bbox_inches<span class="op">=</span><span class="st">&#39;tight&#39;</span>)</span>
@@ -5383,7 +5383,7 @@ Cell <span class="ansi-green-fg">In[2], line 1</span>
 </div>
 </div>
 </div>
-<div id="0b3f135a" class="cell" data-execution_count="3">
+<div id="98804281" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;SALARY&quot;</span> <span class="kw">in</span> eda_data.columns:</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    eda_data[<span class="st">&quot;SALARY&quot;</span>].fillna(eda_data[<span class="st">&quot;SALARY&quot;</span>].median(), inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
