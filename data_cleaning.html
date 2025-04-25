@@ -5027,13 +5027,13 @@ background: var(--text);
 
 
 <p>This page presents our data cleaning and prepping part.</p>
-<div id="fdaef472" class="cell" data-execution_count="1">
+<div id="2e83c5ac" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> missingno <span class="im">as</span> msno</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/lightcast_job_postings.csv&quot;</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&quot;./data/lightcast_job_postings.csv&quot;</span>)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>columns_to_keep <span class="op">=</span> [</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;COMPANY&#39;</span>, <span class="st">&#39;LOCATION&#39;</span>, <span class="st">&#39;POSTED&#39;</span>, <span class="st">&#39;MIN_EDULEVELS_NAME&#39;</span>, <span class="st">&#39;MAX_EDULEVELS_NAME&#39;</span>,</span>
@@ -5050,7 +5050,7 @@ background: var(--text);
 Cell <span class="ansi-green-fg">In[1], line 6</span>
 <span class="ansi-green-fg ansi-bold">      3</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">seaborn</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,135,0)">as</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">sns</span>
 <span class="ansi-green-fg ansi-bold">      4</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">missingno</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,135,0)">as</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">msno</span>
-<span class="ansi-green-fg">----&gt; 6</span> df <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">pd</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">read_csv</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&quot;</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">data/lightcast_job_postings.csv</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&quot;</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">----&gt; 6</span> df <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">pd</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">read_csv</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&quot;</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">./data/lightcast_job_postings.csv</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&quot;</span><span class="ansi-yellow-bg">)</span>
 <span class="ansi-green-fg ansi-bold">      8</span> columns_to_keep <span style="color:rgb(98,98,98)">=</span> [
 <span class="ansi-green-fg ansi-bold">      9</span>     <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">COMPANY</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">LOCATION</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">POSTED</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">MIN_EDULEVELS_NAME</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">MAX_EDULEVELS_NAME</span><span style="color:rgb(175,0,0)">&#39;</span>,
 <span class="ansi-green-fg ansi-bold">     10</span>     <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">MIN_YEARS_EXPERIENCE</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">MAX_YEARS_EXPERIENCE</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">TITLE</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">SKILLS</span><span style="color:rgb(175,0,0)">&#39;</span>,
@@ -5114,11 +5114,11 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.11.12/x64/lib/pyt
 <span class="ansi-green-fg ansi-bold">    881</span>         <span style="font-style:italic;color:rgb(95,135,135)"># Binary mode</span>
 <span class="ansi-green-fg ansi-bold">    882</span>         handle <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">open</span>(handle, ioargs<span style="color:rgb(98,98,98)">.</span>mode)
 
-<span class="ansi-red-fg">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;data/lightcast_job_postings.csv&#39;</pre>
+<span class="ansi-red-fg">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;./data/lightcast_job_postings.csv&#39;</pre>
 </div>
 </div>
 </div>
-<div id="fb055fec" class="cell" data-execution_count="2">
+<div id="0996867b" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>msno.heatmap(eda_data)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&quot;Missing Values Heatmap&quot;</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">&quot;figures/missingno_heatmap.svg&quot;</span>, <span class="bu">format</span><span class="op">=</span><span class="st">&#39;svg&#39;</span>, bbox_inches<span class="op">=</span><span class="st">&#39;tight&#39;</span>)</span>
@@ -5136,7 +5136,7 @@ Cell <span class="ansi-green-fg">In[2], line 1</span>
 </div>
 </div>
 </div>
-<div id="b141d5c8" class="cell" data-execution_count="3">
+<div id="c6c8a93b" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;SALARY&quot;</span> <span class="kw">in</span> eda_data.columns:</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    eda_data[<span class="st">&quot;SALARY&quot;</span>].fillna(eda_data[<span class="st">&quot;SALARY&quot;</span>].median(), inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
@@ -5159,19 +5159,18 @@ Cell <span class="ansi-green-fg">In[2], line 1</span>
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> eda_data[col].isnull().<span class="bu">sum</span>() <span class="op">&gt;</span> <span class="dv">0</span>:</span>
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        eda_data[col].fillna(eda_data[col].mode()[<span class="dv">0</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;✅ Remaining missing values filled based on column type.&quot;</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Remaining missing values filled based on column type.&quot;</span>)</span>
 <span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>eda_data.dropna(thresh<span class="op">=</span><span class="bu">len</span>(eda_data) <span class="op">*</span> <span class="fl">0.5</span>, axis<span class="op">=</span><span class="dv">1</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;✅ Missing value handling complete.&quot;</span>)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Missing value handling complete.&quot;</span>)</span>
 <span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="co"># delete duplicates</span></span>
 <span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>eda_data <span class="op">=</span> eda_data.drop_duplicates(subset<span class="op">=</span>[<span class="st">&quot;TITLE&quot;</span>, <span class="st">&quot;COMPANY&quot;</span>, <span class="st">&quot;LOCATION&quot;</span>, <span class="st">&quot;POSTED&quot;</span>])</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>eda_data.to_csv(<span class="st">&quot;./data/eda_data.csv&quot;</span>, index<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(eda_data.isnull().<span class="bu">sum</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(eda_data.isnull().<span class="bu">sum</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
