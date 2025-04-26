@@ -1,16 +1,28 @@
 ---
-title: "Trends in Data Science & Business Analytics!"
+title: "The Next Normal: AI-Driven Analytics in Action"
 format:
-  html:      
+  html:
     theme-variables:
-      container-max-width: "100rem"
-      font-size-base:      "1.2rem"
+      font-size-base: "1.2rem"
+      font-size-h1:   "clamp(4rem, 6vw, 6rem)"
+      font-size-h2:   "2rem"
+      font-size-h3:   "2rem"
+    header-includes:
+      - |
+        <style>
+          /* center everything in the title block */
+          article .title-block {
+            text-align: center;
+          }
+        </style>
 jupyter: python3
 execute:
   echo:    true
   warning: false
   error:   true
 ---
+
+
 
 <div class="hero">
   <div class="hero-overlay">
