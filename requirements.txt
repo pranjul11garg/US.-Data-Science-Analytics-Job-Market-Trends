@@ -117,3 +117,5 @@ matplotlib
 plotly
 gdown
 missingno
+pandas
+pyarrow
