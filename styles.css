@@ -52,6 +52,7 @@ body {
   overflow-x: hidden;
 }
 
+
 /* Utility container for consistent horizontal padding */
 .container {
   width: 80%;                              /* Adjusted to cover 80% of the page */
@@ -618,6 +619,130 @@ button:active {
   font-size: 1.25rem;
   max-width: 600px;
   margin: 0 auto;
+}
+
+
+
+
+
+/*──────────────────────────────────────────────────────────────────────
+ 🛠️ side bar sticky bar
+──────────────────────────────────────────────────────────────────────*/
+/* ─── Floating Nav ───────────────────────────────── */
+.floating-nav {
+  position: fixed;
+  border-left: none !important;
+  top: 6rem;
+  right: 1rem;
+  width: 220px;
+  height: 80vh;
+  overflow-y: auto;
+
+  background: none !important;      /* transparent */
+  border: none !important;          /* no box border */
+  box-shadow: none !important;      /* no shadow */
+
+  /* subtle partition line to separate from content */
+  padding-left: 1rem;
+  border-left: 1px solid rgba(255,255,255,0.2);
+  z-index: 1000;
+}
+
+/* strip out Quarto callout styling */
+.floating-nav .callout {
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* header text */
+.floating-nav .callout h3 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+/* make the list clean and transparent */
+.floating-nav .callout ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+/* separator between each item */
+.floating-nav .callout li + li {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+/* link style */
+.floating-nav .callout a {
+  color: #ddd;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.floating-nav .callout a:hover,
+.floating-nav .callout a.active {
+  color: #fff;
+}
+/* ─── Override: align nav to your container and theme colors ───── */
+
+.floating-nav {
+  right: 1.5rem     !important;  /* always 1.5rem from the viewport’s right edge */
+  top:   8rem      !important;  /* tweak this so the first link lines up exactly with your first heading */
+  width: 240px      !important;  /* or whatever width you prefer */
+}
+
+
+/* 2) Neutral default, red‐tinted hover, solid red active */
+.floating-nav .nav-link {
+  color: #eee;  /* light gray */
+}
+.floating-nav .nav-link:hover {
+  background: rgba(216, 47, 47, 0.2);
+  color: #fff;
+}
+.floating-nav .nav-link.active {
+  background: #D80000 !important;
+  color: #fff !important;
+}
+
+
+
+@media (min-width: 1024px) {
+
+  /* 1) Make the .container a two-column grid: sidebar + content */
+  .container {
+    display: grid !important;             /* override default flex/width */
+    grid-template-columns: 220px 1fr;     /* 220px for sidebar, rest for content */
+    gap: 2rem;
+  }
+
+  /* 2) Pin the sidebar in that first column */
+  .container > .sidebar {
+    grid-column: 1;
+    position: sticky;
+    top: 5rem;                             /* sits just under your navbar */
+    align-self: start;                     /* don’t vertically center */
+  }
+
+  /* 3) Push everything else into the second column */
+  .container > :not(.sidebar) {
+    grid-column: 2;
+  }
+}
+
+/*──────────────────────────────────────────────────────────────────────
+ 🛠️ back to top page navigation
+──────────────────────────────────────────────────────────────────────*/
+.back-to-top {
+  font-size: 0.9rem;
+  color: var(--bs-primary);
+}
+.back-to-top:hover {
+  text-decoration: underline;
 }
 
 /* Fade-in keyframes */

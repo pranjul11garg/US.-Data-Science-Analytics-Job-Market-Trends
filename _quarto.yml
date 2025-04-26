@@ -38,8 +38,12 @@ format:
     theme: cosmo  
     css: styles.css
     embed-resources: true
-    toc: true
-  ipynb: default  
+    theme-variables:
+      container-max-width: "90rem"   # wider content area
+      font-size-base:      "1.15rem" # bump up base font size
+
+  ipynb: default
+
 
 bibliography: references.bib
 csl: csl/econometrica.csl

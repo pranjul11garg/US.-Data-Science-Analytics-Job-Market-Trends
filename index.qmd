@@ -18,8 +18,30 @@ execute:
 </div>
 
 
-
-Welcome to our deep dive into the evolving landscape…
+<div class="floating-nav">
+  <ul class="nav flex-column nav-pills">
+    <li class="nav-item">
+      <a class="nav-link" href="#state-of-the-data-industry">
+        <i class="fa fa-chart-bar"></i>&nbsp;State of the Data Industry
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#ethics-and-responsible-ai">
+        <i class="fa fa-balance-scale"></i>&nbsp;Ethics & Responsible AI
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#scaling-data-platforms">
+        <i class="fa fa-database"></i>&nbsp;Scaling Data Platforms
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#future-tech-and-innovation">
+        <i class="fa fa-rocket"></i>&nbsp;Future Tech & Innovation
+      </a>
+    </li>
+  </ul>
+</div>
 
 
 
@@ -49,3 +71,51 @@ This website explores the latest trends, key developments, and future directions
 - Prediction of Salary using Supervised Machine Learning Model.
 
 -  Visual Insights on the Current Job Market Conditions of Business Analytics & Data Analyst Roles
+  
+## State of the Data Industry {#state-of-the-data-industry}
+
+Introduce the current landscape: market size, hiring growth, enterprise adoption curves. Highlight key statistics on demand for data roles and major verticals investing in analytics.
+
+## Ethics & Responsible AI {#ethics-and-responsible-ai}
+
+Discuss bias mitigation, data privacy regulations (GDPR, CCPA), and best practices for transparent model governance. Show examples of “AI gone wrong” and how to build trust.
+
+## Scaling Data Platforms {#scaling-data-platforms}
+
+Cover the evolution from monolithic warehouses to modern lakehouse architectures, real-time streaming (Kafka, Pulsar), and orchestration tools (Airflow, Prefect). Include deployment patterns and cost considerations.
+
+## Future Tech & Innovation {#future-tech-and-innovation}
+
+Zoom out to emerging trends: Generative AI, graph analytics, quantum computing potential. Speculate on where analytics will go next and how professionals can prepare.
+
+
+
+<p style="text-align:center; margin-top:3rem;">
+  <a href="#top" class="back-to-top">Back to top ↑</a>
+</p>  
+
+
+<script>
+(() => {
+  const nav = document.querySelector('.floating-nav'),
+        toggle = document.querySelector('.floating-nav h3 button'),
+        links = Array.from(nav.querySelectorAll('a'));
+
+  // Collapse/expand
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('collapsed');
+  });
+
+  // Scroll-spy to highlight active section
+  const sections = links.map(a => document.getElementById(a.getAttribute('href').slice(1)));
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      const id = e.target.id;
+      const link = nav.querySelector(`a[href="#${id}"]`);
+      link.classList.toggle('active', e.isIntersecting);
+    });
+  }, { rootMargin: '-50% 0px -50% 0px' });
+
+  sections.forEach(sec => sec && observer.observe(sec));
+})();
+</script>
