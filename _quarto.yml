@@ -6,10 +6,10 @@ project:
   render:
     - index.qmd
     - data_cleaning.ipynb
-    - eda_d.qmd
     - skill_gap.ipynb
     - rm_model.ipynb
     - analytics_model.ipynb
+    - eda_d.ipynb
 
 website:
   title: "Trends in Data Science & Business Analytics"
@@ -22,7 +22,7 @@ website:
           - text: "Data Cleaning"
             href: data_cleaning.ipynb
           - text: "Exploratory Data Analysis"
-            href: eda_d.html
+            href: eda_d.ipynb
           - text: "Skill Gap Analysis"
             href: skill_gap.ipynb
       - text: "ML Methods"
