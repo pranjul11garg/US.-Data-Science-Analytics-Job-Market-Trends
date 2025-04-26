@@ -1,14 +1,12 @@
 project:
   type: website
-
 resources:
   - data/**
-
 render:
   - index.qmd
   - skill_gap.ipynb
   - rm_model.ipynb
-  - analytics_model.ipynb
+  - analytics_model.qmd
   - eda_d.qmd
 
 website:
@@ -28,7 +26,7 @@ website:
           - text: "Supervised Machine Learning"
             href: rm_model.ipynb
           - text: "Unsupervised Machine Learning"
-            href: analytics_model.ipynb
+            href: analytics_model.qmd
   repo-url: "https://github.com/pranjul11garg/ad688-employability-sp25A1-group11"
 
 format:
