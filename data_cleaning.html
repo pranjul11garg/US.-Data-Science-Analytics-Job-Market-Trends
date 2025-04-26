@@ -5462,37 +5462,40 @@ to { opacity: 1; transform: translateY(0); }
 </header>
 
 
-<div id="2c1b65ea" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">&quot;https://drive.usercontent.google.com/download?id=1V2GCHGt2dkFGqVBeoUFckU4IhUgk4ocQ&amp;authuser=1&quot;</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>local <span class="op">=</span> <span class="st">&quot;data/lightcast_job_postings.csv&quot;</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>os.makedirs(os.path.dirname(local), exist_ok<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Download if missing</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(local):</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Local file not found—downloading from URL…&quot;</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> requests.get(url, stream<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    response.raise_for_status()</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Download complete.&quot;</span>)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(local)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Loaded </span><span class="sc">{</span><span class="bu">len</span>(df)<span class="sc">:,}</span><span class="ss"> rows from Lightcast data&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Local file not found—downloading from URL…
-Download complete.</code></pre>
-</div>
+<div id="a556d71d" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> missingno <span class="im">as</span> msno</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&quot;./data/lightcast_job_postings.csv&quot;</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>columns_to_keep <span class="op">=</span> [</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;COMPANY&#39;</span>, <span class="st">&#39;LOCATION&#39;</span>, <span class="st">&#39;POSTED&#39;</span>, <span class="st">&#39;MIN_EDULEVELS_NAME&#39;</span>, <span class="st">&#39;MAX_EDULEVELS_NAME&#39;</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;MIN_YEARS_EXPERIENCE&#39;</span>, <span class="st">&#39;MAX_YEARS_EXPERIENCE&#39;</span>, <span class="st">&#39;TITLE&#39;</span>, <span class="st">&#39;SKILLS&#39;</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;SPECIALIZED_SKILLS&#39;</span>, <span class="st">&#39;CERTIFICATIONS&#39;</span>, <span class="st">&#39;COMMON_SKILLS&#39;</span>, <span class="st">&#39;SOFTWARE_SKILLS&#39;</span>,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;SOC_2021_4_NAME&#39;</span>, <span class="st">&#39;NAICS_2022_6&#39;</span>, <span class="st">&#39;NAICS2_NAME&#39;</span>, <span class="st">&#39;REMOTE_TYPE_NAME&#39;</span>,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;SALARY&#39;</span>, <span class="st">&#39;TITLE_NAME&#39;</span>, <span class="st">&#39;SKILLS_NAME&#39;</span>, <span class="st">&#39;SPECIALIZED_SKILLS_NAME&#39;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>eda_data <span class="op">=</span> df[columns_to_keep]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">FileNotFoundError</span>                         Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[1], line 16</span>
-<span class="ansi-green-fg ansi-bold">     14</span>     response<span style="color:rgb(98,98,98)">.</span>raise_for_status()
-<span class="ansi-green-fg ansi-bold">     15</span>     <span style="color:rgb(0,135,0)">print</span>(<span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">Download complete.</span><span style="color:rgb(175,0,0)">&quot;</span>)
-<span class="ansi-green-fg">---&gt; 16</span> df <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">pd</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">read_csv</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">local</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">     17</span> <span style="color:rgb(0,135,0)">print</span>(<span style="color:rgb(175,0,0)">f</span><span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">Loaded </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span><span style="color:rgb(0,135,0)">len</span>(df)<span style="font-weight:bold;color:rgb(175,95,135)">:</span><span style="color:rgb(175,0,0)">,</span><span style="font-weight:bold;color:rgb(175,95,135)">}</span><span style="color:rgb(175,0,0)"> rows from Lightcast data</span><span style="color:rgb(175,0,0)">&quot;</span>)
+Cell <span class="ansi-green-fg">In[1], line 9</span>
+<span class="ansi-green-fg ansi-bold">      6</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">numpy</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,135,0)">as</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">np</span>
+<span class="ansi-green-fg ansi-bold">      7</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">plotly</span><span style="font-weight:bold;color:rgb(0,0,255)">.</span><span style="font-weight:bold;color:rgb(0,0,255)">graph_objects</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,135,0)">as</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">go</span>
+<span class="ansi-green-fg">----&gt; 9</span> df <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">pd</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">read_csv</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&quot;</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">./data/lightcast_job_postings.csv</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&quot;</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">     11</span> columns_to_keep <span style="color:rgb(98,98,98)">=</span> [
+<span class="ansi-green-fg ansi-bold">     12</span>     <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">COMPANY</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">LOCATION</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">POSTED</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">MIN_EDULEVELS_NAME</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">MAX_EDULEVELS_NAME</span><span style="color:rgb(175,0,0)">&#39;</span>,
+<span class="ansi-green-fg ansi-bold">     13</span>     <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">MIN_YEARS_EXPERIENCE</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">MAX_YEARS_EXPERIENCE</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">TITLE</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">SKILLS</span><span style="color:rgb(175,0,0)">&#39;</span>,
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-fg ansi-bold">     16</span>     <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">SALARY</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">TITLE_NAME</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">SKILLS_NAME</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">SPECIALIZED_SKILLS_NAME</span><span style="color:rgb(175,0,0)">&#39;</span>
+<span class="ansi-green-fg ansi-bold">     17</span> ]
+<span class="ansi-green-fg ansi-bold">     18</span> eda_data <span style="color:rgb(98,98,98)">=</span> df[columns_to_keep]
 
 File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1026</span>, in <span class="ansi-cyan-fg">read_csv</span><span class="ansi-blue-fg">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
 <span class="ansi-green-fg ansi-bold">   1013</span> kwds_defaults <span style="color:rgb(98,98,98)">=</span> _refine_defaults_read(
@@ -5549,7 +5552,99 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.11.12/x64/lib/pyt
 <span class="ansi-green-fg ansi-bold">    881</span>         <span style="font-style:italic;color:rgb(95,135,135)"># Binary mode</span>
 <span class="ansi-green-fg ansi-bold">    882</span>         handle <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">open</span>(handle, ioargs<span style="color:rgb(98,98,98)">.</span>mode)
 
-<span class="ansi-red-fg">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;data/lightcast_job_postings.csv&#39;</pre>
+<span class="ansi-red-fg">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;./data/lightcast_job_postings.csv&#39;</pre>
+</div>
+</div>
+</div>
+<div id="b9d97e68" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>missing_matrix <span class="op">=</span> eda_data.isnull().astype(<span class="bu">int</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>corr <span class="op">=</span> missing_matrix.corr().<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> np.triu(np.ones(corr.shape), k<span class="op">=</span><span class="dv">1</span>).astype(<span class="bu">bool</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>masked_corr <span class="op">=</span> corr.mask(mask)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>text_labels <span class="op">=</span> masked_corr.astype(<span class="bu">str</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>text_labels[masked_corr.isna()] <span class="op">=</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure(data<span class="op">=</span>go.Heatmap(</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    z<span class="op">=</span>masked_corr.values,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>masked_corr.columns,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>masked_corr.index,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    text<span class="op">=</span>text_labels.values,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    texttemplate<span class="op">=</span><span class="st">&quot;%</span><span class="sc">{text}</span><span class="st">&quot;</span>,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    colorscale<span class="op">=</span><span class="st">&quot;Blues&quot;</span>,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    colorbar<span class="op">=</span><span class="bu">dict</span>(title<span class="op">=</span><span class="st">&quot;Missing Corr&quot;</span>),</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    zmin<span class="op">=</span><span class="dv">0</span>,</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    zmax<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    hoverinfo<span class="op">=</span><span class="st">&#39;skip&#39;</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">&quot;Clean Triangle Missing Value Correlation Heatmap&quot;</span>,</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    xaxis_tickangle<span class="op">=</span><span class="dv">45</span>,</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">850</span>,</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">600</span>,</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    margin<span class="op">=</span><span class="bu">dict</span>(t<span class="op">=</span><span class="dv">50</span>, l<span class="op">=</span><span class="dv">80</span>, r<span class="op">=</span><span class="dv">50</span>, b<span class="op">=</span><span class="dv">80</span>),</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">8</span>),</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    plot_bgcolor<span class="op">=</span><span class="st">&#39;white&#39;</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>fig.update_yaxes(autorange<span class="op">=</span><span class="st">&quot;reversed&quot;</span>)</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[2], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> missing_matrix <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">eda_data</span><span style="color:rgb(98,98,98)">.</span>isnull()<span style="color:rgb(98,98,98)">.</span>astype(<span style="color:rgb(0,135,0)">int</span>)
+<span class="ansi-green-fg ansi-bold">      2</span> corr <span style="color:rgb(98,98,98)">=</span> missing_matrix<span style="color:rgb(98,98,98)">.</span>corr()<span style="color:rgb(98,98,98)">.</span>round(<span style="color:rgb(98,98,98)">2</span>)
+<span class="ansi-green-fg ansi-bold">      4</span> mask <span style="color:rgb(98,98,98)">=</span> np<span style="color:rgb(98,98,98)">.</span>triu(np<span style="color:rgb(98,98,98)">.</span>ones(corr<span style="color:rgb(98,98,98)">.</span>shape), k<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(98,98,98)">1</span>)<span style="color:rgb(98,98,98)">.</span>astype(<span style="color:rgb(0,135,0)">bool</span>)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;eda_data&#39; is not defined</pre>
+</div>
+</div>
+</div>
+<p>This triangle heatmap visualizes the correlation of missing values between different columns in the dataset. Each square represents how often two columns are missing together, with darker blue indicating a stronger relationship. Most of the values are very high (close to 1.0), suggesting that when one column is missing, others are often missing too — especially among skill-related fields like SKILLS, SPECIALIZED_SKILLS, and SOFTWARE_SKILLS, which are likely part of the same job posting metadata.</p>
+<p>This pattern indicates that missingness is not random, but structured — possibly due to differences in how job descriptions are recorded across roles or industries. For example, a job with no software skill tags might also lack common skills or NAICS codes, hinting at data input gaps rather than actual job content differences. Recognizing these correlations is helpful for choosing imputation strategies or deciding whether to drop certain rows or columns entirely during preprocessing.</p>
+<div id="44107f12" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;SALARY&quot;</span> <span class="kw">in</span> eda_data.columns:</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    eda_data[<span class="st">&quot;SALARY&quot;</span>].fillna(eda_data[<span class="st">&quot;SALARY&quot;</span>].median(), inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Warning: &#39;SALARY&#39; column not found in dataframe!&quot;</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;COMPANY&quot;</span> <span class="kw">in</span> eda_data.columns:</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    eda_data[<span class="st">&quot;COMPANY&quot;</span>].fillna(<span class="st">&quot;Unknown&quot;</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Warning: &#39;COMPANY&#39; column not found in dataframe!&quot;</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Fill numeric columns with mean</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>num_cols <span class="op">=</span> eda_data.select_dtypes(include<span class="op">=</span><span class="st">&#39;number&#39;</span>).columns</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> num_cols:</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> eda_data[col].isnull().<span class="bu">sum</span>() <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        eda_data[col].fillna(eda_data[col].mean(), inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Fill categorical columns with mode</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>cat_cols <span class="op">=</span> eda_data.select_dtypes(include<span class="op">=</span><span class="st">&#39;object&#39;</span>).columns</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> cat_cols:</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> eda_data[col].isnull().<span class="bu">sum</span>() <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        eda_data[col].fillna(eda_data[col].mode()[<span class="dv">0</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>eda_data.dropna(thresh<span class="op">=</span><span class="bu">len</span>(eda_data) <span class="op">*</span> <span class="fl">0.5</span>, axis<span class="op">=</span><span class="dv">1</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co"># delete duplicates</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>eda_data <span class="op">=</span> eda_data.drop_duplicates(subset<span class="op">=</span>[<span class="st">&quot;TITLE&quot;</span>, <span class="st">&quot;COMPANY&quot;</span>, <span class="st">&quot;LOCATION&quot;</span>, <span class="st">&quot;POSTED&quot;</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[3], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">SALARY</span><span style="color:rgb(175,0,0)">&quot;</span> <span style="font-weight:bold;color:rgb(175,0,255)">in</span> <span class="ansi-yellow-bg">eda_data</span><span style="color:rgb(98,98,98)">.</span>columns:
+<span class="ansi-green-fg ansi-bold">      2</span>     eda_data[<span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">SALARY</span><span style="color:rgb(175,0,0)">&quot;</span>]<span style="color:rgb(98,98,98)">.</span>fillna(eda_data[<span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">SALARY</span><span style="color:rgb(175,0,0)">&quot;</span>]<span style="color:rgb(98,98,98)">.</span>median(), inplace<span style="color:rgb(98,98,98)">=</span><span style="font-weight:bold;color:rgb(0,135,0)">True</span>)
+<span class="ansi-green-fg ansi-bold">      3</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
+
+<span class="ansi-red-fg">NameError</span>: name &#39;eda_data&#39; is not defined</pre>
 </div>
 </div>
 </div>
