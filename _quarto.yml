@@ -4,7 +4,7 @@ resources:
   - data/**
 render:
   - index.qmd
-  - skill_gap.ipynb
+  - skill_gap.qmd
   - rm_model.ipynb
   - analytics_model.qmd
   - eda_d.qmd
@@ -20,7 +20,7 @@ website:
           - text: "Exploratory Data Analysis"
             href: eda_d.qmd
           - text: "Skill Gap Analysis"
-            href: skill_gap.ipynb
+            href: skill_gap.qmd
       - text: "Machine Learning Methods"
         menu:
           - text: "Supervised Machine Learning"
