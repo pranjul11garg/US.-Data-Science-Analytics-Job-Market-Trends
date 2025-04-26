@@ -17,7 +17,7 @@ The rise of artificial intelligence (AI) is reshaping the landscape of data scie
 
 One key trend in 2024 is the growing demand for AI-related skills across various industries. A recent Gartner report highlights that many organizations are significantly increasing their investments in AI, with companies projected to spend an average of $2.5 million on AI integration in 2024 [@gartner2024ai]. This investment is reshaping job descriptions and workforce requirements, as roles now demand proficiency in AI tools. For example, in software development, GitHub Copilot has been shown to increase programmers' efficiency by 55%, enabling them to focus on complex problem-solving rather than repetitive coding tasks [@github2023copilot]. As a result, professionals who upskill and learn to work alongside AI will have better career prospects in the future.
 
-![Data Science Image](figures/datasciencepic.webp){fig-align="center" width="80%"}
+![Data Science Image](figures/dspic2.avif){fig-align="center" width="80%"}
 
 The career outlook for business analytics and data science professionals remains optimistic, as companies increasingly look to combine AI with human decision-making to enhance productivity and innovation. Industry leaders, including Bev White, CEO of Nash Squared, emphasize that AI is not about eliminating jobs, but rather reshaping them to make work more productive and meaningful [@beverlywhite2024]. Similarly, PepsiCo’s CIO, Nigel Richardson, believes that while some jobs will be replaced, AI will ultimately create more opportunities than it eliminates [@nigelrichardson2024]. This aligns with a McKinsey report that forecasts AI could generate up to $13 trillion in additional global GDP by 2030, creating new job opportunities in data science, business analytics, and other technology-related fields [@mckinsey2023generativeai].
 
@@ -27,10 +27,10 @@ This website explores the latest trends, key developments, and future directions
 
 **Join us as we explore:**
 
-- The role of machine learning, AI, and automation in business analytics.
+- Predict whether a job role requires Machine Learning & Data Science Skills based on Job Postings.
 
-- How data-driven decisions are driving competitive advantages across industries.
+- Comparison of the Key skills and tools shaping the future of data professionals.
+  
+- Prediction of Salary using Supervised Machine Learning Model.
 
-- The growing importance of data ethics and privacy concerns.
-
-- Key skills and tools shaping the future of data professionals.
+-  Visual Insights on the Current Job Market Conditions of Business Analytics & Data Analyst Roles
