@@ -2,7 +2,10 @@
 title: "Analytics Model"
 format:
   html:
-    embed-resources: true   # bundle JS/CSS (for Plotly, etc.)
+    embed-resources: true
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     toc: true
     code-fold: true
 jupyter: python3

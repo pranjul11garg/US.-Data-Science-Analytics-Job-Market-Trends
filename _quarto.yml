@@ -5,7 +5,7 @@ project:
   render:
     - index.qmd
     - skill_gap.qmd
-    - rm_model.ipynb
+    - rm_model.qmd
     - analytics_model.qmd
     - eda_d.qmd
 
@@ -24,7 +24,7 @@ website:
       - text: "Machine Learning Methods"
         menu:
           - text: "Supervised Machine Learning"
-            href: rm_model.ipynb
+            href: rm_model.qmd
           - text: "Unsupervised Machine Learning"
             href: analytics_model.qmd
   repo-url: "https://github.com/pranjul11garg/ad688-employability-sp25A1-group11"
