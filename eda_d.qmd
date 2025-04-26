@@ -5,7 +5,7 @@ execute:
   echo: true
   warning: false
   error: true
-  working directory: .
+  working directory: project
 format:
   html:
     self-contained: true       # bundle everything into one file
@@ -21,7 +21,7 @@ import pandas as pd
 # one-time conversion on your machine
 eda = pd.read_csv("data/eda_data.csv")
 eda.to_parquet("data/eda.parquet", index=False)
-eda = pd.read_parquet("data/eda_data.parquet")
+eda = pd.read_parquet("data/eda.parquet")
 
 
 ```
@@ -46,9 +46,6 @@ import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-# -----------------------------------------------------------------------------
-# 1) Prepare your data
-# -----------------------------------------------------------------------------
 df_grouped = (
     eda
     .groupby(['DATA_ANALYST_JOB','NAICS2_NAME'])
@@ -207,9 +204,18 @@ fig.update_layout(
 
     bargap=0.2
 )
-
-fig.show()
+fig.write_html(
+    "figures/edaplot1.html",
+    include_plotlyjs="cdn",  
+    full_html=False    
+)
 ```
+<iframe 
+  src="figures/edaplot1.html" 
+  width="100%" 
+  height="500" 
+  style="border:none;">
+</iframe>
 
 ```{python}
 import plotly.express as px
@@ -294,9 +300,18 @@ fig.update_layout(
     )
 )
 
-# Show the plot
-fig.show()
+fig.write_html(
+    "figures/edaplot2.html",
+    include_plotlyjs="cdn",  
+    full_html=False    
+)
 ```
+<iframe 
+  src="figures/edaplot2.html" 
+  width="100%" 
+  height="500" 
+  style="border:none;">
+</iframe>
 
 ```{python}
 import plotly.express as px
@@ -401,10 +416,18 @@ fig.update_layout(
         bordercolor="#FF6B6B"  # Red border for hover
     )
 )
-
-# Show the plot
-fig.show()
+fig.write_html(
+    "figures/edaplot3.html",
+    include_plotlyjs="cdn",  
+    full_html=False    
+)
 ```
+<iframe 
+  src="figures/edaplot3.html" 
+  width="100%" 
+  height="500" 
+  style="border:none;">
+</iframe>
 
 ```{python}
 import plotly.express as px
@@ -506,10 +529,18 @@ fig.update_traces(
         line=dict(width=1, color="#2D3748")
     )
 )
-
-# Show the plot
-fig.show()
+fig.write_html(
+    "figures/edaplot4.html",
+    include_plotlyjs="cdn",  
+    full_html=False    
+)
 ```
+<iframe 
+  src="figures/edaplot4.html" 
+  width="100%" 
+  height="500" 
+  style="border:none;">
+</iframe>
 
 ```{python}
 import plotly.graph_objects as go
@@ -597,9 +628,16 @@ fig.update_layout(
     ),
     margin=dict(l=20, r=20, t=80, b=20),
 )
-
-# Show the plot
-fig.show()
+fig.write_html(
+    "figures/edaplot5.html",
+    include_plotlyjs="cdn",  
+    full_html=False    
+)
 ```
-
+<iframe 
+  src="figures/edaplot5.html" 
+  width="100%" 
+  height="500" 
+  style="border:none;">
+</iframe>
 
