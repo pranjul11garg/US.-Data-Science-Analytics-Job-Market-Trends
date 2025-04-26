@@ -8,7 +8,7 @@ project:
     - skill_gap.ipynb
     - rm_model.ipynb
     - analytics_model.ipynb
-    - eda_d.ipynb
+    - eda_d.qmd
 
 website:
   title: "Trends in Data Science & Business Analytics"
