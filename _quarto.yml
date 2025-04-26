@@ -2,6 +2,7 @@ project:
   type: website
   resources:
   - data/eda_data.csv
+  - data/lightcast_job_postings.csv
   render:
     - index.qmd
     - data_cleaning.ipynb

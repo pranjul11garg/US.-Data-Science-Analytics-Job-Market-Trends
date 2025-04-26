@@ -18,6 +18,7 @@ code-fold: true
 import pandas as pd
 
 eda = pd.read_csv('data/eda_data.csv')
+job_posts = pd.read_csv("data/lightcast_job_postings.csv")
 eda.head()
 ```
 
