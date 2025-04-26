@@ -5249,14 +5249,111 @@ max-width: 600px;
 margin: 0 auto;
 }
 
+
+.floating-nav {
+position: fixed;
+border-left: none !important;
+top: 6rem;
+right: 1rem;
+width: 220px;
+height: 80vh;
+overflow-y: auto;
+background: none !important; 
+border: none !important; 
+box-shadow: none !important; 
+
+padding-left: 1rem;
+border-left: 1px solid rgba(255,255,255,0.2);
+z-index: 1000;
+}
+
+.floating-nav .callout {
+background: none;
+box-shadow: none;
+padding: 0;
+margin: 0;
+}
+
+.floating-nav .callout h3 {
+margin-bottom: 1rem;
+font-size: 1.1rem;
+color: #fff;
+}
+
+.floating-nav .callout ul {
+list-style: none;
+padding-left: 0;
+margin: 0;
+}
+
+.floating-nav .callout li + li {
+margin-top: 0.75rem;
+padding-top: 0.75rem;
+border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.floating-nav .callout a {
+color: #ddd;
+text-decoration: none;
+transition: color 0.2s;
+}
+.floating-nav .callout a:hover,
+.floating-nav .callout a.active {
+color: #fff;
+}
+
+.floating-nav {
+right: 1.5rem !important; 
+top: 8rem !important; 
+width: 240px !important; 
+}
+
+.floating-nav .nav-link {
+color: #eee; 
+}
+.floating-nav .nav-link:hover {
+background: rgba(216, 47, 47, 0.2);
+color: #fff;
+}
+.floating-nav .nav-link.active {
+background: #D80000 !important;
+color: #fff !important;
+}
+@media (min-width: 1024px) {
+
+.container {
+display: grid !important; 
+grid-template-columns: 220px 1fr; 
+gap: 2rem;
+}
+
+.container > .sidebar {
+grid-column: 1;
+position: sticky;
+top: 5rem; 
+align-self: start; 
+}
+
+.container > :not(.sidebar) {
+grid-column: 2;
+}
+}
+
+.back-to-top {
+font-size: 0.9rem;
+color: var(--bs-primary);
+}
+.back-to-top:hover {
+text-decoration: underline;
+}
+
 @keyframes fadeIn {
 from { opacity: 0; transform: translateY(20px); }
 to { opacity: 1; transform: translateY(0); }
-}
-</style>
+}</style>
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -5322,9 +5419,7 @@ to { opacity: 1; transform: translateY(0); }
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -5352,7 +5447,22 @@ to { opacity: 1; transform: translateY(0); }
 
 </div>
 </div>
-<p>Welcome to our deep dive into the evolving landscape…</p>
+<div class="floating-nav">
+<ul class="nav flex-column nav-pills">
+<li class="nav-item">
+<a class="nav-link" href="#state-of-the-data-industry"> <i class="fa fa-chart-bar"></i> State of the Data Industry </a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#ethics-and-responsible-ai"> <i class="fa fa-balance-scale"></i> Ethics &amp; Responsible AI </a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#scaling-data-platforms"> <i class="fa fa-database"></i> Scaling Data Platforms </a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#future-tech-and-innovation"> <i class="fa fa-rocket"></i> Future Tech &amp; Innovation </a>
+</li>
+</ul>
+</div>
 <p>Welcome to our deep dive into the evolving landscape of Data Science and Business Analytics in the United States. As industries across the nation increasingly rely on data-driven insights, the role of data science and analytics has become paramount in shaping business strategies, optimizing operations, and driving innovation.</p>
 <p>The rise of artificial intelligence (AI) is reshaping the landscape of data science and business analytics in the United States, creating both opportunities and challenges for workers and businesses alike. As AI continues to evolve, it has sparked widespread concern over job displacement. According to a recent report from the World Economic Forum, 86% of workers express concerns about AI potentially leading to job losses, with predictions of significant industry shifts occurring within the next two to five years <span class="citation" data-cites="samuels2024ai">(<a href="#ref-samuels2024ai" role="doc-biblioref">Samuels (2024)</a>)</span>. However, business leaders emphasize that AI is not merely a tool for job replacement—it’s a transformative force that is changing the nature of work itself. For instance, Rakuten’s partnership with OpenAI to create an internal version of ChatGPT is helping employees work more efficiently, focusing on higher-level tasks rather than being displaced by technology <span class="citation" data-cites="samuels2024ai">(<a href="#ref-samuels2024ai" role="doc-biblioref">Samuels (2024)</a>)</span>. <!--
 ![Data Science Image](figures/datasciencepic.webp){fig-align="center" width="80%"}
@@ -5368,9 +5478,52 @@ to { opacity: 1; transform: translateY(0); }
 <li><p>Prediction of Salary using Supervised Machine Learning Model.</p></li>
 <li><p>Visual Insights on the Current Job Market Conditions of Business Analytics &amp; Data Analyst Roles</p></li>
 </ul>
+<section id="state-of-the-data-industry" class="level2">
+<h2 class="anchored" data-anchor-id="state-of-the-data-industry">State of the Data Industry</h2>
+<p>Introduce the current landscape: market size, hiring growth, enterprise adoption curves. Highlight key statistics on demand for data roles and major verticals investing in analytics.</p>
+</section>
+<section id="ethics-and-responsible-ai" class="level2">
+<h2 class="anchored" data-anchor-id="ethics-and-responsible-ai">Ethics &amp; Responsible AI</h2>
+<p>Discuss bias mitigation, data privacy regulations (GDPR, CCPA), and best practices for transparent model governance. Show examples of “AI gone wrong” and how to build trust.</p>
+</section>
+<section id="scaling-data-platforms" class="level2">
+<h2 class="anchored" data-anchor-id="scaling-data-platforms">Scaling Data Platforms</h2>
+<p>Cover the evolution from monolithic warehouses to modern lakehouse architectures, real-time streaming (Kafka, Pulsar), and orchestration tools (Airflow, Prefect). Include deployment patterns and cost considerations.</p>
+</section>
+<section id="future-tech-and-innovation" class="level2">
+<h2 class="anchored" data-anchor-id="future-tech-and-innovation">Future Tech &amp; Innovation</h2>
+<p>Zoom out to emerging trends: Generative AI, graph analytics, quantum computing potential. Speculate on where analytics will go next and how professionals can prepare.</p>
+<p style="text-align:center; margin-top:3rem;">
+<a href="#top" class="back-to-top">Back to top ↑</a>
+</p>
+<script>
+(() => {
+  const nav = document.querySelector('.floating-nav'),
+        toggle = document.querySelector('.floating-nav h3 button'),
+        links = Array.from(nav.querySelectorAll('a'));
+
+  // Collapse/expand
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('collapsed');
+  });
+
+  // Scroll-spy to highlight active section
+  const sections = links.map(a => document.getElementById(a.getAttribute('href').slice(1)));
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      const id = e.target.id;
+      const link = nav.querySelector(`a[href="#${id}"]`);
+      link.classList.toggle('active', e.isIntersecting);
+    });
+  }, { rootMargin: '-50% 0px -50% 0px' });
+
+  sections.forEach(sec => sec && observer.observe(sec));
+})();
+</script>
 
 
 
+</section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-mckinsey2023generativeai" class="csl-entry" role="listitem">

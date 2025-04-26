@@ -5269,11 +5269,108 @@ max-width: 600px;
 margin: 0 auto;
 }
 
+
+.floating-nav {
+position: fixed;
+border-left: none !important;
+top: 6rem;
+right: 1rem;
+width: 220px;
+height: 80vh;
+overflow-y: auto;
+background: none !important; 
+border: none !important; 
+box-shadow: none !important; 
+
+padding-left: 1rem;
+border-left: 1px solid rgba(255,255,255,0.2);
+z-index: 1000;
+}
+
+.floating-nav .callout {
+background: none;
+box-shadow: none;
+padding: 0;
+margin: 0;
+}
+
+.floating-nav .callout h3 {
+margin-bottom: 1rem;
+font-size: 1.1rem;
+color: #fff;
+}
+
+.floating-nav .callout ul {
+list-style: none;
+padding-left: 0;
+margin: 0;
+}
+
+.floating-nav .callout li + li {
+margin-top: 0.75rem;
+padding-top: 0.75rem;
+border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.floating-nav .callout a {
+color: #ddd;
+text-decoration: none;
+transition: color 0.2s;
+}
+.floating-nav .callout a:hover,
+.floating-nav .callout a.active {
+color: #fff;
+}
+
+.floating-nav {
+right: 1.5rem !important; 
+top: 8rem !important; 
+width: 240px !important; 
+}
+
+.floating-nav .nav-link {
+color: #eee; 
+}
+.floating-nav .nav-link:hover {
+background: rgba(216, 47, 47, 0.2);
+color: #fff;
+}
+.floating-nav .nav-link.active {
+background: #D80000 !important;
+color: #fff !important;
+}
+@media (min-width: 1024px) {
+
+.container {
+display: grid !important; 
+grid-template-columns: 220px 1fr; 
+gap: 2rem;
+}
+
+.container > .sidebar {
+grid-column: 1;
+position: sticky;
+top: 5rem; 
+align-self: start; 
+}
+
+.container > :not(.sidebar) {
+grid-column: 2;
+}
+}
+
+.back-to-top {
+font-size: 0.9rem;
+color: var(--bs-primary);
+}
+.back-to-top:hover {
+text-decoration: underline;
+}
+
 @keyframes fadeIn {
 from { opacity: 0; transform: translateY(20px); }
 to { opacity: 1; transform: translateY(0); }
-}
-</style>
+}</style>
 </head>
 
 <body class="nav-fixed">
