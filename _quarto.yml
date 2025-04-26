@@ -8,6 +8,7 @@ project:
     - rm_model.qmd
     - analytics_model.qmd
     - eda_d.qmd
+    - data_cleaning.qmd
 
 website:
   title: "Trends in Data Science & Business Analytics"
@@ -17,6 +18,8 @@ website:
         text: "Home"
       - text: "Data Cleaning & Exploration"
         menu:
+          - text: "Data Cleaning"
+            href: data_cleaning.qmd
           - text: "Exploratory Data Analysis"
             href: eda_d.qmd
           - text: "Skill Gap Analysis"
