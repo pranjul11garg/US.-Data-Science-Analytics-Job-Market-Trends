@@ -5458,22 +5458,26 @@ to { opacity: 1; transform: translateY(0); }
 </header>
 
 
-<div id="34cf0ea2" class="cell" data-execution_count="1">
+<div id="8b82ddc1" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>eda <span class="op">=</span> pd.read_csv(<span class="st">&#39;data/eda_data.csv&#39;</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>eda.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># one-time conversion on your machine</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>eda <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/eda_data.csv&quot;</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>eda.to_parquet(<span class="st">&quot;data/eda.parquet&quot;</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>eda <span class="op">=</span> pd.read_parquet(<span class="st">&quot;data/eda_data.parquet&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">FileNotFoundError</span>                         Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[1], line 3</span>
+Cell <span class="ansi-green-fg">In[1], line 4</span>
 <span class="ansi-green-fg ansi-bold">      1</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">pandas</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,135,0)">as</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">pd</span>
-<span class="ansi-green-fg">----&gt; 3</span> eda <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">pd</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">read_csv</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&#39;</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">data/eda_data.csv</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&#39;</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">      4</span> eda<span style="color:rgb(98,98,98)">.</span>head()
+<span class="ansi-green-fg ansi-bold">      3</span> <span style="font-style:italic;color:rgb(95,135,135)"># one-time conversion on your machine</span>
+<span class="ansi-green-fg">----&gt; 4</span> eda <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">pd</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">read_csv</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&quot;</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">data/eda_data.csv</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&quot;</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">      5</span> eda<span style="color:rgb(98,98,98)">.</span>to_parquet(<span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">data/eda.parquet</span><span style="color:rgb(175,0,0)">&quot;</span>, index<span style="color:rgb(98,98,98)">=</span><span style="font-weight:bold;color:rgb(0,135,0)">False</span>)
+<span class="ansi-green-fg ansi-bold">      6</span> eda <span style="color:rgb(98,98,98)">=</span> pd<span style="color:rgb(98,98,98)">.</span>read_parquet(<span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">data/eda_data.parquet</span><span style="color:rgb(175,0,0)">&quot;</span>)
 
 File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1026</span>, in <span class="ansi-cyan-fg">read_csv</span><span class="ansi-blue-fg">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
 <span class="ansi-green-fg ansi-bold">   1013</span> kwds_defaults <span style="color:rgb(98,98,98)">=</span> _refine_defaults_read(
@@ -5534,7 +5538,7 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.11.12/x64/lib/pyt
 </div>
 </div>
 </div>
-<div id="8a7d0f76" class="cell" data-execution_count="2">
+<div id="e6a7b52f" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># identifying data analyst jobs by keyword searching</span></span>
@@ -5581,7 +5585,7 @@ Cell <span class="ansi-green-fg">In[2], line 7</span>, in <span class="ansi-cyan
 </div>
 </div>
 </div>
-<div id="e523bfa7" class="cell" data-execution_count="3">
+<div id="89b09407" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -5779,7 +5783,7 @@ Cell <span class="ansi-green-fg">In[3], line 9</span>
 </div>
 </div>
 </div>
-<div id="02706fd3" class="cell" data-execution_count="4">
+<div id="ff7ad29f" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
@@ -5882,7 +5886,7 @@ Cell <span class="ansi-green-fg">In[4], line 5</span>
 </div>
 </div>
 </div>
-<div id="dbe8d19c" class="cell" data-execution_count="5">
+<div id="6c225e02" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
@@ -6006,7 +6010,7 @@ Cell <span class="ansi-green-fg">In[5], line 5</span>
 </div>
 </div>
 </div>
-<div id="7699a843" class="cell" data-execution_count="6">
+<div id="eff76ba7" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
@@ -6127,7 +6131,7 @@ Cell <span class="ansi-green-fg">In[6], line 5</span>
 </div>
 </div>
 </div>
-<div id="9dff0334" class="cell" data-execution_count="7">
+<div id="2febe8fe" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
