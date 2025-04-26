@@ -4813,6 +4813,19 @@ background: var(--bg);
 }
 
 
+h1 { font-size: clamp(2rem, 3.25vw, 2.25rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+h3 { font-size: clamp(1.25rem, 2vw, 1.75rem); }
+h1::after, h2::after, h3::after {
+content: '';
+position: absolute;
+bottom: -0.25rem;
+left: 0;
+width: 50px;
+height: 4px;
+background: var(--primary);
+border-radius: 2px;
+}
 p {
 margin-bottom: 1.5rem;
 color: var(--muted);
@@ -4941,8 +4954,8 @@ margin-left: auto;
 .navbar-nav .nav-link {
 font-family: "Helvetica Neue", Arial, sans-serif;
 color: var(--white) !important;
-font-size: 1.75rem; 
-font-weight: 700; 
+font-size: 1.5rem; 
+font-weight: 600; 
 margin-right: 1.75rem; 
 position: relative;
 transition: color var(--transition);
@@ -5448,7 +5461,7 @@ to { opacity: 1; transform: translateY(0); }
 </header>
 
 
-<div id="c2a3b7c4" class="cell" data-execution_count="1">
+<div id="3204065c" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -5526,7 +5539,7 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.11.12/x64/lib/pyt
 </div>
 </div>
 </div>
-<div id="6e777df2" class="cell" data-execution_count="2">
+<div id="4c46fc23" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># identifying data analyst jobs by keyword searching</span></span>
@@ -5573,7 +5586,7 @@ Cell <span class="ansi-green-fg">In[2], line 7</span>, in <span class="ansi-cyan
 </div>
 </div>
 </div>
-<div id="cb308f93" class="cell" data-execution_count="3">
+<div id="b93e83a1" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -5771,7 +5784,7 @@ Cell <span class="ansi-green-fg">In[3], line 9</span>
 </div>
 </div>
 </div>
-<div id="84532dd3" class="cell" data-execution_count="4">
+<div id="9dc14fba" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
@@ -5874,7 +5887,7 @@ Cell <span class="ansi-green-fg">In[4], line 5</span>
 </div>
 </div>
 </div>
-<div id="054e36e0" class="cell" data-execution_count="5">
+<div id="ff3feb40" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
@@ -5998,7 +6011,7 @@ Cell <span class="ansi-green-fg">In[5], line 5</span>
 </div>
 </div>
 </div>
-<div id="e4ce8822" class="cell" data-execution_count="6">
+<div id="6a039156" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
@@ -6119,7 +6132,7 @@ Cell <span class="ansi-green-fg">In[6], line 5</span>
 </div>
 </div>
 </div>
-<div id="79990990" class="cell" data-execution_count="7">
+<div id="db4f36b1" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
