@@ -17,13 +17,7 @@ code-fold: true
 
 ```{python}
 import pandas as pd
-
-# one-time conversion on your machine
-eda = pd.read_csv("data/eda_data.csv")
-eda.to_parquet("data/eda.parquet", index=False)
 eda = pd.read_parquet("data/eda.parquet")
-
-
 ```
 
 ```{python}
