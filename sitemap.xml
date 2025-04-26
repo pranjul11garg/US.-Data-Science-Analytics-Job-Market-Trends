@@ -1,27 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://pranjul11garg.github.io/ad688-employability-sp25A1-group11/eda_d.html</loc>
-    <lastmod>2025-04-26T03:19:08.458Z</lastmod>
-  </url>
-  <url>
-    <loc>https://pranjul11garg.github.io/ad688-employability-sp25A1-group11/rm_model.html</loc>
-    <lastmod>2025-04-26T03:19:08.810Z</lastmod>
-  </url>
-  <url>
-    <loc>https://pranjul11garg.github.io/ad688-employability-sp25A1-group11/data_cleaning.html</loc>
-    <lastmod>2025-04-26T03:19:08.442Z</lastmod>
-  </url>
-  <url>
-    <loc>https://pranjul11garg.github.io/ad688-employability-sp25A1-group11/index.html</loc>
-    <lastmod>2025-04-26T03:19:08.809Z</lastmod>
+    <loc>https://pranjul11garg.github.io/ad688-employability-sp25A1-group11/analytics_model.html</loc>
+    <lastmod>2025-04-26T03:22:09.421Z</lastmod>
   </url>
   <url>
     <loc>https://pranjul11garg.github.io/ad688-employability-sp25A1-group11/skill_gap.html</loc>
-    <lastmod>2025-04-26T03:19:08.810Z</lastmod>
+    <lastmod>2025-04-26T03:22:09.790Z</lastmod>
   </url>
   <url>
-    <loc>https://pranjul11garg.github.io/ad688-employability-sp25A1-group11/analytics_model.html</loc>
-    <lastmod>2025-04-26T03:19:08.441Z</lastmod>
+    <loc>https://pranjul11garg.github.io/ad688-employability-sp25A1-group11/index.html</loc>
+    <lastmod>2025-04-26T03:22:09.789Z</lastmod>
+  </url>
+  <url>
+    <loc>https://pranjul11garg.github.io/ad688-employability-sp25A1-group11/data_cleaning.html</loc>
+    <lastmod>2025-04-26T03:22:09.422Z</lastmod>
+  </url>
+  <url>
+    <loc>https://pranjul11garg.github.io/ad688-employability-sp25A1-group11/rm_model.html</loc>
+    <lastmod>2025-04-26T03:22:09.790Z</lastmod>
   </url>
 </urlset>
