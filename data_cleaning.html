@@ -4812,29 +4812,7 @@ background: var(--bg);
 }
 }
 
-h1, h2, h3, h4, h5, h6 {
-font-family: var(--font-heading);
-color: var(--black);
-margin-bottom: 1.25rem;
-line-height: 1.2;
-text-transform: capitalize;
-letter-spacing: -0.02em;
-position: relative;
-text-align: justify; 
-}
-h1 { font-size: clamp(2rem, 4.5vw, 3rem); }
-h2 { font-size: clamp(1.5rem, 3.5vw, 2.25rem); }
-h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); }
-h1::after, h2::after, h3::after {
-content: '';
-position: absolute;
-bottom: -0.25rem;
-left: 0;
-width: 50px;
-height: 4px;
-background: var(--primary); 
-border-radius: 2px;
-}
+
 p {
 margin-bottom: 1.5rem;
 color: var(--muted);
