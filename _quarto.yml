@@ -1,11 +1,7 @@
 project:
   type: website
-
-  # ← now under project
   resources:
     - data/**
-
-  # ← also under project
   render:
     - index.qmd
     - skill_gap.qmd
@@ -15,9 +11,39 @@ project:
 
 website:
   title: "Trends in Data Science & Business Analytics"
-  # … rest of your site config …
+  navbar:
+    left:
+      - href: index.qmd
+        text: "Home"
+      - text: "Data Cleaning & Exploration"
+        menu:
+          - text: "Exploratory Data Analysis"
+            href: eda_d.qmd
+          - text: "Skill Gap Analysis"
+            href: skill_gap.qmd
+      - text: "Machine Learning Methods"
+        menu:
+          - text: "Supervised Machine Learning"
+            href: rm_model.ipynb
+          - text: "Unsupervised Machine Learning"
+            href: analytics_model.qmd
+  repo-url: "https://github.com/pranjul11garg/ad688-employability-sp25A1-group11"
 
 format:
   html:
+    theme: cosmo  
+    css: styles.css
     embed-resources: true
-# … etc …
+    theme-variables:
+      container-max-width: "90rem"
+      font-size-base:      "1.15rem"
+  ipynb: default
+
+bibliography: references.bib
+csl: csl/econometrica.csl
+
+execute:
+  working-directory: project
+  echo: true
+  eval: true
+  code-fold: true
