@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>The Next Normal: AI-Driven Analytics in Action – Trends in Data Science &amp; Business Analytics</title>
+<title>Exploratory Data Analytics – Trends in Data Science &amp; Business Analytics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +20,40 @@ width: 0.8em;
 margin: 0 0.8em 0.2em -1em;  vertical-align: middle;
 }
 
-div.csl-bib-body { }
-div.csl-entry {
-clear: both;
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
-.hanging-indent div.csl-entry {
-margin-left:2em;
-text-indent:-2em;
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
-div.csl-left-margin {
-min-width:2em;
-float:left;
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
 }
-div.csl-right-inline {
-margin-left:2em;
-padding-left:1em;
+pre.numberSource { margin-left: 3em; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-div.csl-indent {
-margin-left: 2em;
-}</style>
+</style>
 
 
 <script>const headroomChanged = new CustomEvent("quarto-hrChanged", {
@@ -5356,7 +5371,7 @@ to { opacity: 1; transform: translateY(0); }
 }</style>
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -5374,7 +5389,7 @@ to { opacity: 1; transform: translateY(0); }
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -5418,13 +5433,15 @@ to { opacity: 1; transform: translateY(0); }
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">The Next Normal: AI-Driven Analytics in Action</h1>
+<h1 class="title">Exploratory Data Analytics</h1>
 </div>
 
 
@@ -5441,109 +5458,788 @@ to { opacity: 1; transform: translateY(0); }
 </header>
 
 
-<div class="hero">
-<div class="hero-overlay">
+<div id="6bd5e2d1" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>eda <span class="op">=</span> pd.read_csv(<span class="st">&#39;data/eda_data.csv&#39;</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>job_posts <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/lightcast_job_postings.csv&quot;</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>eda.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">FileNotFoundError</span>                         Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[1], line 3</span>
+<span class="ansi-green-fg ansi-bold">      1</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">pandas</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,135,0)">as</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">pd</span>
+<span class="ansi-green-fg">----&gt; 3</span> eda <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">pd</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">read_csv</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&#39;</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">data/eda_data.csv</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&#39;</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">      4</span> job_posts <span style="color:rgb(98,98,98)">=</span> pd<span style="color:rgb(98,98,98)">.</span>read_csv(<span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">data/lightcast_job_postings.csv</span><span style="color:rgb(175,0,0)">&quot;</span>)
+<span class="ansi-green-fg ansi-bold">      5</span> eda<span style="color:rgb(98,98,98)">.</span>head()
 
-</div>
-</div>
-<div class="floating-nav">
-<ul class="nav flex-column nav-pills">
-<li class="nav-item">
-<a class="nav-link" href="#state-of-the-data-industry"> <i class="fa fa-chart-bar"></i> State of the Data Industry </a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="#ethics-and-responsible-ai"> <i class="fa fa-balance-scale"></i> Ethics &amp; Responsible AI </a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="#scaling-data-platforms"> <i class="fa fa-database"></i> Scaling Data Platforms </a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="#future-tech-and-innovation"> <i class="fa fa-rocket"></i> Future Tech &amp; Innovation </a>
-</li>
-</ul>
-</div>
-<p>Welcome to our deep dive into the evolving landscape of Data Science and Business Analytics in the United States. As industries across the nation increasingly rely on data-driven insights, the role of data science and analytics has become paramount in shaping business strategies, optimizing operations, and driving innovation.</p>
-<p>The rise of artificial intelligence (AI) is reshaping the landscape of data science and business analytics in the United States, creating both opportunities and challenges for workers and businesses alike. As AI continues to evolve, it has sparked widespread concern over job displacement. According to a recent report from the World Economic Forum, 86% of workers express concerns about AI potentially leading to job losses, with predictions of significant industry shifts occurring within the next two to five years <span class="citation" data-cites="samuels2024ai">(<a href="#ref-samuels2024ai" role="doc-biblioref">Samuels (2024)</a>)</span>. However, business leaders emphasize that AI is not merely a tool for job replacement—it’s a transformative force that is changing the nature of work itself. For instance, Rakuten’s partnership with OpenAI to create an internal version of ChatGPT is helping employees work more efficiently, focusing on higher-level tasks rather than being displaced by technology <span class="citation" data-cites="samuels2024ai">(<a href="#ref-samuels2024ai" role="doc-biblioref">Samuels (2024)</a>)</span>. <!--
-![Data Science Image](figures/datasciencepic.webp){fig-align="center" width="80%"}
---> One key trend in 2024 is the growing demand for AI-related skills across various industries. A recent Gartner report highlights that many organizations are significantly increasing their investments in AI, with companies projected to spend an average of $2.5 million on AI integration in 2024 <span class="citation" data-cites="gartner2024ai">(<a href="#ref-gartner2024ai" role="doc-biblioref">Gartner (2024)</a>)</span>. This investment is reshaping job descriptions and workforce requirements, as roles now demand proficiency in AI tools. For example, in software development, GitHub Copilot has been shown to increase programmers’ efficiency by 55%, enabling them to focus on complex problem-solving rather than repetitive coding tasks <span class="citation" data-cites="github2023copilot">(<a href="#ref-github2023copilot" role="doc-biblioref">GitHub (2023)</a>)</span>. As a result, professionals who upskill and learn to work alongside AI will have better career prospects in the future. <!--
-![Data Science Image](figures/dspic2.avif){fig-align="center" width="80%"}
---></p>
-<p>The career outlook for business analytics and data science professionals remains optimistic, as companies increasingly look to combine AI with human decision-making to enhance productivity and innovation. Industry leaders, including Bev White, CEO of Nash Squared, emphasize that AI is not about eliminating jobs, but rather reshaping them to make work more productive and meaningful <span class="citation" data-cites="beverlywhite2024">(<a href="#ref-beverlywhite2024" role="doc-biblioref">White (2024)</a>)</span>. Similarly, PepsiCo’s CIO, Nigel Richardson, believes that while some jobs will be replaced, AI will ultimately create more opportunities than it eliminates <span class="citation" data-cites="nigelrichardson2024">(<a href="#ref-nigelrichardson2024" role="doc-biblioref">Richardson (2024)</a>)</span>. This aligns with a McKinsey report that forecasts AI could generate up to $13 trillion in additional global GDP by 2030, creating new job opportunities in data science, business analytics, and other technology-related fields <span class="citation" data-cites="mckinsey2023generativeai">(<a href="#ref-mckinsey2023generativeai" role="doc-biblioref">Company (2023)</a>)</span>.</p>
-<p>This website explores the latest trends, key developments, and future directions in Data Science and Business Analytics in the U.S. We delve into emerging technologies, the growing demand for skilled professionals, and the impact these fields are having on various industries. Our aim is to provide you with valuable insights into how data science is shaping the future of business and the economy.</p>
-<p><strong>Join us as we explore:</strong></p>
-<ul>
-<li><p>Predict whether a job role requires Machine Learning &amp; Data Science Skills based on Job Postings.</p></li>
-<li><p>Comparison of the Key skills and tools shaping the future of data professionals.</p></li>
-<li><p>Prediction of Salary using Supervised Machine Learning Model.</p></li>
-<li><p>Visual Insights on the Current Job Market Conditions of Business Analytics &amp; Data Analyst Roles</p></li>
-</ul>
-<section id="state-of-the-data-industry" class="level2">
-<h2 class="anchored" data-anchor-id="state-of-the-data-industry">State of the Data Industry</h2>
-<p>Introduce the current landscape: market size, hiring growth, enterprise adoption curves. Highlight key statistics on demand for data roles and major verticals investing in analytics.</p>
-</section>
-<section id="ethics-and-responsible-ai" class="level2">
-<h2 class="anchored" data-anchor-id="ethics-and-responsible-ai">Ethics &amp; Responsible AI</h2>
-<p>Discuss bias mitigation, data privacy regulations (GDPR, CCPA), and best practices for transparent model governance. Show examples of “AI gone wrong” and how to build trust.</p>
-</section>
-<section id="scaling-data-platforms" class="level2">
-<h2 class="anchored" data-anchor-id="scaling-data-platforms">Scaling Data Platforms</h2>
-<p>Cover the evolution from monolithic warehouses to modern lakehouse architectures, real-time streaming (Kafka, Pulsar), and orchestration tools (Airflow, Prefect). Include deployment patterns and cost considerations.</p>
-</section>
-<section id="future-tech-and-innovation" class="level2">
-<h2 class="anchored" data-anchor-id="future-tech-and-innovation">Future Tech &amp; Innovation</h2>
-<p>Zoom out to emerging trends: Generative AI, graph analytics, quantum computing potential. Speculate on where analytics will go next and how professionals can prepare.</p>
-<p style="text-align:center; margin-top:3rem;">
-<a href="#top" class="back-to-top">Back to top ↑</a>
-</p>
-<script>
-(() => {
-  const nav = document.querySelector('.floating-nav'),
-        toggle = document.querySelector('.floating-nav h3 button'),
-        links = Array.from(nav.querySelectorAll('a'));
+File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1026</span>, in <span class="ansi-cyan-fg">read_csv</span><span class="ansi-blue-fg">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="ansi-green-fg ansi-bold">   1013</span> kwds_defaults <span style="color:rgb(98,98,98)">=</span> _refine_defaults_read(
+<span class="ansi-green-fg ansi-bold">   1014</span>     dialect,
+<span class="ansi-green-fg ansi-bold">   1015</span>     delimiter,
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-fg ansi-bold">   1022</span>     dtype_backend<span style="color:rgb(98,98,98)">=</span>dtype_backend,
+<span class="ansi-green-fg ansi-bold">   1023</span> )
+<span class="ansi-green-fg ansi-bold">   1024</span> kwds<span style="color:rgb(98,98,98)">.</span>update(kwds_defaults)
+<span class="ansi-green-fg">-&gt; 1026</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">_read</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">filepath_or_buffer</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">kwds</span><span class="ansi-yellow-bg">)</span>
 
-  // Collapse/expand
-  toggle.addEventListener('click', () => {
-    nav.classList.toggle('collapsed');
-  });
+File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/pandas/io/parsers/readers.py:620</span>, in <span class="ansi-cyan-fg">_read</span><span class="ansi-blue-fg">(filepath_or_buffer, kwds)</span>
+<span class="ansi-green-fg ansi-bold">    617</span> _validate_names(kwds<span style="color:rgb(98,98,98)">.</span>get(<span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">names</span><span style="color:rgb(175,0,0)">&quot;</span>, <span style="font-weight:bold;color:rgb(0,135,0)">None</span>))
+<span class="ansi-green-fg ansi-bold">    619</span> <span style="font-style:italic;color:rgb(95,135,135)"># Create the parser.</span>
+<span class="ansi-green-fg">--&gt; 620</span> parser <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">TextFileReader</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">filepath_or_buffer</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwds</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    622</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> chunksize <span style="font-weight:bold;color:rgb(175,0,255)">or</span> iterator:
+<span class="ansi-green-fg ansi-bold">    623</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> parser
 
-  // Scroll-spy to highlight active section
-  const sections = links.map(a => document.getElementById(a.getAttribute('href').slice(1)));
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      const id = e.target.id;
-      const link = nav.querySelector(`a[href="#${id}"]`);
-      link.classList.toggle('active', e.isIntersecting);
-    });
-  }, { rootMargin: '-50% 0px -50% 0px' });
+File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1620</span>, in <span class="ansi-cyan-fg">TextFileReader.__init__</span><span class="ansi-blue-fg">(self, f, engine, **kwds)</span>
+<span class="ansi-green-fg ansi-bold">   1617</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>options[<span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">has_index_names</span><span style="color:rgb(175,0,0)">&quot;</span>] <span style="color:rgb(98,98,98)">=</span> kwds[<span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">has_index_names</span><span style="color:rgb(175,0,0)">&quot;</span>]
+<span class="ansi-green-fg ansi-bold">   1619</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>handles: IOHandles <span style="color:rgb(98,98,98)">|</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span> <span style="color:rgb(98,98,98)">=</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>
+<span class="ansi-green-fg">-&gt; 1620</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_engine <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_make_engine</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">f</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">engine</span><span class="ansi-yellow-bg">)</span>
 
-  sections.forEach(sec => sec && observer.observe(sec));
-})();
-</script>
+File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1880</span>, in <span class="ansi-cyan-fg">TextFileReader._make_engine</span><span class="ansi-blue-fg">(self, f, engine)</span>
+<span class="ansi-green-fg ansi-bold">   1878</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">b</span><span style="color:rgb(175,0,0)">&quot;</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(175,0,255)">in</span> mode:
+<span class="ansi-green-fg ansi-bold">   1879</span>         mode <span style="color:rgb(98,98,98)">+</span><span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">b</span><span style="color:rgb(175,0,0)">&quot;</span>
+<span class="ansi-green-fg">-&gt; 1880</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>handles <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">get_handle</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">   1881</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">f</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   1882</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">mode</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   1883</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">encoding</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">options</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">get</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&quot;</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">encoding</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&quot;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">None</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   1884</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">compression</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">options</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">get</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&quot;</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">compression</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&quot;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">None</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   1885</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">memory_map</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">options</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">get</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&quot;</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">memory_map</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&quot;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">False</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   1886</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">is_text</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">is_text</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   1887</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">errors</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">options</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">get</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&quot;</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">encoding_errors</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&quot;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&quot;</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">strict</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&quot;</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   1888</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">storage_options</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">options</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">get</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&quot;</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">storage_options</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&quot;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">None</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   1889</span> <span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">   1890</span> <span style="font-weight:bold;color:rgb(0,135,0)">assert</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>handles <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>
+<span class="ansi-green-fg ansi-bold">   1891</span> f <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>handles<span style="color:rgb(98,98,98)">.</span>handle
+
+File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/pandas/io/common.py:873</span>, in <span class="ansi-cyan-fg">get_handle</span><span class="ansi-blue-fg">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="ansi-green-fg ansi-bold">    868</span> <span style="font-weight:bold;color:rgb(0,135,0)">elif</span> <span style="color:rgb(0,135,0)">isinstance</span>(handle, <span style="color:rgb(0,135,0)">str</span>):
+<span class="ansi-green-fg ansi-bold">    869</span>     <span style="font-style:italic;color:rgb(95,135,135)"># Check whether the filename is to be opened in binary mode.</span>
+<span class="ansi-green-fg ansi-bold">    870</span>     <span style="font-style:italic;color:rgb(95,135,135)"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
+<span class="ansi-green-fg ansi-bold">    871</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> ioargs<span style="color:rgb(98,98,98)">.</span>encoding <span style="font-weight:bold;color:rgb(175,0,255)">and</span> <span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">b</span><span style="color:rgb(175,0,0)">&quot;</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(175,0,255)">in</span> ioargs<span style="color:rgb(98,98,98)">.</span>mode:
+<span class="ansi-green-fg ansi-bold">    872</span>         <span style="font-style:italic;color:rgb(95,135,135)"># Encoding</span>
+<span class="ansi-green-fg">--&gt; 873</span>         handle <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">open</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">    874</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">handle</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    875</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">ioargs</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">mode</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    876</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">encoding</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">ioargs</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">encoding</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    877</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">errors</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">errors</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    878</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">newline</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&quot;</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&quot;</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    879</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    880</span>     <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg ansi-bold">    881</span>         <span style="font-style:italic;color:rgb(95,135,135)"># Binary mode</span>
+<span class="ansi-green-fg ansi-bold">    882</span>         handle <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">open</span>(handle, ioargs<span style="color:rgb(98,98,98)">.</span>mode)
+
+<span class="ansi-red-fg">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;data/eda_data.csv&#39;</pre>
+</div>
+</div>
+</div>
+<div id="1c88164c" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># identifying data analyst jobs by keyword searching</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>keywords <span class="op">=</span> [<span class="st">&#39;Data Analyst&#39;</span>, <span class="st">&#39;Business Analyst&#39;</span>, <span class="st">&#39;Data Engineering&#39;</span>, <span class="st">&#39;Deep Learning&#39;</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;Data Science&#39;</span>, <span class="st">&#39;Data Analysis&#39;</span>,<span class="st">&#39;Data Analytics&#39;</span>,  <span class="st">&#39;Market Research Analyst&#39;</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;LLM&#39;</span>, <span class="st">&#39;Language Model&#39;</span>, <span class="st">&#39;NLP&#39;</span>, <span class="st">&#39;Natural Language Processing&#39;</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;Computer Vision&#39;</span>, <span class="st">&#39;Business Intelligence Analyst&#39;</span>, <span class="st">&#39;Quantitative Analyst&#39;</span>, <span class="st">&#39;Operations Analyst&#39;</span>]</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>match <span class="op">=</span> <span class="kw">lambda</span> col: eda[col].<span class="bu">str</span>.contains(<span class="st">&#39;|&#39;</span>.join(keywords), case<span class="op">=</span><span class="va">False</span>, na<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>eda[<span class="st">&#39;DATA_ANALYST_JOB&#39;</span>] <span class="op">=</span> match(<span class="st">&#39;TITLE_NAME&#39;</span>) <span class="op">\</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>             <span class="op">|</span> match(<span class="st">&#39;SKILLS_NAME&#39;</span>) <span class="op">\</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>             <span class="op">|</span> match(<span class="st">&#39;SPECIALIZED_SKILLS_NAME&#39;</span>) </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>eda[<span class="st">&#39;DATA_ANALYST_JOB&#39;</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[2], line 9</span>
+<span class="ansi-green-fg ansi-bold">      2</span> keywords <span style="color:rgb(98,98,98)">=</span> [<span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Data Analyst</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Business Analyst</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Data Engineering</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Deep Learning</span><span style="color:rgb(175,0,0)">&#39;</span>,
+<span class="ansi-green-fg ansi-bold">      3</span>             <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Data Science</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Data Analysis</span><span style="color:rgb(175,0,0)">&#39;</span>,<span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Data Analytics</span><span style="color:rgb(175,0,0)">&#39;</span>,  <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Market Research Analyst</span><span style="color:rgb(175,0,0)">&#39;</span> 
+<span class="ansi-green-fg ansi-bold">      4</span>             <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">LLM</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Language Model</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">NLP</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Natural Language Processing</span><span style="color:rgb(175,0,0)">&#39;</span>,
+<span class="ansi-green-fg ansi-bold">      5</span>             <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Computer Vision</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Business Intelligence Analyst</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Quantitative Analyst</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Operations Analyst</span><span style="color:rgb(175,0,0)">&#39;</span>]
+<span class="ansi-green-fg ansi-bold">      7</span> match <span style="color:rgb(98,98,98)">=</span> <span style="font-weight:bold;color:rgb(0,135,0)">lambda</span> col: eda[col]<span style="color:rgb(98,98,98)">.</span>str<span style="color:rgb(98,98,98)">.</span>contains(<span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">|</span><span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(98,98,98)">.</span>join(keywords), case<span style="color:rgb(98,98,98)">=</span><span style="font-weight:bold;color:rgb(0,135,0)">False</span>, na<span style="color:rgb(98,98,98)">=</span><span style="font-weight:bold;color:rgb(0,135,0)">False</span>)
+<span class="ansi-green-fg">----&gt; 9</span> eda[<span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">DATA_ANALYST_JOB</span><span style="color:rgb(175,0,0)">&#39;</span>] <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">match</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&#39;</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">TITLE_NAME</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&#39;</span><span class="ansi-yellow-bg">)</span> \
+<span class="ansi-green-fg ansi-bold">     10</span>              <span style="color:rgb(98,98,98)">|</span> match(<span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">SKILLS_NAME</span><span style="color:rgb(175,0,0)">&#39;</span>) \
+<span class="ansi-green-fg ansi-bold">     11</span>              <span style="color:rgb(98,98,98)">|</span> match(<span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">SPECIALIZED_SKILLS_NAME</span><span style="color:rgb(175,0,0)">&#39;</span>) 
+<span class="ansi-green-fg ansi-bold">     12</span> eda[<span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">DATA_ANALYST_JOB</span><span style="color:rgb(175,0,0)">&#39;</span>]<span style="color:rgb(98,98,98)">.</span>value_counts()
+
+Cell <span class="ansi-green-fg">In[2], line 7</span>, in <span class="ansi-cyan-fg">&lt;lambda&gt;</span><span class="ansi-blue-fg">(col)</span>
+<span class="ansi-green-fg ansi-bold">      1</span> <span style="font-style:italic;color:rgb(95,135,135)"># identifying data analyst jobs by keyword searching</span>
+<span class="ansi-green-fg ansi-bold">      2</span> keywords <span style="color:rgb(98,98,98)">=</span> [<span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Data Analyst</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Business Analyst</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Data Engineering</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Deep Learning</span><span style="color:rgb(175,0,0)">&#39;</span>,
+<span class="ansi-green-fg ansi-bold">      3</span>             <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Data Science</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Data Analysis</span><span style="color:rgb(175,0,0)">&#39;</span>,<span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Data Analytics</span><span style="color:rgb(175,0,0)">&#39;</span>,  <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Market Research Analyst</span><span style="color:rgb(175,0,0)">&#39;</span> 
+<span class="ansi-green-fg ansi-bold">      4</span>             <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">LLM</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Language Model</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">NLP</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Natural Language Processing</span><span style="color:rgb(175,0,0)">&#39;</span>,
+<span class="ansi-green-fg ansi-bold">      5</span>             <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Computer Vision</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Business Intelligence Analyst</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Quantitative Analyst</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Operations Analyst</span><span style="color:rgb(175,0,0)">&#39;</span>]
+<span class="ansi-green-fg">----&gt; 7</span> match <span style="color:rgb(98,98,98)">=</span> <span style="font-weight:bold;color:rgb(0,135,0)">lambda</span> col: <span class="ansi-yellow-bg">eda</span>[col]<span style="color:rgb(98,98,98)">.</span>str<span style="color:rgb(98,98,98)">.</span>contains(<span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">|</span><span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(98,98,98)">.</span>join(keywords), case<span style="color:rgb(98,98,98)">=</span><span style="font-weight:bold;color:rgb(0,135,0)">False</span>, na<span style="color:rgb(98,98,98)">=</span><span style="font-weight:bold;color:rgb(0,135,0)">False</span>)
+<span class="ansi-green-fg ansi-bold">      9</span> eda[<span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">DATA_ANALYST_JOB</span><span style="color:rgb(175,0,0)">&#39;</span>] <span style="color:rgb(98,98,98)">=</span> match(<span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">TITLE_NAME</span><span style="color:rgb(175,0,0)">&#39;</span>) \
+<span class="ansi-green-fg ansi-bold">     10</span>              <span style="color:rgb(98,98,98)">|</span> match(<span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">SKILLS_NAME</span><span style="color:rgb(175,0,0)">&#39;</span>) \
+<span class="ansi-green-fg ansi-bold">     11</span>              <span style="color:rgb(98,98,98)">|</span> match(<span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">SPECIALIZED_SKILLS_NAME</span><span style="color:rgb(175,0,0)">&#39;</span>) 
+<span class="ansi-green-fg ansi-bold">     12</span> eda[<span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">DATA_ANALYST_JOB</span><span style="color:rgb(175,0,0)">&#39;</span>]<span style="color:rgb(98,98,98)">.</span>value_counts()
+
+<span class="ansi-red-fg">NameError</span>: name &#39;eda&#39; is not defined</pre>
+</div>
+</div>
+</div>
+<div id="b3dccb83" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotly.subplots <span class="im">import</span> make_subplots</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------------------------------------------------------------------------</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Prepare your data</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------------------------------------------------------------------------</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>df_grouped <span class="op">=</span> (</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    eda</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    .groupby([<span class="st">&#39;DATA_ANALYST_JOB&#39;</span>,<span class="st">&#39;NAICS2_NAME&#39;</span>])</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    .size()</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    .reset_index(name<span class="op">=</span><span class="st">&#39;Job_Count&#39;</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>short_names <span class="op">=</span> {</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Professional, Scientific, and Technical Services&#39;</span>: <span class="st">&#39;Prof. Services&#39;</span>,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Administrative and Support and Waste Management and Remediation Services&#39;</span>: <span class="st">&#39;Admin &amp; Waste Mgmt&#39;</span>,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Health Care and Social Assistance&#39;</span>: <span class="st">&#39;Healthcare&#39;</span>,</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Finance and Insurance&#39;</span>: <span class="st">&#39;Finance&#39;</span>,</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Information&#39;</span>: <span class="st">&#39;Info Tech&#39;</span>,</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Educational Services&#39;</span>: <span class="st">&#39;Education&#39;</span>,</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Manufacturing&#39;</span>: <span class="st">&#39;Manufacturing&#39;</span>,</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Retail Trade&#39;</span>: <span class="st">&#39;Retail&#39;</span>,</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Accommodation and Food Services&#39;</span>: <span class="st">&#39;Hospitality&#39;</span>,</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Other Services (except Public Administration)&#39;</span>: <span class="st">&#39;Other Services&#39;</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>df_grouped[<span class="st">&#39;Industry&#39;</span>] <span class="op">=</span> df_grouped[<span class="st">&#39;NAICS2_NAME&#39;</span>].<span class="bu">map</span>(short_names).fillna(df_grouped[<span class="st">&#39;NAICS2_NAME&#39;</span>])</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>df_grouped[<span class="st">&#39;Job_Type&#39;</span>] <span class="op">=</span> df_grouped[<span class="st">&#39;DATA_ANALYST_JOB&#39;</span>].<span class="bu">map</span>({<span class="va">True</span>:<span class="st">&#39;True&#39;</span>, <span class="va">False</span>:<span class="st">&#39;False&#39;</span>})</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>pivot <span class="op">=</span> (</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    df_grouped</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    .pivot_table(index<span class="op">=</span><span class="st">&#39;Industry&#39;</span>, columns<span class="op">=</span><span class="st">&#39;Job_Type&#39;</span>, values<span class="op">=</span><span class="st">&#39;Job_Count&#39;</span>, fill_value<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    .reset_index()</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>industries <span class="op">=</span> pivot[<span class="st">&#39;Industry&#39;</span>].tolist()</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>y_true  <span class="op">=</span> pivot[<span class="st">&#39;True&#39;</span>].tolist()</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>y_false <span class="op">=</span> pivot[<span class="st">&#39;False&#39;</span>].tolist()</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------------------------------------------------------------------------</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Build a 2-row subplot: bar on top, table below</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------------------------------------------------------------------------</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> make_subplots(</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>    rows<span class="op">=</span><span class="dv">2</span>, cols<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>    row_heights<span class="op">=</span>[<span class="fl">0.70</span>, <span class="fl">0.30</span>],           <span class="co"># give a bit more room to the table</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>    specs<span class="op">=</span>[[{<span class="st">&quot;type&quot;</span>:<span class="st">&quot;bar&quot;</span>}],[{<span class="st">&quot;type&quot;</span>:<span class="st">&quot;table&quot;</span>}]],</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>    vertical_spacing<span class="op">=</span><span class="fl">0.12</span>              <span class="co"># more space between bar and table</span></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> {<span class="st">&#39;True&#39;</span>: <span class="st">&#39;#FFE5E5&#39;</span>, <span class="st">&#39;False&#39;</span>: <span class="st">&#39;#FF6B6B&#39;</span>}</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>fig.add_trace(</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>    go.Bar(</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>industries, y<span class="op">=</span>y_true, name<span class="op">=</span><span class="st">&#39;True&#39;</span>,</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>        marker<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span>colors[<span class="st">&#39;True&#39;</span>], line<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">&#39;#A81D1D&#39;</span>, width<span class="op">=</span><span class="dv">1</span>)),</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>        text<span class="op">=</span>y_true, textposition<span class="op">=</span><span class="st">&#39;outside&#39;</span></span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>    row<span class="op">=</span><span class="dv">1</span>, col<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>fig.add_trace(</span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>    go.Bar(</span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>industries, y<span class="op">=</span>y_false, name<span class="op">=</span><span class="st">&#39;False&#39;</span>,</span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>        marker<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span>colors[<span class="st">&#39;False&#39;</span>], line<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">&#39;#A81D1D&#39;</span>, width<span class="op">=</span><span class="dv">1</span>)),</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>        text<span class="op">=</span>y_false, textposition<span class="op">=</span><span class="st">&#39;outside&#39;</span></span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>    row<span class="op">=</span><span class="dv">1</span>, col<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>fig.add_trace(</span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>    go.Table(</span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>        header<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>            values<span class="op">=</span>[<span class="st">&quot;Industry&quot;</span>,<span class="st">&quot;True&quot;</span>,<span class="st">&quot;False&quot;</span>],</span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>            fill_color<span class="op">=</span><span class="st">&#39;#FDEDEC&#39;</span>,</span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>            align<span class="op">=</span><span class="st">&#39;left&#39;</span>,</span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>            font<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">&#39;#A81D1D&#39;</span>, size<span class="op">=</span><span class="dv">13</span>),</span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>            height<span class="op">=</span><span class="dv">30</span></span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>        cells<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>            values<span class="op">=</span>[industries, y_true, y_false],</span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a>            fill_color<span class="op">=</span><span class="st">&#39;white&#39;</span>,</span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>            align<span class="op">=</span><span class="st">&#39;left&#39;</span>,</span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>            font<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">&#39;#333&#39;</span>, size<span class="op">=</span><span class="dv">11</span>),</span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>            height<span class="op">=</span><span class="dv">22</span></span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>    row<span class="op">=</span><span class="dv">2</span>, col<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------------------------------------------------------------------------</span></span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a><span class="co"># 3) Slider steps: 0 → 8 000 in 200s</span></span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------------------------------------------------------------------------</span></span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>steps <span class="op">=</span> []</span>
+<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> val <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">8001</span>, <span class="dv">200</span>):</span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>    steps.append(<span class="bu">dict</span>(</span>
+<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a>        label<span class="op">=</span><span class="bu">str</span>(val),</span>
+<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>        method<span class="op">=</span><span class="st">&quot;update&quot;</span>,</span>
+<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a>        args<span class="op">=</span>[</span>
+<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a>            {<span class="st">&quot;y&quot;</span>: [</span>
+<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a>                [v <span class="cf">if</span> v<span class="op">&gt;=</span>val <span class="cf">else</span> <span class="dv">0</span> <span class="cf">for</span> v <span class="kw">in</span> y_true],</span>
+<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a>                [v <span class="cf">if</span> v<span class="op">&gt;=</span>val <span class="cf">else</span> <span class="dv">0</span> <span class="cf">for</span> v <span class="kw">in</span> y_false]</span>
+<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a>            ]},</span>
+<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a>            {<span class="st">&quot;title&quot;</span>: <span class="ss">f&quot;Min Jobs ≥ </span><span class="sc">{</span>val<span class="sc">:,}</span><span class="ss">&quot;</span>}</span>
+<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a>    ))</span>
+<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------------------------------------------------------------------------</span></span>
+<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a><span class="co"># 4) Final layout tweaks</span></span>
+<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a><span class="co"># -----------------------------------------------------------------------------</span></span>
+<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a>    <span class="co"># lift slider above everything</span></span>
+<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a>    sliders<span class="op">=</span>[<span class="bu">dict</span>(</span>
+<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a>        active<span class="op">=</span><span class="dv">0</span>,</span>
+<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a>        currentvalue<span class="op">=</span>{<span class="st">&quot;prefix&quot;</span>:<span class="st">&quot;Min Jobs: &quot;</span>},</span>
+<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a>        pad<span class="op">=</span>{<span class="st">&quot;b&quot;</span>:<span class="dv">0</span>},</span>
+<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="fl">0.15</span>,</span>
+<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="fl">1.18</span>,                <span class="co"># move slider way above the plot area</span></span>
+<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a>        xanchor<span class="op">=</span><span class="st">&quot;left&quot;</span>,</span>
+<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a>        yanchor<span class="op">=</span><span class="st">&quot;bottom&quot;</span>,</span>
+<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a>        <span class="bu">len</span><span class="op">=</span><span class="fl">0.7</span>,</span>
+<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a>        font<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">&#39;#A81D1D&#39;</span>),</span>
+<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a>        steps<span class="op">=</span>steps</span>
+<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a>    )],</span>
+<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a>        text<span class="op">=</span><span class="st">&quot;Data &amp; Business Analytics Job Trends&quot;</span>,</span>
+<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a>        font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">24</span>, color<span class="op">=</span><span class="st">&#39;#A81D1D&#39;</span>),</span>
+<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="fl">0.5</span>,</span>
+<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="fl">0.92</span>,                <span class="co"># drop the title just below the slider</span></span>
+<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a>        xanchor<span class="op">=</span><span class="st">&quot;center&quot;</span>,</span>
+<span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a>        yanchor<span class="op">=</span><span class="st">&quot;top&quot;</span></span>
+<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">1100</span>, height<span class="op">=</span><span class="dv">850</span>,</span>
+<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a>    margin<span class="op">=</span><span class="bu">dict</span>(l<span class="op">=</span><span class="dv">60</span>, r<span class="op">=</span><span class="dv">60</span>, t<span class="op">=</span><span class="dv">180</span>, b<span class="op">=</span><span class="dv">200</span>),  <span class="co"># extra top &amp; bottom margin</span></span>
+<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a>    plot_bgcolor<span class="op">=</span><span class="st">&#39;white&#39;</span>,</span>
+<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a>    paper_bgcolor<span class="op">=</span><span class="st">&#39;white&#39;</span>,</span>
+<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a>    xaxis<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">&quot;Industry&quot;</span>,</span>
+<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a>        title_font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">16</span>, color<span class="op">=</span><span class="st">&#39;#A81D1D&#39;</span>),</span>
+<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a>        tickmode<span class="op">=</span><span class="st">&#39;array&#39;</span>,</span>
+<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a>        tickvals<span class="op">=</span><span class="bu">list</span>(<span class="bu">range</span>(<span class="bu">len</span>(industries))),</span>
+<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a>        ticktext<span class="op">=</span>industries,</span>
+<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a>        tickangle<span class="op">=-</span><span class="dv">30</span>,</span>
+<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a>        tickfont<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">11</span>, color<span class="op">=</span><span class="st">&#39;#333&#39;</span>),</span>
+<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a>        showline<span class="op">=</span><span class="va">True</span>, linecolor<span class="op">=</span><span class="st">&#39;#A81D1D&#39;</span></span>
+<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a>    yaxis<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">&quot;Number of Jobs&quot;</span>,</span>
+<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a>        title_font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">16</span>, color<span class="op">=</span><span class="st">&#39;#A81D1D&#39;</span>),</span>
+<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a>        tickfont<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">11</span>, color<span class="op">=</span><span class="st">&#39;#333&#39;</span>),</span>
+<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a>        gridcolor<span class="op">=</span><span class="st">&#39;rgba(200,200,200,0.3)&#39;</span>,</span>
+<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a>        showline<span class="op">=</span><span class="va">True</span>, linecolor<span class="op">=</span><span class="st">&#39;#A81D1D&#39;</span>,</span>
+<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a>        <span class="bu">range</span><span class="op">=</span>[<span class="dv">0</span>, <span class="bu">max</span>(<span class="bu">max</span>(y_true),<span class="bu">max</span>(y_false))<span class="op">*</span><span class="fl">1.2</span>]</span>
+<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a>    legend<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">&quot;Data Analyst Job&quot;</span>,</span>
+<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a>        title_font<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">&#39;#A81D1D&#39;</span>),</span>
+<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a>        font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">12</span>),</span>
+<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="fl">1.02</span>, y<span class="op">=</span><span class="fl">0.5</span></span>
+<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a>    bargap<span class="op">=</span><span class="fl">0.2</span></span>
+<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[3], line 9</span>
+<span class="ansi-green-fg ansi-bold">      3</span> <span style="font-weight:bold;color:rgb(0,135,0)">from</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">plotly</span><span style="font-weight:bold;color:rgb(0,0,255)">.</span><span style="font-weight:bold;color:rgb(0,0,255)">subplots</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,135,0)">import</span> make_subplots
+<span class="ansi-green-fg ansi-bold">      5</span> <span style="font-style:italic;color:rgb(95,135,135)"># -----------------------------------------------------------------------------</span>
+<span class="ansi-green-fg ansi-bold">      6</span> <span style="font-style:italic;color:rgb(95,135,135)"># 1) Prepare your data</span>
+<span class="ansi-green-fg ansi-bold">      7</span> <span style="font-style:italic;color:rgb(95,135,135)"># -----------------------------------------------------------------------------</span>
+<span class="ansi-green-fg ansi-bold">      8</span> df_grouped <span style="color:rgb(98,98,98)">=</span> (
+<span class="ansi-green-fg">----&gt; 9</span>     <span class="ansi-yellow-bg">eda</span>
+<span class="ansi-green-fg ansi-bold">     10</span>     <span style="color:rgb(98,98,98)">.</span>groupby([<span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">DATA_ANALYST_JOB</span><span style="color:rgb(175,0,0)">&#39;</span>,<span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">NAICS2_NAME</span><span style="color:rgb(175,0,0)">&#39;</span>])
+<span class="ansi-green-fg ansi-bold">     11</span>     <span style="color:rgb(98,98,98)">.</span>size()
+<span class="ansi-green-fg ansi-bold">     12</span>     <span style="color:rgb(98,98,98)">.</span>reset_index(name<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Job_Count</span><span style="color:rgb(175,0,0)">&#39;</span>)
+<span class="ansi-green-fg ansi-bold">     13</span> )
+<span class="ansi-green-fg ansi-bold">     15</span> short_names <span style="color:rgb(98,98,98)">=</span> {
+<span class="ansi-green-fg ansi-bold">     16</span>     <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Professional, Scientific, and Technical Services</span><span style="color:rgb(175,0,0)">&#39;</span>: <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Prof. Services</span><span style="color:rgb(175,0,0)">&#39;</span>,
+<span class="ansi-green-fg ansi-bold">     17</span>     <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Administrative and Support and Waste Management and Remediation Services</span><span style="color:rgb(175,0,0)">&#39;</span>: <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Admin &amp; Waste Mgmt</span><span style="color:rgb(175,0,0)">&#39;</span>,
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-fg ansi-bold">     25</span>     <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Other Services (except Public Administration)</span><span style="color:rgb(175,0,0)">&#39;</span>: <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Other Services</span><span style="color:rgb(175,0,0)">&#39;</span>
+<span class="ansi-green-fg ansi-bold">     26</span> }
+<span class="ansi-green-fg ansi-bold">     27</span> df_grouped[<span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">Industry</span><span style="color:rgb(175,0,0)">&#39;</span>] <span style="color:rgb(98,98,98)">=</span> df_grouped[<span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">NAICS2_NAME</span><span style="color:rgb(175,0,0)">&#39;</span>]<span style="color:rgb(98,98,98)">.</span>map(short_names)<span style="color:rgb(98,98,98)">.</span>fillna(df_grouped[<span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">NAICS2_NAME</span><span style="color:rgb(175,0,0)">&#39;</span>])
+
+<span class="ansi-red-fg">NameError</span>: name &#39;eda&#39; is not defined</pre>
+</div>
+</div>
+</div>
+<div id="aa4dd4c0" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare the data</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> eda.copy()</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define analytics jobs (Data Analyst + Business Analyst)</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> classify_analytics_job(row):</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> row[<span class="st">&#39;DATA_ANALYST_JOB&#39;</span>]:</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> <span class="bu">str</span>(row[<span class="st">&#39;TITLE_NAME&#39;</span>]).lower() <span class="cf">if</span> <span class="st">&#39;TITLE_NAME&#39;</span> <span class="kw">in</span> row <span class="cf">else</span> <span class="bu">str</span>(row[<span class="st">&#39;TITLE&#39;</span>]).lower()</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">&#39;business analyst&#39;</span> <span class="kw">in</span> title:</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;IS_ANALYTICS_JOB&#39;</span>] <span class="op">=</span> df.<span class="bu">apply</span>(classify_analytics_job, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;Job_Category&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;IS_ANALYTICS_JOB&#39;</span>].<span class="bu">map</span>({<span class="va">True</span>: <span class="st">&#39;Analytics Job&#39;</span>, <span class="va">False</span>: <span class="st">&#39;Non-Analytics Job&#39;</span>})</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the box plot</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.box(df, </span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>             x<span class="op">=</span><span class="st">&#39;REMOTE_TYPE_NAME&#39;</span>, </span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>             y<span class="op">=</span><span class="st">&#39;SALARY&#39;</span>, </span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>             color<span class="op">=</span><span class="st">&#39;Job_Category&#39;</span>,</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>             title<span class="op">=</span><span class="st">&#39;Salary Distribution by Remote Type for Analytics vs Non-Analytics Jobs&#39;</span>,</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>             labels<span class="op">=</span>{<span class="st">&#39;REMOTE_TYPE_NAME&#39;</span>: <span class="st">&#39;Remote Type&#39;</span>, <span class="st">&#39;SALARY&#39;</span>: <span class="st">&#39;Salary ($)&#39;</span>, <span class="st">&#39;Job_Category&#39;</span>: <span class="st">&#39;Job Category&#39;</span>},</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>             color_discrete_map<span class="op">=</span>{<span class="st">&#39;Analytics Job&#39;</span>: <span class="st">&#39;#FF6B6B&#39;</span>, <span class="st">&#39;Non-Analytics Job&#39;</span>: <span class="st">&#39;#4ECDC4&#39;</span>})</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Beautify the layout with a red-white theme (no gradients)</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">900</span>,</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">600</span>,</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    plot_bgcolor<span class="op">=</span><span class="st">&#39;#FFFFFF&#39;</span>,  <span class="co"># Plain white background</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    paper_bgcolor<span class="op">=</span><span class="st">&#39;#FFFFFF&#39;</span>,  <span class="co"># Plain white background</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>    font<span class="op">=</span><span class="bu">dict</span>(family<span class="op">=</span><span class="st">&quot;Inter, sans-serif&quot;</span>, size<span class="op">=</span><span class="dv">14</span>, color<span class="op">=</span><span class="st">&quot;#2D3748&quot;</span>),</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>        font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">24</span>, color<span class="op">=</span><span class="st">&quot;#FF6B6B&quot;</span>),  <span class="co"># Red title for theme</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="fl">0.5</span>,</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>        xanchor<span class="op">=</span><span class="st">&quot;center&quot;</span>,</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="fl">0.95</span>,</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>        yanchor<span class="op">=</span><span class="st">&quot;top&quot;</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    xaxis<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">&quot;Remote Type&quot;</span>,</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>        title_font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">16</span>),</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>        tickfont<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">12</span>),</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>        gridcolor<span class="op">=</span><span class="st">&quot;#E2E8F0&quot;</span>,</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>        linecolor<span class="op">=</span><span class="st">&quot;#2D3748&quot;</span>,</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>        linewidth<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>        showline<span class="op">=</span><span class="va">True</span></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>    yaxis<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">&quot;Salary ($)&quot;</span>,</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>        title_font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">16</span>),</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>        tickfont<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">12</span>),</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>        gridcolor<span class="op">=</span><span class="st">&quot;#E2E8F0&quot;</span>,</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>        linecolor<span class="op">=</span><span class="st">&quot;#2D3748&quot;</span>,</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>        linewidth<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>        showline<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>        showgrid<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>        zeroline<span class="op">=</span><span class="va">False</span></span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>    legend<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">&quot;Job Category&quot;</span>,</span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>        font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">13</span>),</span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>        bgcolor<span class="op">=</span><span class="st">&quot;#FFFFFF&quot;</span>,</span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>        bordercolor<span class="op">=</span><span class="st">&quot;#FF6B6B&quot;</span>,  <span class="co"># Red border for theme</span></span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>        borderwidth<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="fl">1.02</span>,</span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="fl">0.5</span>,</span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>        xanchor<span class="op">=</span><span class="st">&quot;left&quot;</span>,</span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>        yanchor<span class="op">=</span><span class="st">&quot;middle&quot;</span></span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>    hovermode<span class="op">=</span><span class="st">&quot;closest&quot;</span>,</span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>    hoverlabel<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>        bgcolor<span class="op">=</span><span class="st">&quot;#FFFFFF&quot;</span>,</span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>        font_size<span class="op">=</span><span class="dv">12</span>,</span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>        font_family<span class="op">=</span><span class="st">&quot;Inter, sans-serif&quot;</span>,</span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>        font_color<span class="op">=</span><span class="st">&quot;#2D3748&quot;</span>,</span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>        bordercolor<span class="op">=</span><span class="st">&quot;#FF6B6B&quot;</span>  <span class="co"># Red border for hover</span></span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[4], line 5</span>
+<span class="ansi-green-fg ansi-bold">      2</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">pandas</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,135,0)">as</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">pd</span>
+<span class="ansi-green-fg ansi-bold">      4</span> <span style="font-style:italic;color:rgb(95,135,135)"># Prepare the data</span>
+<span class="ansi-green-fg">----&gt; 5</span> df <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">eda</span><span style="color:rgb(98,98,98)">.</span>copy()
+<span class="ansi-green-fg ansi-bold">      7</span> <span style="font-style:italic;color:rgb(95,135,135)"># Define analytics jobs (Data Analyst + Business Analyst)</span>
+<span class="ansi-green-fg ansi-bold">      8</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span><span style="color:rgb(188,188,188)"> </span><span style="color:rgb(0,0,255)">classify_analytics_job</span>(row):
+
+<span class="ansi-red-fg">NameError</span>: name &#39;eda&#39; is not defined</pre>
+</div>
+</div>
+</div>
+<div id="83a8c79d" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare the data</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> eda.copy()</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define analytics jobs (Data Analyst + Business Analyst)</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> classify_analytics_job(row):</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> row[<span class="st">&#39;DATA_ANALYST_JOB&#39;</span>]:</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> <span class="bu">str</span>(row[<span class="st">&#39;TITLE_NAME&#39;</span>]).lower() <span class="cf">if</span> <span class="st">&#39;TITLE_NAME&#39;</span> <span class="kw">in</span> row <span class="cf">else</span> <span class="bu">str</span>(row[<span class="st">&#39;TITLE&#39;</span>]).lower()</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">&#39;business analyst&#39;</span> <span class="kw">in</span> title:</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;IS_ANALYTICS_JOB&#39;</span>] <span class="op">=</span> df.<span class="bu">apply</span>(classify_analytics_job, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;Job_Category&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;IS_ANALYTICS_JOB&#39;</span>].<span class="bu">map</span>({<span class="va">True</span>: <span class="st">&#39;Analytics Job&#39;</span>, <span class="va">False</span>: <span class="st">&#39;Non-Analytics Job&#39;</span>})</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by industry and job category</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>df_grouped <span class="op">=</span> df.groupby([<span class="st">&#39;NAICS2_NAME&#39;</span>, <span class="st">&#39;IS_ANALYTICS_JOB&#39;</span>]).size().reset_index(name<span class="op">=</span><span class="st">&#39;Job_Count&#39;</span>)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>df_grouped[<span class="st">&#39;Job_Category&#39;</span>] <span class="op">=</span> df_grouped[<span class="st">&#39;IS_ANALYTICS_JOB&#39;</span>].<span class="bu">map</span>({<span class="va">True</span>: <span class="st">&#39;Analytics Job&#39;</span>, <span class="va">False</span>: <span class="st">&#39;Non-Analytics Job&#39;</span>})</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Shorten industry names for better readability</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>short_map <span class="op">=</span> {</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Professional, Scientific, and Technical Services&#39;</span>: <span class="st">&#39;Prof. Services&#39;</span>,</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Administrative and Support and Waste Management and Remediation Services&#39;</span>: <span class="st">&#39;Admin &amp; Waste Mgmt&#39;</span>,</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Health Care and Social Assistance&#39;</span>: <span class="st">&#39;Healthcare&#39;</span>,</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Finance and Insurance&#39;</span>: <span class="st">&#39;Finance&#39;</span>,</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Information&#39;</span>: <span class="st">&#39;Info Tech&#39;</span>,</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Educational Services&#39;</span>: <span class="st">&#39;Education&#39;</span>,</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Manufacturing&#39;</span>: <span class="st">&#39;Manufacturing&#39;</span>,</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Retail Trade&#39;</span>: <span class="st">&#39;Retail&#39;</span>,</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Accommodation and Food Services&#39;</span>: <span class="st">&#39;Hospitality&#39;</span>,</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Other Services (except Public Administration)&#39;</span>: <span class="st">&#39;Other Services&#39;</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>df_grouped[<span class="st">&#39;Industry&#39;</span>] <span class="op">=</span> df_grouped[<span class="st">&#39;NAICS2_NAME&#39;</span>].<span class="bu">map</span>(short_map).fillna(df_grouped[<span class="st">&#39;NAICS2_NAME&#39;</span>])</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the stacked bar chart</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.bar(df_grouped, </span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>             x<span class="op">=</span><span class="st">&#39;Industry&#39;</span>, </span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>             y<span class="op">=</span><span class="st">&#39;Job_Count&#39;</span>, </span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>             color<span class="op">=</span><span class="st">&#39;Job_Category&#39;</span>,</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>             title<span class="op">=</span><span class="st">&#39;Top Industries Hiring Analytics Jobs&#39;</span>,</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>             labels<span class="op">=</span>{<span class="st">&#39;Industry&#39;</span>: <span class="st">&#39;Industry&#39;</span>, <span class="st">&#39;Job_Count&#39;</span>: <span class="st">&#39;Number of Jobs&#39;</span>, <span class="st">&#39;Job_Category&#39;</span>: <span class="st">&#39;Job Category&#39;</span>},</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>             barmode<span class="op">=</span><span class="st">&#39;stack&#39;</span>,</span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>             color_discrete_map<span class="op">=</span>{<span class="st">&#39;Analytics Job&#39;</span>: <span class="st">&#39;#FF6B6B&#39;</span>, <span class="st">&#39;Non-Analytics Job&#39;</span>: <span class="st">&#39;#4ECDC4&#39;</span>})</span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Beautify the layout with a red-white theme (no gradients)</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">1000</span>,</span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">600</span>,</span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>    plot_bgcolor<span class="op">=</span><span class="st">&#39;#FFFFFF&#39;</span>,  <span class="co"># Plain white background</span></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>    paper_bgcolor<span class="op">=</span><span class="st">&#39;#FFFFFF&#39;</span>,  <span class="co"># Plain white background</span></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>    font<span class="op">=</span><span class="bu">dict</span>(family<span class="op">=</span><span class="st">&quot;Inter, sans-serif&quot;</span>, size<span class="op">=</span><span class="dv">14</span>, color<span class="op">=</span><span class="st">&quot;#2D3748&quot;</span>),</span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>        font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">24</span>, color<span class="op">=</span><span class="st">&quot;#FF6B6B&quot;</span>),  <span class="co"># Red title for theme</span></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="fl">0.5</span>,</span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>        xanchor<span class="op">=</span><span class="st">&quot;center&quot;</span>,</span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="fl">0.95</span>,</span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>        yanchor<span class="op">=</span><span class="st">&quot;top&quot;</span></span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>    xaxis<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">&quot;Industry&quot;</span>,</span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>        title_font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">16</span>),</span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>        tickfont<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">12</span>),</span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>        tickangle<span class="op">=-</span><span class="dv">45</span>,</span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>        gridcolor<span class="op">=</span><span class="st">&quot;#E2E8F0&quot;</span>,</span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>        linecolor<span class="op">=</span><span class="st">&quot;#2D3748&quot;</span>,</span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>        linewidth<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>        showline<span class="op">=</span><span class="va">True</span></span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>    yaxis<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">&quot;Number of Jobs&quot;</span>,</span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a>        title_font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">16</span>),</span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a>        tickfont<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">12</span>),</span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a>        gridcolor<span class="op">=</span><span class="st">&quot;#E2E8F0&quot;</span>,</span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a>        linecolor<span class="op">=</span><span class="st">&quot;#2D3748&quot;</span>,</span>
+<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a>        linewidth<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>        showline<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>        showgrid<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>        zeroline<span class="op">=</span><span class="va">False</span></span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>    legend<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">&quot;Job Category&quot;</span>,</span>
+<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a>        font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">13</span>),</span>
+<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a>        bgcolor<span class="op">=</span><span class="st">&quot;#FFFFFF&quot;</span>,</span>
+<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a>        bordercolor<span class="op">=</span><span class="st">&quot;#FF6B6B&quot;</span>,  <span class="co"># Red border for theme</span></span>
+<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a>        borderwidth<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="fl">1.02</span>,</span>
+<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="fl">0.5</span>,</span>
+<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a>        xanchor<span class="op">=</span><span class="st">&quot;left&quot;</span>,</span>
+<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a>        yanchor<span class="op">=</span><span class="st">&quot;middle&quot;</span></span>
+<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a>    hovermode<span class="op">=</span><span class="st">&quot;closest&quot;</span>,</span>
+<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a>    hoverlabel<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a>        bgcolor<span class="op">=</span><span class="st">&quot;#FFFFFF&quot;</span>,</span>
+<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a>        font_size<span class="op">=</span><span class="dv">12</span>,</span>
+<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a>        font_family<span class="op">=</span><span class="st">&quot;Inter, sans-serif&quot;</span>,</span>
+<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a>        font_color<span class="op">=</span><span class="st">&quot;#2D3748&quot;</span>,</span>
+<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a>        bordercolor<span class="op">=</span><span class="st">&quot;#FF6B6B&quot;</span>  <span class="co"># Red border for hover</span></span>
+<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[5], line 5</span>
+<span class="ansi-green-fg ansi-bold">      2</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">pandas</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,135,0)">as</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">pd</span>
+<span class="ansi-green-fg ansi-bold">      4</span> <span style="font-style:italic;color:rgb(95,135,135)"># Prepare the data</span>
+<span class="ansi-green-fg">----&gt; 5</span> df <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">eda</span><span style="color:rgb(98,98,98)">.</span>copy()
+<span class="ansi-green-fg ansi-bold">      7</span> <span style="font-style:italic;color:rgb(95,135,135)"># Define analytics jobs (Data Analyst + Business Analyst)</span>
+<span class="ansi-green-fg ansi-bold">      8</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span><span style="color:rgb(188,188,188)"> </span><span style="color:rgb(0,0,255)">classify_analytics_job</span>(row):
+
+<span class="ansi-red-fg">NameError</span>: name &#39;eda&#39; is not defined</pre>
+</div>
+</div>
+</div>
+<div id="28211e66" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare the data</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> eda.copy()</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define analytics jobs (Data Analyst + Business Analyst)</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> classify_analytics_job(row):</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> row[<span class="st">&#39;DATA_ANALYST_JOB&#39;</span>]:</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> <span class="bu">str</span>(row[<span class="st">&#39;TITLE_NAME&#39;</span>]).lower() <span class="cf">if</span> <span class="st">&#39;TITLE_NAME&#39;</span> <span class="kw">in</span> row <span class="cf">else</span> <span class="bu">str</span>(row[<span class="st">&#39;TITLE&#39;</span>]).lower()</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">&#39;business analyst&#39;</span> <span class="kw">in</span> title:</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;IS_ANALYTICS_JOB&#39;</span>] <span class="op">=</span> df.<span class="bu">apply</span>(classify_analytics_job, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;Job_Category&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;IS_ANALYTICS_JOB&#39;</span>].<span class="bu">map</span>({<span class="va">True</span>: <span class="st">&#39;Analytics Job&#39;</span>, <span class="va">False</span>: <span class="st">&#39;Non-Analytics Job&#39;</span>})</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate average years of experience</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;Avg_Years_Experience&#39;</span>] <span class="op">=</span> (df[<span class="st">&#39;MIN_YEARS_EXPERIENCE&#39;</span>] <span class="op">+</span> df[<span class="st">&#39;MAX_YEARS_EXPERIENCE&#39;</span>]) <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean the data (remove rows with missing salary or experience)</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.dropna(subset<span class="op">=</span>[<span class="st">&#39;Avg_Years_Experience&#39;</span>, <span class="st">&#39;SALARY&#39;</span>])</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the scatter plot with trend line</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.scatter(df, </span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>                 x<span class="op">=</span><span class="st">&#39;Avg_Years_Experience&#39;</span>, </span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>                 y<span class="op">=</span><span class="st">&#39;SALARY&#39;</span>, </span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>                 color<span class="op">=</span><span class="st">&#39;Job_Category&#39;</span>,</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>                 trendline<span class="op">=</span><span class="st">&#39;ols&#39;</span>,  <span class="co"># Add trend line (ordinary least squares)</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>                 title<span class="op">=</span><span class="st">&#39;Experience Requirements vs Salary for Analytics Jobs&#39;</span>,</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>                 labels<span class="op">=</span>{<span class="st">&#39;Avg_Years_Experience&#39;</span>: <span class="st">&#39;Average Years of Experience&#39;</span>, <span class="st">&#39;SALARY&#39;</span>: <span class="st">&#39;Salary ($)&#39;</span>, <span class="st">&#39;Job_Category&#39;</span>: <span class="st">&#39;Job Category&#39;</span>},</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>                 color_discrete_map<span class="op">=</span>{<span class="st">&#39;Analytics Job&#39;</span>: <span class="st">&#39;#FF6B6B&#39;</span>, <span class="st">&#39;Non-Analytics Job&#39;</span>: <span class="st">&#39;#4ECDC4&#39;</span>})</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Beautify the layout with a red-white theme (no gradients)</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">900</span>,</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">600</span>,</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>    plot_bgcolor<span class="op">=</span><span class="st">&#39;#FFFFFF&#39;</span>,  <span class="co"># Plain white background</span></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>    paper_bgcolor<span class="op">=</span><span class="st">&#39;#FFFFFF&#39;</span>,  <span class="co"># Plain white background</span></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>    font<span class="op">=</span><span class="bu">dict</span>(family<span class="op">=</span><span class="st">&quot;Inter, sans-serif&quot;</span>, size<span class="op">=</span><span class="dv">14</span>, color<span class="op">=</span><span class="st">&quot;#2D3748&quot;</span>),</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>        font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">24</span>, color<span class="op">=</span><span class="st">&quot;#FF6B6B&quot;</span>),  <span class="co"># Red title for theme</span></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="fl">0.5</span>,</span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>        xanchor<span class="op">=</span><span class="st">&quot;center&quot;</span>,</span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="fl">0.95</span>,</span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>        yanchor<span class="op">=</span><span class="st">&quot;top&quot;</span></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>    xaxis<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">&quot;Average Years of Experience&quot;</span>,</span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>        title_font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">16</span>),</span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>        tickfont<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">12</span>),</span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>        gridcolor<span class="op">=</span><span class="st">&quot;#E2E8F0&quot;</span>,</span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>        linecolor<span class="op">=</span><span class="st">&quot;#2D3748&quot;</span>,</span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>        linewidth<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>        showline<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>        showgrid<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>        zeroline<span class="op">=</span><span class="va">False</span></span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>    yaxis<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">&quot;Salary ($)&quot;</span>,</span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a>        title_font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">16</span>),</span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a>        tickfont<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">12</span>),</span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>        gridcolor<span class="op">=</span><span class="st">&quot;#E2E8F0&quot;</span>,</span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>        linecolor<span class="op">=</span><span class="st">&quot;#2D3748&quot;</span>,</span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a>        linewidth<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>        showline<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>        showgrid<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a>        zeroline<span class="op">=</span><span class="va">False</span></span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a>    legend<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">&quot;Job Category&quot;</span>,</span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a>        font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">13</span>),</span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>        bgcolor<span class="op">=</span><span class="st">&quot;#FFFFFF&quot;</span>,</span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>        bordercolor<span class="op">=</span><span class="st">&quot;#FF6B6B&quot;</span>,  <span class="co"># Red border for theme</span></span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>        borderwidth<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="fl">1.02</span>,</span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="fl">0.5</span>,</span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a>        xanchor<span class="op">=</span><span class="st">&quot;left&quot;</span>,</span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a>        yanchor<span class="op">=</span><span class="st">&quot;middle&quot;</span></span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a>    hovermode<span class="op">=</span><span class="st">&quot;closest&quot;</span>,</span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a>    hoverlabel<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a>        bgcolor<span class="op">=</span><span class="st">&quot;#FFFFFF&quot;</span>,</span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a>        font_size<span class="op">=</span><span class="dv">12</span>,</span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a>        font_family<span class="op">=</span><span class="st">&quot;Inter, sans-serif&quot;</span>,</span>
+<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a>        font_color<span class="op">=</span><span class="st">&quot;#2D3748&quot;</span>,</span>
+<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a>        bordercolor<span class="op">=</span><span class="st">&quot;#FF6B6B&quot;</span>  <span class="co"># Red border for hover</span></span>
+<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a><span class="co"># Customize scatter points</span></span>
+<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a>fig.update_traces(</span>
+<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a>    marker<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="dv">8</span>,</span>
+<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a>        opacity<span class="op">=</span><span class="fl">0.7</span>,</span>
+<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a>        line<span class="op">=</span><span class="bu">dict</span>(width<span class="op">=</span><span class="dv">1</span>, color<span class="op">=</span><span class="st">&quot;#2D3748&quot;</span>)</span>
+<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[6], line 5</span>
+<span class="ansi-green-fg ansi-bold">      2</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">pandas</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,135,0)">as</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">pd</span>
+<span class="ansi-green-fg ansi-bold">      4</span> <span style="font-style:italic;color:rgb(95,135,135)"># Prepare the data</span>
+<span class="ansi-green-fg">----&gt; 5</span> df <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">eda</span><span style="color:rgb(98,98,98)">.</span>copy()
+<span class="ansi-green-fg ansi-bold">      7</span> <span style="font-style:italic;color:rgb(95,135,135)"># Define analytics jobs (Data Analyst + Business Analyst)</span>
+<span class="ansi-green-fg ansi-bold">      8</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span><span style="color:rgb(188,188,188)"> </span><span style="color:rgb(0,0,255)">classify_analytics_job</span>(row):
+
+<span class="ansi-red-fg">NameError</span>: name &#39;eda&#39; is not defined</pre>
+</div>
+</div>
+</div>
+<div id="48a3cc95" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare the data</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> eda.copy()</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define analytics jobs (Data Analyst + Business Analyst)</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> classify_analytics_job(row):</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> row[<span class="st">&#39;DATA_ANALYST_JOB&#39;</span>]:</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> <span class="bu">str</span>(row[<span class="st">&#39;TITLE_NAME&#39;</span>]).lower() <span class="cf">if</span> <span class="st">&#39;TITLE_NAME&#39;</span> <span class="kw">in</span> row <span class="cf">else</span> <span class="bu">str</span>(row[<span class="st">&#39;TITLE&#39;</span>]).lower()</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">&#39;business analyst&#39;</span> <span class="kw">in</span> title:</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;IS_ANALYTICS_JOB&#39;</span>] <span class="op">=</span> df.<span class="bu">apply</span>(classify_analytics_job, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;Job_Category&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;IS_ANALYTICS_JOB&#39;</span>].<span class="bu">map</span>({<span class="va">True</span>: <span class="st">&#39;Analytics Job&#39;</span>, <span class="va">False</span>: <span class="st">&#39;Non-Analytics Job&#39;</span>})</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter for Analytics jobs only</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>df_analytics <span class="op">=</span> df[df[<span class="st">&#39;IS_ANALYTICS_JOB&#39;</span>]].copy()</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean the data (remove rows with missing industry)</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>df_analytics <span class="op">=</span> df_analytics.dropna(subset<span class="op">=</span>[<span class="st">&#39;NAICS2_NAME&#39;</span>])</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by job category and industry to get job counts</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>df_grouped <span class="op">=</span> df_analytics.groupby([<span class="st">&#39;Job_Category&#39;</span>, <span class="st">&#39;NAICS2_NAME&#39;</span>]).size().reset_index(name<span class="op">=</span><span class="st">&#39;Job_Count&#39;</span>)</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Shorten industry names for better readability</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>short_map <span class="op">=</span> {</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Professional, Scientific, and Technical Services&#39;</span>: <span class="st">&#39;Prof. Services&#39;</span>,</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Administrative and Support and Waste Management and Remediation Services&#39;</span>: <span class="st">&#39;Admin &amp; Waste Mgmt&#39;</span>,</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Health Care and Social Assistance&#39;</span>: <span class="st">&#39;Healthcare&#39;</span>,</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Finance and Insurance&#39;</span>: <span class="st">&#39;Finance&#39;</span>,</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Information&#39;</span>: <span class="st">&#39;Info Tech&#39;</span>,</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Educational Services&#39;</span>: <span class="st">&#39;Education&#39;</span>,</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Manufacturing&#39;</span>: <span class="st">&#39;Manufacturing&#39;</span>,</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Retail Trade&#39;</span>: <span class="st">&#39;Retail&#39;</span>,</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Accommodation and Food Services&#39;</span>: <span class="st">&#39;Hospitality&#39;</span>,</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Other Services (except Public Administration)&#39;</span>: <span class="st">&#39;Other Services&#39;</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>df_grouped[<span class="st">&#39;NAICS2_NAME&#39;</span>] <span class="op">=</span> df_grouped[<span class="st">&#39;NAICS2_NAME&#39;</span>].<span class="bu">map</span>(short_map).fillna(df_grouped[<span class="st">&#39;NAICS2_NAME&#39;</span>])</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare data for Sankey Diagram</span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list of unique labels (nodes)</span></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> <span class="bu">list</span>(df_grouped[<span class="st">&#39;Job_Category&#39;</span>].unique()) <span class="op">+</span> <span class="bu">list</span>(df_grouped[<span class="st">&#39;NAICS2_NAME&#39;</span>].unique())</span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Create source and target indices</span></span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>source <span class="op">=</span> [labels.index(job_cat) <span class="cf">for</span> job_cat <span class="kw">in</span> df_grouped[<span class="st">&#39;Job_Category&#39;</span>]]</span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>target <span class="op">=</span> [labels.index(industry) <span class="cf">for</span> industry <span class="kw">in</span> df_grouped[<span class="st">&#39;NAICS2_NAME&#39;</span>]]</span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>value <span class="op">=</span> df_grouped[<span class="st">&#39;Job_Count&#39;</span>].tolist()</span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the Sankey Diagram</span></span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure(data<span class="op">=</span>[go.Sankey(</span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>    node<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>        pad<span class="op">=</span><span class="dv">15</span>,</span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>        thickness<span class="op">=</span><span class="dv">20</span>,</span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>        line<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">&quot;#2D3748&quot;</span>, width<span class="op">=</span><span class="fl">0.5</span>),</span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>        label<span class="op">=</span>labels,</span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">&quot;#FF6B6B&quot;</span>  <span class="co"># Red nodes for the theme</span></span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>    link<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>        source<span class="op">=</span>source,</span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a>        target<span class="op">=</span>target,</span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a>        value<span class="op">=</span>value,</span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">&quot;rgba(255, 107, 107, 0.5)&quot;</span>  <span class="co"># Semi-transparent red links</span></span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a>)])</span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a><span class="co"># Beautify the layout with a red-white theme (no gradients)</span></span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">900</span>,</span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">600</span>,</span>
+<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a>    plot_bgcolor<span class="op">=</span><span class="st">&#39;#FFFFFF&#39;</span>,  <span class="co"># Plain white background</span></span>
+<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a>    paper_bgcolor<span class="op">=</span><span class="st">&#39;#FFFFFF&#39;</span>,  <span class="co"># Plain white background</span></span>
+<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a>    font<span class="op">=</span><span class="bu">dict</span>(family<span class="op">=</span><span class="st">&quot;Inter, sans-serif&quot;</span>, size<span class="op">=</span><span class="dv">14</span>, color<span class="op">=</span><span class="st">&quot;#2D3748&quot;</span>),</span>
+<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a>        text<span class="op">=</span><span class="st">&#39;Distribution of Analytics Job Postings by Industry&#39;</span>,</span>
+<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a>        font<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">24</span>, color<span class="op">=</span><span class="st">&quot;#FF6B6B&quot;</span>),  <span class="co"># Red title for theme</span></span>
+<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="fl">0.5</span>,</span>
+<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a>        xanchor<span class="op">=</span><span class="st">&quot;center&quot;</span>,</span>
+<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="fl">0.95</span>,</span>
+<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a>        yanchor<span class="op">=</span><span class="st">&quot;top&quot;</span></span>
+<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a>    margin<span class="op">=</span><span class="bu">dict</span>(l<span class="op">=</span><span class="dv">20</span>, r<span class="op">=</span><span class="dv">20</span>, t<span class="op">=</span><span class="dv">80</span>, b<span class="op">=</span><span class="dv">20</span>),</span>
+<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[7], line 5</span>
+<span class="ansi-green-fg ansi-bold">      2</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">pandas</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,135,0)">as</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">pd</span>
+<span class="ansi-green-fg ansi-bold">      4</span> <span style="font-style:italic;color:rgb(95,135,135)"># Prepare the data</span>
+<span class="ansi-green-fg">----&gt; 5</span> df <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">eda</span><span style="color:rgb(98,98,98)">.</span>copy()
+<span class="ansi-green-fg ansi-bold">      7</span> <span style="font-style:italic;color:rgb(95,135,135)"># Define analytics jobs (Data Analyst + Business Analyst)</span>
+<span class="ansi-green-fg ansi-bold">      8</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span><span style="color:rgb(188,188,188)"> </span><span style="color:rgb(0,0,255)">classify_analytics_job</span>(row):
+
+<span class="ansi-red-fg">NameError</span>: name &#39;eda&#39; is not defined</pre>
+</div>
+</div>
+</div>
 
 
 
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-mckinsey2023generativeai" class="csl-entry" role="listitem">
-<span class="smallcaps">Company, M. &amp;</span>. (2023): <span>“The Economic Potential of Generative AI: The Next Productivity Frontier,”</span><a href="https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier">https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier</a>.
-</div>
-<div id="ref-gartner2024ai" class="csl-entry" role="listitem">
-<span class="smallcaps">Gartner</span>. (2024): <span>“Marketing Budgets: Benchmarks for CMOs in the Era of Less,”</span><a href="https://www.gartner.com/en/marketing/topics/marketing-budget">https://www.gartner.com/en/marketing/topics/marketing-budget</a>.
-</div>
-<div id="ref-github2023copilot" class="csl-entry" role="listitem">
-<span class="smallcaps">GitHub</span>. (2023): <span>“GitHub Copilot: Your AI Pair Programmer,”</span><a href="https://github.com/features/copilot">https://github.com/features/copilot</a>.
-</div>
-<div id="ref-nigelrichardson2024" class="csl-entry" role="listitem">
-<span class="smallcaps">Richardson, N.</span> (2024): <span>“CIO Interview: Nigel Richardson, European CIO, PepsiCo,”</span><a href="https://www.computerweekly.com/news/366570412/CIO-interview-Nigel-Richardson-European-CIO-PepsiCo">https://www.computerweekly.com/news/366570412/CIO-interview-Nigel-Richardson-European-CIO-PepsiCo</a>.
-</div>
-<div id="ref-samuels2024ai" class="csl-entry" role="listitem">
-<span class="smallcaps">Samuels, M.</span> (2024): <span>“AI’s Employment Impact: 86% of Workers Fear Job Losses, but Here’s Some Good News,”</span><a href="https://www.zdnet.com/article/ai-employment-impact-86-of-workers-fear-job-losses-but-heres-some-good-news/">https://www.zdnet.com/article/ai-employment-impact-86-of-workers-fear-job-losses-but-heres-some-good-news/</a>.
-</div>
-<div id="ref-beverlywhite2024" class="csl-entry" role="listitem">
-<span class="smallcaps">White, B.</span> (2024): <span>“The Future of Work: How AI Is Reshaping Careers,”</span><a href="https://www.harveynash.co.uk/team/bev-white">https://www.harveynash.co.uk/team/bev-white</a>.
-</div>
-</div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
