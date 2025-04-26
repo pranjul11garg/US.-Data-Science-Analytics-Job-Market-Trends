@@ -11,21 +11,98 @@ code:fold: true
 ---
 
 ```{python}
-import os
 import pandas as pd
-import requests
+import matplotlib.pyplot as plt
+import seaborn as sns
+import missingno as msno
+import plotly.express as px
+import numpy as np
+import plotly.graph_objects as go
 
-url = "https://drive.usercontent.google.com/download?id=1V2GCHGt2dkFGqVBeoUFckU4IhUgk4ocQ&authuser=1"
+df = pd.read_csv("./data/lightcast_job_postings.csv")
 
-local = "data/lightcast_job_postings.csv"
-os.makedirs(os.path.dirname(local), exist_ok=True)
+columns_to_keep = [
+    'COMPANY', 'LOCATION', 'POSTED', 'MIN_EDULEVELS_NAME', 'MAX_EDULEVELS_NAME',
+    'MIN_YEARS_EXPERIENCE', 'MAX_YEARS_EXPERIENCE', 'TITLE', 'SKILLS',
+    'SPECIALIZED_SKILLS', 'CERTIFICATIONS', 'COMMON_SKILLS', 'SOFTWARE_SKILLS',
+    'SOC_2021_4_NAME', 'NAICS_2022_6', 'NAICS2_NAME', 'REMOTE_TYPE_NAME',
+    'SALARY', 'TITLE_NAME', 'SKILLS_NAME', 'SPECIALIZED_SKILLS_NAME'
+]
+eda_data = df[columns_to_keep]
+```
 
-#Download if missing
-if not os.path.exists(local):
-    print("Local file not found—downloading from URL…")
-    response = requests.get(url, stream=True)
-    response.raise_for_status()
-    print("Download complete.")
-df = pd.read_csv(local)
-print(f"Loaded {len(df):,} rows from Lightcast data")
+```{python}
+
+missing_matrix = eda_data.isnull().astype(int)
+corr = missing_matrix.corr().round(2)
+
+mask = np.triu(np.ones(corr.shape), k=1).astype(bool)
+masked_corr = corr.mask(mask)
+
+text_labels = masked_corr.astype(str)
+text_labels[masked_corr.isna()] = ""
+
+# plot
+fig = go.Figure(data=go.Heatmap(
+    z=masked_corr.values,
+    x=masked_corr.columns,
+    y=masked_corr.index,
+    text=text_labels.values,
+    texttemplate="%{text}",
+    colorscale="Blues",
+    colorbar=dict(title="Missing Corr"),
+    zmin=0,
+    zmax=1,
+    hoverinfo='skip'
+))
+
+fig.update_layout(
+    title="Clean Triangle Missing Value Correlation Heatmap",
+    xaxis_tickangle=45,
+    width=850,
+    height=600,
+    margin=dict(t=50, l=80, r=50, b=80),
+    font=dict(size=8),
+    plot_bgcolor='white'
+)
+
+fig.update_yaxes(autorange="reversed")
+fig.show()
+```
+
+This triangle heatmap visualizes the correlation of missing values between different columns in the dataset. Each square represents how often two columns are missing together, with darker blue indicating a stronger relationship. Most of the values are very high (close to 1.0), suggesting that when one column is missing, others are often missing too — especially among skill-related fields like SKILLS, SPECIALIZED_SKILLS, and SOFTWARE_SKILLS, which are likely part of the same job posting metadata.
+
+This pattern indicates that missingness is not random, but structured — possibly due to differences in how job descriptions are recorded across roles or industries. For example, a job with no software skill tags might also lack common skills or NAICS codes, hinting at data input gaps rather than actual job content differences. Recognizing these correlations is helpful for choosing imputation strategies or deciding whether to drop certain rows or columns entirely during preprocessing.
+
+
+```{python}
+
+if "SALARY" in eda_data.columns:
+    eda_data["SALARY"].fillna(eda_data["SALARY"].median(), inplace=True)
+else:
+    print("Warning: 'SALARY' column not found in dataframe!")
+
+if "COMPANY" in eda_data.columns:
+    eda_data["COMPANY"].fillna("Unknown", inplace=True)
+else:
+    print("Warning: 'COMPANY' column not found in dataframe!")
+
+    # Fill numeric columns with mean
+num_cols = eda_data.select_dtypes(include='number').columns
+for col in num_cols:
+    if eda_data[col].isnull().sum() > 0:
+        eda_data[col].fillna(eda_data[col].mean(), inplace=True)
+
+# Fill categorical columns with mode
+cat_cols = eda_data.select_dtypes(include='object').columns
+for col in cat_cols:
+    if eda_data[col].isnull().sum() > 0:
+        eda_data[col].fillna(eda_data[col].mode()[0], inplace=True)
+
+eda_data.dropna(thresh=len(eda_data) * 0.5, axis=1, inplace=True)
+
+
+# delete duplicates
+eda_data = eda_data.drop_duplicates(subset=["TITLE", "COMPANY", "LOCATION", "POSTED"])
+
 ```
