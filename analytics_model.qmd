@@ -22,12 +22,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import adjusted_rand_score
-eda = pd.read_csv("data/eda_data.csv")
+eda = pd.read_parquet("data/eda.parquet")
 ```
 
 ```{python}
-
-eda = pd.read_csv("data/eda_data.csv")
 
 features = eda[['SALARY', 'MAX_YEARS_EXPERIENCE', 'MIN_YEARS_EXPERIENCE']].copy()
 
@@ -177,5 +175,6 @@ fig
   height="500"
   style="border:none;"
 ></iframe>
+
 This plot shows the Actual vs. Predicted Salary using a multiple linear regression model. The blue dots represent individual predictions, and the red dashed line is the ideal line where predicted = actual. Since most points lie very close to the red line, it means your model predicts salary very accurately, with minimal error and strong linear fit — likely reflected in a high R² score near 1.0.
 
