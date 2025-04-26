@@ -2,11 +2,6 @@
 title: "The Next Normal: AI-Driven Analytics in Action"
 format:
   html:
-    theme-variables:
-      font-size-base: "1.2rem"
-      font-size-h1:   "clamp(4rem, 6vw, 6rem)"
-      font-size-h2:   "2rem"
-      font-size-h3:   "2rem"
     header-includes:
       - |
         <style>

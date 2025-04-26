@@ -91,10 +91,10 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   text-align: justify;                     
 }
-
-h1 { font-size: clamp(2rem, 4.5vw, 3rem); }
-h2 { font-size: clamp(1.5rem, 3.5vw, 2.25rem); }
-h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); }
+*/
+h1 { font-size: clamp(2rem, 3.25vw, 2.25rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+h3 { font-size: clamp(1.25rem, 2vw, 1.75rem); }
 
 h1::after, h2::after, h3::after {
   content: '';
@@ -106,7 +106,7 @@ h1::after, h2::after, h3::after {
   background: var(--primary);
   border-radius: 2px;
 }
-*/
+
 
 p {
   margin-bottom: 1.5rem;
@@ -211,22 +211,21 @@ img:hover, iframe:hover {
   height: auto;
   object-fit: cover;
 }
-
 /*──────────────────────────────────────────────────────────────────────
- 🌐 Navbar (Revamped for Right-Aligned Links, Bigger Text & New Search Button)
+ 🌐 Navbar (Revamped for Right-Aligned Links & Controlled Text Size)
 ──────────────────────────────────────────────────────────────────────*/
 .navbar,
 .navbar-expand-lg {
-  background: rgba(200, 0, 0, 0.95) !important; /* Solid red with slight transparency */
+  background: rgba(200, 0, 0, 0.95) !important; /* Solid red */
   border-bottom: 1px solid var(--white) !important;
   box-shadow: var(--shadow);
   padding: 1rem 0;
   position: sticky;
   top: 0;
   z-index: 1000;
-  transition: background var(--transition), transform 0.5s ease;
   display: flex;
   align-items: center;
+  transition: background var(--transition), transform 0.5s ease;
 }
 
 .navbar.scrolled {
@@ -238,7 +237,8 @@ img:hover, iframe:hover {
 ──────────────────────────────────────────────────────────────────────*/
 .navbar-brand {
   font-family: "Helvetica Neue", Arial, sans-serif;
-  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  /* slightly smaller scaling than before */
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
   color: var(--white) !important;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   display: flex;
@@ -255,22 +255,23 @@ img:hover, iframe:hover {
 .navbar-nav {
   display: flex;
   align-items: center;
-  margin-left: auto; /* Shift links to the right */
+  margin-left: auto;
 }
 
 /*──────────────────────────────────────────────────────────────────────
-   Links: bigger, bolder, underline-on-hover, sans-serif
+   Links: more modest size, sans-serif, underline on hover
 ──────────────────────────────────────────────────────────────────────*/
 .navbar-nav .nav-link {
   font-family: "Helvetica Neue", Arial, sans-serif;
   color: var(--white) !important;
-  font-size: 2rem;             /* bumped up from 0.9rem */
-  font-weight: 700;              /* heavier weight for more punch */
-  margin-right: 1.75rem;         /* extra breathing room */
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem); /* smaller and responsive */
+  font-weight: 600;
+  margin-right: 1.5rem;
   position: relative;
   transition: color var(--transition);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
+
 .navbar-nav .nav-link::after {
   content: '';
   position: absolute;
@@ -281,34 +282,37 @@ img:hover, iframe:hover {
   background: var(--accent);
   transition: width var(--transition);
 }
+
 .navbar-nav .nav-link:hover::after {
   width: 100%;
 }
+
 .navbar-nav .nav-link:hover {
   color: var(--accent) !important;
 }
 
 /*──────────────────────────────────────────────────────────────────────
-   Search Button: white circle, red icon/text, sans-serif
+   Search Button (if still present)
 ──────────────────────────────────────────────────────────────────────*/
 .navbar .search-btn {
   font-family: "Helvetica Neue", Arial, sans-serif;
-  background: #fff        !important;  /* white circle */
-  color: var(--primary)   !important;  /* red icon/text */
+  background: #fff        !important;
+  color: var(--primary)   !important;
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;     /* icon size */
+  font-size: 1.1rem;
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease;
-  margin-left: 1rem;      /* small gap from the links */
+  margin-left: 1rem;
 }
+
 .navbar .search-btn:hover {
-  background: var(--primary-dark) !important; /* darker red on hover */
+  background: var(--primary-dark) !important;
   color: #fff               !important;
 }
 
@@ -317,12 +321,12 @@ img:hover, iframe:hover {
 ──────────────────────────────────────────────────────────────────────*/
 @media (max-width: 992px) {
   .navbar-nav {
-    margin-left: 0;   /* reset on small */
+    margin-left: 0;
   }
   .navbar-nav .nav-link {
-    margin-right: 0;
+    margin-right: 0.75rem;
     padding: 0.5rem;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
   .navbar-collapse {
     background: var(--primary);
@@ -330,8 +334,8 @@ img:hover, iframe:hover {
     padding: 1rem;
   }
   .navbar .search-btn {
-    width: 35px;
-    height: 35px;
+    width: 32px;
+    height: 32px;
     font-size: 0.9rem;
   }
 }
@@ -755,6 +759,11 @@ button:active {
 }
 .back-to-top:hover {
   text-decoration: underline;
+}
+
+.navbar-nav {
+  margin-left: auto !important;
+  margin-right: 0    !important;
 }
 
 /* Fade-in keyframes */
