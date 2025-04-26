@@ -9,8 +9,6 @@ execute:
   error:   true
 ---
 
-
-
 <div class="hero">
   <div class="hero-overlay">
   </div>
