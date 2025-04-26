@@ -1,15 +1,7 @@
 ---
 title: "The Next Normal: AI-Driven Analytics in Action"
 format:
-  html:
-    header-includes:
-      - |
-        <style>
-          /* center everything in the title block */
-          article .title-block {
-            text-align: center;
-          }
-        </style>
+  html: default   # or you could put theme-variables, toc, etc. here
 jupyter: python3
 execute:
   echo:    true
