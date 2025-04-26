@@ -5,6 +5,7 @@ execute:
   echo: true
   warning: false
   error: true
+  working directory: .
 format:
   html:
     self-contained: true       # bundle everything into one file

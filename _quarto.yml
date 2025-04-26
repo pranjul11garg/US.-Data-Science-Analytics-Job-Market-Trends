@@ -6,10 +6,10 @@ project:
   render:
     - index.qmd
     - data_cleaning.ipynb
+    - eda_d.qmd
     - skill_gap.ipynb
     - rm_model.ipynb
     - analytics_model.ipynb
-    - eda_d.qmd
 
 website:
   title: "Trends in Data Science & Business Analytics"
