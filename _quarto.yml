@@ -5,7 +5,6 @@ project:
   - data/lightcast_job_postings.csv
   render:
     - index.qmd
-    - data_cleaning.ipynb
     - skill_gap.ipynb
     - rm_model.ipynb
     - analytics_model.ipynb
@@ -18,11 +17,9 @@ website:
         text: "Home"
       - text: "Data Cleaning & Exploration"
         menu:
-          - text: "Data Cleaning"
-            href: data_cleaning.ipynb
           - text: "Skill Gap Analysis"
             href: skill_gap.ipynb
-      - text: "ML Methods"
+      - text: "Machine Learning Methods"
         menu:
           - text: "Supervise Machine Learning"
             href: rm_model.ipynb
