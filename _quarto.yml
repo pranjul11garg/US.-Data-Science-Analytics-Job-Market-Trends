@@ -8,6 +8,7 @@ project:
     - skill_gap.ipynb
     - rm_model.ipynb
     - analytics_model.ipynb
+    - eda_d.qmd
 
 website:
   title: "Trends in Data Science & Business Analytics"
@@ -17,6 +18,8 @@ website:
         text: "Home"
       - text: "Data Cleaning & Exploration"
         menu:
+          - text: "Exploratory Data Analysis"
+            href: eda_d.qmd
           - text: "Skill Gap Analysis"
             href: skill_gap.ipynb
       - text: "Machine Learning Methods"
