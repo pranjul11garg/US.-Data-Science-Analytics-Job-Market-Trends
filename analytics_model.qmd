@@ -2,19 +2,18 @@
 title: "Analytics Model"
 format:
   html:
-    embed-resources: true        
+    embed-resources: true   # bundle JS/CSS (for Plotly, etc.)
     toc: true
     code-fold: true
-    math-method: mathjax         
-    mathjax-url: "https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
 jupyter: python3
 execute:
   working-directory: project
   echo: true
   warning: false
-  error: true
----
+  toc: true
+  code-fold: true
 
+---
 
 
 ```{python}
@@ -53,39 +52,55 @@ ari = adjusted_rand_score(true_labels_encoded, eda.loc[features.index, 'Cluster'
 import plotly.express as px
 import plotly.graph_objects as go
 from IPython.display import HTML
-import numpy as np
 
 # 1) Build the DataFrame
 df_plot = features.copy()
 df_plot['Cluster'] = eda.loc[features.index, 'Cluster']
 
-# 1.1) Create a log salary column for better scaling
-df_plot['Log_SALARY'] = np.log1p(df_plot['SALARY'])  # log(1+salary), avoid log(0)
+# 2) Compute centroids in original units
+centroids = kmeans.cluster_centers_
+centroids_x = centroids[:, 0] * X.std(axis=0)[0] + X.mean(axis=0)[0]
+centroids_y = centroids[:, 1] * X.std(axis=0)[1] + X.mean(axis=0)[1]
 
-# 2) Create an interactive Plotly Figure
+# 3) Create an interactive Plotly Figure
 fig = px.scatter(
     df_plot,
-    x='Log_SALARY',  # 👈 use log salary instead of salary
+    x='SALARY',
     y='MAX_YEARS_EXPERIENCE',
     color='Cluster',
-    title="KMeans Clustering by Log(Salary) and Max Years Experience",
+    title="KMeans Clustering by Salary and Max Years Experience",
     labels={
-        'Log_SALARY': 'Log(Salary)',
+        'SALARY': 'Salary',
         'MAX_YEARS_EXPERIENCE': 'Max Years Experience',
         'Cluster': 'Cluster'
     },
     width=800,
-    height=600,
+    height=500,
 )
 
-fig
+# 4) Add centroid traces
+fig.add_trace(
+    go.Scatter(
+        x=centroids_x,
+        y=centroids_y,
+        mode='markers',
+        marker=dict(symbol='x', size=18, color='black', line=dict(width=2, color='white')),
+        name='Centroids'
+    )
+)
 
+fig.write_html(
+    "figures/analytics_plot1.html",
+    include_plotlyjs="cdn",
+    full_html=True
+)
+fig
 ```
 <iframe
   src="/figures/analytics_plot1.html"
   width="100%"
-  width="100%"
-  style="border:none; height:90vh;
+  height="500"
+  style="border:none;"
 ></iframe>
 
 Here we have 4 cluster groups. Group 0, which represent as green have lower salary, mostly under 150k, and max years experience in 2-5 years, it is likely Likely junior to mid-level employees with moderate pay. Group 1 with orange, has medium to high salary, wide range from $100k–$500k and with narrow range ~3 years, they are suggests specialized or high-paying roles with short experience — possibly fast-track promotions or high-demand fields. cluster 2 are low salary and experience from 0-4 years, they are clearly entry level employee. cluster 3 has medium salary, mostly under 200k with higher experiences, like 6-13 eyars. They probably are senior professionals with more experience but not the highest salaries. 
@@ -122,25 +137,17 @@ max_val = y_test.max()
 ```
 
 ```{python}
-import numpy as np
-import plotly.graph_objects as go
-
-# Apply log transform
-y_test_log = np.log1p(y_test)
-y_pred_log = np.log1p(y_pred)
-
-# Plot
 fig = go.Figure([
     go.Scatter(
-        x=y_test_log,
-        y=y_pred_log,
+        x=y_test,
+        y=y_pred,
         mode='markers',
         marker=dict(color='skyblue', opacity=0.6),
-        name='Predicted vs Actual (Log Scale)'
+        name='Predicted vs Actual'
     ),
     go.Scatter(
-        x=[min(y_test_log), max(y_test_log)],
-        y=[min(y_test_log), max(y_test_log)],
+        x=[min_val, max_val],
+        y=[min_val, max_val],
         mode='lines',
         line=dict(color='red', dash='dash'),
         name='Ideal Fit'
@@ -148,29 +155,27 @@ fig = go.Figure([
 ])
 
 fig.update_layout(
-    autosize=True,
-    height=400,
-    title="Predicted vs Actual Salary (Log Scale)",
-    xaxis_title="Actual Log(Salary)",
-    yaxis_title="Predicted Log(Salary)",
-    margin=dict(l=20, r=20, t=50, b=20)
+    title='Actual vs Predicted Salary (Multiple Regression)',
+    xaxis_title='Actual Salary',
+    yaxis_title='Predicted Salary',
+    width=800,
+    height=600,
+    template='plotly_white'
 )
+
 
 fig.write_html(
-    "figures/analytics_plot2.html",
-    full_html=False,
-    include_plotlyjs="cdn",
-    config={"responsive": True}
+    'figures/analytics_plot2.html',
+    include_plotlyjs='cdn',
+    full_html=False
 )
-
-fig.show()
-
+fig
 ```
-
 <iframe
   src="/figures/analytics_plot2.html"
   width="100%"
-  style="border:none; height:90vh;
+  height="500"
+  style="border:none;"
 ></iframe>
 
 This plot shows the Actual vs. Predicted Salary using a multiple linear regression model. The blue dots represent individual predictions, and the red dashed line is the ideal line where predicted = actual. Since most points lie very close to the red line, it means your model predicts salary very accurately, with minimal error and strong linear fit — likely reflected in a high R² score near 1.0.
