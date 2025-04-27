@@ -42,48 +42,54 @@ execute:
 
 
 
-Welcome to our deep dive into the evolving landscape of Data Science and Business Analytics in the United States. As industries across the nation increasingly rely on data-driven insights, the role of data science and analytics has become paramount in shaping business strategies, optimizing operations, and driving innovation.
+### Goal of the Project: 
+In this research project, we wanted explore how the fields of Business Analytics, Data Science, and Machine Learning are evolving in 2024. With industries rapidly embracing AI technologies, understanding hiring trends and skill demands has become essential for students and professionals alike.
 
-The rise of artificial intelligence (AI) is reshaping the landscape of data science and business analytics in the United States, creating both opportunities and challenges for workers and businesses alike. As AI continues to evolve, it has sparked widespread concern over job displacement. According to a recent report from the World Economic Forum, 86% of workers express concerns about AI potentially leading to job losses, with predictions of significant industry shifts occurring within the next two to five years [@samuels2024ai]. However, business leaders emphasize that AI is not merely a tool for job replacement—it's a transformative force that is changing the nature of work itself. For instance, Rakuten’s partnership with OpenAI to create an internal version of ChatGPT is helping employees work more efficiently, focusing on higher-level tasks rather than being displaced by technology [@samuels2024ai].
-<!--
-![Data Science Image](figures/datasciencepic.webp){fig-align="center" width="80%"}
--->
-One key trend in 2024 is the growing demand for AI-related skills across various industries. A recent Gartner report highlights that many organizations are significantly increasing their investments in AI, with companies projected to spend an average of $2.5 million on AI integration in 2024 [@gartner2024ai]. This investment is reshaping job descriptions and workforce requirements, as roles now demand proficiency in AI tools. For example, in software development, GitHub Copilot has been shown to increase programmers' efficiency by 55%, enabling them to focus on complex problem-solving rather than repetitive coding tasks [@github2023copilot]. As a result, professionals who upskill and learn to work alongside AI will have better career prospects in the future.
-<!--
-![Data Science Image](figures/dspic2.avif){fig-align="center" width="80%"}
--->
+**Our Research Question:**
+- What are the most in-demand skills for data science, business analytics, and ML roles?
 
-The career outlook for business analytics and data science professionals remains optimistic, as companies increasingly look to combine AI with human decision-making to enhance productivity and innovation. Industry leaders, including Bev White, CEO of Nash Squared, emphasize that AI is not about eliminating jobs, but rather reshaping them to make work more productive and meaningful [@beverlywhite2024]. Similarly, PepsiCo’s CIO, Nigel Richardson, believes that while some jobs will be replaced, AI will ultimately create more opportunities than it eliminates [@nigelrichardson2024]. This aligns with a McKinsey report that forecasts AI could generate up to $13 trillion in additional global GDP by 2030, creating new job opportunities in data science, business analytics, and other technology-related fields [@mckinsey2023generativeai].
+- Have job descriptions evolved in 2024 to require more AI/ML expertise?
 
-This website explores the latest trends, key developments, and future directions in Data Science and Business Analytics in the U.S. We delve into emerging technologies, the growing demand for skilled professionals, and the impact these fields are having on various industries. Our aim is to provide you with valuable insights into how data science is shaping the future of business and the economy.
+- What industries are hiring the most data scientists and why?
+
+- What is the career outlook for business analytics professionals?
+
+To answer these questions, we analyzed a large dataset of real job postings sourced from Lightcast. We applied data cleaning, exploratory analysis, skill extraction, and machine learning classification techniques to identify emerging trends and skill gaps.
+
+#### Why This Matters
+
+The rise of artificial intelligence (AI) and automation is not only transforming industries, it is changing the very skills required to succeed in the job market. Recent research shows that 86% of workers express concerns about AI-driven job displacement [@samuels2024ai], while businesses simultaneously seek employees who can work alongside AI tools and leverage data-driven insights to create value [@gartner2024ai].
+
+As companies invest heavily in AI technologies — with an estimated $2.5 million average per organization in 2024 [@gartner2024ai] professionals skilled in machine learning, cloud computing, Python, and data visualization will be better positioned for future career success.
+
+Artificial intelligence and machine learning are transforming workforce demands across industries.
+In 2024, companies are projected to invest over $2.5 million on average into AI technologies [@gartner2024ai], reshaping job descriptions to require AI and data science skills.
+
+Far from replacing all jobs, AI is reshaping roles to focus on higher-value, decision-driven tasks [@beverlywhite2024; @nigelrichardson2024].
+As a result, professionals who upskill in AI, machine learning, and data analytics are better positioned for career advancement in a future where AI-human collaboration is key.
+
+Our project investigates these trends through real-world job posting analysis — revealing how demand for skills is shifting and where opportunities are growing.
 
 
 
-**Join us as we explore:**
+### Key Trends Shaping Data Science and Analytics Careers
 
-- Predict whether a job role requires Machine Learning & Data Science Skills based on Job Postings.
-
-- Comparison of the Key skills and tools shaping the future of data professionals.
   
-- Prediction of Salary using Supervised Machine Learning Model.
+#### In Demand Dominating Skills {#in-demand-dominating-skills}
 
--  Visual Insights on the Current Job Market Conditions of Business Analytics & Data Analyst Roles
-  
-## State of the Data Industry {#state-of-the-data-industry}
+Our analysis found that **Python, Machine Learning, and Cloud Computing** consistently rank among the top-requested skills in job postings. Employers are seeking candidates who can not only analyze data but also deploy models and build scalable solutions. Python remains the foundational language across roles, while machine learning capabilities and cloud platform expertise such as AWS or Azure offer clear competitive advantages.
 
-Introduce the current landscape: market size, hiring growth, enterprise adoption curves. Highlight key statistics on demand for data roles and major verticals investing in analytics.
+#### AI Skills Now a Must {#ai-skills-now-a-must}
 
-## Ethics & Responsible AI {#ethics-and-responsible-ai}
+Compared to prior years, 2024 job postings show a notable shift: companies are explicitly requesting skills like Artificial Intelligence, Machine Learning, and Deep Learning. This highlights how AI technologies are no longer "nice-to-have" but are becoming core to business operations. Candidates without exposure to AI tools or methods risk being overlooked even for traditionally non-technical analytics roles.
 
-Discuss bias mitigation, data privacy regulations (GDPR, CCPA), and best practices for transparent model governance. Show examples of “AI gone wrong” and how to build trust.
+#### Tech & Finance Leading Hiring {#tech-and-finance-leading-hiring}
 
-## Scaling Data Platforms {#scaling-data-platforms}
+Our industry breakdown shows that technology and finance companies are the heaviest recruiters of data science talent. Tech firms are driving innovation through AI products, while finance companies leverage predictive analytics for risk management and investment strategies. These sectors offer strong opportunities, but they also expect candidates to have technical depth combined with business problem-solving skills.
 
-Cover the evolution from monolithic warehouses to modern lakehouse architectures, real-time streaming (Kafka, Pulsar), and orchestration tools (Airflow, Prefect). Include deployment patterns and cost considerations.
+#### AI Gives Analysts an Edge {#ai-gives-analysts-an-edge}
 
-## Future Tech & Innovation {#future-tech-and-innovation}
-
-Zoom out to emerging trends: Generative AI, graph analytics, quantum computing potential. Speculate on where analytics will go next and how professionals can prepare.
+Business analytics continues to grow across industries, but the professionals who can blend classic analytics with AI-driven insights are positioned for the best opportunities. Companies increasingly value analysts who can not just interpret historical data, but also build predictive models and optimize decisions using machine learning. Upskilling in AI and data science is no longer optional for career advancement in this field.
 
 
 
