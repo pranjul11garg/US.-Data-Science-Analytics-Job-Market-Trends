@@ -5471,7 +5471,7 @@ overflow-x: auto;
 </header>
 
 
-<div id="c317c367" class="cell" data-execution_count="1">
+<div id="a7ce29f4" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -5480,14 +5480,14 @@ overflow-x: auto;
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&quot;_site/data/lightcast_job_postings.csv&quot;</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/lightcast_job_postings.csv&quot;</span>)</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>columns_to_keep <span class="op">=</span> [</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;COMPANY&#39;</span>, <span class="st">&#39;LOCATION&#39;</span>, <span class="st">&#39;POSTED&#39;</span>, <span class="st">&#39;MIN_EDULEVELS_NAME&#39;</span>, <span class="st">&#39;MAX_EDULEVELS_NAME&#39;</span>,</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;MIN_YEARS_EXPERIENCE&#39;</span>, <span class="st">&#39;MAX_YEARS_EXPERIENCE&#39;</span>, <span class="st">&#39;TITLE&#39;</span>, <span class="st">&#39;SKILLS&#39;</span>,</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;SPECIALIZED_SKILLS&#39;</span>, <span class="st">&#39;CERTIFICATIONS&#39;</span>, <span class="st">&#39;COMMON_SKILLS&#39;</span>, <span class="st">&#39;SOFTWARE_SKILLS&#39;</span>,</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;SOC_2021_4_NAME&#39;</span>, <span class="st">&#39;NAICS_2022_6&#39;</span>, <span class="st">&#39;NAICS2_NAME&#39;</span>, <span class="st">&#39;REMOTE_TYPE_NAME&#39;</span>,</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;SALARY&#39;</span>, <span class="st">&#39;TITLE_NAME&#39;</span>, <span class="st">&#39;SKILLS_NAME&#39;</span>, <span class="st">&#39;SPECIALIZED_SKILLS_NAME&#39;</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;SALARY&#39;</span>, <span class="st">&#39;TITLE_NAME&#39;</span>, <span class="st">&#39;SKILLS_NAME&#39;</span>, <span class="st">&#39;SPECIALIZED_SKILLS_NAME&#39;</span>, <span class="st">&#39;BODY&#39;</span></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>]</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>eda_data <span class="op">=</span> df[columns_to_keep]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
@@ -5497,12 +5497,12 @@ overflow-x: auto;
 Cell <span class="ansi-green-fg">In[1], line 9</span>
 <span class="ansi-green-fg ansi-bold">      6</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">numpy</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,135,0)">as</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">np</span>
 <span class="ansi-green-fg ansi-bold">      7</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">plotly</span><span style="font-weight:bold;color:rgb(0,0,255)">.</span><span style="font-weight:bold;color:rgb(0,0,255)">graph_objects</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,135,0)">as</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">go</span>
-<span class="ansi-green-fg">----&gt; 9</span> df <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">pd</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">read_csv</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&quot;</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">_site/data/lightcast_job_postings.csv</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&quot;</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">----&gt; 9</span> df <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">pd</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">read_csv</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&quot;</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">data/lightcast_job_postings.csv</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">&quot;</span><span class="ansi-yellow-bg">)</span>
 <span class="ansi-green-fg ansi-bold">     11</span> columns_to_keep <span style="color:rgb(98,98,98)">=</span> [
 <span class="ansi-green-fg ansi-bold">     12</span>     <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">COMPANY</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">LOCATION</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">POSTED</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">MIN_EDULEVELS_NAME</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">MAX_EDULEVELS_NAME</span><span style="color:rgb(175,0,0)">&#39;</span>,
 <span class="ansi-green-fg ansi-bold">     13</span>     <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">MIN_YEARS_EXPERIENCE</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">MAX_YEARS_EXPERIENCE</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">TITLE</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">SKILLS</span><span style="color:rgb(175,0,0)">&#39;</span>,
 <span class="ansi-green-fg">   (...)</span>
-<span class="ansi-green-fg ansi-bold">     16</span>     <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">SALARY</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">TITLE_NAME</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">SKILLS_NAME</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">SPECIALIZED_SKILLS_NAME</span><span style="color:rgb(175,0,0)">&#39;</span>
+<span class="ansi-green-fg ansi-bold">     16</span>     <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">SALARY</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">TITLE_NAME</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">SKILLS_NAME</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">SPECIALIZED_SKILLS_NAME</span><span style="color:rgb(175,0,0)">&#39;</span>, <span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">BODY</span><span style="color:rgb(175,0,0)">&#39;</span>
 <span class="ansi-green-fg ansi-bold">     17</span> ]
 <span class="ansi-green-fg ansi-bold">     18</span> eda_data <span style="color:rgb(98,98,98)">=</span> df[columns_to_keep]
 
@@ -5561,11 +5561,11 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.11.12/x64/lib/pyt
 <span class="ansi-green-fg ansi-bold">    881</span>         <span style="font-style:italic;color:rgb(95,135,135)"># Binary mode</span>
 <span class="ansi-green-fg ansi-bold">    882</span>         handle <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">open</span>(handle, ioargs<span style="color:rgb(98,98,98)">.</span>mode)
 
-<span class="ansi-red-fg">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;_site/data/lightcast_job_postings.csv&#39;</pre>
+<span class="ansi-red-fg">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;data/lightcast_job_postings.csv&#39;</pre>
 </div>
 </div>
 </div>
-<div id="88603f94" class="cell" data-execution_count="2">
+<div id="c368a1f6" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>missing_matrix <span class="op">=</span> eda_data.isnull().astype(<span class="bu">int</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>corr <span class="op">=</span> missing_matrix.corr().<span class="bu">round</span>(<span class="dv">2</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -5616,7 +5616,7 @@ Cell <span class="ansi-green-fg">In[2], line 1</span>
 </div>
 <p>This triangle heatmap visualizes the correlation of missing values between different columns in the dataset. Each square represents how often two columns are missing together, with darker blue indicating a stronger relationship. Most of the values are very high (close to 1.0), suggesting that when one column is missing, others are often missing too — especially among skill-related fields like SKILLS, SPECIALIZED_SKILLS, and SOFTWARE_SKILLS, which are likely part of the same job posting metadata.</p>
 <p>This pattern indicates that missingness is not random, but structured — possibly due to differences in how job descriptions are recorded across roles or industries. For example, a job with no software skill tags might also lack common skills or NAICS codes, hinting at data input gaps rather than actual job content differences. Recognizing these correlations is helpful for choosing imputation strategies or deciding whether to drop certain rows or columns entirely during preprocessing.</p>
-<div id="881ec9ac" class="cell" data-execution_count="3">
+<div id="9e53cb1a" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;SALARY&quot;</span> <span class="kw">in</span> eda_data.columns:</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    eda_data[<span class="st">&quot;SALARY&quot;</span>].fillna(eda_data[<span class="st">&quot;SALARY&quot;</span>].median(), inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
