@@ -75,7 +75,13 @@ fig.write_html(
     'figures/data_cleaning_plot1.html',
     include_plotlyjs='cdn',
     full_html=False)
+
 ```
+<iframe
+  src="figures/data_cleaning_plot1.html"
+  width="100%"
+  style="border:none; height:70vh;"
+></iframe>
 
 This triangle heatmap visualizes the correlation of missing values between different columns in the dataset. Each square represents how often two columns are missing together, with darker blue indicating a stronger relationship. Most of the values are very high (close to 1.0), suggesting that when one column is missing, others are often missing too — especially among skill-related fields like SKILLS, SPECIALIZED_SKILLS, and SOFTWARE_SKILLS, which are likely part of the same job posting metadata.
 
