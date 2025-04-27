@@ -5479,7 +5479,7 @@ border: none;
 </header>
 
 
-<div id="ed44f869" class="cell" data-execution_count="1">
+<div id="afd1a806" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -5573,7 +5573,7 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.11.12/x64/lib/pyt
 </div>
 </div>
 </div>
-<div id="1b340834" class="cell" data-execution_count="2">
+<div id="6e994f21" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>missing_matrix <span class="op">=</span> eda_data.isnull().astype(<span class="bu">int</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>corr <span class="op">=</span> missing_matrix.corr().<span class="bu">round</span>(<span class="dv">2</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -5624,7 +5624,7 @@ Cell <span class="ansi-green-fg">In[2], line 1</span>
 </div>
 <p>This triangle heatmap visualizes the correlation of missing values between different columns in the dataset. Each square represents how often two columns are missing together, with darker blue indicating a stronger relationship. Most of the values are very high (close to 1.0), suggesting that when one column is missing, others are often missing too — especially among skill-related fields like SKILLS, SPECIALIZED_SKILLS, and SOFTWARE_SKILLS, which are likely part of the same job posting metadata.</p>
 <p>This pattern indicates that missingness is not random, but structured — possibly due to differences in how job descriptions are recorded across roles or industries. For example, a job with no software skill tags might also lack common skills or NAICS codes, hinting at data input gaps rather than actual job content differences. Recognizing these correlations is helpful for choosing imputation strategies or deciding whether to drop certain rows or columns entirely during preprocessing.</p>
-<div id="3d79a15c" class="cell" data-execution_count="3">
+<div id="af841ed4" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;SALARY&quot;</span> <span class="kw">in</span> eda_data.columns:</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    eda_data[<span class="st">&quot;SALARY&quot;</span>].fillna(eda_data[<span class="st">&quot;SALARY&quot;</span>].median(), inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
@@ -5651,7 +5651,10 @@ Cell <span class="ansi-green-fg">In[2], line 1</span>
 <span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co"># delete duplicates</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>eda_data <span class="op">=</span> eda_data.drop_duplicates(subset<span class="op">=</span>[<span class="st">&quot;TITLE&quot;</span>, <span class="st">&quot;COMPANY&quot;</span>, <span class="st">&quot;LOCATION&quot;</span>, <span class="st">&quot;POSTED&quot;</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>eda_data <span class="op">=</span> eda_data.drop_duplicates(subset<span class="op">=</span>[<span class="st">&quot;TITLE&quot;</span>, <span class="st">&quot;COMPANY&quot;</span>, <span class="st">&quot;LOCATION&quot;</span>, <span class="st">&quot;POSTED&quot;</span>,<span class="st">&quot;BODY&quot;</span>])</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>eda_data[<span class="st">&#39;BODY&#39;</span>] <span class="op">=</span> eda_data[<span class="st">&#39;BODY&#39;</span>].<span class="bu">str</span>.<span class="bu">slice</span>(<span class="dv">0</span>, <span class="dv">1000</span>)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>eda_data[<span class="st">&#39;BODY&#39;</span>] <span class="op">=</span> eda_data[<span class="st">&#39;BODY&#39;</span>].astype(<span class="bu">str</span>)</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>eda_data[<span class="st">&#39;COMPANY&#39;</span>] <span class="op">=</span> eda_data[<span class="st">&#39;COMPANY&#39;</span>].astype(<span class="bu">str</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
@@ -5660,6 +5663,21 @@ Cell <span class="ansi-green-fg">In[3], line 1</span>
 <span class="ansi-green-fg">----&gt; 1</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">SALARY</span><span style="color:rgb(175,0,0)">&quot;</span> <span style="font-weight:bold;color:rgb(175,0,255)">in</span> <span class="ansi-yellow-bg">eda_data</span><span style="color:rgb(98,98,98)">.</span>columns:
 <span class="ansi-green-fg ansi-bold">      2</span>     eda_data[<span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">SALARY</span><span style="color:rgb(175,0,0)">&quot;</span>]<span style="color:rgb(98,98,98)">.</span>fillna(eda_data[<span style="color:rgb(175,0,0)">&quot;</span><span style="color:rgb(175,0,0)">SALARY</span><span style="color:rgb(175,0,0)">&quot;</span>]<span style="color:rgb(98,98,98)">.</span>median(), inplace<span style="color:rgb(98,98,98)">=</span><span style="font-weight:bold;color:rgb(0,135,0)">True</span>)
 <span class="ansi-green-fg ansi-bold">      3</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
+
+<span class="ansi-red-fg">NameError</span>: name &#39;eda_data&#39; is not defined</pre>
+</div>
+</div>
+</div>
+<div id="a3c211ee" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>eda_data.to_parquet(<span class="st">&#39;data/eda.parquet&#39;</span>, engine<span class="op">=</span><span class="st">&#39;pyarrow&#39;</span>, compression<span class="op">=</span><span class="st">&#39;gzip&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[4], line 2</span>
+<span class="ansi-green-fg ansi-bold">      1</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">pandas</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,135,0)">as</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">pd</span>
+<span class="ansi-green-fg">----&gt; 2</span> <span class="ansi-yellow-bg">eda_data</span><span style="color:rgb(98,98,98)">.</span>to_parquet(<span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">data/eda.parquet</span><span style="color:rgb(175,0,0)">&#39;</span>, engine<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">pyarrow</span><span style="color:rgb(175,0,0)">&#39;</span>, compression<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">&#39;</span><span style="color:rgb(175,0,0)">gzip</span><span style="color:rgb(175,0,0)">&#39;</span>)
 
 <span class="ansi-red-fg">NameError</span>: name &#39;eda_data&#39; is not defined</pre>
 </div>
