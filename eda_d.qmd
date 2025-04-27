@@ -179,19 +179,10 @@ fig.update_layout(
     bargap=0.2
 )
 
-fig.write_html(
-    "figures/edaplot1.html",
-    include_plotlyjs="cdn",  
-    full_html=False    
-)
-
-from IPython.display import IFrame
-
-# this lives in a code cell
-IFrame(src="figures/edaplot1.html", width="100%", height=500)
+fig
 ```
 
-
+<div class="plotly-wrapper"> ```{python} fig``` </div> ```
 
 ```{python}
 import plotly.express as px
@@ -276,15 +267,10 @@ fig.update_layout(
     )
 )
 
-fig.write_html(
-    "figures/edaplot2.html",
-    include_plotlyjs="cdn",  
-    full_html=False    
-)
-from IPython.display import IFrame
-IFrame(src="figures/edaplot2.html", width="100%", height=500)
+fig
 ```
 
+<div class="plotly-wrapper"> ```{python} fig``` </div> ```
 
 ```{python}
 import plotly.express as px
@@ -389,15 +375,9 @@ fig.update_layout(
         bordercolor="#FF6B6B"  # Red border for hover
     )
 )
-fig.write_html(
-    "figures/edaplot3.html",
-    include_plotlyjs="cdn",  
-    full_html=False    
-)
-from IPython.display import IFrame
-IFrame(src="figures/edaplot3.html", width="50%", height=500)
+fig
 ```
-
+<div class="plotly-wrapper"> ```{python} fig``` </div> ```
 
 ```{python}
 import plotly.express as px
@@ -499,15 +479,9 @@ fig.update_traces(
         line=dict(width=1, color="#2D3748")
     )
 )
-fig.write_html(
-    "figures/edaplot4.html",
-    include_plotlyjs="cdn",  
-    full_html=False    
-)
-from IPython.display import IFrame
-IFrame(src="figures/edaplot4.html", width="100%", height=500)
+fig
 ```
-
+<div class="plotly-wrapper"> ```{python} fig``` </div> ```
 
 ```{python}
 import plotly.graph_objects as go
@@ -595,13 +569,7 @@ fig.update_layout(
     ),
     margin=dict(l=20, r=20, t=80, b=20),
 )
-fig.write_html(
-    "figures/edaplot5.html",
-    include_plotlyjs="cdn",  
-    full_html=False    
-)
-from IPython.display import IFrame
-IFrame(src="figures/edaplot5.html", width="100%", height=500)
+fig
 ```
-
+<div class="plotly-wrapper"> ```{python} fig``` </div> ```
 

@@ -11,6 +11,7 @@ project:
     - data_cleaning.qmd
 
 website:
+  search: false
   title: "Trends in Data Science & Business Analytics"
   navbar:
     left:
@@ -34,13 +35,15 @@ website:
 
 format:
   html:
-    theme: cosmo  
+    page-layout: full
+    theme: cosmo
     css: styles.css
     embed-resources: true
-    theme-variables:
-      container-max-width: "90rem"
-      font-size-base:      "1.15rem"
-  ipynb: default
+    include-in-header:
+      - text: |
+          <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+          <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  ipynb: default        
 
 bibliography: references.bib
 csl: csl/econometrica.csl

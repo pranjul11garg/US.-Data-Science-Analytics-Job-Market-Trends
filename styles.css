@@ -3,10 +3,10 @@
 ──────────────────────────────────────────────────────────────────────*/
 :root {
   /* Primary Palette */
-  --primary: hsl(0, 100%, 40%);            /* Your red */
-  --primary-dark: hsl(0, 100%, 30%);
-  --accent: hsl(345, 75%, 70%);            /* Softer pink for hover */
-  --white: #ffffff;
+  --primary: #A81D1D;                      /* Deep red for navbar gradient start */
+  --primary-dark: #5C0F0F;                 /* Darker red for navbar gradient end and scroll effect */
+  --accent: #FFD700;                       /* Golden yellow for hover effects */
+  --white: #F5F5F5;                        /* Soft white for navbar text */
   --black: #333333;                        /* Adjusted for content text */
   /* Neutrals & Backgrounds */
   --bg: #ffffff;                           /* Pure white to match screenshot */
@@ -21,8 +21,8 @@
   --gradient: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
   --glass-bg: rgba(255, 255, 255, 0.1);
   --glass-border: rgba(255, 255, 255, 0.2);
-  --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  --glow: 0 0 10px rgba(255, 0, 0, 0.5);
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Updated to match navbar shadow */
+  --glow: 0 0 10px rgba(255, 215, 0, 0.5); /* Updated to golden glow for navbar */
 }
 
 /*──────────────────────────────────────────────────────────────────────
@@ -42,7 +42,7 @@ html {
 }
 
 body {
-  background: var(--bg);                   /* Pure white background */
+  background: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
   line-height: 1.6;
@@ -52,13 +52,12 @@ body {
   overflow-x: hidden;
 }
 
-
 /* Utility container for consistent horizontal padding */
 .container {
-  width: 80%;                              /* Adjusted to cover 80% of the page */
-  max-width: 1600px;                       /* Increased for wider content */
-  margin: 0 auto;                          /* Ensures centering */
-  padding: 3rem 0;
+  width: 90% !important;                   /* Slightly wider for better coverage */
+  max-width: 1800px !important;            /* Allow more space on ultra-wide screens */
+  margin: 0 auto !important;
+  padding: 2rem 1rem !important;           /* Balanced padding */
   position: relative;
   z-index: 1;
 }
@@ -80,7 +79,7 @@ body {
 /* ──────────────────────────────────────────────────────────────────────
    Commenting out the custom heading styles
 ────────────────────────────────────────────────────────────────────── */
- /*
+/*
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   color: var(--black);
@@ -89,7 +88,7 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: capitalize;
   letter-spacing: -0.02em;
   position: relative;
-  text-align: justify;                     
+  text-align: justify;
 }
 */
 h1 { font-size: clamp(2rem, 3.25vw, 2.25rem); }
@@ -107,12 +106,11 @@ h1::after, h2::after, h3::after {
   border-radius: 2px;
 }
 
-
 p {
   margin-bottom: 1.5rem;
   color: var(--muted);
   font-size: clamp(1rem, 2vw, 1.125rem);
-  text-align: justify;                     /* Justify paragraphs */
+  text-align: justify;
 }
 
 /*──────────────────────────────────────────────────────────────────────
@@ -187,9 +185,9 @@ button:hover {
 }
 
 /*──────────────────────────────────────────────────────────────────────
- 🖼️ Media (Images, Iframes)
+ 🖼️ Media (Images)
 ──────────────────────────────────────────────────────────────────────*/
-img, iframe {
+img {
   display: block;
   width: 100%;
   max-width: 100%;
@@ -197,10 +195,10 @@ img, iframe {
   border-radius: 1rem;
   box-shadow: var(--shadow);
   transition: transform var(--transition), box-shadow var(--transition);
-  object-fit: cover;                       /* Ensure images fill their containers */
+  object-fit: cover;
 }
 
-img:hover, iframe:hover {
+img:hover {
   transform: scale(1.05);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
@@ -211,65 +209,73 @@ img:hover, iframe:hover {
   height: auto;
   object-fit: cover;
 }
+
 /*──────────────────────────────────────────────────────────────────────
- 🌐 Navbar (Revamped for Right-Aligned Links & Controlled Text Size)
+ 🌐 Navbar (Enhanced with Glassmorphism and Dynamic Gradient)
 ──────────────────────────────────────────────────────────────────────*/
 .navbar,
 .navbar-expand-lg {
-  background: rgba(200, 0, 0, 0.95) !important; /* Solid red */
-  border-bottom: 1px solid var(--white) !important;
-  box-shadow: var(--shadow);
-  padding: 1rem 0;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  transition: background var(--transition), transform 0.5s ease;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark)) !important;
+  background: rgba(168, 29, 29, 0.9) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border-bottom: 2px solid var(--accent) !important;
+  box-shadow: var(--shadow) !important;
+  padding: 1.5rem 2.5rem !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  display: flex !important;
+  align-items: center !important;
+  transition: background var(--transition), transform 0.5s ease !important;
 }
 
 .navbar.scrolled {
-  background: var(--primary-dark) !important; /* Darker red on scroll */
+  background: rgba(122, 21, 21, 0.9) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3) !important;
 }
 
-/*──────────────────────────────────────────────────────────────────────
-   Brand
-──────────────────────────────────────────────────────────────────────*/
+/* Brand */
 .navbar-brand {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  /* slightly smaller scaling than before */
-  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-family: var(--font-heading) !important;
+  font-size: clamp(1.2rem, 2vw, 1.5rem) !important;
+  font-weight: 700 !important;
   color: var(--white) !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  text-shadow: var(--glow) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  transition: text-shadow var(--transition), transform var(--transition) !important;
 }
+
+.navbar-brand:hover {
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.5) !important;
+  transform: scale(1.05) !important;
+}
+
 .navbar-brand::before {
-  content: none;
+  content: none !important;
 }
 
-/*──────────────────────────────────────────────────────────────────────
-   Push links to the right
-──────────────────────────────────────────────────────────────────────*/
+/* Push links to the right */
 .navbar-nav {
-  display: flex;
-  align-items: center;
-  margin-left: auto;
+  display: flex !important;
+  align-items: center !important;
+  margin-left: auto !important;
+  gap: 2.5rem !important;
 }
 
-/*──────────────────────────────────────────────────────────────────────
-   Links: more modest size, sans-serif, underline on hover
-──────────────────────────────────────────────────────────────────────*/
+/* Links */
 .navbar-nav .nav-link {
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-heading) !important;
   color: var(--white) !important;
-  font-size: clamp(0.9rem, 1.5vw, 1.1rem); /* smaller and responsive */
-  font-weight: 600;
-  margin-right: 1.5rem;
-  position: relative;
-  transition: color var(--transition);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  font-size: clamp(0.95rem, 1.3vw, 1.1rem) !important;
+  font-weight: 500 !important;
+  position: relative !important;
+  transition: color var(--transition), transform var(--transition) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
 }
 
 .navbar-nav .nav-link::after {
@@ -277,9 +283,10 @@ img:hover, iframe:hover {
   position: absolute;
   width: 0;
   height: 2px;
-  bottom: -4px;
+  bottom: -6px;
   left: 0;
   background: var(--accent);
+  box-shadow: var(--glow);
   transition: width var(--transition);
 }
 
@@ -289,57 +296,53 @@ img:hover, iframe:hover {
 
 .navbar-nav .nav-link:hover {
   color: var(--accent) !important;
+  transform: scale(1.05) !important;
 }
 
-/*──────────────────────────────────────────────────────────────────────
-   Search Button (if still present)
-──────────────────────────────────────────────────────────────────────*/
-.navbar .search-btn {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  background: #fff        !important;
-  color: var(--primary)   !important;
-  border: none;
-  border-radius: 50%;
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
-  margin-left: 1rem;
+/* Dropdown Menu Styling */
+.navbar-nav .dropdown-menu {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 0.5rem !important;
+  box-shadow: var(--shadow) !important;
+  padding: 0.5rem 0 !important;
 }
 
-.navbar .search-btn:hover {
-  background: var(--primary-dark) !important;
-  color: #fff               !important;
+.navbar-nav .dropdown-item {
+  font-family: var(--font-heading) !important;
+  color: var(--text) !important;
+  font-size: 0.95rem !important;
+  padding: 0.5rem 1.5rem !important;
+  transition: background var(--transition), color var(--transition) !important;
 }
 
-/*──────────────────────────────────────────────────────────────────────
-   Mobile tweaks
-──────────────────────────────────────────────────────────────────────*/
+.navbar-nav .dropdown-item:hover {
+  background: var(--primary) !important;
+  color: var(--white) !important;
+}
+
+/* Mobile tweaks */
 @media (max-width: 992px) {
   .navbar-nav {
-    margin-left: 0;
+    margin-left: 0 !important;
+    gap: 1.5rem !important;
   }
   .navbar-nav .nav-link {
-    margin-right: 0.75rem;
-    padding: 0.5rem;
-    font-size: 0.9rem;
+    padding: 0.5rem !important;
+    font-size: 0.9rem !important;
   }
   .navbar-collapse {
-    background: var(--primary);
-    border-radius: 0.5rem;
-    padding: 1rem;
+    background: var(--primary) !important;
+    border-radius: 0.5rem !important;
+    padding: 1rem !important;
+    box-shadow: var(--shadow) !important;
   }
-  .navbar .search-btn {
-    width: 32px;
-    height: 32px;
-    font-size: 0.9rem;
+  .navbar {
+    padding: 1rem 1.5rem !important;
   }
 }
-
 
 /*──────────────────────────────────────────────────────────────────────
  📦 Cards & Sections
@@ -540,8 +543,8 @@ button:active {
 ──────────────────────────────────────────────────────────────────────*/
 @media (max-width: 768px) {
   .container {
-      width: 90%;                          /* Adjust for smaller screens */
-      padding: 2rem 1rem;
+      width: 90% !important;
+      padding: 2rem 1rem !important;
   }
   .section {
       padding: 3rem 0;
@@ -557,7 +560,7 @@ button:active {
 /* Ultra-wide screens */
 @media (min-width: 1920px) {
   .container {
-      max-width: 1800px;                   /* Increased for ultra-wide screens */
+      max-width: 1800px !important;
   }
 }
 
@@ -589,208 +592,247 @@ button:active {
 .p-3 { padding: 3rem; }
 .rounded-full { border-radius: 9999px; }
 
-
 /*──────────────────────────────────────────────────────────────────────
- 🛠️ Home page images
+ 🛠️ Home Page Images (Updated for Proper Centering)
 ──────────────────────────────────────────────────────────────────────*/
-/* Hero container */
 .hero {
   position: relative;
-  width: 100%;                 /* span full width of your content column */
-  background-image: url("figures/hero1.jpg");
-  background-size: contain;    /* show the *whole* image, no crop */
-  background-repeat: no-repeat;
-  background-position: center center;
-  
-  /* aspect‐ratio trick: height adjusts to image width */
-  padding-top: calc( (9 / 16) * 100% ); /* if your image is 16:9, else adjust */
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100% !important;
+  max-width: 100% !important;
+  background-image: url("figures/hero1.jpg") !important;
+  background-size: cover !important; /* Changed to cover for better fit */
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  padding-top: calc((9 / 16) * 100%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
-
-
 
 /* Dark overlay + centered text */
 .hero-overlay {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.45);
-  color: #fff;
-  text-align: center;
-  padding: 0 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  animation: fadeIn 1.5s ease-out both;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: rgba(0, 0, 0, 0.45) !important;
+  color: #fff !important;
+  text-align: center !important;
+  padding: 2rem 1rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  animation: fadeIn 1.5s ease-out both !important;
 }
 
 /* Headline tweaks */
 .hero-overlay h1 {
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
-  text-shadow: 2px 2px 12px rgba(0,0,0,0.7);
+  font-size: clamp(2rem, 5vw, 3rem) !important;
+  margin-bottom: 0.5rem !important;
+  text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.7) !important;
 }
 
 /* Sub-tagline */
 .hero-overlay p {
-  font-size: 1.25rem;
-  max-width: 600px;
-  margin: 0 auto;
+  font-size: clamp(1rem, 2vw, 1.25rem) !important;
+  max-width: 600px !important;
+  margin: 0 auto !important;
 }
 
+/* Responsive hero section */
+@media (max-width: 768px) {
+  .hero {
+    padding-top: calc((3 / 4) * 100%) !important; /* Adjust aspect ratio for mobile */
+  }
+  .hero-overlay h1 {
+    font-size: 2rem !important;
+  }
+  .hero-overlay p {
+    font-size: 1rem !important;
+  }
+}
 
 /*──────────────────────────────────────────────────────────────────────
- 🛠️ side bar sticky bar
+ 🛠️ Side Bar Sticky Bar (Beautified with Glassmorphism and Animations)
 ──────────────────────────────────────────────────────────────────────*/
-/* ─── Floating Nav ───────────────────────────────── */
 .floating-nav {
-  position: fixed;
-  border-left: none !important;
-  top: 6rem;
-  right: 1rem;
-  width: 220px;
-  height: 80vh;
-  overflow-y: auto;
-
-  background: none !important;      /* transparent */
-  border: none !important;          /* no box border */
-  box-shadow: none !important;      /* no shadow */
-
-  /* subtle partition line to separate from content */
-  padding-left: 1rem;
-  border-left: 1px solid rgba(255,255,255,0.2);
-  z-index: 1000;
+  position: fixed !important;
+  top: 8rem !important;
+  right: 1.5rem !important;
+  width: 240px !important;
+  height: 80vh !important;
+  overflow-y: auto !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 1rem !important;
+  box-shadow: var(--shadow) !important;
+  padding: 1.5rem !important;
+  z-index: 1000 !important;
 }
 
-/* strip out Quarto callout styling */
+/* Strip out Quarto callout styling */
 .floating-nav .callout {
-  background: none;
-  box-shadow: none;
-  padding: 0;
-  margin: 0;
+  background: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
-/* header text */
+/* Header text */
 .floating-nav .callout h3 {
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
-  color: #fff;
+  margin-bottom: 1.5rem !important;
+  font-size: 1.2rem !important;
+  font-family: var(--font-heading) !important;
+  color: var(--white) !important;
+  text-shadow: var(--glow) !important;
 }
 
-/* make the list clean and transparent */
+/* Make the list clean and transparent */
 .floating-nav .callout ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin: 0 !important;
 }
 
-/* separator between each item */
+/* Separator between each item */
 .floating-nav .callout li + li {
-  margin-top: 0.75rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid rgba(255,255,255,0.2);
+  margin-top: 1rem !important;
+  padding-top: 1rem !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
 }
 
-/* link style */
+/* Link style */
 .floating-nav .callout a {
-  color: #ddd;
-  text-decoration: none;
-  transition: color 0.2s;
+  font-family: var(--font-heading) !important;
+  color: var(--white) !important;
+  text-decoration: none !important;
+  font-size: 1rem !important;
+  position: relative !important;
+  transition: color var(--transition), transform var(--transition) !important;
 }
+
+.floating-nav .callout a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: var(--accent);
+  box-shadow: var(--glow);
+  transition: width var(--transition);
+}
+
+.floating-nav .callout a:hover::after,
+.floating-nav .callout a.active::after {
+  width: 100%;
+}
+
 .floating-nav .callout a:hover,
 .floating-nav .callout a.active {
-  color: #fff;
-}
-/* ─── Override: align nav to your container and theme colors ───── */
-
-.floating-nav {
-  right: 1.5rem     !important;  /* always 1.5rem from the viewport’s right edge */
-  top:   8rem      !important;  /* tweak this so the first link lines up exactly with your first heading */
-  width: 240px      !important;  /* or whatever width you prefer */
+  color: var(--accent) !important;
+  transform: scale(1.05) !important;
 }
 
-
-/* 2) Neutral default, red‐tinted hover, solid red active */
+/* Override: align nav to your container and theme colors */
 .floating-nav .nav-link {
-  color: #eee;  /* light gray */
+  color: var(--white) !important;
 }
+
 .floating-nav .nav-link:hover {
-  background: rgba(216, 47, 47, 0.2);
-  color: #fff;
+  background: rgba(216, 47, 47, 0.2) !important;
+  color: var(--accent) !important;
 }
+
 .floating-nav .nav-link.active {
-  background: #D80000 !important;
-  color: #fff !important;
+  background: var(--accent) !important;
+  color: var(--black) !important;
 }
 
-
-
+/* Grid layout for larger screens */
 @media (min-width: 1024px) {
-
-  /* 1) Make the .container a two-column grid: sidebar + content */
   .container {
-    display: grid !important;             /* override default flex/width */
-    grid-template-columns: 220px 1fr;     /* 220px for sidebar, rest for content */
-    gap: 2rem;
+    display: grid !important;
+    grid-template-columns: 220px minmax(0, 1fr) !important;
+    gap: 2rem !important;
   }
 
-  /* 2) Pin the sidebar in that first column */
   .container > .sidebar {
-    grid-column: 1;
-    position: sticky;
-    top: 5rem;                             /* sits just under your navbar */
-    align-self: start;                     /* don’t vertically center */
+    grid-column: 1 !important;
+    position: sticky !important;
+    top: 5rem !important;
+    align-self: start !important;
   }
 
-  /* 3) Push everything else into the second column */
   .container > :not(.sidebar) {
-    grid-column: 2;
+    grid-column: 2 !important;
+    max-width: 80% !important;
   }
 }
 
 /*──────────────────────────────────────────────────────────────────────
- 🛠️ back to top page navigation
+ 🛠️ Back to Top Page Navigation
 ──────────────────────────────────────────────────────────────────────*/
 .back-to-top {
   font-size: 0.9rem;
-  color: var(--bs-primary);
-}
-.back-to-top:hover {
-  text-decoration: underline;
+  color: var(--primary);
 }
 
-.navbar-nav {
-  margin-left: auto !important;
-  margin-right: 0    !important;
+.back-to-top:hover {
+  text-decoration: underline;
 }
 
 /* Fade-in keyframes */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0);     }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-
 /*──────────────────────────────────────────────────────────────────────
- Plotly plots and figures, esp. for EDA
+ Plotly Plots and Figures (Updated for Proper Sizing)
 ──────────────────────────────────────────────────────────────────────*/
 .plotly {
   width: 100% !important;
-  max-width: 1200px; /* Match the width set in the plot */
-  margin: 0 auto; /* Center the plot */
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  height: auto !important;
 }
 
-.figure {
-  overflow-x: auto; /* Allow horizontal scrolling if needed */
-}
-
-iframe {
+.plotly-wrapper {
   width: 100% !important;
-  max-width: 1200px; /* Match the largest plot width */
-  margin: 0 auto; /* Center the iframe */
-  overflow-x: auto; /* Allow horizontal scrolling if needed */
-  overflow-y: auto; /* Allow vertical scrolling if needed */
-  border: none;
+  max-width: 80% !important;
+  margin: 0 auto !important;
+}
+
+/* Override Quarto’s default plot container */
+div.cell-output, div.output_wrapper {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+}
+
+/* Ensure Quarto’s content area doesn’t constrain the plots */
+main {
+  width: 100% !important;
+  max-width: 1800px !important;
+  margin: 0 auto !important;
+  overflow: visible !important;
+}
+
+/* Code block styling */
+pre, code {
+  width: 100% !important;
+  max-width: 80% !important;
+  margin: 0 auto !important;
+}
+
+/* Ensure code blocks don’t overflow */
+div.sourceCode {
+  width: 100% !important;
+  max-width: 80% !important;
+  overflow-x: auto !important;
 }
