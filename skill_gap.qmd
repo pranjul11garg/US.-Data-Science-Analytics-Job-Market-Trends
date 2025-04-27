@@ -59,19 +59,9 @@ fig.update_layout(
     height=400,
     margin=dict(l=50, r=20, t=50, b=50)
 )
+fig.show()
 
-fig.write_html(
-    "figures/skill_gap_plot1.html",
-    include_plotlyjs="cdn",
-    full_html=False
-)
 ```
-<iframe
-  src="figures/skill_gap_plot1.html"
-  width="100%"
-  height="500"
-  style="border:none;"
-></iframe>
 
 ```{python}
 import plotly.graph_objects as go
@@ -94,18 +84,8 @@ fig.update_layout(
     title='Team Skills Radar Chart'
 )
 
-fig.write_html(
-    "figures/skill_gap_plot2.html",
-    include_plotlyjs="cdn",
-    full_html=False
-)
+fig.show()
 ```
-<iframe
-  src="figures/skill_gap_plot2.html"
-  width="100%"
-  height="500"
-  style="border:none;"
-></iframe>
 
 ### Interactive Radar Chart
 
@@ -127,6 +107,7 @@ df['DATA_ANALYST_JOB'] = match('TITLE_NAME') \
              | match('SKILLS_NAME') \
              | match('SPECIALIZED_SKILLS_NAME') 
 df['DATA_ANALYST_JOB'].value_counts()
+
 ```
 
 ```{python}
@@ -147,6 +128,7 @@ fig = px.bar(data_skills, x='Skill', y='Count',
              labels={'Skill': 'Skill Name', 'Count': 'Frequency'},
              color='Skill')
 df_skills.index = df_skills.index.str.strip()
+fig.show()
 
 ```
 
@@ -240,18 +222,10 @@ fig.update_layout(
     height=500,
     plot_bgcolor='white',
 )
-fig.write_html(
-    "figures/skill_gap_plot3.html",
-    include_plotlyjs="cdn",
-    full_html=False
-)
+
+fig.show()
 ```
-<iframe
-  src="figures/skill_gap_plot3.html"
-  width="100%"
-  height="500"
-  style="border:none;"
-></iframe>
+
 
 
 This bar chart compares our team’s average proficiency in key data-related skills against job market expectations. Skills with positive values (like communication and SQL) indicate areas where market demand exceeds our current capabilities. On the other hand, negative values highlight areas where the team is ahead or closely aligned with market needs. Notably, skills like Python, cloud computing, and project management show the largest gaps, suggesting priority areas for upskilling.
