@@ -10,10 +10,7 @@ execute:
 toc: true
 code:fold: true
 ---
-
-```{python}
-
-```
+`
 ```{python}
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -23,7 +20,8 @@ import plotly.express as px
 import numpy as np
 import plotly.graph_objects as go
 
-df = pd.read_csv("data/lightcast_job_postings.csv")
+df = pd.read_csv("/Users/prawnz/Documents/Semester2/Web_analytics/ad688-employability-sp25A1-group11/data/lightcast_job_postings.csv")
+
 
 columns_to_keep = [
     'COMPANY', 'LOCATION', 'POSTED', 'MIN_EDULEVELS_NAME', 'MAX_EDULEVELS_NAME',
