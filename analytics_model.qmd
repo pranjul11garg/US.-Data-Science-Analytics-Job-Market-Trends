@@ -106,8 +106,8 @@ fig.write_html(
 <iframe
   src="/figures/analytics_plot1.html"
   width="100%"
-  height="500"
-  style="border:none;"
+  width="100%"
+  style="border:none; height:90vh;
 ></iframe>
 
 Here we have 4 cluster groups. Group 0, which represent as green have lower salary, mostly under 150k, and max years experience in 2-5 years, it is likely Likely junior to mid-level employees with moderate pay. Group 1 with orange, has medium to high salary, wide range from $100k–$500k and with narrow range ~3 years, they are suggests specialized or high-paying roles with short experience — possibly fast-track promotions or high-demand fields. cluster 2 are low salary and experience from 0-4 years, they are clearly entry level employee. cluster 3 has medium salary, mostly under 200k with higher experiences, like 6-13 eyars. They probably are senior professionals with more experience but not the highest salaries. 
@@ -177,8 +177,7 @@ fig.write_html(
 <iframe
   src="/figures/analytics_plot2.html"
   width="100%"
-  height="500"
-  style="border:none;"
+  style="border:none; height:90vh;
 ></iframe>
 
 This plot shows the Actual vs. Predicted Salary using a multiple linear regression model. The blue dots represent individual predictions, and the red dashed line is the ideal line where predicted = actual. Since most points lie very close to the red line, it means your model predicts salary very accurately, with minimal error and strong linear fit — likely reflected in a high R² score near 1.0.
