@@ -771,3 +771,17 @@ button:active {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0);     }
 }
+
+
+/*──────────────────────────────────────────────────────────────────────
+ Plotly plots and figures, esp. for EDA
+──────────────────────────────────────────────────────────────────────*/
+.plotly {
+  width: 100% !important;
+  max-width: 1200px; /* Match the width set in the plot */
+  margin: 0 auto; /* Center the plot */
+}
+
+.figure {
+  overflow-x: auto; /* Allow horizontal scrolling if needed */
+}
