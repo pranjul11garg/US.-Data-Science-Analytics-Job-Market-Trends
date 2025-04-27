@@ -18,22 +18,22 @@ execute:
 <div class="floating-nav">
   <ul class="nav flex-column nav-pills">
     <li class="nav-item">
-      <a class="nav-link" href="#state-of-the-data-industry">
+      <a class="nav-link" href="#top-skills">
         <i class="fa fa-chart-bar"></i>&nbsp;State of the Data Industry
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#ethics-and-responsible-ai">
+      <a class="nav-link" href="#ai-skills-now-a-must">
         <i class="fa fa-balance-scale"></i>&nbsp;Ethics & Responsible AI
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#scaling-data-platforms">
+      <a class="nav-link" href="#tech-and-finance-leading-hiring">
         <i class="fa fa-database"></i>&nbsp;Scaling Data Platforms
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#future-tech-and-innovation">
+      <a class="nav-link" href="#ai-gives-analysts-an-edge">
         <i class="fa fa-rocket"></i>&nbsp;Future Tech & Innovation
       </a>
     </li>
@@ -75,7 +75,7 @@ Our project investigates these trends through real-world job posting analysis â€
 ### Key Trends Shaping Data Science and Analytics Careers
 
   
-#### In Demand Dominating Skills {#in-demand-dominating-skills}
+#### Top Skills {#top-skills}
 
 Our analysis found that **Python, Machine Learning, and Cloud Computing** consistently rank among the top-requested skills in job postings. Employers are seeking candidates who can not only analyze data but also deploy models and build scalable solutions. Python remains the foundational language across roles, while machine learning capabilities and cloud platform expertise such as AWS or Azure offer clear competitive advantages.
 
