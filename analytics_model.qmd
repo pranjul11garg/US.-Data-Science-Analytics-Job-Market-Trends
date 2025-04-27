@@ -90,6 +90,13 @@ fig.add_trace(
         name='Centroids'
     )
 )
+
+fig.update_layout(
+    autosize=True,
+    height=800,  
+    margin=dict(l=20, r=20, t=50, b=20)
+)
+
 fig.write_html(
     "figures/analytics_plot1.html",
     include_plotlyjs=True,   
@@ -155,19 +162,16 @@ fig = go.Figure([
 ])
 
 fig.update_layout(
-    title='Actual vs Predicted Salary (Multiple Regression)',
-    xaxis_title='Actual Salary',
-    yaxis_title='Predicted Salary',
-    width=800,
-    height=600,
-    template='plotly_white'
+    autosize=True,
+    height=600,  # or whatever default height you prefer
+    margin=dict(l=20, r=20, t=50, b=20)
 )
-
 
 fig.write_html(
     'figures/analytics_plot2.html',
-    include_plotlyjs='cdn',
-    full_html=True
+    full_html=False,
+    include_plotlyjs="cdn",
+    config={"responsive": True}
 )
 ```
 <iframe
