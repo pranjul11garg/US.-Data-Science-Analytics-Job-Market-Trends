@@ -53,55 +53,33 @@ ari = adjusted_rand_score(true_labels_encoded, eda.loc[features.index, 'Cluster'
 import plotly.express as px
 import plotly.graph_objects as go
 from IPython.display import HTML
+import numpy as np
 
 # 1) Build the DataFrame
 df_plot = features.copy()
 df_plot['Cluster'] = eda.loc[features.index, 'Cluster']
 
-# 2) Compute centroids in original units
-centroids = kmeans.cluster_centers_
-centroids_x = centroids[:, 0] * X.std(axis=0)[0] + X.mean(axis=0)[0]
-centroids_y = centroids[:, 1] * X.std(axis=0)[1] + X.mean(axis=0)[1]
+# 1.1) Create a log salary column for better scaling
+df_plot['Log_SALARY'] = np.log1p(df_plot['SALARY'])  # log(1+salary), avoid log(0)
 
-# 3) Create an interactive Plotly Figure
+# 2) Create an interactive Plotly Figure
 fig = px.scatter(
     df_plot,
-    x='SALARY',
+    x='Log_SALARY',  # 👈 use log salary instead of salary
     y='MAX_YEARS_EXPERIENCE',
     color='Cluster',
-    title="KMeans Clustering by Salary and Max Years Experience",
+    title="KMeans Clustering by Log(Salary) and Max Years Experience",
     labels={
-        'SALARY': 'Salary',
+        'Log_SALARY': 'Log(Salary)',
         'MAX_YEARS_EXPERIENCE': 'Max Years Experience',
         'Cluster': 'Cluster'
     },
     width=800,
-    height=500,
+    height=600,
 )
 
-# add centroids
-fig.add_trace(
-    go.Scatter(
-        x=centroids_x,
-        y=centroids_y,
-        mode='markers',
-        marker=dict(symbol='x', size=18, color='black',
-                    line=dict(width=2, color='white')),
-        name='Centroids'
-    )
-)
+fig
 
-fig.update_layout(
-    autosize=True,
-    height=800,  
-    margin=dict(l=20, r=20, t=50, b=20)
-)
-
-fig.write_html(
-    "figures/analytics_plot1.html",
-    include_plotlyjs=True,   
-    full_html=False
-)
 ```
 <iframe
   src="/figures/analytics_plot1.html"
@@ -144,17 +122,25 @@ max_val = y_test.max()
 ```
 
 ```{python}
+import numpy as np
+import plotly.graph_objects as go
+
+# Apply log transform
+y_test_log = np.log1p(y_test)
+y_pred_log = np.log1p(y_pred)
+
+# Plot
 fig = go.Figure([
     go.Scatter(
-        x=y_test,
-        y=y_pred,
+        x=y_test_log,
+        y=y_pred_log,
         mode='markers',
         marker=dict(color='skyblue', opacity=0.6),
-        name='Predicted vs Actual'
+        name='Predicted vs Actual (Log Scale)'
     ),
     go.Scatter(
-        x=[min_val, max_val],
-        y=[min_val, max_val],
+        x=[min(y_test_log), max(y_test_log)],
+        y=[min(y_test_log), max(y_test_log)],
         mode='lines',
         line=dict(color='red', dash='dash'),
         name='Ideal Fit'
@@ -163,17 +149,24 @@ fig = go.Figure([
 
 fig.update_layout(
     autosize=True,
-    height=600,  # or whatever default height you prefer
+    height=400,
+    title="Predicted vs Actual Salary (Log Scale)",
+    xaxis_title="Actual Log(Salary)",
+    yaxis_title="Predicted Log(Salary)",
     margin=dict(l=20, r=20, t=50, b=20)
 )
 
 fig.write_html(
-    'figures/analytics_plot2.html',
+    "figures/analytics_plot2.html",
     full_html=False,
     include_plotlyjs="cdn",
     config={"responsive": True}
 )
+
+fig.show()
+
 ```
+
 <iframe
   src="/figures/analytics_plot2.html"
   width="100%"
