@@ -5479,7 +5479,7 @@ border: none;
 </header>
 
 
-<div id="1bfb5f8c" class="cell" data-execution_count="1">
+<div id="464528c0" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
@@ -5492,7 +5492,7 @@ border: none;
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>eda <span class="op">=</span> pd.read_parquet(<span class="st">&quot;data/eda.parquet&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="83ad1018" class="cell" data-execution_count="2">
+<div id="d893ca27" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>features <span class="op">=</span> eda[[<span class="st">&#39;SALARY&#39;</span>, <span class="st">&#39;MAX_YEARS_EXPERIENCE&#39;</span>, <span class="st">&#39;MIN_YEARS_EXPERIENCE&#39;</span>]].copy()</span>
@@ -5514,7 +5514,7 @@ border: none;
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>ari <span class="op">=</span> adjusted_rand_score(true_labels_encoded, eda.loc[features.index, <span class="st">&#39;Cluster&#39;</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="1577566d" class="cell" data-execution_count="3">
+<div id="846b0483" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
@@ -5573,7 +5573,7 @@ border: none;
 </div>
 <p>&lt;iframe src=“/figures/analytics_plot1.html” width=“100%” width=“100%” style=“border:none; height:90vh; &gt;</p>
 <p>Here we have 4 cluster groups. Group 0, which represent as green have lower salary, mostly under 150k, and max years experience in 2-5 years, it is likely Likely junior to mid-level employees with moderate pay. Group 1 with orange, has medium to high salary, wide range from $100k–$500k and with narrow range ~3 years, they are suggests specialized or high-paying roles with short experience — possibly fast-track promotions or high-demand fields. cluster 2 are low salary and experience from 0-4 years, they are clearly entry level employee. cluster 3 has medium salary, mostly under 200k with higher experiences, like 6-13 eyars. They probably are senior professionals with more experience but not the highest salaries.</p>
-<div id="b2f50b6e" class="cell" data-execution_count="4">
+<div id="dc1d2cc9" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -5609,7 +5609,7 @@ border: none;
 <pre><code>MSE: 758547543.20, R²: 0.096</code></pre>
 </div>
 </div>
-<div id="c6c10b4a" class="cell" data-execution_count="5">
+<div id="7a043d3b" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure([</span>
