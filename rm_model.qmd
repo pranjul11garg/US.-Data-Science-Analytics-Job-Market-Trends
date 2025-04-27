@@ -13,7 +13,7 @@ code:fold: true
 ```{python}
 import pandas as pd
 
-df = pd.read_parquet("data/eda.parquet")
+df = pd.read_parquet("data/eda.parquet",  engine='pyarrow')
 df.columns
 ```
 

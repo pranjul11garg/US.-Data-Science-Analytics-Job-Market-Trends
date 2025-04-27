@@ -103,7 +103,14 @@ eda_data.dropna(thresh=len(eda_data) * 0.5, axis=1, inplace=True)
 
 
 # delete duplicates
-eda_data = eda_data.drop_duplicates(subset=["TITLE", "COMPANY", "LOCATION", "POSTED"])
+eda_data = eda_data.drop_duplicates(subset=["TITLE", "COMPANY", "LOCATION", "POSTED","BODY"])
+eda_data['BODY'] = eda_data['BODY'].str.slice(0, 1000)
+eda_data['BODY'] = eda_data['BODY'].astype(str)
+eda_data['COMPANY'] = eda_data['COMPANY'].astype(str)
+```
 
 
+```{python}
+import pandas as pd
+eda_data.to_parquet('data/eda.parquet', engine='pyarrow', compression='gzip')
 ```
