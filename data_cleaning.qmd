@@ -19,7 +19,7 @@ import plotly.express as px
 import numpy as np
 import plotly.graph_objects as go
 
-df = pd.read_csv("./data/lightcast_job_postings.csv")
+df = pd.read_csv("_site/data/lightcast_job_postings.csv")
 
 columns_to_keep = [
     'COMPANY', 'LOCATION', 'POSTED', 'MIN_EDULEVELS_NAME', 'MAX_EDULEVELS_NAME',
