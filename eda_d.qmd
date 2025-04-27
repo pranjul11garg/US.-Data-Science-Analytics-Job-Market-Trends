@@ -36,7 +36,6 @@ eda['DATA_ANALYST_JOB'].value_counts()
 ```
 
 ```{python}
-import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
@@ -100,25 +99,6 @@ fig.add_trace(
     row=1, col=1
 )
 
-fig.add_trace(
-    go.Table(
-        header=dict(
-            values=["Industry","True","False"],
-            fill_color='#FDEDEC',
-            align='left',
-            font=dict(color='#A81D1D', size=13),
-            height=30
-        ),
-        cells=dict(
-            values=[industries, y_true, y_false],
-            fill_color='white',
-            align='left',
-            font=dict(color='#333', size=11),
-            height=22
-        )
-    ),
-    row=2, col=1
-)
 
 # -----------------------------------------------------------------------------
 # 3) Slider steps: 0 → 8 000 in 200s
@@ -146,8 +126,8 @@ fig.update_layout(
         active=0,
         currentvalue={"prefix":"Min Jobs: "},
         pad={"b":0},
-        x=0.15,
-        y=1.18,                # move slider way above the plot area
+        x=0.05,
+        y=1.05,                # move slider way above the plot area
         xanchor="left",
         yanchor="bottom",
         len=0.7,
@@ -159,7 +139,7 @@ fig.update_layout(
         text="Data & Business Analytics Job Trends",
         font=dict(size=24, color='#A81D1D'),
         x=0.5,
-        y=0.92,                # drop the title just below the slider
+        y=0.95,                # drop the title just below the slider
         xanchor="center",
         yanchor="top"
     ),
@@ -193,23 +173,26 @@ fig.update_layout(
         title="Data Analyst Job",
         title_font=dict(color='#A81D1D'),
         font=dict(size=12),
-        x=1.02, y=0.5
+        x=0.95, y=0.95
     ),
 
     bargap=0.2
 )
+fig.show()
+
 fig.write_html(
     "figures/edaplot1.html",
     include_plotlyjs="cdn",  
     full_html=False    
 )
+
+from IPython.display import IFrame
+
+# this lives in a code cell
+IFrame(src="figures/edaplot1.html", width="100%", height=500)
 ```
-<iframe 
-  src="figures/edaplot1.html" 
-  width="100%" 
-  height="500" 
-  style="border:none;">
-</iframe>
+
+
 
 ```{python}
 import plotly.express as px
@@ -299,13 +282,10 @@ fig.write_html(
     include_plotlyjs="cdn",  
     full_html=False    
 )
+from IPython.display import IFrame
+IFrame(src="figures/edaplot2.html", width="100%", height=500)
 ```
-<iframe 
-  src="figures/edaplot2.html" 
-  width="100%" 
-  height="500" 
-  style="border:none;">
-</iframe>
+
 
 ```{python}
 import plotly.express as px
@@ -415,13 +395,10 @@ fig.write_html(
     include_plotlyjs="cdn",  
     full_html=False    
 )
+from IPython.display import IFrame
+IFrame(src="figures/edaplot3.html", width="50%", height=500)
 ```
-<iframe 
-  src="figures/edaplot3.html" 
-  width="100%" 
-  height="500" 
-  style="border:none;">
-</iframe>
+
 
 ```{python}
 import plotly.express as px
@@ -528,13 +505,10 @@ fig.write_html(
     include_plotlyjs="cdn",  
     full_html=False    
 )
+from IPython.display import IFrame
+IFrame(src="figures/edaplot4.html", width="100%", height=500)
 ```
-<iframe 
-  src="figures/edaplot4.html" 
-  width="100%" 
-  height="500" 
-  style="border:none;">
-</iframe>
+
 
 ```{python}
 import plotly.graph_objects as go
@@ -627,11 +601,8 @@ fig.write_html(
     include_plotlyjs="cdn",  
     full_html=False    
 )
+from IPython.display import IFrame
+IFrame(src="figures/edaplot5.html", width="100%", height=500)
 ```
-<iframe 
-  src="figures/edaplot5.html" 
-  width="100%" 
-  height="500" 
-  style="border:none;">
-</iframe>
+
 
