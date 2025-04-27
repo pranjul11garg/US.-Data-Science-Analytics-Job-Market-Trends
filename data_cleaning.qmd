@@ -6,10 +6,14 @@ execute:
   echo: true
   warning: false
   error: true
+  working directory: project
 toc: true
 code:fold: true
 ---
 
+```{python}
+
+```
 ```{python}
 import pandas as pd
 import matplotlib.pyplot as plt
