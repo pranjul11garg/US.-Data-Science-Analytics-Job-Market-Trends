@@ -21,7 +21,7 @@ import plotly.express as px
 import numpy as np
 import plotly.graph_objects as go
 
-df = pd.read_parquet("df_new.parquet")
+df = pd.read_parquet("data/df_new.parquet")
 
 
 columns_to_keep = [
