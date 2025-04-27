@@ -1,0 +1,165 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: Cleaning\n",
+        "format: html\n",
+        "jupyter: python3\n",
+        "execute:\n",
+        "  echo: true\n",
+        "  warning: false\n",
+        "  error: true\n",
+        "  working directory: project\n",
+        "toc: true\n",
+        "code:fold: true\n",
+        "---"
+      ],
+      "id": "58e788cf"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "import missingno as msno\n",
+        "import plotly.express as px\n",
+        "import numpy as np\n",
+        "import plotly.graph_objects as go\n",
+        "\n",
+        "df = pd.read_parquet(\"data/lightcast.parquet\")\n",
+        "\n",
+        "\n",
+        "columns_to_keep = [\n",
+        "    'COMPANY', 'LOCATION', 'POSTED', 'MIN_EDULEVELS_NAME', 'MAX_EDULEVELS_NAME',\n",
+        "    'MIN_YEARS_EXPERIENCE', 'MAX_YEARS_EXPERIENCE', 'TITLE', 'SKILLS',\n",
+        "    'SPECIALIZED_SKILLS', 'CERTIFICATIONS', 'COMMON_SKILLS', 'SOFTWARE_SKILLS',\n",
+        "    'SOC_2021_4_NAME', 'NAICS_2022_6', 'NAICS2_NAME', 'REMOTE_TYPE_NAME',\n",
+        "    'SALARY', 'TITLE_NAME', 'SKILLS_NAME', 'SPECIALIZED_SKILLS_NAME', 'BODY'\n",
+        "]\n",
+        "eda_data = df[columns_to_keep]"
+      ],
+      "id": "2e408429",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "missing_matrix = eda_data.isnull().astype(int)\n",
+        "corr = missing_matrix.corr().round(2)\n",
+        "\n",
+        "mask = np.triu(np.ones(corr.shape), k=1).astype(bool)\n",
+        "masked_corr = corr.mask(mask)\n",
+        "\n",
+        "text_labels = masked_corr.astype(str)\n",
+        "text_labels[masked_corr.isna()] = \"\"\n",
+        "\n",
+        "# plot\n",
+        "fig = go.Figure(data=go.Heatmap(\n",
+        "    z=masked_corr.values,\n",
+        "    x=masked_corr.columns,\n",
+        "    y=masked_corr.index,\n",
+        "    text=text_labels.values,\n",
+        "    texttemplate=\"%{text}\",\n",
+        "    colorscale=\"Blues\",\n",
+        "    colorbar=dict(title=\"Missing Corr\"),\n",
+        "    zmin=0,\n",
+        "    zmax=1,\n",
+        "    hoverinfo='skip'\n",
+        "))\n",
+        "\n",
+        "fig.update_layout(\n",
+        "    title=\"Clean Triangle Missing Value Correlation Heatmap\",\n",
+        "    xaxis_tickangle=45,\n",
+        "    width=850,\n",
+        "    height=600,\n",
+        "    margin=dict(t=50, l=80, r=50, b=80),\n",
+        "    font=dict(size=8),\n",
+        "    plot_bgcolor='white'\n",
+        ")\n",
+        "\n",
+        "fig.update_yaxes(autorange=\"reversed\")\n",
+        "fig.show()"
+      ],
+      "id": "b8c38470",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "This triangle heatmap visualizes the correlation of missing values between different columns in the dataset. Each square represents how often two columns are missing together, with darker blue indicating a stronger relationship. Most of the values are very high (close to 1.0), suggesting that when one column is missing, others are often missing too — especially among skill-related fields like SKILLS, SPECIALIZED_SKILLS, and SOFTWARE_SKILLS, which are likely part of the same job posting metadata.\n",
+        "\n",
+        "This pattern indicates that missingness is not random, but structured — possibly due to differences in how job descriptions are recorded across roles or industries. For example, a job with no software skill tags might also lack common skills or NAICS codes, hinting at data input gaps rather than actual job content differences. Recognizing these correlations is helpful for choosing imputation strategies or deciding whether to drop certain rows or columns entirely during preprocessing.\n"
+      ],
+      "id": "e4405cee"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "if \"SALARY\" in eda_data.columns:\n",
+        "    eda_data[\"SALARY\"].fillna(eda_data[\"SALARY\"].median(), inplace=True)\n",
+        "else:\n",
+        "    print(\"Warning: 'SALARY' column not found in dataframe!\")\n",
+        "\n",
+        "if \"COMPANY\" in eda_data.columns:\n",
+        "    eda_data[\"COMPANY\"].fillna(\"Unknown\", inplace=True)\n",
+        "else:\n",
+        "    print(\"Warning: 'COMPANY' column not found in dataframe!\")\n",
+        "\n",
+        "    # Fill numeric columns with mean\n",
+        "num_cols = eda_data.select_dtypes(include='number').columns\n",
+        "for col in num_cols:\n",
+        "    if eda_data[col].isnull().sum() > 0:\n",
+        "        eda_data[col].fillna(eda_data[col].mean(), inplace=True)\n",
+        "\n",
+        "# Fill categorical columns with mode\n",
+        "cat_cols = eda_data.select_dtypes(include='object').columns\n",
+        "for col in cat_cols:\n",
+        "    if eda_data[col].isnull().sum() > 0:\n",
+        "        eda_data[col].fillna(eda_data[col].mode()[0], inplace=True)\n",
+        "\n",
+        "eda_data.dropna(thresh=len(eda_data) * 0.5, axis=1, inplace=True)\n",
+        "\n",
+        "\n",
+        "# delete duplicates\n",
+        "eda_data = eda_data.drop_duplicates(subset=[\"TITLE\", \"COMPANY\", \"LOCATION\", \"POSTED\",\"BODY\"])\n",
+        "eda_data['BODY'] = eda_data['BODY'].str.slice(0, 1000)\n",
+        "eda_data['BODY'] = eda_data['BODY'].astype(str)\n",
+        "eda_data['COMPANY'] = eda_data['COMPANY'].astype(str)"
+      ],
+      "id": "41fff6d4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "eda_data.to_parquet('data/eda.parquet', engine='pyarrow', compression='gzip')"
+      ],
+      "id": "36da7d35",
+      "execution_count": null,
+      "outputs": []
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/opt/anaconda3/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

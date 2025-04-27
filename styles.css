@@ -597,7 +597,7 @@ button:active {
 ──────────────────────────────────────────────────────────────────────*/
 .hero {
   position: relative;
-  width: 100% !important;
+  width: 80% !important;
   max-width: 100% !important;
   background-image: url("figures/hero1.jpg") !important;
   background-size: cover !important; /* Changed to cover for better fit */
