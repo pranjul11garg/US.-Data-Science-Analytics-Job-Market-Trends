@@ -95,7 +95,6 @@ fig.write_html(
     include_plotlyjs=True,   
     full_html=False
 )
-)
 ```
 <iframe
   src="/figures/analytics_plot1.html"
@@ -167,7 +166,7 @@ fig.update_layout(
 
 fig.write_html(
     'figures/analytics_plot2.html',
-    include_plotlyjs=True,
+    include_plotlyjs='cdn',
     full_html=True
 )
 ```
