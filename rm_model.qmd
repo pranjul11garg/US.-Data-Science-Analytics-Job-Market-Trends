@@ -11,20 +11,10 @@ code:fold: true
 ---
 
 ```{python}
-import os
 import pandas as pd
-import requests
 
-url = "https://drive.usercontent.google.com/download?id=1V2GCHGt2dkFGqVBeoUFckU4IhUgk4ocQ&authuser=1"
-local = "data/lightcast_job_postings.csv"
-os.makedirs(os.path.dirname(local), exist_ok=True)
-
-if not os.path.exists(local):
-    print("Local file not found—downloading from URL…")
-    response = requests.get(url, stream=True)
-    response.raise_for_status()
-    print("Download complete.")
-df = pd.read_csv(local)
+df = pd.read_parquet("data/eda.parquet")
+df.columns
 ```
 
 ```{python}
