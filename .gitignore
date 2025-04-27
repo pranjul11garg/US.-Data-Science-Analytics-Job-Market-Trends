@@ -8,4 +8,9 @@ eda_new.csv
 
 analytics_model.ipynb
 /data/df.parquet
+<<<<<<< HEAD
 data/new_eda_data.csv
+=======
+eda_data.csv
+lightcast_job_postings.csv
+>>>>>>> b6dc8fe5ec334eda2ad6873a58b99eddaca5da44
