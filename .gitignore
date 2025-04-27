@@ -1,10 +1,11 @@
 /.quarto/
-_site/data/lightcast_job_postings.csv
+data/lightcast_job_postings.csv
 lightcast_job_postings.zip
 lightcast_updated.csv
-_site/data/eda_data.csv
-_site/data/lightcast_job_postings_cleaned.csv
+data/eda_data.csv
+data/lightcast_job_postings_cleaned.csv
 eda_new.csv
 
 analytics_model.ipynb
 /data/df.parquet
+data/new_eda_data.csv
