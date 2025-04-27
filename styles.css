@@ -785,3 +785,12 @@ button:active {
 .figure {
   overflow-x: auto; /* Allow horizontal scrolling if needed */
 }
+
+iframe {
+  width: 100% !important;
+  max-width: 1200px; /* Match the largest plot width */
+  margin: 0 auto; /* Center the iframe */
+  overflow-x: auto; /* Allow horizontal scrolling if needed */
+  overflow-y: auto; /* Allow vertical scrolling if needed */
+  border: none;
+}
