@@ -481,6 +481,7 @@ fig.update_traces(
 )
 fig
 ```
+
 <div class="plotly-wrapper"> ```{python} fig``` </div> ```
 
 ```{python}
@@ -571,5 +572,5 @@ fig.update_layout(
 )
 fig
 ```
-<div class="plotly-wrapper"> ```{python} fig``` </div> ```
 
+<div class="plotly-wrapper"> ```{python} fig``` </div> ```
