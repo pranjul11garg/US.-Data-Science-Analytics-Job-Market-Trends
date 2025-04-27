@@ -11,21 +11,6 @@ toc: true
 code:fold: true
 ---
 
-```{python}
-import os
-import pandas as pd
-
-BASE_DIR = os.getcwd()
-
-csv_path = os.path.join(BASE_DIR, 'data', 'lightcast_job_postings.csv')
-
-if os.path.exists(csv_path):
-    print(f"✅ Found file: {csv_path}")
-    df = pd.read_csv(csv_path)
-    print(f"✅ CSV loaded successfully. Shape: {df.shape}")
-else:
-    raise FileNotFoundError(f"❌ File not found: {csv_path}")
-```
 
 ```{python}
 import pandas as pd
@@ -36,7 +21,7 @@ import plotly.express as px
 import numpy as np
 import plotly.graph_objects as go
 
-df = pd.read_csv("data/lightcast_job_postings.csv")
+df = pd.read_parquet("df_new.parquet")
 
 
 columns_to_keep = [
