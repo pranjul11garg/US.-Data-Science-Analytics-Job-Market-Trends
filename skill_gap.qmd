@@ -252,8 +252,41 @@ fig.write_html(
   style="border:none;"
 ></iframe>
 
-
 Our skill gap analysis compares the team’s average skill levels with normalized job market expectations. The “Skill Gap” metric is calculated based on the frequency of each skill's appearance in job postings, rather than a direct assessment of skill proficiency required by employers. As such, while skills like SQL and Python appear to have smaller gaps, this may partly reflect the fact that they are mentioned slightly less often in the postings relative to emerging areas like cloud computing or machine learning. Nevertheless, SQL and Python remain critical foundational skills that the job market consistently expects from candidates.
 
 The results indicate that the team meets or slightly exceeds market expectations in communication and SQL. However, there are notable gaps in technical domains such as machine learning, cloud computing, PySpark, data visualization, and project management. These areas should be prioritized for upskilling to align better with market demand.
 
+```{python}
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+import ast
+
+df['SKILLS'] = df['SKILLS_NAME'].apply(lambda x: ast.literal_eval(x) if pd.notnull(x) else [])
+
+all_skills = [skill.lower().strip() for skills in df['SKILLS'] for skill in skills]
+
+text = " ".join(all_skills)
+wordcloud = WordCloud(
+    width=800,
+    height=400,
+    background_color='white',
+    max_words=150,
+    colormap='plasma'  
+).generate(text)
+
+plt.figure(figsize=(10, 5))
+plt.imshow(wordcloud, interpolation="bilinear")
+plt.axis('off')
+plt.title('Word Cloud of Skills from Job Postings', fontsize=16, fontweight='bold')
+plt.tight_layout()
+plt.show()
+
+# Step 6: (Optional) Save it
+wordcloud.to_file("figures/skills_wordcloud.png")
+
+```
+
+### Word Cloud of Skills
+
+![Word Cloud](figures/skills_wordcloud.png){fig-align="center" width="80%"}
+The word cloud highlights the most frequently mentioned skills in job postings related to data science, business analytics, and machine learning roles. Larger words like "programming language," "problem solving," "business intelligence," "SQL programming," and "data analysis" indicate skills that are highly sought after by employers. Other prominent terms such as "project management," "Python programming," and "Microsoft Excel" further emphasize the blend of technical, analytical, and project-oriented skills expected in the industry. This visualization captures how employers prioritize a balance between technical proficiency and business acumen.
