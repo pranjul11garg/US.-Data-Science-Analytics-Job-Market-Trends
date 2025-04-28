@@ -29,7 +29,7 @@ columns_to_keep = [
     'MIN_YEARS_EXPERIENCE', 'MAX_YEARS_EXPERIENCE', 'TITLE', 'SKILLS',
     'SPECIALIZED_SKILLS', 'CERTIFICATIONS', 'COMMON_SKILLS', 'SOFTWARE_SKILLS',
     'SOC_2021_4_NAME', 'NAICS_2022_6', 'NAICS2_NAME', 'REMOTE_TYPE_NAME',
-    'SALARY', 'TITLE_NAME', 'SKILLS_NAME', 'SPECIALIZED_SKILLS_NAME', 'BODY'
+    'SALARY', 'TITLE_NAME', 'SKILLS_NAME', 'SPECIALIZED_SKILLS_NAME', 'BODY', 'STATE_NAME'
 ]
 eda_data = df[columns_to_keep]
 ```
@@ -70,6 +70,8 @@ fig.update_layout(
 )
 
 fig.update_yaxes(autorange="reversed")
+
+fig.show()
 
 fig.write_html(
     'figures/missing_corr_heatmap.html',
