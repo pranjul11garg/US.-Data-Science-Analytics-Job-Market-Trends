@@ -46,7 +46,7 @@ df_grouped = (
 )
 
 short_names = {
-    'Professional, Scientific, and Technical Services': 'Prof. Services',
+    'Professional, Scientific, and Technical Services': 'Tech. Services',
     'Administrative and Support and Waste Management and Remediation Services': 'Admin & Waste Mgmt',
     'Health Care and Social Assistance': 'Healthcare',
     'Finance and Insurance': 'Finance',
