@@ -1,5 +1,5 @@
 ---
-title: Random Forest Classification for ML/Data Science Requirement
+title: "Random Forest Classification for ML/Data Science Requirement"
 format:
   html:
     embed-resources: true        
@@ -9,7 +9,6 @@ execute:
   working-directory: project
   echo: true
   warning: false
-  error: true
 ---
 
 #### Loading the Dataset
