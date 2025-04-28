@@ -598,7 +598,7 @@ button:active {
 .hero {
   position: relative;
   width: 80% !important;
-  max-width: 80% !important;
+  max-width: 100% !important;
   background-image: url("figures/hero1.jpg") !important;
   background-size: cover !important; /* Changed to cover for better fit */
   background-repeat: no-repeat !important;
@@ -740,7 +740,7 @@ button:active {
 
 /* Override: align nav to your container and theme colors */
 .floating-nav .nav-link {
-  color: var(--white) !important;
+  color: var(--black) !important;
 }
 
 .floating-nav .nav-link:hover {
@@ -792,28 +792,6 @@ button:active {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/*──────────────────────────────────────────────────────────────────────
- Plotly Plots and Figures (Updated for Proper Sizing)
-──────────────────────────────────────────────────────────────────────*/
-.plotly {
-  width: 100% !important;
-  max-width: 100% !important;
-  margin: 0 auto !important;
-  height: auto !important;
-}
-
-.plotly-wrapper {
-  width: 100% !important;
-  max-width: 80% !important;
-  margin: 0 auto !important;
-}
-
-/* Override Quarto’s default plot container */
-div.cell-output, div.output_wrapper {
-  width: 100% !important;
-  max-width: 100% !important;
-  overflow: visible !important;
-}
 
 /* Ensure Quarto’s content area doesn’t constrain the plots */
 main {

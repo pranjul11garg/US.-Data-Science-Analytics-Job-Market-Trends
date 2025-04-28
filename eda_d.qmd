@@ -5,7 +5,6 @@ execute:
   echo: true
   warning: false
   error: true
-  working directory: project
 format:
   html:
     self-contained: true       # bundle everything into one file
@@ -179,10 +178,14 @@ fig.update_layout(
     bargap=0.2
 )
 
-fig
+fig.write_html(
+    "figures/edaplot1.html",
+    include_plotlyjs="cdn",  # Use CDN to load Plotly JS
+    full_html=False          # Only include the plot div
+)
 ```
+<iframe src="figures/edaplot1.html" width="100%" height="900" style="border:none;"></iframe>
 
-<div class="plotly-wrapper"> ```{python} fig``` </div> ```
 
 ```{python}
 import plotly.express as px
@@ -267,10 +270,14 @@ fig.update_layout(
     )
 )
 
-fig
+fig.write_html(
+    "figures/edaplot2.html",
+    include_plotlyjs="cdn",  # Use CDN to load Plotly JS
+    full_html=False          # Only include the plot div
+)
 ```
+<iframe src="figures/edaplot2.html" width="100%" height="650" style="border:none;"></iframe>
 
-<div class="plotly-wrapper"> ```{python} fig``` </div> ```
 
 ```{python}
 import plotly.express as px
@@ -375,9 +382,14 @@ fig.update_layout(
         bordercolor="#FF6B6B"  # Red border for hover
     )
 )
-fig
+
+fig.write_html(
+    "figures/edaplot3.html",
+    include_plotlyjs="cdn",  # Use CDN to load Plotly JS
+    full_html=False          # Only include the plot div
+)
 ```
-<div class="plotly-wrapper"> ```{python} fig``` </div> ```
+<iframe src="figures/edaplot3.html" width="100%" height="650" style="border:none;"></iframe>
 
 ```{python}
 import plotly.express as px
@@ -479,10 +491,15 @@ fig.update_traces(
         line=dict(width=1, color="#2D3748")
     )
 )
-fig
+
+fig.write_html(
+    "figures/edaplot4.html",
+    include_plotlyjs="cdn",  # Use CDN to load Plotly JS
+    full_html=False          # Only include the plot div
+)
 ```
 
-<div class="plotly-wrapper"> ```{python} fig``` </div> ```
+<iframe src="figures/edaplot4.html" width="100%" height="650" style="border:none;"></iframe>
 
 ```{python}
 import plotly.graph_objects as go
@@ -570,7 +587,11 @@ fig.update_layout(
     ),
     margin=dict(l=20, r=20, t=80, b=20),
 )
-fig
+fig.write_html(
+    "figures/edaplot5.html",
+    include_plotlyjs="cdn",  # Use CDN to load Plotly JS
+    full_html=False          # Only include the plot div
+)
 ```
 
-<div class="plotly-wrapper"> ```{python} fig``` </div> ```
+<iframe src="figures/edaplot5.html" width="100%" height="650" style="border:none;"></iframe> 
