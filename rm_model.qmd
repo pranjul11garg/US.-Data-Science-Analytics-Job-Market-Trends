@@ -94,11 +94,7 @@ fig.write_html(
     full_html=False
 )
 ```
-<iframe
-  src="figures/rm_model_plot1.html"
-  width="80%"
-  style="border:none; height:70vh;"
-></iframe>
+<iframe src="figures/rm_model_plot1.html" width="100%" height="650" style="border:none;"></iframe> 
 
 This bar chart displays the feature importance scores from a random forest model predicting whether a job role involves ML/Data Science. The most influential feature by far in the model is the job title (TITLE), which has a significantly higher importance than all other variables. Secondary contributors include industry classification (NAICS2_NAME) and minimum years of experience, where education level and SOC code had relatively low influence on the model’s prediction. This is suggesting that the job title alone carries strong predictive power for identifying ML-related roles.
 
@@ -161,11 +157,7 @@ fig.write_html(
 )
 
 ```
-<iframe
-  src="figures/rm_model_plot2.html"
-  width="100%"
-  style="border:none; height:70vh;"
-></iframe>
+<iframe src="figures/rm_model_plot2.html" width="100%" height="650" style="border:none;"></iframe>
 
 This bar chart shows the top words contributing to the classification of job roles as Machine Learning (ML)related based on job description data. Surprisingly, the most influential words are "attention," "chain," and "supply", which could be an indication of overlap with supply chain roles or reflect noise in the model. More expected terms like "machine," "learning," "python," "AI," and "analytics" also appear, reinforcing that relevant technical language still plays a role in identifying ML-related positions. The presence of general words like "strong" or "communication" suggests that not all influential terms are strictly technical.
 
@@ -206,11 +198,7 @@ fig.write_html(
     full_html=False
 )
 ```
-<iframe
-  src="figures/rm_model_plot3.html"
-  width="100%"
-  style="border:none; height:60vh;"
-></iframe>
+<iframe src="figures/rm_model_plot3.html" width="100%" height="650" style="border:none;"></iframe>
 
 The confusion matrix illustrates that while the model performs well overall, it is particularly strong at identifying non-ML roles, class 0, but faces more difficulty correctly predicting ML-related roles, class 1, reflected in a higher number of false negatives. Nevertheless, the integration of the unstructured data meaningfully improved classification performance. 
 
