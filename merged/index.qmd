@@ -1,0 +1,143 @@
+---
+title: "The Next Normal: AI-Driven Analytics in Action"
+format:
+  html:
+    toc: false
+jupyter: python3
+execute:
+  echo: true
+  warning: false
+  error: true
+---
+
+<div class="hero">
+  <div class="hero-overlay">
+  </div>
+</div>
+
+::: {.author-block}
+<div style="border-bottom: 1px solid #A81D1D; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+
+### <span style="color:#A81D1D;">Affiliated With: Boston University-MET</span>
+
+#### <span style="color:#A81D1D;">Report Written By:</span>
+
+<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; text-align:center; margin-top:1rem;">
+
+<div>Panyang Xiang</div>
+<div>Pratham Kabra</div>
+<div>Pranjul Garg</div>
+<div>Binderiya Dugersuren</div>
+
+</div>
+</div>
+
+:::
+
+
+
+
+<div class="floating-nav">
+  <ul class="nav flex-column nav-pills">
+    <li class="nav-item">
+      <a class="nav-link" href="#top-skills">
+        <i class="fa fa-chart-bar"></i>&nbsp;Top Skills
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#ai-skills-now-a-must">
+        <i class="fa fa-balance-scale"></i>&nbsp;AI Skills Now a Must 
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#tech-and-finance-leading-hiring">
+        <i class="fa fa-database"></i>&nbsp;Tech & Finance Leading Hiring
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#ai-gives-analysts-an-edge">
+        <i class="fa fa-rocket"></i>&nbsp;AI Gives Analysts an Edge
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+
+### Goal of the Project: 
+In this research project, we wanted explore how the fields of Business Analytics, Data Science, and Machine Learning are evolving in 2025. With industries rapidly embracing AI technologies, understanding hiring trends and skill demands has become essential for students and professionals alike.
+
+**Our Research Question:**
+
+- What are the most in-demand skills for data science, business analytics, and ML roles?
+
+- Have job descriptions evolved in 2024 to require more AI/ML expertise?
+
+- What industries are hiring the most data scientists and why?
+
+- What is the career outlook for business analytics professionals?
+
+To answer these questions, we analyzed a large dataset of real job postings sourced from Lightcast. We applied data cleaning, exploratory analysis, skill extraction, and machine learning classification techniques to identify emerging trends and skill gaps.
+
+#### Why This Matters? 
+
+The rise of artificial intelligence (AI) and automation is not only transforming industries, it is changing the very skills required to succeed in the job market. Recent research shows that 86% of workers express concerns about AI-driven job displacement [@samuels2024ai], while businesses simultaneously seek employees who can work alongside AI tools and leverage data-driven insights to create value [@gartner2024ai].
+
+As companies invest heavily in artificial intelligence technologies with an estimated $2.5 million average investment per organization in 2024 [@gartner2024ai] the demand for advanced technical skills continues to rise. Skills such as machine learning, Python programming, cloud computing, and data visualization have shifted from being optional to essential in many job descriptions. This trend reflects a broader transformation in workforce needs, where companies are not just adopting AI tools but are actively restructuring roles to emphasize data-driven decision making and technical proficiency. Professionals who are able to integrate AI and analytics into business processes will be better positioned for leadership and innovation roles in the years ahead.
+
+The Future of Jobs Report 2025 by the World Economic Forum highlights that technological change, AI integration, and the green transition are reshaping global labor markets. Employers expect AI, big data, and automation to be the most transformative forces, with 60% of surveyed organizations anticipating these technologies to significantly impact their business models by 2030. As a result, roles requiring skills in AI, data analysis, cybersecurity, and technological literacy are projected to grow rapidly, while clerical and manual jobs face decline. Importantly, companies are prioritizing workforce reskilling, with 70% planning to train employees to meet emerging demands, and 63% identifying skill gaps as a major barrier to business transformation. These trends align with our findings, which show a clear advantage for business analytics and data science professionals who develop AI and advanced data skills to stay competitive in a rapidly evolving job market [@wef2025futurejobs].
+
+Far from replacing all jobs, AI is reshaping roles to focus on higher value, decision driven tasks [@beverlywhite2024; @nigelrichardson2024]. As a result, professionals who upskill in AI, machine learning, and data analytics are better positioned for career advancement in a future where AI-human collaboration is key. Our project investigates these trends through real-world job posting analysis, revealing how demand for skills is shifting and where opportunities are growing.
+
+
+
+## Key Trends Shaping Data Science and Analytics Careers
+
+  
+### Top Skills {#top-skills}
+
+Our analysis found that **Python, Machine Learning, and Cloud Computing** consistently rank among the top-requested skills in job postings. Employers are seeking candidates who can not only analyze data but also deploy models and build scalable solutions. Python remains the foundational language across roles, while machine learning capabilities and cloud platform expertise such as AWS or Azure offer clear competitive advantages.
+
+### AI Skills Now a Must {#ai-skills-now-a-must}
+
+Compared to prior years, 2025 job postings show a notable shift: companies are explicitly requesting skills like Artificial Intelligence, Machine Learning, and Deep Learning. This highlights how AI technologies are no longer "nice-to-have" but are becoming core to business operations. Candidates without exposure to AI tools or methods risk being overlooked even for traditionally non-technical analytics roles.
+
+### Tech & Finance Leading Hiring {#tech-and-finance-leading-hiring}
+
+Our industry breakdown shows that technology and finance companies are the heaviest recruiters of data science talent. Tech firms are driving innovation through AI products, while finance companies leverage predictive analytics for risk management and investment strategies. These sectors offer strong opportunities, but they also expect candidates to have technical depth combined with business problem-solving skills.
+
+### AI Gives Analysts an Edge {#ai-gives-analysts-an-edge}
+
+Business analytics continues to grow across industries, but the professionals who can blend classic analytics with AI-driven insights are positioned for the best opportunities. Companies increasingly value analysts who can not just interpret historical data, but also build predictive models and optimize decisions using machine learning. Upskilling in AI and data science is no longer optional for career advancement in this field.
+
+
+
+<p style="text-align:center; margin-top:3rem;">
+  <a href="#top" class="back-to-top">Back to top ↑</a>
+</p>  
+
+
+<script>
+(() => {
+  const nav = document.querySelector('.floating-nav'),
+        toggle = document.querySelector('.floating-nav h3 button'),
+        links = Array.from(nav.querySelectorAll('a'));
+
+  // Collapse/expand
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('collapsed');
+  });
+
+  // Scroll-spy to highlight active section
+  const sections = links.map(a => document.getElementById(a.getAttribute('href').slice(1)));
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      const id = e.target.id;
+      const link = nav.querySelector(`a[href="#${id}"]`);
+      link.classList.toggle('active', e.isIntersecting);
+    });
+  }, { rootMargin: '-50% 0px -50% 0px' });
+
+  sections.forEach(sec => sec && observer.observe(sec));
+})();
+</script>

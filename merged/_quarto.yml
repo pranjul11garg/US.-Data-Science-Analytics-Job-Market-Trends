@@ -1,0 +1,18 @@
+project:
+  type: book
+
+format:
+  docx:
+    toc: true
+    number-sections: true
+
+book:
+  title: "All Analyses"
+  chapters:
+    - index.qmd
+    - ../data_cleaning.qmd
+    - ../eda_d.qmd
+    - ../skill_gap.qmd
+    - ../rm_model.qmd
+    - ../analytics_model.qmd
+
