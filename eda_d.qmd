@@ -183,7 +183,14 @@ fig.write_html(
     full_html=False          # Only include the plot div
 )
 ```
+
 <iframe src="figures/edaplot1.html" width="100%" height="650" style="border:none;"></iframe>
+
+
+
+
+
+
 
 
 ```{python}
@@ -287,80 +294,13 @@ fig.write_html(
 <iframe src="figures/edaplot2.html" width="100%" height="650" style="border:none;"></iframe>
 
 
-```{python}
-import plotly.express as px
-import pandas as pd
-
-# Assuming eda is already loaded and DATA_ANALYST_JOB is defined
-df = eda.copy()
-
-# Step 1: Calculate average years of experience
-df['Avg_Years_Experience'] = (df['MIN_YEARS_EXPERIENCE'] + df['MAX_YEARS_EXPERIENCE']) / 2
-
-# Step 2: Clean the data (remove rows with missing values for the variables we need)
-df = df.dropna(subset=['SALARY', 'Avg_Years_Experience', 'REMOTE_TYPE_NAME', 'MIN_EDULEVELS_NAME'])
-
-# Debug: Check the number of rows after cleaning
-print("Number of rows after cleaning:", len(df))
-
-# Step 3: Map DATA_ANALYST_JOB to labels
-df['Job_Category'] = df['DATA_ANALYST_JOB'].map({True: 'Analytics Job', False: 'Non-Analytics Job'})
-
-# Step 4: Encode categorical variables numerically for the parallel coordinates plot
-# Encode REMOTE_TYPE_NAME (e.g., Remote=2, Hybrid=1, On-site=0)
-remote_mapping = {'Remote': 2, 'Hybrid': 1, 'On-site': 0}  # Adjust based on your unique values
-df['Remote_Type_Code'] = df['REMOTE_TYPE_NAME'].map(remote_mapping)
-
-# Encode MIN_EDULEVELS_NAME (e.g., High School=0, Bachelor's=1, Master's=2, PhD=3)
-edu_mapping = {'High School': 0, 'Bachelor\'s': 1, 'Master\'s': 2, 'PhD': 3}  # Adjust based on your unique values
-df['Edu_Level_Code'] = df['MIN_EDULEVELS_NAME'].map(edu_mapping)
-
-# Step 5: Clean again after encoding (in case some mappings failed)
-df = df.dropna(subset=['Remote_Type_Code', 'Edu_Level_Code'])
-
-# Debug: Check the encoded data
-print("Sample encoded data:")
-print(df[['SALARY', 'Avg_Years_Experience', 'Remote_Type_Code', 'Edu_Level_Code', 'Job_Category']].head())
-
-# Step 6: Create the parallel coordinates plot
-fig = px.parallel_coordinates(
-    df,
-    dimensions=['SALARY', 'Avg_Years_Experience', 'Remote_Type_Code', 'Edu_Level_Code'],
-    color_continuous_scale=['#4ECDC4', '#FF6B6B'],  # Gradient from teal to red
-    color=df['Job_Category'].map({'Analytics Job': 1, 'Non-Analytics Job': 0}),  # Color by Job_Category
-    labels={
-        'SALARY': 'Salary ($)',
-        'Avg_Years_Experience': 'Avg. Years Experience',
-        'Remote_Type_Code': 'Remote Type (0=On-site, 1=Hybrid, 2=Remote)',
-        'Edu_Level_Code': 'Min. Education Level (0=HS, 1=Bachelor\'s, 2=Master\'s, 3=PhD)'
-    },
-    title='Multidimensional Comparison of Job Attributes by Job Category'
-)
-
-# Step 7: Update layout for styling
-fig.update_layout(
-    width=1000,
-    height=600,
-    plot_bgcolor='white',
-    paper_bgcolor='white',
-    font=dict(family='Inter, sans-serif', size=14, color='#2D3748'),
-    title=dict(
-        font=dict(size=24, color='#FF6B6B'),
-        x=0.5,
-        xanchor='center',
-        y=0.95,
-        yanchor='top'
-    )
-)
 
 
-fig.write_html(
-    "figures/edaplot3.html",
-    include_plotlyjs="cdn",  # Use CDN to load Plotly JS
-    full_html=False          # Only include the plot div
-)
-```
-<iframe src="figures/edaplot3.html" width="100%" height="650" style="border:none;"></iframe>
+
+
+
+
+
 
 ```{python}
 import plotly.express as px
@@ -465,116 +405,26 @@ fig.update_traces(
 
 
 fig.write_html(
-    "figures/edaplot4.html",
+    "figures/edaplot3.html",
     include_plotlyjs="cdn",  # Use CDN to load Plotly JS
     full_html=False          # Only include the plot div
 )
 ```
 
-<iframe src="figures/edaplot4.html" width="100%" height="650" style="border:none;"></iframe>
-
-```{python}
- 
-import plotly.express as px
-import pandas as pd
-
-# Assuming eda is already loaded and DATA_ANALYST_JOB is defined
-df = eda.copy()
-
-# Step 1: Calculate average years of experience
-df['Avg_Years_Experience'] = (df['MIN_YEARS_EXPERIENCE'] + df['MAX_YEARS_EXPERIENCE']) / 2
-
-# Step 2: Clean the data (remove rows with missing values)
-df = df.dropna(subset=['SALARY', 'Avg_Years_Experience', 'MIN_EDULEVELS_NAME', 'POSTED'])
-
-# Debug: Check the number of rows after cleaning
-print("Number of rows after cleaning:", len(df))
-
-# Step 3: Map DATA_ANALYST_JOB to labels
-df['Job_Category'] = df['DATA_ANALYST_JOB'].map({True: 'Analytics Job', False: 'Non-Analytics Job'})
-
-# Step 4: Encode MIN_EDULEVELS_NAME numerically
-edu_mapping = {'High School': 0, 'Bachelor\'s': 1, 'Master\'s': 2, 'PhD': 3}  # Adjust based on your unique values
-df['Edu_Level_Code'] = df['MIN_EDULEVELS_NAME'].map(edu_mapping)
-
-# Step 5: Clean again after encoding
-df = df.dropna(subset=['Edu_Level_Code'])
-
-# Step 6: Extract a time component from POSTED (e.g., year or year-month)
-df['POSTED'] = pd.to_datetime(df['POSTED'])  # Ensure POSTED is in datetime format
-df['Year_Month'] = df['POSTED'].dt.to_period('M').astype(str)  # Extract year-month for animation
-
-# Debug: Check the time range
-print("Time range for animation:", df['Year_Month'].unique())
-
-# Step 7: Create the 3D scatter plot with animation
-fig = px.scatter_3d(
-    df,
-    x='Avg_Years_Experience',
-    y='SALARY',
-    z='Edu_Level_Code',
-    color='Job_Category',
-    color_discrete_map={'Analytics Job': '#FF6B6B', 'Non-Analytics Job': '#4ECDC4'},
-    animation_frame='Year_Month',  # Animate over time
-    title='Salary, Experience, and Education Over Time by Job Category',
-    labels={
-        'Avg_Years_Experience': 'Avg. Years Experience',
-        'SALARY': 'Salary ($)',
-        'Edu_Level_Code': 'Min. Education Level (0=HS, 1=Bachelor\'s, 2=Master\'s, 3=PhD)'
-    },
-    hover_data=['Job_Category', 'Year_Month']
-)
-
-# Step 8: Update layout for styling
-fig.update_layout(
-    width=900,
-    height=600,
-    scene=dict(
-        xaxis_title='Avg. Years Experience',
-        yaxis_title='Salary ($)',
-        zaxis_title='Min. Education Level',
-        xaxis=dict(tickfont=dict(size=12)),
-        yaxis=dict(tickfont=dict(size=12)),
-        zaxis=dict(tickfont=dict(size=12))
-    ),
-    plot_bgcolor='white',
-    paper_bgcolor='white',
-    font=dict(family='Inter, sans-serif', size=14, color='#2D3748'),
-    title=dict(
-        font=dict(size=24, color='#FF6B6B'),
-        x=0.5,
-        xanchor='center',
-        y=0.95,
-        yanchor='top'
-    ),
-    legend=dict(
-        title='Job Category',
-        font=dict(size=13),
-        bgcolor='#FFFFFF',
-        bordercolor='#FF6B6B',
-        borderwidth=1,
-        x=1.02,
-        y=0.5,
-        xanchor='left',
-        yanchor='middle'
-    )
-)
+<iframe src="figures/edaplot3.html" width="100%" height="650" style="border:none;"></iframe>
 
 
-# Save the file
-fig.write_html(
-    "figures/edaplot5.html",
-    include_plotlyjs="cdn",  # Use CDN to load Plotly JS
-    full_html=False          # Only include the plot div
-)
-```
 
-<iframe src="figures/edaplot5.html" width="100%" height="650" style="border:none;"></iframe> 
+
+
+
+
+
+
 
 ```{python}
 import plotly.express as px
 import pandas as pd
-import numpy as np
 
 # Assuming eda is already loaded and DATA_ANALYST_JOB is defined
 df = eda.copy()
@@ -582,20 +432,17 @@ df = eda.copy()
 # Step 1: Clean the data (remove rows with missing STATE_NAME)
 df = df.dropna(subset=['STATE_NAME'])
 
-# Step 2: Handle any anomalies in STATE_NAME (e.g., "[Unknown City], AR" should not affect STATE_NAME)
-# Since STATE_NAME is already provided (e.g., "Arkansas"), we can proceed directly
-
 # Debug: Check the number of rows after cleaning and unique states
 print("Number of rows after cleaning:", len(df))
 print("Unique states extracted:", df['STATE_NAME'].unique())
 
-# Step 3: Map DATA_ANALYST_JOB to labels
+# Step 2: Map DATA_ANALYST_JOB to labels
 df['Job_Category'] = df['DATA_ANALYST_JOB'].map({True: 'Analytics Job', False: 'Non-Analytics Job'})
 
-# Step 4: Aggregate data by state and job category
+# Step 3: Aggregate data by state and job category
 df_state_counts = df.groupby(['STATE_NAME', 'Job_Category']).size().reset_index(name='Job_Count')
 
-# Step 5: Pivot the data to get counts for Analytics and Non-Analytics Jobs
+# Step 4: Pivot the data to get counts for Analytics and Non-Analytics Jobs
 df_pivot = df_state_counts.pivot(index='STATE_NAME', columns='Job_Category', values='Job_Count').fillna(0)
 df_pivot['Total_Jobs'] = df_pivot.get('Analytics Job', 0) + df_pivot.get('Non-Analytics Job', 0)
 df_pivot = df_pivot.reset_index()
@@ -603,6 +450,14 @@ df_pivot = df_pivot.reset_index()
 # Debug: Check the aggregated data
 print("Aggregated data by state:")
 print(df_pivot)
+
+# Step 5: Find states with minimum and maximum jobs
+min_jobs_row = df_pivot.loc[df_pivot['Total_Jobs'].idxmin()]
+max_jobs_row = df_pivot.loc[df_pivot['Total_Jobs'].idxmax()]
+min_jobs_state = min_jobs_row['STATE_NAME']
+max_jobs_state = max_jobs_row['STATE_NAME']
+min_jobs_count = min_jobs_row['Total_Jobs']
+max_jobs_count = max_jobs_row['Total_Jobs']
 
 # Step 6: Map state names to state codes for Plotly choropleth
 state_name_to_code = {
@@ -623,35 +478,45 @@ df_pivot['State_Code'] = df_pivot['STATE_NAME'].map(state_name_to_code)
 # Step 7: Clean the data (remove rows with unmapped states)
 df_pivot = df_pivot.dropna(subset=['State_Code'])
 
-# Step 8: Apply a logarithmic scale to Total_Jobs for better visualization (avoiding zero values)
-df_pivot['Log_Total_Jobs'] = np.log1p(df_pivot['Total_Jobs'])  # log1p handles zero values (log(1+x))
-
 # Debug: Check the final data before plotting
 print("Final data for plotting:")
-print(df_pivot[['STATE_NAME', 'State_Code', 'Total_Jobs', 'Log_Total_Jobs']])
+print(df_pivot[['STATE_NAME', 'State_Code', 'Total_Jobs']])
 
-# Step 9: Create the choropleth map with a logarithmic color scale
+# Step 8: Define the color scale range and ticks
+min_range = 100
+max_range = 8100
+increment = 900  # To get 10 divisions between 100 and 8100
+tickvals = list(range(min_range, max_range + increment, increment))
+tickvals = tickvals[:10]  # Ensure 8-10 divisions
+ticktext = [str(val) for val in tickvals]
+
+# Debug: Print the tick values for the color bar
+print("Color bar tick values:", tickvals)
+
+# Step 9: Create the choropleth map with a custom linear color scale
 fig = px.choropleth(
     df_pivot,
     locations='State_Code',
     locationmode='USA-states',
-    color='Log_Total_Jobs',
-    color_continuous_scale='Reds',
+    color='Total_Jobs',
+    color_continuous_scale='Reds',  # Use a red gradient for impact
     scope='usa',
-    title='Distribution of Jobs Across U.S. States (Log Scale)',
+    range_color=[min_range, max_range],  # Explicitly set the range
+    title='Geographic Distribution of Analytics Job Postings (2025)',
     hover_data=['STATE_NAME', 'Analytics Job', 'Non-Analytics Job', 'Total_Jobs'],
-    labels={'Log_Total_Jobs': 'Log(Number of Jobs)', 'Total_Jobs': 'Number of Jobs'}
+    labels={'Total_Jobs': 'Number of Jobs'}
 )
 
-# Step 10: Update layout for styling
+# Step 10: Update layout for a stunning visualization
 fig.update_layout(
-    width=900,
-    height=600,
+    width=1000,
+    height=700,
     plot_bgcolor='white',
     paper_bgcolor='white',
     font=dict(family='Inter, sans-serif', size=14, color='#2D3748'),
     title=dict(
-        font=dict(size=24, color='#FF6B6B'),
+        text='Geographic Distribution of Analytics Job Postings (2025)',
+        font=dict(size=28, color='#FF6B6B', family='Inter, sans-serif'),
         x=0.5,
         xanchor='center',
         y=0.95,
@@ -663,22 +528,199 @@ fig.update_layout(
         landcolor='lightgray',
         subunitcolor='black',
         showlakes=True,
-        showsubunits=True
+        showsubunits=True,
+        showframe=True,
+        framecolor='#2D3748',
+        framewidth=2
     ),
     coloraxis_colorbar=dict(
-        title='Log(Number of Jobs)',
-        title_font=dict(size=13),
-        tickfont=dict(size=12),
-        tickvals=[np.log1p(x) for x in [0, 10, 50, 100, 500, 1000]],
-        ticktext=['0', '10', '50', '100', '500', '1000']
-    )
+        title='Number of Jobs',
+        title_font=dict(size=16, family='Inter, sans-serif', color='#FF6B6B'),
+        tickfont=dict(size=12, family='Inter, sans-serif', color='#2D3748'),
+        tickvals=tickvals,
+        ticktext=ticktext,
+        len=0.8,
+        thickness=20,
+        outlinecolor='#2D3748',
+        outlinewidth=1,
+        bgcolor='rgba(255,255,255,0.8)'
+    ),
+    margin=dict(l=50, r=50, t=100, b=50)
 )
 
-# Step 11: Save to HTML
+# Step 11: Add annotations for Wyoming and Texas
+fig.add_annotation(
+    x=0.05,
+    y=0.05,
+    xref="paper",
+    yref="paper",
+    text=f"Lowest: Wyoming ({min_jobs_count} jobs)",
+    showarrow=False,
+    font=dict(size=12, color='#FF6B6B', family='Inter, sans-serif'),
+    bgcolor='rgba(255,255,255,0.8)',
+    bordercolor='#FF6B6B',
+    borderwidth=1
+)
+
+fig.add_annotation(
+    x=0.95,
+    y=0.05,
+    xref="paper",
+    yref="paper",
+    text=f"Highest: Texas ({max_jobs_count} jobs)",
+    showarrow=False,
+    font=dict(size=12, color='#FF6B6B', family='Inter, sans-serif'),
+    bgcolor='rgba(255,255,255,0.8)',
+    bordercolor='#FF6B6B',
+    borderwidth=1,
+    xanchor='right'
+)
+
+# Step 12: Save to HTML
 fig.write_html(
-    'figures/edaplot6.html',
+    'figures/edaplot4.html',
+    include_plotlyjs='cdn',
+    full_html=False
+)
+
+```
+<iframe src="figures/edaplot4.html" width="100%" height="650" style="border:none;"></iframe> 
+
+
+
+
+
+```{python}
+import plotly.graph_objects as go
+import pandas as pd
+
+# Assuming eda is already loaded and DATA_ANALYST_JOB is defined
+df = eda.copy()
+
+# Step 1: Clean the data (remove rows with missing values for key columns)
+df = df.dropna(subset=['MIN_EDULEVELS_NAME', 'NAICS2_NAME'])
+
+# Step 2: Map DATA_ANALYST_JOB to labels
+df['Job_Category'] = df['DATA_ANALYST_JOB'].map({True: 'Analytics Job', False: 'Non-Analytics Job'})
+
+# Step 3: Shorten industry names for better display
+short_names = {
+    'Professional, Scientific, and Technical Services': 'Tech. Services',
+    'Administrative and Support and Waste Management and Remediation Services': 'Admin & Waste Mgmt',
+    'Health Care and Social Assistance': 'Healthcare',
+    'Finance and Insurance': 'Finance',
+    'Information': 'Info Tech',
+    'Educational Services': 'Education',
+    'Manufacturing': 'Manufacturing',
+    'Retail Trade': 'Retail',
+    'Accommodation and Food Services': 'Hospitality',
+    'Other Services (except Public Administration)': 'Other Services'
+}
+df['Industry'] = df['NAICS2_NAME'].map(short_names).fillna(df['NAICS2_NAME'])
+
+# Step 4: Get the top 5 industries by total job count to keep the diagram manageable
+total_jobs_by_industry = df.groupby('Industry').size().nlargest(5)
+top_industries = total_jobs_by_industry.index.tolist()
+df = df[df['Industry'].isin(top_industries)]
+
+# Step 5: Aggregate data to get flows
+# Flow from Education Level to Job Category
+edu_to_job = df.groupby(['MIN_EDULEVELS_NAME', 'Job_Category']).size().reset_index(name='Count')
+
+# Flow from Job Category to Industry
+job_to_industry = df.groupby(['Job_Category', 'Industry']).size().reset_index(name='Count')
+
+# Debug: Check the aggregated data
+print("Flow from Education Level to Job Category:")
+print(edu_to_job)
+print("Flow from Job Category to Industry:")
+print(job_to_industry)
+
+# Step 6: Create nodes and links for the Sankey diagram
+# Nodes: Education Levels + Job Categories + Industries
+edu_levels = list(df['MIN_EDULEVELS_NAME'].unique())
+job_categories = list(df['Job_Category'].unique())
+industries = list(df['Industry'].unique())
+
+# Create a list of all nodes
+all_nodes = edu_levels + job_categories + industries
+node_indices = {node: idx for idx, node in enumerate(all_nodes)}
+
+# Links: Education Level -> Job Category
+links_source = []
+links_target = []
+links_value = []
+for _, row in edu_to_job.iterrows():
+    source = node_indices[row['MIN_EDULEVELS_NAME']]
+    target = node_indices[row['Job_Category']]
+    value = row['Count']
+    links_source.append(source)
+    links_target.append(target)
+    links_value.append(value)
+
+# Links: Job Category -> Industry
+for _, row in job_to_industry.iterrows():
+    source = node_indices[row['Job_Category']]
+    target = node_indices[row['Industry']]
+    value = row['Count']
+    links_source.append(source)
+    links_target.append(target)
+    links_value.append(value)
+
+# Satep 7: Create the Sankey diagram
+fig = go.Figure(data=[go.Sankey(
+    node=dict(
+        pad=15,
+        thickness=20,
+        line=dict(color='#2D3748', width=0.5),
+        label=all_nodes,
+        color=['#FF6B6B' if 'Job' in node else '#FFE5E5' for node in all_nodes]  # Red for job categories, light red for others
+    ),
+    link=dict(
+        source=links_source,
+        target=links_target,
+        value=links_value,
+        color=['#FF6B6B' if all_nodes[source] in job_categories else '#FFE5E5' for source in links_source]  # Red links for job category flows
+    )
+)])
+
+# Step 8: Update layout for a stunning visualization
+fig.update_layout(
+    title=dict(
+        text='Flow of Jobs: Education Level → Job Category → Industry (2025)',
+        font=dict(size=28, color='#FF6B6B', family='Inter, sans-serif'),
+        x=0.5,
+        xanchor='center',
+        y=0.95,
+        yanchor='top'
+    ),
+    width=1000,
+    height=600,
+    font=dict(family='Inter, sans-serif', size=14, color='#2D3748'),
+    plot_bgcolor='white',
+    paper_bgcolor='white',
+    margin=dict(l=50, r=50, t=100, b=50)
+)
+
+# Step 9: Add annotations for context
+fig.add_annotation(
+    x=0.05,
+    y=0.05,
+    xref="paper",
+    yref="paper",
+    text="Flow represents job counts across categories",
+    showarrow=False,
+    font=dict(size=12, color='#FF6B6B', family='Inter, sans-serif'),
+    bgcolor='rgba(255,255,255,0.8)',
+    bordercolor='#FF6B6B',
+    borderwidth=1
+)
+
+# Step 10: Save to HTML
+fig.write_html(
+    'figures/edaplot5.html',
     include_plotlyjs='cdn',
     full_html=False
 )
 ```
-<iframe src="figures/edaplot6.html" width="100%" height="650" style="border:none;"></iframe> 
+<iframe src="figures/edaplot5.html" width="100%" height="650" style="border:none;"></iframe> 
