@@ -752,6 +752,16 @@ button:active {
   background: var(--accent) !important;
   color: var(--black) !important;
 }
+.floating-nav a {
+  color: white !important;
+  font-family: var(--font-heading) !important;
+  text-decoration: none !important;
+  font-size: 1rem !important;
+}
+
+.floating-nav a:hover {
+  color: var(--accent) !important;
+}
 
 /* Grid layout for larger screens */
 @media (min-width: 1024px) {
