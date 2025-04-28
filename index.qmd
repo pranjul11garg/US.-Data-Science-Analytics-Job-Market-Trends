@@ -1,12 +1,18 @@
 ---
 title: "The Next Normal: AI-Driven Analytics in Action"
+author:
+  - name: Panyang Xiang
+  - name: Pratham Kabra
+  - name: Pranjul Garg
+  - name: Binderiya Dugersuren
+affiliation: "Boston University"
 format:
-  html: default   # or you could put theme-variables, toc, etc. here
+  html: default   
 jupyter: python3
 execute:
-  echo:    true
+  echo: true
   warning: false
-  error:   true
+  error: true
 ---
 
 <div class="hero">
