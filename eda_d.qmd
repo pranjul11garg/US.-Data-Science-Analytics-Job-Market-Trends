@@ -111,8 +111,7 @@ for val in range(0, 8001, 200):
             {"y": [
                 [v if v>=val else 0 for v in y_true],
                 [v if v>=val else 0 for v in y_false]
-            ]},
-            {"title": f"Min Jobs ≥ {val:,}"}
+            ]}
         ]
     ))
 
@@ -243,7 +242,7 @@ fig.update_layout(
         font=dict(size=24, color='#FF6B6B'),
         x=0.5,
         xanchor='center',
-        y=0.95,
+        y=0.99,
         yanchor='top'
     ),
     xaxis=dict(
@@ -256,7 +255,7 @@ fig.update_layout(
         showline=True,
         showgrid=True,
         zeroline=False
-    ),
+    ),             
     yaxis=dict(
         title='Specialized Skill',
         title_font=dict(size=16),
@@ -274,7 +273,6 @@ fig.update_layout(
         yanchor='middle'
     )
 )
-
 
 
 # Save to HTML
@@ -354,7 +352,6 @@ fig.update_layout(
         yanchor='top'
     )
 )
-
 
 
 fig.write_html(
