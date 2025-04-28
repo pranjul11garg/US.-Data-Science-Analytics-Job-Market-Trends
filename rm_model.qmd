@@ -163,7 +163,7 @@ fig.write_html(
 ```
 <iframe
   src="figures/rm_model_plot2.html"
-  width="110%"
+  width="100%"
   style="border:none; height:70vh;"
 ></iframe>
 

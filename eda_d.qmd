@@ -69,9 +69,9 @@ industries = pivot['Industry'].tolist()
 y_true  = pivot['True'].tolist()
 y_false = pivot['False'].tolist()
 
-# -----------------------------------------------------------------------------
+
 # 2) Build a 2-row subplot: bar on top, table below
-# -----------------------------------------------------------------------------
+
 fig = make_subplots(
     rows=2, cols=1,
     row_heights=[0.70, 0.30],           # give a bit more room to the table
@@ -99,9 +99,9 @@ fig.add_trace(
 )
 
 
-# -----------------------------------------------------------------------------
+
 # 3) Slider steps: 0 → 8 000 in 200s
-# -----------------------------------------------------------------------------
+
 steps = []
 for val in range(0, 8001, 200):
     steps.append(dict(
@@ -116,9 +116,9 @@ for val in range(0, 8001, 200):
         ]
     ))
 
-# -----------------------------------------------------------------------------
+
 # 4) Final layout tweaks
-# -----------------------------------------------------------------------------
+
 fig.update_layout(
     # lift slider above everything
     sliders=[dict(
@@ -184,7 +184,7 @@ fig.write_html(
     full_html=False          # Only include the plot div
 )
 ```
-<iframe src="figures/edaplot1.html" width="100%" height="900" style="border:none;"></iframe>
+<iframe src="figures/edaplot1.html" width="100%" height="650" style="border:none;"></iframe>
 
 
 ```{python}
