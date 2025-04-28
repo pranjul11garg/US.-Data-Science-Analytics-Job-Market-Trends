@@ -279,9 +279,7 @@ plt.imshow(wordcloud, interpolation="bilinear")
 plt.axis('off')
 plt.title('Word Cloud of Skills from Job Postings', fontsize=16, fontweight='bold')
 plt.tight_layout()
-plt.show()
 
-# Step 6: (Optional) Save it
 wordcloud.to_file("figures/skills_wordcloud.png")
 
 ```
