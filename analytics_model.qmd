@@ -72,8 +72,8 @@ fig = px.scatter(
         'MAX_YEARS_EXPERIENCE': 'Max Years Experience',
         'Cluster': 'Cluster'
     },
-    width=800,
-    height=500,
+    width=600,
+    height=400,
 )
 
 # 4) Add centroid traces
@@ -82,7 +82,7 @@ fig.add_trace(
         x=centroids_x,
         y=centroids_y,
         mode='markers',
-        marker=dict(symbol='x', size=18, color='black', line=dict(width=2, color='white')),
+        marker=dict(symbol='x', size=8, color='black', line=dict(width=2, color='white')),
         name='Centroids'
     )
 )
@@ -156,8 +156,8 @@ fig.update_layout(
     title='Actual vs Predicted Salary (Multiple Regression)',
     xaxis_title='Actual Salary',
     yaxis_title='Predicted Salary',
-    width=800,
-    height=600,
+    width=600,
+    height=400,
     template='plotly_white'
 )
 
@@ -171,8 +171,8 @@ fig
 ```
 <iframe
   src="/figures/analytics_plot2.html"
-  width="100%"
-  height="500"
+  width="60%"
+  height="400"
   style="border:none;"
 ></iframe>
 
