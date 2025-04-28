@@ -4276,7 +4276,7 @@ margin-top: 0.5rem;
 </header>
 
 
-<div id="0f4d2493" class="cell" data-execution_count="1">
+<div id="a94046e8" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -4300,7 +4300,7 @@ margin-top: 0.5rem;
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>eda_data <span class="op">=</span> df[columns_to_keep]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="8e73996b" class="cell" data-execution_count="2">
+<div id="a6b7dcb0" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>missing_matrix <span class="op">=</span> eda_data.isnull().astype(<span class="bu">int</span>)</span>
@@ -4349,7 +4349,7 @@ margin-top: 0.5rem;
 </iframe>
 <p>This triangle heatmap visualizes the correlation of missing values between different columns in the dataset. Each square represents how often two columns are missing together, with darker blue indicating a stronger relationship. Most of the values are very high (close to 1.0), suggesting that when one column is missing, others are often missing too — especially among skill-related fields like SKILLS, SPECIALIZED_SKILLS, and SOFTWARE_SKILLS, which are likely part of the same job posting metadata.</p>
 <p>This pattern indicates that missingness is not random, but structured — possibly due to differences in how job descriptions are recorded across roles or industries. For example, a job with no software skill tags might also lack common skills or NAICS codes, hinting at data input gaps rather than actual job content differences. Recognizing these correlations is helpful for choosing imputation strategies or deciding whether to drop certain rows or columns entirely during preprocessing.</p>
-<div id="268b71f3" class="cell" data-execution_count="3">
+<div id="f88e75f1" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">&quot;SALARY&quot;</span> <span class="kw">in</span> eda_data.columns:</span>
@@ -4384,7 +4384,7 @@ margin-top: 0.5rem;
 <span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>eda_data[<span class="st">&#39;COMPANY&#39;</span>] <span class="op">=</span> eda_data[<span class="st">&#39;COMPANY&#39;</span>].astype(<span class="bu">str</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="97b3f8e9" class="cell" data-execution_count="4">
+<div id="834bef80" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
