@@ -1,13 +1,8 @@
 ---
 title: "The Next Normal: AI-Driven Analytics in Action"
-author:
-  - name: Panyang Xiang
-  - name: Pratham Kabra
-  - name: Pranjul Garg
-  - name: Binderiya Dugersuren
-affiliation: "Boston University"
 format:
-  html: default   
+  html:
+    toc: false
 jupyter: python3
 execute:
   echo: true
@@ -19,6 +14,27 @@ execute:
   <div class="hero-overlay">
   </div>
 </div>
+
+::: {.author-block}
+<div style="border-bottom: 1px solid #A81D1D; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+
+### <span style="color:#A81D1D;">Affiliated With: Boston University-MET</span>
+
+#### <span style="color:#A81D1D;">Report Written By:</span>
+
+<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; text-align:center; margin-top:1rem;">
+
+<div>Panyang Xiang</div>
+<div>Pratham Kabra</div>
+<div>Pranjul Garg</div>
+<div>Binderiya Dugersuren</div>
+
+</div>
+</div>
+
+:::
+
+
 
 
 <div class="floating-nav">

@@ -91,7 +91,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: justify;
 }
 */
-h1 { font-size: clamp(2rem, 3.25vw, 2.25rem); }
+h1 { font-size: clamp(1.75rem, 3vw, 2rem); }
 h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
 h3 { font-size: clamp(1.25rem, 2vw, 1.75rem); }
 
@@ -744,7 +744,7 @@ button:active {
 }
 
 .floating-nav .nav-link:hover {
-  background: rgba(216, 47, 47, 0.2) !important;
+  background: rgba(215, 45, 45, 0.2) !important;
   color: var(--accent) !important;
 }
 
@@ -806,7 +806,7 @@ button:active {
 /* Ensure Quarto’s content area doesn’t constrain the plots */
 main {
   width: 100% !important;
-  max-width: 1800px !important;
+  max-width: 1000px !important;
   margin: 0 auto !important;
   overflow: visible !important;
 }
@@ -832,12 +832,57 @@ main ul,
 main ol, 
 main div, 
 main section {
-  max-width: 800px;
+  max-width: 820px; /* ← no space */
   margin-left: auto;
   margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
-main h1, main h2, main h3 {
-  max-width: 850px;
+
+main h1, 
+main h2, 
+main h3 {
+  max-width: 835px;
   margin-left: auto;
   margin-right: auto;
+  padding-right: 1rem;
 }
+
+/*──────────────────────────────────────────────────────────────────────
+ 🎓 Two-Column Authors Grid
+──────────────────────────────────────────────────────────────────────*/
+.author-block {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.author-title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.author-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 3rem;
+  justify-items: center;
+  margin-bottom: 1rem;
+}
+
+.author-name {
+  font-family: var(--font-sans);
+  font-size: 1.2rem;
+  color: var(--text);
+}
+
+.university-name {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+
