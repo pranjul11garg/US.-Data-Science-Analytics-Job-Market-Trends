@@ -121,3 +121,4 @@ pandas
 pyarrow
 scikit-learn
 statsmodels==0.14.4
+wordcloud
