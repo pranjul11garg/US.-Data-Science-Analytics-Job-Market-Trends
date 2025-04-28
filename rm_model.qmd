@@ -96,7 +96,7 @@ fig.write_html(
 ```
 <iframe
   src="figures/rm_model_plot1.html"
-  width="100%"
+  width="80%"
   style="border:none; height:70vh;"
 ></iframe>
 
@@ -159,10 +159,11 @@ fig.write_html(
     include_plotlyjs='cdn',
     full_html=False
 )
+
 ```
 <iframe
   src="figures/rm_model_plot2.html"
-  width="100%"
+  width="110%"
   style="border:none; height:70vh;"
 ></iframe>
 
@@ -208,7 +209,7 @@ fig.write_html(
 <iframe
   src="figures/rm_model_plot3.html"
   width="100%"
-  style="border:none; height:70vh;"
+  style="border:none; height:60vh;"
 ></iframe>
 
 The confusion matrix illustrates that while the model performs well overall, it is particularly strong at identifying non-ML roles, class 0, but faces more difficulty correctly predicting ML-related roles, class 1, reflected in a higher number of false negatives. Nevertheless, the integration of the unstructured data meaningfully improved classification performance. 
