@@ -19,22 +19,22 @@ execute:
   <ul class="nav flex-column nav-pills">
     <li class="nav-item">
       <a class="nav-link" href="#top-skills">
-        <i class="fa fa-chart-bar"></i>&nbsp;State of the Data Industry
+        <i class="fa fa-chart-bar"></i>&nbsp;Top Skills
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#ai-skills-now-a-must">
-        <i class="fa fa-balance-scale"></i>&nbsp;Ethics & Responsible AI
+        <i class="fa fa-balance-scale"></i>&nbsp;AI Skills Now a Must 
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#tech-and-finance-leading-hiring">
-        <i class="fa fa-database"></i>&nbsp;Scaling Data Platforms
+        <i class="fa fa-database"></i>&nbsp;Tech & Finance Leading Hiring
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#ai-gives-analysts-an-edge">
-        <i class="fa fa-rocket"></i>&nbsp;Future Tech & Innovation
+        <i class="fa fa-rocket"></i>&nbsp;AI Gives Analysts an Edge
       </a>
     </li>
   </ul>
@@ -57,7 +57,7 @@ In this research project, we wanted explore how the fields of Business Analytics
 
 To answer these questions, we analyzed a large dataset of real job postings sourced from Lightcast. We applied data cleaning, exploratory analysis, skill extraction, and machine learning classification techniques to identify emerging trends and skill gaps.
 
-#### Why This Matters
+#### Why This Matters? 
 
 The rise of artificial intelligence (AI) and automation is not only transforming industries, it is changing the very skills required to succeed in the job market. Recent research shows that 86% of workers express concerns about AI-driven job displacement [@samuels2024ai], while businesses simultaneously seek employees who can work alongside AI tools and leverage data-driven insights to create value [@gartner2024ai].
 
