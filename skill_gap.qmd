@@ -189,7 +189,6 @@ for _, row in job_demand_raw.iterrows():
             skill_demand_map[team_skill] += count
 
 job_demand = pd.Series(skill_demand_map)
-print(job_demand)
 ```
 
 ```{python}
@@ -254,5 +253,7 @@ fig.write_html(
 ></iframe>
 
 
-This bar chart compares our team’s average proficiency in key data-related skills against job market expectations. Skills with positive values (like communication and SQL) indicate areas where market demand exceeds our current capabilities. On the other hand, negative values highlight areas where the team is ahead or closely aligned with market needs. Notably, skills like Python, cloud computing, and project management show the largest gaps, suggesting priority areas for upskilling.
+Our skill gap analysis compares the team’s average skill levels with normalized job market expectations. The “Skill Gap” metric is calculated based on the frequency of each skill's appearance in job postings, rather than a direct assessment of skill proficiency required by employers. As such, while skills like SQL and Python appear to have smaller gaps, this may partly reflect the fact that they are mentioned slightly less often in the postings relative to emerging areas like cloud computing or machine learning. Nevertheless, SQL and Python remain critical foundational skills that the job market consistently expects from candidates.
+
+The results indicate that the team meets or slightly exceeds market expectations in communication and SQL. However, there are notable gaps in technical domains such as machine learning, cloud computing, PySpark, data visualization, and project management. These areas should be prioritized for upskilling to align better with market demand.
 
