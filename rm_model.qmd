@@ -69,6 +69,8 @@ y_pred = rf.predict(X_test)
 print(classification_report(y_test, y_pred))
 ```
 
+The Random Forest model achieved an overall accuracy of 74% when classifying whether a role requires ML skills. The precision and recall for class 0, non-ML, roles were slightly higher with precision: 0.76 and recall: 0.77 compared to class 1, ML roles, where both precision and recall were around 0.70. This indicates the model performs reasonably well but is slightly better at identifying non-ML roles than ML roles. Overall, the model shows decent predictive power, but there is some room for improvement, especially in detecting ML-related positions.
+
 ```{python}
 import plotly.express as px
 fig = px.bar(
@@ -128,6 +130,8 @@ model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 print(classification_report(y_test, y_pred))
 ```
+
+In this model, we incorporated the job description text by applying TF-IDF vectorization to extract the most important words from each posting. Using these features, the Random Forest model achieved a strong accuracy of 79%, a notable improvement compared to the previous model that relied only on structured fields like job titles and industries. The model shows a higher recall 87% for non-ML roles but a lower recall of 69% for ML-related roles, suggesting it is better at identifying traditional roles than detecting specialized data science positions. Overall, adding the job description significantly enhanced the model’s ability to capture complex signals related to AI/ML requirements across different industries.
 
 ```{python}
 import numpy as np
@@ -207,5 +211,7 @@ fig.write_html(
   style="border:none; height:70vh;"
 ></iframe>
 
-We selected a combination of structured and unstructured features to predict whether a job role requires Machine Learning or Data Science. Structured features such as TITLE, SOC_2021_4_NAME, NAICS2_NAME, MIN_EDULEVELS_NAME, and MIN_YEARS_EXPERIENCE were chosen based on domain relevance—these fields reflect the role's function, industry, required education, and experience level, all of which can signal ML-related requirements. Additionally, we included the job description BODY text, applying TF-IDF vectorization to extract key terms. This allowed the model to learn from nuanced language patterns within postings. Feature importance and performance metrics confirm that both structured metadata and text data contribute meaningfully to classification accuracy.
+The confusion matrix illustrates that while the model performs well overall, it is particularly strong at identifying non-ML roles, class 0, but faces more difficulty correctly predicting ML-related roles, class 1, reflected in a higher number of false negatives. Nevertheless, the integration of the unstructured data meaningfully improved classification performance. 
+
+Structured features such as TITLE, SOC_2021_4_NAME, NAICS2_NAME, MIN_EDULEVELS_NAME, and MIN_YEARS_EXPERIENCE were chosen based on domain relevance, these fields reflect the role's function, industry, required education, and experience level, all of which can signal ML-related requirements. Additionally, we included the job description BODY text, applying TF-IDF vectorization to extract key terms. This allowed the model to learn from nuanced language patterns within postings. Feature importance and performance metrics confirm that both structured metadata and text data contribute meaningfully to classification accuracy.
 

@@ -84,7 +84,7 @@ Our analysis found that **Python, Machine Learning, and Cloud Computing** consis
 
 ### AI Skills Now a Must {#ai-skills-now-a-must}
 
-Compared to prior years, 2024 job postings show a notable shift: companies are explicitly requesting skills like Artificial Intelligence, Machine Learning, and Deep Learning. This highlights how AI technologies are no longer "nice-to-have" but are becoming core to business operations. Candidates without exposure to AI tools or methods risk being overlooked even for traditionally non-technical analytics roles.
+Compared to prior years, 2025 job postings show a notable shift: companies are explicitly requesting skills like Artificial Intelligence, Machine Learning, and Deep Learning. This highlights how AI technologies are no longer "nice-to-have" but are becoming core to business operations. Candidates without exposure to AI tools or methods risk being overlooked even for traditionally non-technical analytics roles.
 
 ### Tech & Finance Leading Hiring {#tech-and-finance-leading-hiring}
 
