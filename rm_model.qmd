@@ -4,7 +4,6 @@ format:
   html:
     embed-resources: true        
     toc: true
-    code-fold: true
 jupyter: python3
 execute:
   working-directory: project
@@ -13,11 +12,10 @@ execute:
   error: true
 ---
 
+#### Loading the Dataset
 ```{python}
 import pandas as pd
-
 df = pd.read_parquet("data/eda.parquet",  engine='pyarrow')
-df.columns
 ```
 
 ```{python}
