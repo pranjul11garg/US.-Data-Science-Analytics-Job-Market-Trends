@@ -1,0 +1,44 @@
+---
+title: "All Analyses Presentation"
+format:
+  pptx:
+    toc: true
+    toc-title: ""
+    number-sections: true
+---
+
+
+# Introduction
+
+- Why analyze 2025 hiring trends?
+- Importance of AI/ML skills today
+
+---
+
+# Data Cleaning Highlights
+
+- 80,000 job postings analyzed
+- Missing values handled
+- Key cleaning steps
+
+---
+
+# EDA Results
+
+- Top Skills: Python, SQL, ML
+- Top Industries: Tech, Finance
+- Salary trends by role
+
+---
+
+# Model Building
+
+- Regression Models used
+- Predictive Analysis on Skill Gaps
+
+---
+
+# Key Takeaways
+
+- AI skills mandatory in 2025
+- Upskilling trends increasing
