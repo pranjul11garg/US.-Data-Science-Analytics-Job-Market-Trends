@@ -886,3 +886,24 @@ main h3 {
   margin-top: 0.5rem;
 }
 
+/* global-styles.css */
+
+/* Target the container class for iframes (assuming centered-iframe is used across files) */
+.centered-iframe {
+  display: flex; /* Use flexbox to center the iframe */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  width: 100%; /* Take full width of the parent container */
+  overflow: hidden; /* Prevent overflow at the container level */
+}
+
+/* Target all iframes */
+iframe {
+  overflow: hidden; /* Remove vertical and horizontal scrollbars */
+  border: none; /* Keep borderless style */
+  max-width: 100%; /* Ensure iframe doesn't exceed parent container width */
+  max-height: 100%; /* Ensure iframe doesn't exceed parent container height */
+  width: auto; /* Allow width to scale naturally */
+  height: auto; /* Allow height to scale naturally */
+  object-fit: contain; /* Ensure the entire plot fits within the iframe without cropping */
+}
