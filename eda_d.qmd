@@ -186,11 +186,7 @@ fig.write_html(
 
 <iframe src="figures/edaplot1.html" width="100%" height="650" style="border:none;"></iframe>
 
-
-
-
-
-
+This bar chart illustrates the distribution of data and business analytics jobs across various industries, separated by whether the job is explicitly a data analyst role or not. The Professional, Scientific, and Technical Services sector stands out as the clear leader, hosting the highest number of both data analyst and broader analytics roles. Industries like Finance, Healthcare, and Information Technology also show substantial demand, indicating a wide-reaching need for analytical expertise across sectors. This reinforces the growing importance of data skills not only in core tech but also in traditionally non-tech fields. 
 
 
 ```{python}
@@ -293,12 +289,7 @@ fig.write_html(
 
 <iframe src="figures/edaplot2.html" width="100%" height="650" style="border:none;"></iframe>
 
-
-
-
-
-
-
+This chart shows the top 10 specialized skills in job postings, divided by whether the role is an analytics job or not. Data Analysis, SQL, and Python are the most frequently required skills for analytics jobs, while Project Management and Business Requirements are more prevalent in non-analytics roles. It highlights how technical and business-oriented skills are both in demand, but distributed differently across job types.
 
 
 
@@ -586,9 +577,7 @@ fig.write_html(
 ```
 <iframe src="figures/edaplot4.html" width="100%" height="650" style="border:none;"></iframe> 
 
-
-
-
+This choropleth map displays the geographic distribution of analytics job postings in the U.S. for 2025. Texas leads with the highest number of postings 8050, followed by California and Florida, while Wyoming has the fewest at just 103. The darker the shade, the more job opportunities available, highlighting regional hotspots for data and analytics talent.
 
 ```{python}
 import plotly.graph_objects as go
@@ -724,3 +713,5 @@ fig.write_html(
 )
 ```
 <iframe src="figures/edaplot5.html" width="100%" height="650" style="border:none;"></iframe> 
+
+This Sankey diagram visualizes the flow of job postings from education level to job category to industry in 2025. Most analytics jobs stem from roles requiring a Bachelor’s degree, and they are most commonly found in Tech Services, followed by Finance and Manufacturing. Non-analytics jobs dominate roles with no education listed, highlighting how educational requirements differ by job type.
