@@ -51,16 +51,13 @@ import plotly.express as px
 import plotly.graph_objects as go
 from IPython.display import HTML
 
-# 1) Build the DataFrame
 df_plot = features.copy()
 df_plot['Cluster'] = eda.loc[features.index, 'Cluster']
 
-# 2) Compute centroids in original units
 centroids = kmeans.cluster_centers_
 centroids_x = centroids[:, 0] * X.std(axis=0)[0] + X.mean(axis=0)[0]
 centroids_y = centroids[:, 1] * X.std(axis=0)[1] + X.mean(axis=0)[1]
 
-# 3) Create an interactive Plotly Figure
 fig = px.scatter(
     df_plot,
     x='SALARY',
@@ -76,7 +73,6 @@ fig = px.scatter(
     height=400,
 )
 
-# 4) Add centroid traces
 fig.add_trace(
     go.Scatter(
         x=centroids_x,
@@ -87,12 +83,24 @@ fig.add_trace(
     )
 )
 
+fig.update_layout(
+    legend=dict(
+        title='Legend',
+        x=1.3, 
+        y=1,
+        xanchor='left',
+        yanchor='top',
+    ),
+    margin=dict(l=60, r=80, t=60, b=60)
+)
+
 fig.write_html(
     "figures/analytics_plot1.html",
     include_plotlyjs="cdn",
     full_html=True
 )
-fig
+fig.show()
+
 ```
 <iframe
   src="/figures/analytics_plot1.html"
@@ -135,39 +143,70 @@ max_val = y_test.max()
 ```
 
 ```{python}
+import plotly.graph_objects as go
+
+# Safety: make sure min_val and max_val are correctly defined
+min_val = min(y_test.min(), y_pred.min())
+max_val = max(y_test.max(), y_pred.max())
+
+# Build figure
 fig = go.Figure([
     go.Scatter(
         x=y_test,
         y=y_pred,
         mode='markers',
-        marker=dict(color='skyblue', opacity=0.6),
-        name='Predicted vs Actual'
+        marker=dict(
+            color='skyblue',
+            opacity=0.6,
+            size=8
+        ),
+        name='Predicted vs Actual',
+        hovertemplate='Actual: %{x:.2f}<br>Predicted: %{y:.2f}<extra></extra>'
     ),
     go.Scatter(
         x=[min_val, max_val],
         y=[min_val, max_val],
         mode='lines',
-        line=dict(color='red', dash='dash'),
-        name='Ideal Fit'
+        line=dict(
+            color='red',
+            width=2,
+            dash='dash'
+        ),
+        name='Ideal Fit',
+        hoverinfo='skip'  # Don't show hover on the line
     )
 ])
 
+# Update layout for better visual
 fig.update_layout(
     title='Actual vs Predicted Salary (Multiple Regression)',
-    xaxis_title='Actual Salary',
-    yaxis_title='Predicted Salary',
-    width=600,
-    height=400,
-    template='plotly_white'
+    xaxis_title='Actual Salary ($)',
+    yaxis_title='Predicted Salary ($)',
+    width=700,
+    height=500,
+    template='plotly_white',
+    legend=dict(
+        title='Legend',
+        x=0.02,
+        y=0.98,
+        bordercolor='Gray',
+        borderwidth=1
+    ),
+    margin=dict(l=60, r=40, t=60, b=60),
 )
 
+# Force equal scaling so that ideal line looks diagonal correctly
+fig.update_yaxes(scaleanchor="x", scaleratio=1)
 
+# Save HTML
 fig.write_html(
     'figures/analytics_plot2.html',
     include_plotlyjs='cdn',
     full_html=False
 )
-fig
+
+fig.show()
+
 ```
 <iframe
   src="/figures/analytics_plot2.html"
