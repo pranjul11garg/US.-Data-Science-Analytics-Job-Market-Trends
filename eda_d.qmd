@@ -2,7 +2,8 @@
 title: Exploratory Data Analytics
 jupyter: python3
 execute:
-  echo: true
+  eval: True
+  echo: false
   warning: false
   error: true
 format:
@@ -10,12 +11,14 @@ format:
     self-contained: true       # bundle everything into one file
     embed-resources: true      # include Plotly JS + widget state
 toc: true
-code-fold: true
 ---
 
 
 ```{python}
 import pandas as pd
+import plotly.io as pio
+
+pio.renderers.default="plotly_mimetype"
 eda = pd.read_parquet("data/eda.parquet")
 ```
 
@@ -420,9 +423,10 @@ fig.write_html(
     include_plotlyjs="cdn",  # Use CDN to load Plotly JS
     full_html=False          # Only include the plot div
 )
+fig.show()
 ```
 
-<iframe src="figures/edaplot3.html" width="100%" height="650" style="border:none;"></iframe>
+<!-- <iframe src="figures/edaplot3.html" width="100%" height="650" style="border:none;"></iframe> -->
 
 Overview:
 This scatter plot compares average years of experience (x-axis, 0 to 14 years) to salary (y-axis, $0 to $500k), with Analytics Jobs in red and Non-Analytics Jobs in teal.

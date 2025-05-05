@@ -3,7 +3,8 @@ title: Skill Gap Analysis
 format: html
 jupyter: python3
 execute:
-  echo: true
+  eval: True
+  echo: false
   warning: false
   error: true
 toc: true
