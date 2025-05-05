@@ -91,22 +91,22 @@ Far from replacing all jobs, AI is reshaping roles to focus on higher value, dec
 
 
 
-## Key Trends Shaping Data Science and Analytics Careers
+### Key Trends Shaping Data Science and Analytics Careers
 
   
-### Top Skills {#top-skills}
+#### Top Skills {#top-skills}
 
 Our analysis found that **Python, Machine Learning, and Cloud Computing** consistently rank among the top-requested skills in job postings. Employers are seeking candidates who can not only analyze data but also deploy models and build scalable solutions. Python remains the foundational language across roles, while machine learning capabilities and cloud platform expertise such as AWS or Azure offer clear competitive advantages.
 
-### AI Skills Now a Must {#ai-skills-now-a-must}
+#### AI Skills Now a Must {#ai-skills-now-a-must}
 
 Compared to prior years, 2025 job postings show a notable shift: companies are explicitly requesting skills like Artificial Intelligence, Machine Learning, and Deep Learning. This highlights how AI technologies are no longer "nice-to-have" but are becoming core to business operations. Candidates without exposure to AI tools or methods risk being overlooked even for traditionally non-technical analytics roles.
 
-### Tech & Finance Leading Hiring {#tech-and-finance-leading-hiring}
+#### Tech & Finance Leading Hiring {#tech-and-finance-leading-hiring}
 
 Our industry breakdown shows that technology and finance companies are the heaviest recruiters of data science talent. Tech firms are driving innovation through AI products, while finance companies leverage predictive analytics for risk management and investment strategies. These sectors offer strong opportunities, but they also expect candidates to have technical depth combined with business problem-solving skills.
 
-### AI Gives Analysts an Edge {#ai-gives-analysts-an-edge}
+#### AI Gives Analysts an Edge {#ai-gives-analysts-an-edge}
 
 Business analytics continues to grow across industries, but the professionals who can blend classic analytics with AI-driven insights are positioned for the best opportunities. Companies increasingly value analysts who can not just interpret historical data, but also build predictive models and optimize decisions using machine learning. Upskilling in AI and data science is no longer optional for career advancement in this field.
 

@@ -16,7 +16,7 @@ import pandas as pd
 df = pd.read_parquet("data/eda.parquet")
 ```
 
-## Group 11 Skill 
+### Group 11 Skill 
 
 ```{python}
 import pandas as pd
@@ -108,13 +108,13 @@ fig.write_html(
   style="border:none;"
 ></iframe>
 
-### Interactive Radar Chart
+#### Interactive Radar Chart
 
 
 
 From this radar chart visualization we can see that our team has a lot of room for improvement for skills like PySpark and Machine Learning. Also we can see that not a lot of our team mates are confident in their skills in Cloud Computing and ETL. 
 
-## Top Skills
+### Top Skills
 
 ```{python}
 keywords = ['Data Analyst', 'Business Analyst', 'Data Engineering', 'Deep Learning',
