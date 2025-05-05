@@ -73,7 +73,7 @@ fig = px.scatter(
         'MAX_YEARS_EXPERIENCE': 'Max Years Experience',
         'Cluster': 'Cluster'
     },
-    width=600,
+    width=800,
     height=600,
 )
 
