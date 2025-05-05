@@ -71,7 +71,7 @@ fig = px.scatter(
         'Cluster': 'Cluster'
     },
     width=600,
-    height=400,
+    height=600,
 )
 
 fig.add_trace(
@@ -98,7 +98,7 @@ fig.update_layout(
 
 <iframe
   src="/figures/analytics_p1.png"
-  width="80%"
+  width="100%"
   height="600"
   style="border:none;"
 ></iframe>
@@ -176,8 +176,8 @@ fig.update_layout(
     title='Actual vs Predicted Salary (Multiple Regression)',
     xaxis_title='Actual Salary ($)',
     yaxis_title='Predicted Salary ($)',
-    width=700,
-    height=500,
+    width=600,
+    height=600,
     template='plotly_white',
     legend=dict(
         title='Legend',
@@ -202,9 +202,10 @@ fig.write_html(
 ```
 <iframe
   src="/figures/analytics_plot2.html"
-  width="80%"
+  width="100%"
   height="600"
   style="border:none;"
+  scrolling="no"
 ></iframe>
 
 This plot shows the Actual vs. Predicted Salary using a multiple linear regression model. The blue dots represent individual predictions, and the red dashed line is the ideal line where predicted = actual. Since most points lie very close to the red line, it means your model predicts salary very accurately, with minimal error and strong linear fit — likely reflected in a high R² score near 1.0.
