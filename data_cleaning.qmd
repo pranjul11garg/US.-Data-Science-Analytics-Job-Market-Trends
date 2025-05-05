@@ -3,7 +3,8 @@ title: Cleaning
 format: html
 jupyter: python3
 execute:
-  echo: true
+  eval: true
+  echo: false
   warning: false
   error: true
   working directory: project
