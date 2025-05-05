@@ -206,8 +206,6 @@ fig.write_html(
     full_html=False
 )
 
-fig.show()
-
 ```
 <iframe
   src="/figures/analytics_plot2.html"
