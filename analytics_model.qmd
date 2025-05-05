@@ -94,17 +94,10 @@ fig.update_layout(
     ),
     margin=dict(l=60, r=80, t=60, b=60)
 )
-
-fig.write_html(
-    "figures/analytics_plot1.html",
-    include_plotlyjs="cdn",
-    full_html=False
-)
-fig.show()
-
 ```
+
 <iframe
-  src="/figures/analytics_plot1.html"
+  src="/figures/analytics_p1.png"
   width="100%"
   height="400"
   style="border:none;"

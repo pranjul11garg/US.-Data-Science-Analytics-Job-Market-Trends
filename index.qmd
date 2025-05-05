@@ -79,7 +79,7 @@ In this research project, we wanted explore how the fields of Business Analytics
 
 To answer these questions, we analyzed a large dataset of real job postings sourced from Lightcast. We applied data cleaning, exploratory analysis, skill extraction, and machine learning classification techniques to identify emerging trends and skill gaps.
 
-#### Why This Matters? 
+#### **Why This Matters?**
 
 The rise of artificial intelligence (AI) and automation is not only transforming industries, it is changing the very skills required to succeed in the job market. Recent research shows that 86% of workers express concerns about AI-driven job displacement [@samuels2024ai], while businesses simultaneously seek employees who can work alongside AI tools and leverage data-driven insights to create value [@gartner2024ai].
 
