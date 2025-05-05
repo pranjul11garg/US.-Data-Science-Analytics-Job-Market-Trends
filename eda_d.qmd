@@ -427,10 +427,9 @@ fig.write_html(
     include_plotlyjs="cdn",  # Use CDN to load Plotly JS
     full_html=False          # Only include the plot div
 )
-fig.show()
 ```
 
-<!-- <iframe src="figures/edaplot3.html" width="100%" height="650" style="border:none;"></iframe> -->
+<iframe src="figures/edaplot3.png" width="100%" height="650" style="border:none;"></iframe>
 
 Overview:
 This scatter plot compares average years of experience (x-axis, 0 to 14 years) to salary (y-axis, $0 to $500k), with Analytics Jobs in red and Non-Analytics Jobs in teal.
@@ -602,7 +601,7 @@ fig.add_annotation(
 fig.write_html(
     'figures/edaplot4.html',
     include_plotlyjs='cdn',
-    full_html=False
+    full_html= True
 )
 
 ```
