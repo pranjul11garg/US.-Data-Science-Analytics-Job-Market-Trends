@@ -286,9 +286,8 @@ fig.update_layout(
         borderwidth=1,
         x=1.02,
         y=0.5,
-        orientation ="h",
         yanchor = "bottom",
-        xanchor = "right"
+        xanchor = "center"
     )
 )
 
@@ -302,7 +301,7 @@ fig.write_html(
 
 ```
 
-<iframe src="figures/edaplot2.html" width="100%" height="650" style="border:none;"></iframe>
+<iframe src="figures/edaplot2.html" width="100%" height="700" style="border:none;"></iframe>
 
 Overview:
 This stacked bar chart shows the top 10 specialized skills required for jobs, split into Analytics Jobs (red) and Non-Analytics Jobs (teal), with the number of jobs on the x-axis (0 to 25k) and skills on the y-axis.
@@ -424,13 +423,9 @@ fig.update_traces(
 fig.write_html(
     "figures/edaplot3.html"
 )
-
-fig.write_image(
-    "figures/eda_p3.png"
-)
 ```
 
-<iframe src="figures/eda_p3.png" width="90%" height="650" style="border:none;"></iframe> 
+<iframe src="figures/eda_p3.png" width="100%" height="650" style="border:none;"></iframe> 
 
 
 Overview:

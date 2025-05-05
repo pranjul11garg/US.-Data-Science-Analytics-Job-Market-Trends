@@ -36,34 +36,6 @@ execute:
 
 
 
-
-<div class="floating-nav">
-  <ul class="nav flex-column nav-pills">
-    <li class="nav-item">
-      <a class="nav-link" href="#top-skills">
-        <i class="fa fa-chart-bar"></i>&nbsp;Top Skills
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#ai-skills-now-a-must">
-        <i class="fa fa-balance-scale"></i>&nbsp;AI Skills Now a Must 
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#tech-and-finance-leading-hiring">
-        <i class="fa fa-database"></i>&nbsp;Tech & Finance Leading Hiring
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#ai-gives-analysts-an-edge">
-        <i class="fa fa-rocket"></i>&nbsp;AI Gives Analysts an Edge
-      </a>
-    </li>
-  </ul>
-</div>
-
-
-
 ### Goal of the Project: 
 In this research project, we wanted explore how the fields of Business Analytics, Data Science, and Machine Learning are evolving in 2025. With industries rapidly embracing AI technologies, understanding hiring trends and skill demands has become essential for students and professionals alike.
 
@@ -94,19 +66,19 @@ Far from replacing all jobs, AI is reshaping roles to focus on higher value, dec
 ### Key Trends Shaping Data Science and Analytics Careers
 
   
-#### Top Skills {#top-skills}
+#### **Top Skills** 
 
 Our analysis found that **Python, Machine Learning, and Cloud Computing** consistently rank among the top-requested skills in job postings. Employers are seeking candidates who can not only analyze data but also deploy models and build scalable solutions. Python remains the foundational language across roles, while machine learning capabilities and cloud platform expertise such as AWS or Azure offer clear competitive advantages.
 
-#### AI Skills Now a Must {#ai-skills-now-a-must}
+#### **AI Skills Now a Must** 
 
 Compared to prior years, 2025 job postings show a notable shift: companies are explicitly requesting skills like Artificial Intelligence, Machine Learning, and Deep Learning. This highlights how AI technologies are no longer "nice-to-have" but are becoming core to business operations. Candidates without exposure to AI tools or methods risk being overlooked even for traditionally non-technical analytics roles.
 
-#### Tech & Finance Leading Hiring {#tech-and-finance-leading-hiring}
+#### **Tech & Finance Leading Hiring** 
 
 Our industry breakdown shows that technology and finance companies are the heaviest recruiters of data science talent. Tech firms are driving innovation through AI products, while finance companies leverage predictive analytics for risk management and investment strategies. These sectors offer strong opportunities, but they also expect candidates to have technical depth combined with business problem-solving skills.
 
-#### AI Gives Analysts an Edge {#ai-gives-analysts-an-edge}
+#### **AI Gives Analysts an Edge** 
 
 Business analytics continues to grow across industries, but the professionals who can blend classic analytics with AI-driven insights are positioned for the best opportunities. Companies increasingly value analysts who can not just interpret historical data, but also build predictive models and optimize decisions using machine learning. Upskilling in AI and data science is no longer optional for career advancement in this field.
 
@@ -117,27 +89,3 @@ Business analytics continues to grow across industries, but the professionals wh
 </p>  
 
 
-<script>
-(() => {
-  const nav = document.querySelector('.floating-nav'),
-        toggle = document.querySelector('.floating-nav h3 button'),
-        links = Array.from(nav.querySelectorAll('a'));
-
-  // Collapse/expand
-  toggle.addEventListener('click', () => {
-    nav.classList.toggle('collapsed');
-  });
-
-  // Scroll-spy to highlight active section
-  const sections = links.map(a => document.getElementById(a.getAttribute('href').slice(1)));
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      const id = e.target.id;
-      const link = nav.querySelector(`a[href="#${id}"]`);
-      link.classList.toggle('active', e.isIntersecting);
-    });
-  }, { rootMargin: '-50% 0px -50% 0px' });
-
-  sections.forEach(sec => sec && observer.observe(sec));
-})();
-</script>
