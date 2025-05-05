@@ -17,8 +17,7 @@ toc: true
 ```{python}
 import pandas as pd
 import plotly.io as pio
-
-pio.renderers.default="plotly_mimetype"
+pio.renderers.default = 'iframe_connected'
 eda = pd.read_parquet("data/eda.parquet")
 ```
 

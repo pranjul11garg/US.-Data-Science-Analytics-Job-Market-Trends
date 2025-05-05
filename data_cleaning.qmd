@@ -71,9 +71,6 @@ fig.update_layout(
 )
 
 fig.update_yaxes(autorange="reversed")
-
-fig.show()
-
 fig.write_html(
     'figures/missing_corr_heatmap.html',
     include_plotlyjs='cdn',  # lightweight HTML
