@@ -10,6 +10,8 @@ project:
     - analytics_model.qmd
     - eda_d.qmd
     - data_cleaning.qmd
+    - "!finald.qmd"
+    - "!dataset_load.ipynb"
 
 website:
   search: false
@@ -44,9 +46,6 @@ format:
     include-in-header:
       - text: |
           <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">       
-
-bibliography: references.bib
-csl: csl/econometrica.csl
 
 execute:
   working-directory: project

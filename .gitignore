@@ -13,3 +13,4 @@ eda_data.csv
 lightcast_job_postings.csv
 
 .venv/
+_site/

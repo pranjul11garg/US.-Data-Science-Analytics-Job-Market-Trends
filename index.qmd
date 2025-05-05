@@ -5,6 +5,8 @@ execute:
   echo: true
   warning: false
   error: true
+bibliography: references.bib
+csl: csl/econometrica.csl
 ---
 
 <div class="hero">
