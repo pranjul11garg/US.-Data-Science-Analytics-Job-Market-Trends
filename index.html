@@ -3146,22 +3146,6 @@ Binderiya Dugersuren
 </section>
 </section>
 </div>
-<div class="floating-nav">
-<ul class="nav flex-column nav-pills">
-<li class="nav-item">
-<a class="nav-link" href="#top-skills"> <i class="fa fa-chart-bar"></i> Top Skills </a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="#ai-skills-now-a-must"> <i class="fa fa-balance-scale"></i> AI Skills Now a Must </a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="#tech-and-finance-leading-hiring"> <i class="fa fa-database"></i> Tech &amp; Finance Leading Hiring </a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="#ai-gives-analysts-an-edge"> <i class="fa fa-rocket"></i> AI Gives Analysts an Edge </a>
-</li>
-</ul>
-</div>
 <section id="goal-of-the-project" class="level3">
 <h3 class="anchored" data-anchor-id="goal-of-the-project">Goal of the Project:</h3>
 <p>In this research project, we wanted explore how the fields of Business Analytics, Data Science, and Machine Learning are evolving in 2025. With industries rapidly embracing AI technologies, understanding hiring trends and skill demands has become essential for students and professionals alike.</p>
@@ -3184,47 +3168,23 @@ Binderiya Dugersuren
 <section id="key-trends-shaping-data-science-and-analytics-careers" class="level3">
 <h3 class="anchored" data-anchor-id="key-trends-shaping-data-science-and-analytics-careers">Key Trends Shaping Data Science and Analytics Careers</h3>
 <section id="top-skills" class="level4">
-<h4 class="anchored" data-anchor-id="top-skills">Top Skills</h4>
+<h4 class="anchored" data-anchor-id="top-skills"><strong>Top Skills</strong></h4>
 <p>Our analysis found that <strong>Python, Machine Learning, and Cloud Computing</strong> consistently rank among the top-requested skills in job postings. Employers are seeking candidates who can not only analyze data but also deploy models and build scalable solutions. Python remains the foundational language across roles, while machine learning capabilities and cloud platform expertise such as AWS or Azure offer clear competitive advantages.</p>
 </section>
 <section id="ai-skills-now-a-must" class="level4">
-<h4 class="anchored" data-anchor-id="ai-skills-now-a-must">AI Skills Now a Must</h4>
+<h4 class="anchored" data-anchor-id="ai-skills-now-a-must"><strong>AI Skills Now a Must</strong></h4>
 <p>Compared to prior years, 2025 job postings show a notable shift: companies are explicitly requesting skills like Artificial Intelligence, Machine Learning, and Deep Learning. This highlights how AI technologies are no longer “nice-to-have” but are becoming core to business operations. Candidates without exposure to AI tools or methods risk being overlooked even for traditionally non-technical analytics roles.</p>
 </section>
-<section id="tech-and-finance-leading-hiring" class="level4">
-<h4 class="anchored" data-anchor-id="tech-and-finance-leading-hiring">Tech &amp; Finance Leading Hiring</h4>
+<section id="tech-finance-leading-hiring" class="level4">
+<h4 class="anchored" data-anchor-id="tech-finance-leading-hiring"><strong>Tech &amp; Finance Leading Hiring</strong></h4>
 <p>Our industry breakdown shows that technology and finance companies are the heaviest recruiters of data science talent. Tech firms are driving innovation through AI products, while finance companies leverage predictive analytics for risk management and investment strategies. These sectors offer strong opportunities, but they also expect candidates to have technical depth combined with business problem-solving skills.</p>
 </section>
 <section id="ai-gives-analysts-an-edge" class="level4">
-<h4 class="anchored" data-anchor-id="ai-gives-analysts-an-edge">AI Gives Analysts an Edge</h4>
+<h4 class="anchored" data-anchor-id="ai-gives-analysts-an-edge"><strong>AI Gives Analysts an Edge</strong></h4>
 <p>Business analytics continues to grow across industries, but the professionals who can blend classic analytics with AI-driven insights are positioned for the best opportunities. Companies increasingly value analysts who can not just interpret historical data, but also build predictive models and optimize decisions using machine learning. Upskilling in AI and data science is no longer optional for career advancement in this field.</p>
 <p style="text-align:center; margin-top:3rem;">
 <a href="#top" class="back-to-top">Back to top ↑</a>
 </p>
-<script>
-(() => {
-  const nav = document.querySelector('.floating-nav'),
-        toggle = document.querySelector('.floating-nav h3 button'),
-        links = Array.from(nav.querySelectorAll('a'));
-
-  // Collapse/expand
-  toggle.addEventListener('click', () => {
-    nav.classList.toggle('collapsed');
-  });
-
-  // Scroll-spy to highlight active section
-  const sections = links.map(a => document.getElementById(a.getAttribute('href').slice(1)));
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      const id = e.target.id;
-      const link = nav.querySelector(`a[href="#${id}"]`);
-      link.classList.toggle('active', e.isIntersecting);
-    });
-  }, { rootMargin: '-50% 0px -50% 0px' });
-
-  sections.forEach(sec => sec && observer.observe(sec));
-})();
-</script>
 
 
 
