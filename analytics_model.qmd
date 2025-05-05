@@ -4,14 +4,12 @@ jupyter: python3
 execute:
   working-directory: project
   echo: false
+  eval: true
   warning: false
   toc: false
   code-fold: true
 ---
-<<<<<<< Updated upstream
-=======
 Here we used unsupervised and regression modeling techniques to analyze job clusters and predict salaries. We use KMeans clustering to identify patterns in job roles based on salary and experience, followed by a multiple linear regression model to evaluate how well experience can predict salary.
->>>>>>> Stashed changes
 
 ```{python}
 from sklearn.cluster import KMeans
@@ -46,6 +44,7 @@ ari = adjusted_rand_score(true_labels_encoded, eda.loc[features.index, 'Cluster'
 ```
 
 ```{python}
+
 import plotly.express as px
 import plotly.graph_objects as go
 from IPython.display import HTML
@@ -70,7 +69,7 @@ fig = px.scatter(
     },
     width=800,
     height=600,
-)
+);
 
 fig.add_trace(
     go.Scatter(
@@ -80,7 +79,7 @@ fig.add_trace(
         marker=dict(symbol='x', size=8, color='black', line=dict(width=2, color='white')),
         name='Centroids'
     )
-)
+);
 
 fig.update_layout(
     legend=dict(
@@ -92,7 +91,9 @@ fig.update_layout(
     ),
     margin=dict(l=60, r=80, t=60, b=60)
 )
+
 ```
+
 <img src="figures/analytics_p1.png" width="100%" />
 
 
