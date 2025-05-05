@@ -287,5 +287,4 @@ wordcloud.to_file("figures/skills_wordcloud.png")
 
 ### Word Cloud of Skills
 
-![Word Cloud](figures/skills_wordcloud.png){fig-align="center" width="80%"}
 The word cloud highlights the most frequently mentioned skills in job postings related to data science, business analytics, and machine learning roles. Larger words like "programming language," "problem solving," "business intelligence," "SQL programming," and "data analysis" indicate skills that are highly sought after by employers. Other prominent terms such as "project management," "Python programming," and "Microsoft Excel" further emphasize the blend of technical, analytical, and project-oriented skills expected in the industry. This visualization captures how employers prioritize a balance between technical proficiency and business acumen.
