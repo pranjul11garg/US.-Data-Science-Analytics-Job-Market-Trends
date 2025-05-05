@@ -97,7 +97,7 @@ fig.update_layout(
     margin=dict(l=60, r=80, t=60, b=60)
 )
 ```
-<img src="figures/analytics_p1.png" width="100%" style="margin-top: -10px;" />
+<img src="figures/analytics_p1.png" width="100%" />
 
 
 
