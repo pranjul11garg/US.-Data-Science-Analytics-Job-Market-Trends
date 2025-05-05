@@ -213,8 +213,8 @@ img:hover {
 /* title image on home page */
 .hero {
   position: relative;
-  height: 250px;
-  background-image: url("images/hero1.jpg");
+  height: 350px;
+  background-image: url("figures/hero1.jpg");
   background-size: cover;
   background-position: center;
   margin-bottom: 1.5rem;
