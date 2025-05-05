@@ -95,6 +95,7 @@ fig.write_html(
     full_html=False
 )
 ```
+
 <iframe src="figures/rm_model_plot1.html" width="100%" height="650" style="border:none;"></iframe> 
 
 This bar chart displays the feature importance scores from a random forest model predicting whether a job role involves ML/Data Science. The most influential feature by far in the model is the job title (TITLE), which has a significantly higher importance than all other variables. Secondary contributors include industry classification (NAICS2_NAME) and minimum years of experience, where education level and SOC code had relatively low influence on the model’s prediction. This is suggesting that the job title alone carries strong predictive power for identifying ML-related roles.
