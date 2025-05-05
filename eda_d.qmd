@@ -6,10 +6,6 @@ execute:
   echo: false
   warning: false
   error: true
-format:
-  html:
-    self-contained: true       # bundle everything into one file
-    embed-resources: true      # include Plotly JS + widget state
 toc: true
 ---
 Here we explored trends in the job market using visualizations to uncover patterns in industries, roles, and geographic demand. The goal is to understand the distribution of analytics vs. non-analytics jobs across different sectors and regions.

@@ -1,8 +1,5 @@
 ---
 title: "The Next Normal: AI-Driven Analytics in Action"
-format:
-  html:
-    toc: false
 jupyter: python3
 execute:
   echo: true

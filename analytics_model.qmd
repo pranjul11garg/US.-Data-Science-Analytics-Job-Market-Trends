@@ -1,9 +1,5 @@
 ---
 title: "Analytics Model"
-format:
-  html:
-    embed-resources: true   # bundle JS/CSS (for Plotly, etc.)
-    code-fold: true
 jupyter: python3
 execute:
   working-directory: project

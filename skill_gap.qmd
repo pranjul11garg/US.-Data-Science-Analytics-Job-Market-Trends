@@ -1,6 +1,5 @@
 ---
 title: Skill Gap Analysis
-format: html
 jupyter: python3
 execute:
   eval: True

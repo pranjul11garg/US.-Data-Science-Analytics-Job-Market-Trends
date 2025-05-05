@@ -1,9 +1,5 @@
 ---
 title: "Random Forest Classification for ML/Data Science Requirement"
-format:
-  html:
-    embed-resources: true        
-    toc: true
 jupyter: python3
 execute:
   working-directory: project
