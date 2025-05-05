@@ -1,5 +1,5 @@
 ---
-title: Cleaning
+title: Data Cleaning
 format: html
 jupyter: python3
 execute:

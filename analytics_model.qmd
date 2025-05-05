@@ -14,7 +14,6 @@ execute:
   code-fold: true
 ---
 
-
 ```{python}
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
@@ -95,13 +94,9 @@ fig.update_layout(
     margin=dict(l=60, r=80, t=60, b=60)
 )
 ```
+<img src="figures/analytics_p1.png" width="100%" style="margin-top: -10px;" />
 
-<iframe
-  src="/figures/analytics_p1.png"
-  width="100%"
-  height="600"
-  style="border:none;"
-></iframe>
+
 
 Here we have 4 cluster groups. Group 0, which represent as green have lower salary, mostly under 150k, and max years experience in 2-5 years, it is likely Likely junior to mid-level employees with moderate pay. Group 1 with orange, has medium to high salary, wide range from $100k–$500k and with narrow range ~3 years, they are suggests specialized or high-paying roles with short experience — possibly fast-track promotions or high-demand fields. cluster 2 are low salary and experience from 0-4 years, they are clearly entry level employee. cluster 3 has medium salary, mostly under 200k with higher experiences, like 6-13 eyars. They probably are senior professionals with more experience but not the highest salaries. 
 
