@@ -189,7 +189,7 @@ fig.write_html(
 )
 ```
 
-<iframe src="figures/edaplot1.html" width="100%" height="650" style="border:none;"></iframe>
+<iframe src="figures/edaplot1.html" width="100%" height="650" style="border:none;" scrolling="no"></iframe>
 
 Tech & Services dominates
 With roughly 7,620 analytics roles versus 15,550 non-analytics roles, this sector is by far the biggest home for Data Analyst jobs—both in absolute counts and total listings.
