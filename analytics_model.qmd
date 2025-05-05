@@ -44,7 +44,7 @@ ari = adjusted_rand_score(true_labels_encoded, eda.loc[features.index, 'Cluster'
 ```
 
 ```{python}
-
+#| output: false
 import plotly.express as px
 import plotly.graph_objects as go
 from IPython.display import HTML
@@ -90,11 +90,11 @@ fig.update_layout(
         yanchor='top',
     ),
     margin=dict(l=60, r=80, t=60, b=60)
-)
+);
 
 ```
 
-<img src="figures/analytics_p1.png" width="100%" />
+<img src="figures/analytics_p1.png" width="65%" />
 
 
 
