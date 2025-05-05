@@ -10,9 +10,13 @@ execute:
   eval: True
   echo: false
   warning: false
-  toc: true
+  toc: false
   code-fold: true
 ---
+<<<<<<< Updated upstream
+=======
+Here we used unsupervised and regression modeling techniques to analyze job clusters and predict salaries. We use KMeans clustering to identify patterns in job roles based on salary and experience, followed by a multiple linear regression model to evaluate how well experience can predict salary.
+>>>>>>> Stashed changes
 
 ```{python}
 from sklearn.cluster import KMeans

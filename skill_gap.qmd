@@ -7,9 +7,11 @@ execute:
   echo: false
   warning: false
   error: true
-toc: true
+toc: false
 code-fold: true
 ---
+
+Here, we compare the technical skills required by the job market with the skills present in our team. This analysis highlights key gaps and helps identify areas where upskilling is most needed to align with industry expectations.
 
 ```{python}
 import pandas as pd
@@ -104,13 +106,11 @@ fig.write_html(
 <iframe
   src="figures/skill_gap_plot2.html"
   width="100%"
-  height="650"
+  height="550"
   style="border:none;"
 ></iframe>
 
 #### **Interactive Radar Chart**
-
-
 
 From this radar chart visualization we can see that our team has a lot of room for improvement for skills like PySpark and Machine Learning. Also we can see that not a lot of our team mates are confident in their skills in Cloud Computing and ETL. 
 

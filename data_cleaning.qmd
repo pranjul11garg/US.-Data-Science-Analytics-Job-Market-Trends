@@ -12,6 +12,7 @@ toc: true
 code-fold: true
 ---
 
+We preprocess and clean the raw job postings dataset to make it usable for analysis. This includes handling missing values, normalizing skill fields, and preparing structured columns for further insights.
 
 ```{python}
 import pandas as pd

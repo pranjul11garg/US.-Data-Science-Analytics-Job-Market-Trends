@@ -11,8 +11,10 @@ execute:
   echo: false
   warning: false
 ---
+This file builds a classification model to predict whether a job posting requires machine learning or data science skills. It combines structured fields (like job title and industry) with unstructured job descriptions using TF-IDF to improve prediction accuracy and uncover key features that signal ML-related roles.
 
-#### Loading the Dataset
+**Classification report**
+
 ```{python}
 import pandas as pd
 df = pd.read_parquet("data/eda.parquet",  engine='pyarrow')
@@ -204,4 +206,3 @@ fig.write_html(
 The confusion matrix illustrates that while the model performs well overall, it is particularly strong at identifying non-ML roles, class 0, but faces more difficulty correctly predicting ML-related roles, class 1, reflected in a higher number of false negatives. Nevertheless, the integration of the unstructured data meaningfully improved classification performance. 
 
 Structured features such as TITLE, SOC_2021_4_NAME, NAICS2_NAME, MIN_EDULEVELS_NAME, and MIN_YEARS_EXPERIENCE were chosen based on domain relevance, these fields reflect the role's function, industry, required education, and experience level, all of which can signal ML-related requirements. Additionally, we included the job description BODY text, applying TF-IDF vectorization to extract key terms. This allowed the model to learn from nuanced language patterns within postings. Feature importance and performance metrics confirm that both structured metadata and text data contribute meaningfully to classification accuracy.
-
