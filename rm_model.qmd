@@ -6,7 +6,11 @@ execute:
   eval: true
   echo: false
   warning: false
+  error: true
+toc: true
+code-fold: true
 ---
+
 This file builds a classification model to predict whether a job posting requires machine learning or data science skills. It combines structured fields (like job title and industry) with unstructured job descriptions using TF-IDF to improve prediction accuracy and uncover key features that signal ML-related roles.
 
 **Classification report**

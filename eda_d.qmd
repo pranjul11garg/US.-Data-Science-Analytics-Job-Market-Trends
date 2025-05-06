@@ -1,13 +1,15 @@
 ---
-title: Exploratory Data Analytics
+title: "Exploratory Data Analytics"
 jupyter: python3
 execute:
   eval: true
   echo: false
   warning: false
   error: true
+  working-directory: project
 toc: true
 ---
+
 Here we explored trends in the job market using visualizations to uncover patterns in industries, roles, and geographic demand. The goal is to understand the distribution of analytics vs. non-analytics jobs across different sectors and regions.
 
 ```{python}

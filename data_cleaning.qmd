@@ -1,12 +1,12 @@
 ---
-title: Data Cleaning
+title: "Data Cleaning"
 jupyter: python3
 execute:
   eval: true
   echo: false
   warning: false
   error: true
-  working directory: project
+  working-directory: project
 toc: true
 code-fold: true
 ---

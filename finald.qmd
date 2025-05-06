@@ -1,13 +1,12 @@
 ---
 title: "Final Report for Web Analytics"
-author: "Your Name"
+author: "Group 11"
 date: today
 execute:
   echo: false
   eval: true
 format:
-  docx: default
-toc: true                       
+  docx: default                    
 bibliography: references.bib
 csl: csl/econometrica.csl
 ---
